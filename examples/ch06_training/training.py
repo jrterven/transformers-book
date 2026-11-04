@@ -55,11 +55,20 @@ def exact_matches(generated, targets):
 
 
 @torch.no_grad()
-def evaluate(model, sequences, batch_size=64):
+def evaluate(model, sequences, batch_size=64, generation_max_new_tokens=None):
+    """Score one dataset with a common generation cap across its minibatches.
+
+    By default, allow the longest source length plus EOS and one extra token,
+    up to the model's positional limit.
+    An explicit cap lets comparisons across different datasets use equal limits.
+    """
     if not sequences or batch_size < 1:
         raise ValueError("evaluation needs data and a positive batch_size")
     # snippet:evaluate
     model.eval()
+    if generation_max_new_tokens is None:
+        generation_max_new_tokens = min(max(map(len, sequences)) + 2,
+                                        model.position.pe.shape[1])
     loss_sum = token_count = correct_tokens = correct_sequences = terminated = 0
     for start in range(0, len(sequences), batch_size):
         batch = collate(sequences[start:start + batch_size])
@@ -70,7 +79,7 @@ def evaluate(model, sequences, batch_size=64):
         token_count += count.item()
         correct_tokens += ((logits.argmax(-1) == batch.target) & valid).sum().item()
         generated = greedy_decode(model, batch.source,
-                                  max_new_tokens=batch.target.shape[1] + 1)
+                                  max_new_tokens=generation_max_new_tokens)
         correct_sequences += exact_matches(generated, batch.target)
         terminated += generated.eq(EOS).any(dim=1).sum().item()
     nll = loss_sum / token_count
@@ -97,6 +106,9 @@ def load_checkpoint(path):
     if checkpoint["vocabulary"] != list(VOCAB):
         raise ValueError("checkpoint vocabulary does not match this example")
     model = Transformer(**checkpoint["model_config"])
+    saved_dtype = checkpoint["model_state"]["source_embedding.weight"].dtype
+    if saved_dtype != next(model.parameters()).dtype:
+        model = model.to(dtype=saved_dtype)
     model.load_state_dict(checkpoint["model_state"], strict=True)
     return model.eval(), checkpoint
 # end-snippet:checkpoint

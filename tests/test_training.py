@@ -60,6 +60,18 @@ class TrainingTests(unittest.TestCase):
                          [[6, 5, 4, 3, EOS], [3, 4, 6, EOS, PAD]])
         self.assertEqual(int((self.batch.target != PAD).sum()), 9)
 
+    def test_longer_sequences_can_be_sampled_without_enumerating_every_combination(self):
+        # There are over two billion possible length-12 color sequences.
+        # A small teaching dataset should only need memory for its samples.
+        splits = make_splits(n_train=4, n_validation=2, n_test=2,
+                             min_length=12, max_length=12)
+        values = [sequence for split in splits for sequence in split]
+        self.assertEqual(len(values), 8)
+        self.assertEqual(len(set(values)), 8)
+        self.assertTrue(all(len(sequence) == 12 for sequence in values))
+        self.assertTrue(all(3 <= token < len(VOCAB)
+                            for sequence in values for token in sequence))
+
     def test_loss_uses_raw_logits_and_ignores_only_padding_positions(self):
         logits = torch.zeros(2, 3, 9, dtype=torch.float64, requires_grad=True)
         targets = torch.tensor([[3, EOS, PAD], [4, 5, EOS]])
@@ -89,6 +101,33 @@ class TrainingTests(unittest.TestCase):
             result = evaluate(self.model, data)
         self.assertEqual(result["termination_rate"], 0.5)
         self.assertEqual(result["exact_match"], 0.0)
+
+    def test_termination_uses_the_same_generation_cap_across_batch_partitions(self):
+        data = [(3, 4, 5), (5, 4, 3, 6, 7, 8)]
+        def delayed_eos(model, source, max_new_tokens):
+            result = source.new_full((source.shape[0], max_new_tokens), 4)
+            if max_new_tokens >= 7:
+                result[:, 6] = EOS
+                result[:, 7:] = PAD
+            return result
+        with patch("examples.ch06_training.training.greedy_decode",
+                   side_effect=delayed_eos):
+            together = evaluate(self.model, data, batch_size=2)
+            separate = evaluate(self.model, data, batch_size=1)
+            shorter_cap = evaluate(self.model, data, batch_size=1,
+                                   generation_max_new_tokens=6)
+        self.assertEqual(together["termination_rate"], 1.0)
+        self.assertEqual(separate["termination_rate"], together["termination_rate"])
+        self.assertEqual(shorter_cap["termination_rate"], 0.0)
+
+    def test_default_generation_cap_respects_the_model_position_limit(self):
+        # A source of length L-1 leaves exactly L decoder positions for EOS.
+        # An optional extra generation step must not make this valid case fail.
+        source_length = self.config["max_length"] - 1
+        result = evaluate(self.model, [(3,) * source_length])
+        self.assertEqual(result["tokens"], source_length + 1)
+        self.assertEqual(result["sequences"], 1)
+        self.assertTrue(math.isfinite(result["nll"]))
 
     def test_cached_logits_match_each_full_prefix_at_nonzero_positions(self):
         with torch.no_grad():
@@ -195,9 +234,9 @@ class TrainingTests(unittest.TestCase):
             with torch.no_grad():
                 next(self.model.parameters()).add_(1)
             restored, metadata = load_checkpoint(path)
-            # load_checkpoint reconstructs the normal float32 training model.
             got = restored(batch.source, batch.decoder_input)
-            torch.testing.assert_close(got.double(), before, atol=5e-7, rtol=5e-6)
+            self.assertEqual(next(restored.parameters()).dtype, torch.float64)
+            torch.testing.assert_close(got, before, atol=1e-12, rtol=1e-12)
             self.assertEqual(metadata["step"], 7)
             self.assertEqual(metadata["experiment"]["seed"], 23)
             self.assertEqual(metadata["vocabulary"], list(VOCAB))

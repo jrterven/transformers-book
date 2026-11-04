@@ -12,5 +12,8 @@ def load_checkpoint(path):
     if checkpoint["vocabulary"] != list(VOCAB):
         raise ValueError("checkpoint vocabulary does not match this example")
     model = Transformer(**checkpoint["model_config"])
+    saved_dtype = checkpoint["model_state"]["source_embedding.weight"].dtype
+    if saved_dtype != next(model.parameters()).dtype:
+        model = model.to(dtype=saved_dtype)
     model.load_state_dict(checkpoint["model_state"], strict=True)
     return model.eval(), checkpoint

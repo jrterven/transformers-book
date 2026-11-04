@@ -1,7 +1,6 @@
 """A deterministic, disjoint reversal dataset with a fixed vocabulary."""
 
 from dataclasses import dataclass
-import itertools
 import random
 
 import torch
@@ -28,10 +27,20 @@ def make_splits(seed=2026, n_train=512, n_validation=64, n_test=64,
     rng = random.Random(seed)
     result = [[], [], []]
     for length in lengths:
-        population = list(itertools.product(COLORS, repeat=length))
-        if sum(counts) > len(population):
+        population_size = len(COLORS) ** length
+        if sum(counts) > population_size:
             raise ValueError("requested more unique sequences than this length has")
-        chosen = rng.sample(population, sum(counts))
+        # Sample positions in the possible-sequence ordering, not every tuple.
+        # This keeps the seeded examples unchanged without allocating 6**length
+        # tuples when trying the longer-sequence exercise.
+        indices = rng.sample(range(population_size), sum(counts))
+        chosen = []
+        for index in indices:
+            sequence = [COLORS[0]] * length
+            for position in range(length - 1, -1, -1):
+                index, color_index = divmod(index, len(COLORS))
+                sequence[position] = COLORS[color_index]
+            chosen.append(tuple(sequence))
         start = 0
         for split, count in zip(result, counts):
             split.extend(chosen[start:start + count])

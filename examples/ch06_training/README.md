@@ -35,6 +35,9 @@ sequences. Every split has equal counts of lengths 3, 4, 5, and 6. Repeated
 colors are allowed. Source sequences are unique and disjoint across splits;
 the target is the exact reversed source. The seed and split SHA-256 hashes
 are saved with the checkpoint so the data can be reproduced.
+The generator samples sequence indices rather than constructing every possible
+sequence. Trying longer sequences therefore needs memory for the sampled
+examples, not for all six-to-the-length combinations.
 
 For the source `red green blue`, `collate` creates:
 
@@ -78,12 +81,19 @@ EOS. The final metrics record also breaks held-out results down by source
 length, making repetition, premature stopping, and length-dependent failures
 easier to investigate.
 
+`evaluate(model, sequences, batch_size=64, generation_max_new_tokens=None)`
+uses one output-length limit for the entire evaluation dataset. Changing the
+minibatch size therefore does not give some examples more chances to emit EOS.
+The default limit is the longest source length plus two (EOS and one extra
+token), capped by the model's positional table. Pass an explicit
+`generation_max_new_tokens` to compare different datasets under the same limit.
+
 The selected checkpoint minimizes validation NLL at the recorded evaluation
 steps. Test data are evaluated only after selection. The checkpoint contains
 model weights, architecture, vocabulary, experiment configuration, and selected
 validation metrics. `load_checkpoint` uses `weights_only=True` and reconstructs
-the model on CPU. It is an inference checkpoint; it does not contain optimizer
-state for resuming training.
+the model on CPU while preserving the saved parameter dtype. It is an inference
+checkpoint; it does not contain optimizer state for resuming training.
 
 Load the selected model and try a source sequence:
 

@@ -181,3 +181,35 @@ the Chapter 5 forward pass; per-layer self-KV, absolute position offsets,
 and static cross-KV with source padding; immediate EOS, mixed stopping times,
 and maximum-length termination; saved checkpoint snapshots; and actual
 learning and generation on a tiny fixed dataset.
+
+### Detailed Chapter 6 code review
+
+A further review on 2026-11-04 checked the complete data, training, checkpoint,
+generation, and cache implementations. The review corrected three behaviors:
+
+- The data generator samples integer sequence indices instead of allocating
+  every possible color tuple. All three recorded seed-2026 split fingerprints
+  remain unchanged. A regression samples length-12 sequences from more than
+  two billion possibilities while storing only the requested examples.
+- Evaluation uses a common generation cap across all of its minibatches.
+  Previously, a short sequence could receive a longer cap when batched with a
+  longer sequence, changing termination rate when the batch size changed.
+  The default is the dataset's longest source length plus EOS and one extra
+  step, up to the model's positional limit. An explicit
+  `generation_max_new_tokens` supports equal-cap comparisons across datasets.
+  Regressions cover batch partitioning and the valid length-L-minus-one source
+  case for a model with L decoder positions.
+- Checkpoint loading preserves the saved parameter dtype. The float64 snapshot
+  regression now checks restored logits at absolute and relative tolerance
+  `1e-12`, rather than allowing a silent conversion to float32.
+
+The updated suite passed all 50 tests without skips: 14 for Chapter 4, 18 for
+Chapter 5, and 18 for Chapter 6. All 22 generated snippets are current. Loading
+the existing selected float32 checkpoint and evaluating the unchanged splits
+reproduced every recorded validation and test metric within `1e-12`, including
+64/64 exact test sequences and NLL `0.000179507706145`. The training recipe and
+recorded training curves were unchanged, so the 2000-update experiment was not
+retrained for these fixes.
+An additional one-update smoke run with `--data-seed 2027` completed dataset
+creation, checkpoint selection, generation, cache comparisons, and the CPU
+benchmark, including a shorter four-token decoder prefix.
