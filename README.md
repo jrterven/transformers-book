@@ -1,6 +1,6 @@
 # The Evolution of the Transformer
 
-**Juan Terven**
+**Juan Terven and Diana Córdova**
 
 Companion repository for *The Evolution of the Transformer*, a historical and practical guide to Transformer architectures and their applications.
 
