@@ -28,6 +28,14 @@ python -m pip install -r requirements.txt
 python -m examples.ch01_language.run_examples
 ```
 
+[Chapter 2: Recurrence and Encoder-Decoder Models](examples/ch02_recurrence/) follows a scalar recurrent update and an LSTM memory cell, then implements an LSTM encoder-decoder without attention. Its optional training experiment reverses short color sequences and compares teacher-forced token predictions with complete greedy generations. The [chapter guide](examples/ch02_recurrence/README.md) explains state transfer, source lengths, BOS/EOS alignment, padding, and the local reference results.
+
+```sh
+python -m pip install -r requirements-ch02.txt
+python -m examples.ch02_recurrence.run_examples
+python -m examples.ch02_recurrence.run_examples --train --steps 750 --output output/ch02
+```
+
 [Chapter 4: Self-Attention](examples/ch04_attention/) then introduces attention. Its NumPy implementation covers query, key, and value projections; stable softmax; scaled dot-product attention; causal masks; independent batch and head axes; and a manual backward pass. The [chapter guide](examples/ch04_attention/README.md) explains the API, shapes, mask convention, and numerical example.
 
 Run the following commands from this repository's root directory:

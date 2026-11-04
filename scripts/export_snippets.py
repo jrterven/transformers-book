@@ -15,6 +15,13 @@ CHAPTERS = {
         "expected": {"embedding_lookup", "context_model", "stable_softmax",
                      "shifted_pairs", "example"},
     },
+    "ch02": {
+        "sources": ("examples/ch02_recurrence/model.py",
+                    "examples/ch02_recurrence/data.py"),
+        "destination": "snippets/ch02_recurrence",
+        "expected": {"rnn_step", "lstm_update", "encode_decode",
+                     "teacher_forcing", "token_loss", "greedy_decode"},
+    },
     "ch04": {
         "sources": ("examples/ch04_attention/attention.py",
                     "examples/ch04_attention/run_examples.py"),

@@ -241,3 +241,75 @@ and full-vocabulary normalization; token-order sensitivity; stable row-wise
 softmax and additive score-shift invariance; BOS/next-token/EOS alignment;
 stable negative log-probabilities; batch independence; and invalid IDs or
 context widths. The complete previous chapter suite remained passing.
+
+## Chapter 2: recurrence and the LSTM encoder-decoder
+
+Validated on 2026-11-04 using Python 3.11.17, PyTorch 2.14.1, and NumPy 2.4.6
+on macOS arm64. The experiment ran on one CPU thread. Existing dependencies
+were used without changes to the environment.
+
+| Command | Result |
+| --- | --- |
+| `python -m examples.ch02_recurrence.run_examples` | Scalar recurrence, LSTM gate arithmetic, model shapes, and forward/backward checks passed. |
+| `python -m examples.ch02_recurrence.run_examples --train --steps 750 --output output/ch02` | Completed training, validation checkpoint selection, held-out generation, and metrics/checkpoint export. |
+| `python -m unittest discover -s tests -v` | All 69 tests passed without skips, including 11 new Chapter 2 tests. |
+| `python scripts/export_snippets.py --check` | All 33 listings current, including six for Chapter 2. |
+
+The scalar update `h = tanh(0.5*h + x)` starts from zero and gives states
+`(0.197375320225, 0.461084444830, 0.129805707304)` for inputs
+`(0.2, 0.4, -0.1)`. Reversing the inputs gives final state
+`0.352470022360`. The chosen LSTM gates give cell `0.2` and hidden value
+`0.118425192135`. Tests independently compare the full NumPy gate calculation
+with `torch.nn.LSTMCell`, using two examples, different input and hidden
+widths, nonzero previous states, both PyTorch biases, and float64 arithmetic.
+
+The trained model has independent width-16 source and target embeddings,
+one width-64 encoder LSTM, one width-64 decoder LSTM, and a nine-class output
+layer: 42,857 learned parameters. It transfers both final encoder states to
+the decoder and has no attention or dropout. Source embeddings are packed
+using their valid lengths so final states exclude right-padding.
+
+The run used seed 2026, 192 training sequences, 48 validation sequences, and
+48 test sequences. Each split balances lengths three through six; exact
+source tuples are disjoint across splits. Targets reverse the six color IDs
+and include EOS. Adam used learning rate `0.003`, batch size 32, default betas,
+and gradient clipping at norm 1.0. Validation was checked every 50 updates.
+The checkpoint was selected by minimum validation token NLL, at update 600
+of the prescribed 750 updates.
+
+| Selected-checkpoint metric | Validation | Test |
+| --- | ---: | ---: |
+| Non-padding target tokens, including EOS | 264 | 264 |
+| Token NLL, natural logarithms | 0.106928281486 | 0.090296871960 |
+| Teacher-forced correct tokens | 256/264 | 258/264 |
+| Complete greedy exact sequences, including EOS | 40/48 | 43/48 |
+| Generations ending in EOS | 48/48 | 48/48 |
+
+Every sequence uses the same cap of seven generated tokens. Termination alone
+does not imply a correct color sequence. Test diagnostics at each source
+length were:
+
+| Source length | Token NLL | Exact sequences | Ended in EOS |
+| --- | ---: | ---: | ---: |
+| 3 | 0.002764585428 | 12/12 | 12/12 |
+| 4 | 0.025261895731 | 12/12 | 12/12 |
+| 5 | 0.039257969707 | 12/12 | 12/12 |
+| 6 | 0.230516508222 | 7/12 | 12/12 |
+
+These results describe one small synthetic task and initialization. They do
+not establish a general recurrent memory limit, performance on language, or
+a comparison against the Chapter 6 Transformer experiment, which uses a
+different training set and training recipe.
+
+The local files `output/ch02/metrics.json` and `output/ch02/best.pt` retain the
+configuration, split fingerprints, validation history, held-out predictions,
+and selected weights. The experiment's test split SHA-256 is
+`ac9dbe9dc4558ad77db6c0599ebd2f791e0405f05e5f28ba66a7f6d1ae644873`.
+
+The new tests cover scalar arithmetic and token-order effects; LSTM gates;
+independent NumPy/PyTorch LSTM agreement; disjoint balanced data; BOS/EOS and
+right-padding alignment; packed states compared with individual sequences
+in unsorted batch order; invariance to ignored source-padding values; causal
+decoder prefixes and finite parameter gradients; first-step teacher/greedy
+agreement; analytic loss and ignored-position gradients; mixed EOS stopping;
+and an explicit generation cap when EOS is never predicted.
