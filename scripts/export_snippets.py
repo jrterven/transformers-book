@@ -8,6 +8,13 @@ import textwrap
 
 ROOT = Path(__file__).resolve().parents[1]
 CHAPTERS = {
+    "ch01": {
+        "sources": ("examples/ch01_language/model.py",
+                    "examples/ch01_language/run_examples.py"),
+        "destination": "snippets/ch01_language",
+        "expected": {"embedding_lookup", "context_model", "stable_softmax",
+                     "shifted_pairs", "example"},
+    },
     "ch04": {
         "sources": ("examples/ch04_attention/attention.py",
                     "examples/ch04_attention/run_examples.py"),

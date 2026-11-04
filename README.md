@@ -21,7 +21,14 @@ Applications are a central part of the book. The discussion follows how Transfor
 
 The examples make the book's calculations visible through small implementations, explicit tensor shapes, worked numerical results, and reproducible checks.
 
-Start with [Chapter 4: Self-Attention](examples/ch04_attention/). Its NumPy implementation covers query, key, and value projections; stable softmax; scaled dot-product attention; causal masks; independent batch and head axes; and a manual backward pass. The [chapter guide](examples/ch04_attention/README.md) explains the API, shapes, mask convention, and numerical example.
+Start with [Chapter 1: Tokens and Language Models](examples/ch01_language/). Its NumPy examples turn token IDs into embedding rows, combine an ordered two-token context, and turn vocabulary scores into probabilities. The matrices are chosen by hand so the forward pass can be checked with a calculator; this example does not train a language model.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch01_language.run_examples
+```
+
+[Chapter 4: Self-Attention](examples/ch04_attention/) then introduces attention. Its NumPy implementation covers query, key, and value projections; stable softmax; scaled dot-product attention; causal masks; independent batch and head axes; and a manual backward pass. The [chapter guide](examples/ch04_attention/README.md) explains the API, shapes, mask convention, and numerical example.
 
 Run the following commands from this repository's root directory:
 
@@ -43,7 +50,7 @@ python -m examples.ch05_transformer.run_examples
 python -m unittest discover -s tests -v
 ```
 
-The small model runs on a CPU and does not download pretrained weights or a dataset. Its forward and backward passes expose the architecture and check causal information flow; the randomly initialized outputs do not measure translation quality. Chapter 5 and 6 tests require PyTorch. With only the Chapter 4 requirements installed, they are explicitly reported as skipped.
+The small model runs on a CPU and does not download pretrained weights or a dataset. Its forward and backward passes expose the architecture and check causal information flow; the randomly initialized outputs do not measure translation quality. Chapter 5 and 6 tests require PyTorch. With only the NumPy requirements installed, they are explicitly reported as skipped.
 
 [Chapter 6: Training and Generation](examples/ch06_training/) trains that architecture on a reproducible sequence-reversal task. It covers shifted targets, padding-aware token loss, validation-selected checkpoints, greedy generation, and incremental decoding with self-attention and cross-attention KV caches. The [chapter guide](examples/ch06_training/README.md) explains the data split, training recipe, metrics, cache conventions, and timing boundaries.
 

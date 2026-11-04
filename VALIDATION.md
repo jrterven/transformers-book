@@ -213,3 +213,31 @@ retrained for these fixes.
 An additional one-update smoke run with `--data-seed 2027` completed dataset
 creation, checkpoint selection, generation, cache comparisons, and the CPU
 benchmark, including a shorter four-token decoder prefix.
+
+## Chapter 1: token lookup and language-model scores
+
+Validated on 2026-11-04 with Python 3.11.17, NumPy 2.4.6, and CPU float64
+calculations. NumPy was already available; no environment changes, downloads,
+training, or external datasets were needed.
+
+| Command | Result |
+| --- | --- |
+| `python -m examples.ch01_language.run_examples` | Printed the lookup, ordered context, complete vocabulary distribution, batch shapes, and shifted targets; all embedded checks passed. |
+| `python -m unittest discover -s tests -v` | All 58 tests passed without skips: 8 for Chapter 1, 14 for Chapter 4, 18 for Chapter 5, and 18 for Chapter 6. |
+| `python scripts/export_snippets.py --check` | All 27 listings were current: 5 for Chapter 1, 6 for Chapter 4, 8 for Chapter 5, and 8 for Chapter 6. |
+
+The hand-chosen embedding rows match the manuscript's original lookup figure.
+For the ordered context **the red**, the hidden vector is `(0, 1, 0.5, 0.3)`;
+logits are 2 for **car**, 1 for **red**, and 0 for all fourteen other vocabulary
+entries. Softmax gives `P(car)=0.306506513543`, `P(red)=0.112757444918`, and
+`0.041481145824` for each other entry. Correct-target negative log-probability
+is `1.1825162724674187`. Reversing the context gives hidden vector
+`(0.1, 0, 0.4, 0.9)` and a uniform distribution over sixteen vocabulary entries.
+These are arithmetic examples with untrained weights, not language benchmarks.
+
+The new tests check exact lookup values and repeated IDs; invariance to a
+consistent ID/table renumbering; the hand-calculated hidden vector, logits,
+and full-vocabulary normalization; token-order sensitivity; stable row-wise
+softmax and additive score-shift invariance; BOS/next-token/EOS alignment;
+stable negative log-probabilities; batch independence; and invalid IDs or
+context widths. The complete previous chapter suite remained passing.
