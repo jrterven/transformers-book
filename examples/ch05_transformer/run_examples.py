@@ -57,7 +57,14 @@ def example_batch():
 
 
 def check_prefix_and_padding(model, source_ids, target_ids):
-    """Full-model checks require evaluation mode to disable random dropout."""
+    """Check the fixed teaching batch returned by example_batch().
+
+    This demonstration helper assumes pad_id=0, the example's token positions,
+    and its 12-entry vocabularies (including replacement IDs 6 and 11). Stack
+    depth may vary. For a different batch or vocabulary, adapt the positions,
+    replacement IDs, and validity masks rather than reusing this helper as a
+    generic validator. It switches the supplied model to evaluation mode.
+    """
     model.eval()
     with torch.no_grad():
         baseline = model(source_ids, target_ids)

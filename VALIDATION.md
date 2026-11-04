@@ -50,7 +50,7 @@ existing local environment; that environment was not modified.
 | Command | Result |
 | --- | --- |
 | `python -m examples.ch05_transformer.run_examples` | All worked examples, model forward/backward, prefix/future checks, and source-padding checks passed. |
-| `python -m unittest discover -s tests -v` | 31 tests passed, with no skips: 14 for Chapter 4 and 17 for Chapter 5. |
+| `python -m unittest discover -s tests -v` | 32 tests passed, with no skips: 14 for Chapter 4 and 18 for Chapter 5. |
 | `python scripts/export_snippets.py --check` | All 14 snippets current: 6 for Chapter 4 and 8 for Chapter 5. |
 
 The seeded, randomly initialized model has 540 learned parameters. Its output
@@ -76,3 +76,22 @@ triangle while retaining target key validity changed earlier logits by about
 padded source IDs with a fixed validity mask left outputs unchanged. Two-layer
 encoder and decoder stacks used distinct parameter storage, passed prefix and
 padding checks, and produced finite gradients.
+
+### Detailed Chapter 5 review
+
+A fresh review on 2026-11-04 checked all five figures, their captions, and all
+nine exercises. Figure 5.1 now explicitly selects the first attention row
+before its displayed one-row value mixture. The demonstration helper's fixed
+batch, vocabulary, and padding assumptions are documented, and the causality
+exercise explains how to compare logits while its assertions intentionally fail.
+
+The new `test_stacks_and_gradients_match_torch_reference` uses two encoder and
+two decoder layers, mixed right-padding, unequal source/target lengths, and
+dropout disabled. It compares the computational stacks from their embedded,
+scaled, positioned inputs through the vocabulary projection. All 62 matching
+parameter-gradient tensors and both input gradients are checked with absolute
+tolerance `1e-11`. In the independent review, the maximum forward error was
+`5.55e-16` and the largest parameter-gradient error was `5.33e-15`.
+The combined suite passed all 32 tests after these changes; all 14 snippets
+remain synchronized. The model equations and forward/backward implementation
+required no corrections.

@@ -134,6 +134,16 @@ verify head ordering and the hand-worked numbers, inspect
 post-norm placement and population variance, and check padding and causal
 information flow through the complete model. They also check independent layer
 parameters, evaluation/training dropout behavior, shifted labels, and gradients.
+An additional full-stack regression compares two encoder and two decoder layers
+against PyTorch's reference layers, including outputs, input gradients, and all
+62 corresponding stack and vocabulary-head parameter-gradient tensors.
+
+The runner's `check_prefix_and_padding` helper is specifically for the batch
+returned by `example_batch()`: padding ID 0, the illustrated token positions,
+and the 12-entry vocabularies. It switches the model to evaluation mode and
+supports different stack depths. For other batches or vocabularies, adapt its
+perturbed positions, replacement IDs, and validity masks. The Transformer
+class itself supports other vocabulary sizes and padding IDs.
 
 The eight book listings are exported from the marked executable source sections:
 

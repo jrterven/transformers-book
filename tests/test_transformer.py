@@ -177,6 +177,102 @@ class TransformerTests(unittest.TestCase):
         self.assertClose(weights["encoder"][1][0, :, :, 4], torch.zeros(2, 5, dtype=torch.float64))
         self.assertClose(weights["cross"][1][1, :, :, 3:], torch.zeros(2, 4, 2, dtype=torch.float64))
 
+    def test_stacks_and_gradients_match_torch_reference(self):
+        torch.manual_seed(1238)
+        model = Transformer(16, 17, d_model=6, n_heads=3, d_ff=10,
+                            n_encoder_layers=2, n_decoder_layers=2,
+                            dropout=0).double().eval()
+        encoder = nn.TransformerEncoder(
+            nn.TransformerEncoderLayer(6, 3, 10, dropout=0, batch_first=True,
+                                       norm_first=False).double(),
+            2, norm=None, enable_nested_tensor=False,
+        ).eval()
+        decoder = nn.TransformerDecoder(
+            nn.TransformerDecoderLayer(6, 3, 10, dropout=0, batch_first=True,
+                                       norm_first=False).double(),
+            2, norm=None,
+        ).eval()
+        projection = nn.Linear(6, 17).double()
+        parameter_pairs = []
+
+        def copy_module(reference, original):
+            reference.load_state_dict(original.state_dict())
+            for name, parameter in original.named_parameters():
+                parameter_pairs.append((parameter, reference.get_parameter(name), None))
+
+        def copy_attention(reference, original):
+            projections = (original.q_proj, original.k_proj, original.v_proj)
+            with torch.no_grad():
+                reference.in_proj_weight.copy_(torch.cat([
+                    part.weight for part in projections
+                ]))
+                reference.in_proj_bias.zero_()
+                reference.out_proj.weight.copy_(original.out_proj.weight)
+                reference.out_proj.bias.zero_()
+            for index, part in enumerate(projections):
+                parameter_pairs.append((part.weight, reference.in_proj_weight, index))
+            parameter_pairs.append((original.out_proj.weight,
+                                    reference.out_proj.weight, None))
+
+        for reference, original in zip(encoder.layers, model.encoder_layers):
+            copy_attention(reference.self_attn, original.self_attention)
+            copy_module(reference.linear1, original.feed_forward.expand)
+            copy_module(reference.linear2, original.feed_forward.contract)
+            copy_module(reference.norm1, original.norm1)
+            copy_module(reference.norm2, original.norm2)
+        for reference, original in zip(decoder.layers, model.decoder_layers):
+            copy_attention(reference.self_attn, original.self_attention)
+            copy_attention(reference.multihead_attn, original.cross_attention)
+            copy_module(reference.linear1, original.feed_forward.expand)
+            copy_module(reference.linear2, original.feed_forward.contract)
+            for name in ("norm1", "norm2", "norm3"):
+                copy_module(getattr(reference, name), getattr(original, name))
+        copy_module(projection, model.vocabulary_projection)
+
+        source_ids = torch.tensor([[1, 3, 8, 2, 0], [1, 2, 0, 0, 0], [1, 5, 7, 6, 2]])
+        target_ids = torch.tensor([[1, 6, 2, 0], [1, 7, 5, 2], [1, 0, 0, 0]])
+        source_valid, target_valid = source_ids != 0, target_ids != 0
+        source_allowed, target_allowed = build_masks(source_valid, target_valid)
+        # Compare the complete stacks from their embedded/scaled/positioned inputs.
+        # Embedding lookup gradients are covered by the full-model backward tests.
+        source = model._embed(source_ids, model.source_embedding).detach().requires_grad_()
+        target = model._embed(target_ids, model.target_embedding).detach().requires_grad_()
+        source_reference = source.detach().clone().requires_grad_()
+        target_reference = target.detach().clone().requires_grad_()
+        memory = source
+        for layer in model.encoder_layers:
+            memory, _ = layer(memory, source_allowed)
+        output = target
+        for layer in model.decoder_layers:
+            output, _, _ = layer(output, memory, target_allowed, source_allowed)
+        actual = model.vocabulary_projection(output)
+        memory_reference = encoder(source_reference, src_key_padding_mask=~source_valid)
+        causal_blocked = ~torch.ones(4, 4, dtype=torch.bool).tril()
+        expected = projection(decoder(
+            target_reference, memory_reference, tgt_mask=causal_blocked,
+            tgt_key_padding_mask=~target_valid, memory_key_padding_mask=~source_valid,
+        ))
+        self.assertClose(actual, expected, atol=1e-11)
+
+        upstream = torch.randn_like(actual)
+        (actual * upstream).sum().backward()
+        (expected * upstream).sum().backward()
+        self.assertClose(source.grad, source_reference.grad, atol=1e-11)
+        self.assertClose(target.grad, target_reference.grad, atol=1e-11)
+        stack_parameters = [*model.encoder_layers.parameters(),
+                            *model.decoder_layers.parameters(),
+                            *model.vocabulary_projection.parameters()]
+        self.assertEqual({id(part) for part in stack_parameters},
+                         {id(part) for part, _, _ in parameter_pairs})
+        for original, reference, index in parameter_pairs:
+            with self.subTest(shape=tuple(original.shape), projection=index):
+                self.assertIsNotNone(original.grad)
+                self.assertIsNotNone(reference.grad)
+                expected_gradient = reference.grad
+                if index is not None:
+                    expected_gradient = expected_gradient[index * 6:(index + 1) * 6]
+                self.assertClose(original.grad, expected_gradient, atol=1e-11)
+
     def test_decoder_cross_attention_receives_memory(self):
         layer = DecoderLayer(4, 2, 8, dropout=0).double()
         x = torch.randn(1, 2, 4, dtype=torch.float64)
