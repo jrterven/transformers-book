@@ -1,5 +1,7 @@
 # Local validation
 
+## Chapter 4
+
 Chapter 4 was validated on 2026-11-04 with Python 3.12.14 and NumPy 2.3.5 on
 macOS (arm64). NumPy was already installed; no dependency installation was
 needed for these checks.
@@ -38,3 +40,39 @@ equivariance, batch/head isolation, central finite differences for masked and
 unmasked gradients, rank-4 gradients, and zero gradients for a masked key.
 
 These results describe this local validation run.
+
+## Chapter 5 and the combined suite
+
+Validated on 2026-11-04 using Python 3.11.17, PyTorch 2.14.1, and NumPy 2.4.6
+on macOS (arm64), with CPU float64 calculations. PyTorch was available in an
+existing local environment; that environment was not modified.
+
+| Command | Result |
+| --- | --- |
+| `python -m examples.ch05_transformer.run_examples` | All worked examples, model forward/backward, prefix/future checks, and source-padding checks passed. |
+| `python -m unittest discover -s tests -v` | 31 tests passed, with no skips: 14 for Chapter 4 and 17 for Chapter 5. |
+| `python scripts/export_snippets.py --check` | All 14 snippets current: 6 for Chapter 4 and 8 for Chapter 5. |
+
+The seeded, randomly initialized model has 540 learned parameters. Its output
+has shape `(2, 4, 12)`; encoder, decoder, and cross-attention weights have shapes
+`(2, 2, 5, 5)`, `(2, 2, 4, 4)`, and `(2, 2, 4, 5)`. The valid-token illustrative
+cross-entropy was `2.973556394289663`. This loss checks the example's execution;
+it does not measure trained translation performance.
+
+The first query's concatenated heads were
+`(0.802224185360, 0.796663721961, 0.802224185360, 0.598887907320)`.
+After the chosen output projection, the vector was
+`(1.203336278039, 1.096107675621, 1.203336278039, 0.997219768301)`.
+The hand-worked FFN returned `(1, 2, 0, 3)`.
+
+An independent review compared combined causal/padding attention against
+`nn.MultiheadAttention`; maximum output and weight errors were `1.11e-16`.
+Six sampled end-to-end parameter gradients agreed with central differences to
+maximum absolute error `3.37e-10`.
+
+The exercise checks also reproduced the intended behavior. Removing the causal
+triangle while retaining target key validity changed earlier logits by about
+`0.467593`; restoring the mask reduced that difference to zero. Perturbing
+padded source IDs with a fixed validity mask left outputs unchanged. Two-layer
+encoder and decoder stacks used distinct parameter storage, passed prefix and
+padding checks, and produced finite gradients.

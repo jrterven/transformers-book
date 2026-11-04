@@ -1,0 +1,243 @@
+"""Component references and full-model information-flow checks for Chapter 5."""
+
+import math
+import unittest
+
+try:
+    import torch
+except ModuleNotFoundError as error:
+    if error.name != "torch":
+        raise
+    torch = None
+
+if torch is not None:
+    from torch import nn
+    from torch.nn import functional as F
+    from examples.ch05_transformer.model import (
+        DecoderLayer, EncoderLayer, MultiHeadAttention, PositionalEncoding,
+        PositionwiseFeedForward, Transformer, build_masks,
+    )
+    from examples.ch05_transformer.run_examples import (
+        check_prefix_and_padding, example_batch, full_model_example, toy_feed_forward, toy_multihead,
+    )
+
+
+@unittest.skipUnless(torch is not None, "Chapter 5 needs requirements-ch05.txt")
+class TransformerTests(unittest.TestCase):
+    def setUp(self):
+        torch.manual_seed(19)
+        torch.set_num_threads(1)
+
+    def assertClose(self, actual, expected, atol=1e-12):
+        torch.testing.assert_close(actual, expected, rtol=0, atol=atol)
+
+    def test_sinusoidal_values_odd_width_and_input_scaling(self):
+        position = PositionalEncoding(4, 3).double()
+        self.assertClose(position.pe[0, 0], torch.tensor([0., 1., 0., 1.]).double())
+        expected = torch.tensor([math.sin(1), math.cos(1), math.sin(.01), math.cos(.01)],
+                                dtype=torch.float64)
+        self.assertClose(position.pe[0, 1], expected)
+        odd = PositionalEncoding(5, 3).double()
+        self.assertEqual(tuple(odd.pe.shape), (1, 3, 5))
+        x = torch.randn(2, 3, 5, dtype=torch.float64)
+        self.assertClose(odd(x) - x, odd.pe.expand(2, -1, -1))
+        model = Transformer(12, 12, dropout=0).double().eval()
+        ids = torch.tensor([[1, 3, 4]])
+        expected = model.source_embedding(ids) * 2 + model.position.pe[:, :3]
+        self.assertClose(model._embed(ids, model.source_embedding), expected)
+        with self.assertRaisesRegex(ValueError, "max_length"):
+            position(torch.zeros(1, 4, 4, dtype=torch.float64))
+
+    def test_split_merge_preserves_head_order(self):
+        module = MultiHeadAttention(6, 3).double()
+        x = torch.arange(2 * 4 * 6, dtype=torch.float64).reshape(2, 4, 6)
+        split = module.split_heads(x)
+        self.assertEqual(tuple(split.shape), (2, 3, 4, 2))
+        self.assertClose(split[1, 2, 3], x[1, 3, 4:6])
+        self.assertClose(module.merge_heads(split), x)
+        with self.assertRaisesRegex(ValueError, "divisible"):
+            MultiHeadAttention(5, 2)
+
+    def test_two_head_hardcoded_reference(self):
+        output, weights, combined = toy_multihead()
+        expected = torch.tensor([
+            [1.2033362780393578, 1.0961076756207493, 1.2033362780393578, .9972197683005353],
+            [.7149289392509497, 1.6806420965822268, .5315260175211337, 1.556279776105515],
+            [1.051188875402384, 1.401112092679786, .9747603681913526, 1.302224185359572],
+        ], dtype=torch.float64)
+        self.assertClose(output[0], expected, atol=2e-12)
+        self.assertClose(weights.sum(-1), torch.ones(1, 2, 3, dtype=torch.float64))
+        self.assertClose(combined[0, 0], torch.tensor(
+            [.8022241853595719, .7966637219606423, .8022241853595719, .5988879073202141],
+            dtype=torch.float64))
+        self.assertGreater(abs(weights[0, 0, 1, 1] - weights[0, 1, 1, 1]), .3)
+
+    def test_rectangular_attention_matches_torch_multihead_module(self):
+        module = MultiHeadAttention(6, 3).double()
+        query = torch.randn(2, 4, 6, dtype=torch.float64)
+        memory = torch.randn(2, 5, 6, dtype=torch.float64)
+        mask = torch.tensor([[True, False, True, True, False]])[None, None]
+        actual, weights = module(query, memory, memory, mask)
+        reference = nn.MultiheadAttention(6, 3, bias=False, dropout=0,
+                                          batch_first=True).double()
+        with torch.no_grad():
+            reference.in_proj_weight.copy_(torch.cat([
+                module.q_proj.weight, module.k_proj.weight, module.v_proj.weight,
+            ], dim=0))
+            reference.out_proj.weight.copy_(module.out_proj.weight)
+        # nn.MultiheadAttention uses True for blocked entries, unlike our API.
+        blocked = ~mask.expand(2, 3, 4, 5).reshape(2 * 3, 4, 5)
+        expected, expected_weights = reference(
+            query, memory, memory, attn_mask=blocked,
+            need_weights=True, average_attn_weights=False,
+        )
+        self.assertClose(actual, expected)
+        self.assertClose(weights, expected_weights)
+        self.assertEqual(tuple(weights.shape), (2, 3, 4, 5))
+        self.assertClose(weights[..., 1], torch.zeros(2, 3, 4, dtype=torch.float64))
+
+    def test_attention_input_and_mask_checks(self):
+        module = MultiHeadAttention(4, 2).double()
+        x = torch.ones(2, 3, 4, dtype=torch.float64)
+        cases = [
+            (x[0], x, x, None, ValueError),
+            (x, x[:1], x[:1], None, ValueError),
+            (x, x, x[:, :2], None, ValueError),
+            (x, x, x, torch.ones(3, 3), TypeError),
+            (x, x, x, torch.ones(5, 3, dtype=torch.bool), ValueError),
+            (x, x, x, torch.zeros(3, 3, dtype=torch.bool), ValueError),
+        ]
+        for q, k, v, mask, error in cases:
+            with self.subTest(error=error):
+                with self.assertRaises(error):
+                    module(q, k, v, mask)
+        bad = x.clone()
+        bad[0, 0, 0] = float("nan")
+        with self.assertRaisesRegex(ValueError, "finite"):
+            module(bad, x, x)
+
+    def test_ffn_is_shared_and_positionwise(self):
+        module = PositionwiseFeedForward(4, 8).double()
+        x = torch.randn(2, 3, 4, dtype=torch.float64)
+        actual = module(x)
+        expected = torch.stack([torch.stack([module(row) for row in batch]) for batch in x])
+        self.assertClose(actual, expected)
+        changed = x.clone()
+        changed[0, 1] += 20
+        altered = module(changed)
+        self.assertClose(altered[1], actual[1])
+        self.assertClose(altered[0, [0, 2]], actual[0, [0, 2]])
+
+    def test_feed_forward_hand_worked_values(self):
+        hidden, output = toy_feed_forward()
+        self.assertClose(hidden, torch.tensor([1., 0., 0., 3., 0., 2., 0., 0.]).double())
+        self.assertClose(output, torch.tensor([1., 2., 0., 3.]).double())
+
+    def test_layer_norm_uses_last_axis_population_variance(self):
+        norm = nn.LayerNorm(4, eps=1e-5).double()
+        x = torch.tensor([[[1., 2., 3., 4.], [4., 2., 0., -2.]]], dtype=torch.float64)
+        expected = (x - x.mean(-1, keepdim=True)) / torch.sqrt(
+            x.var(-1, correction=0, keepdim=True) + 1e-5)
+        self.assertClose(norm(x), expected)
+        with torch.no_grad():
+            norm.weight.copy_(torch.tensor([1., 2., 3., 4.]))
+            norm.bias.fill_(.5)
+        self.assertClose(norm(x), expected * norm.weight + norm.bias)
+
+    def test_encoder_is_post_norm(self):
+        layer = EncoderLayer(4, 2, 8, dropout=0).double()
+        x = torch.randn(2, 3, 4, dtype=torch.float64)
+        with torch.no_grad():
+            layer.self_attention.out_proj.weight.zero_()
+            layer.feed_forward.contract.weight.zero_()
+            layer.feed_forward.contract.bias.zero_()
+        actual, _ = layer(x, torch.ones(2, 1, 1, 3, dtype=torch.bool))
+        self.assertClose(actual, layer.norm2(layer.norm1(x)))
+
+    def test_combined_masks_include_diagonal_and_exclude_padding(self):
+        source_valid = torch.tensor([[True, True, False], [True, False, False]])
+        target_valid = torch.tensor([[True, True, True], [True, True, False]])
+        source, target = build_masks(source_valid, target_valid)
+        self.assertEqual(tuple(source.shape), (2, 1, 1, 3))
+        self.assertEqual(tuple(target.shape), (2, 1, 3, 3))
+        self.assertTrue(torch.equal(target[0, 0], torch.ones(3, 3, dtype=torch.bool).tril()))
+        self.assertTrue(torch.equal(target[1, 0, 2], torch.tensor([True, True, False])))
+        for bad in (torch.tensor([[False, True]]), torch.tensor([[True, False, True]])):
+            with self.assertRaisesRegex(ValueError, "right-padded"):
+                build_masks(bad, bad)
+
+    def test_full_model_prefix_and_padding_invariance(self):
+        model = Transformer(12, 12, n_encoder_layers=2, n_decoder_layers=2).double()
+        source, target, _ = example_batch()
+        check_prefix_and_padding(model, source, target)
+        model.eval()
+        _, weights = model(source, target, return_weights=True)
+        self.assertEqual(len(weights["encoder"]), 2)
+        self.assertEqual(tuple(weights["cross"][0].shape), (2, 2, 4, 5))
+        self.assertClose(weights["encoder"][1][0, :, :, 4], torch.zeros(2, 5, dtype=torch.float64))
+        self.assertClose(weights["cross"][1][1, :, :, 3:], torch.zeros(2, 4, 2, dtype=torch.float64))
+
+    def test_decoder_cross_attention_receives_memory(self):
+        layer = DecoderLayer(4, 2, 8, dropout=0).double()
+        x = torch.randn(1, 2, 4, dtype=torch.float64)
+        memory = torch.randn(1, 5, 4, dtype=torch.float64)
+        causal = torch.ones(2, 2, dtype=torch.bool).tril()
+        result, self_weights, cross = layer(x, memory, causal, None)
+        changed, _, _ = layer(x, memory * 2, causal, None)
+        self.assertEqual(tuple(self_weights.shape), (1, 2, 2, 2))
+        self.assertEqual(tuple(cross.shape), (1, 2, 2, 5))
+        self.assertGreater((changed - result).abs().max().item(), 1e-5)
+
+    def test_layer_parameters_are_independent(self):
+        model = Transformer(12, 12, n_encoder_layers=2, n_decoder_layers=2)
+        first = model.encoder_layers[0].self_attention.q_proj.weight
+        second = model.encoder_layers[1].self_attention.q_proj.weight
+        self.assertNotEqual(first.data_ptr(), second.data_ptr())
+        original = second.detach().clone()
+        with torch.no_grad():
+            first.fill_(7)
+        self.assertTrue(torch.equal(second, original))
+        self.assertNotEqual(model.decoder_layers[0].norm1.weight.data_ptr(),
+                            model.decoder_layers[1].norm1.weight.data_ptr())
+
+    def test_eval_is_deterministic_and_keeps_autograd(self):
+        model = Transformer(12, 12, dropout=.5).double().eval()
+        source, target, labels = example_batch()
+        a = model(source, target)
+        b = model(source, target)
+        self.assertClose(a, b, atol=0)
+        self.assertTrue(a.requires_grad)
+        F.cross_entropy(a.reshape(-1, 12), labels.reshape(-1), ignore_index=0).backward()
+        for parameter in model.parameters():
+            self.assertIsNotNone(parameter.grad)
+            self.assertTrue(torch.isfinite(parameter.grad).all())
+        self.assertGreater(model.source_embedding.weight.grad.abs().sum().item(), 0)
+        self.assertGreater(model.decoder_layers[0].cross_attention.q_proj.weight.grad.abs().sum().item(), 0)
+
+    def test_dropout_changes_training_outputs(self):
+        model = Transformer(12, 12, dropout=.5).double().train()
+        source, target, _ = example_batch()
+        a = model(source, target)
+        b = model(source, target)
+        self.assertFalse(torch.equal(a, b))
+        model.eval()
+        self.assertClose(model(source, target), model(source, target), atol=0)
+
+    def test_shifted_targets_and_padding_aware_objective(self):
+        _, target, labels = example_batch()
+        self.assertTrue(torch.equal(target[0, 1:], labels[0, :-1]))
+        self.assertEqual(labels[1, -1].item(), 0)
+        logits = torch.randn(2, 4, 12, dtype=torch.float64)
+        actual = F.cross_entropy(logits.reshape(-1, 12), labels.reshape(-1), ignore_index=0)
+        expected = F.cross_entropy(logits[labels != 0], labels[labels != 0])
+        self.assertClose(actual, expected)
+
+    def test_full_demo(self):
+        logits, attention, loss = full_model_example()
+        self.assertEqual(tuple(logits.shape), (2, 4, 12))
+        self.assertEqual(tuple(attention["encoder"][0].shape), (2, 2, 5, 5))
+        self.assertTrue(torch.isfinite(loss))
+
+
+if __name__ == "__main__":
+    unittest.main()

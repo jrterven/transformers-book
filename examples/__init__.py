@@ -1,1 +1,1 @@
-"""Runnable examples for The Evolution of the Transformer."""
+"""Runnable examples for Transformers."""
