@@ -313,3 +313,44 @@ in unsorted batch order; invariance to ignored source-padding values; causal
 decoder prefixes and finite parameter gradients; first-step teacher/greedy
 agreement; analytic loss and ignored-position gradients; mixed EOS stopping;
 and an explicit generation cap when EOS is never predicted.
+
+### Detailed Chapter 2 review
+
+A separate review on 2026-11-04 checked the arithmetic, evaluation, checkpoint
+selection, source padding, and the instructions supporting the exercises. The
+runtime algorithm and training recipe did not need changes. Two scalar test
+references were corrected to retain the full precision of the calculated
+second and third states; their displayed chapter values remain unchanged.
+
+A new controlled evaluation regression uses four source lengths with 14 valid
+target positions in a 20-position rectangular tensor. Its manually assigned
+correct-token probabilities distinguish token-weighted NLL from the average
+of sentence means. It checks teacher-forced correct-token counts, per-length
+losses and counts, and complete greedy sequence grading. A correct sequence
+with padding after EOS passes; an extra BOS or PAD before EOS remains an
+error; reaching the generation cap without EOS is not complete.
+
+| Review check | Result |
+| --- | --- |
+| `python -m unittest discover -s tests -v` | All 70 tests passed without skips, including 12 for Chapter 2. |
+| `python -m examples.ch02_recurrence.run_examples` | All arithmetic, shape, and forward/backward checks passed. |
+| `python scripts/export_snippets.py --check` | All 33 exported listings remained current. |
+| README checkpoint-inspection example | Reloaded the selected model, reconstructed the held-out split, and printed reference, teacher-forced choices, and free generation successfully. |
+
+Independent rescoring of the saved selected checkpoint using float64
+`log_softmax` and gathered target probabilities gave validation NLL
+`0.106928280011` and test NLL `0.090296873918`, agreeing with the recorded
+float32 reductions within rounding. Independent single-sequence generation
+reproduced every recorded prediction: 40/48 complete validation sequences and
+43/48 test sequences, all ending in EOS. Extending the source storage with
+additional non-PAD IDs while retaining the true lengths left both encoded
+states exactly unchanged. The original trained checkpoint and recorded
+experiment metrics were retained.
+
+The chapter guide now explains that only the validation-selected `best.pt` is
+saved. It provides a separate output path for a shorter training run and a
+tested example for comparing teacher-forced scoring with free generation.
+The teacher-forced display retains every reference prediction position, even
+after an incorrect EOS choice; a constructed `[EOS, 3, 4, EOS]` score row
+verified that all four choices are printed. Free generation still ends at
+its first EOS.

@@ -18,13 +18,14 @@ if torch is not None:
     from examples.ch02_recurrence.model import (
         RecurrentSeq2Seq, greedy_decode, token_loss,
     )
+    from examples.ch02_recurrence.run_examples import evaluate
 
 
 class RecurrentArithmeticTests(unittest.TestCase):
     def test_scalar_recurrence_matches_hand_numbers_and_depends_on_order(self):
         actual = rnn_trace([0.2, 0.4, -0.1])
-        np.testing.assert_allclose(actual, [0.197375320224904, 0.461084444829760,
-                                           0.129805707303592], atol=5e-13, rtol=0)
+        np.testing.assert_allclose(actual, [0.197375320224904, 0.46108444483003735,
+                                           0.1298057073036557], atol=5e-13, rtol=0)
         self.assertGreater(abs(actual[-1] - rnn_trace([-0.1, 0.4, 0.2])[-1]), 0.2)
         np.testing.assert_allclose(rnn_trace([0.2, 0.4], recurrent_weight=0),
                                    np.tanh([0.2, 0.4]), atol=1e-15)
@@ -152,6 +153,55 @@ class RecurrentSequenceTests(unittest.TestCase):
         self.assertEqual(output.call_count, 4)
         with self.assertRaises(ValueError):
             greedy_decode(self.model, self.batch.source, self.batch.lengths, 0)
+
+    def test_evaluation_weights_tokens_and_grades_complete_generated_sequences(self):
+        sources = [(3,), (4, 5), (6, 7, 8), (3, 4, 5, 6)]
+        references = [[3, EOS], [5, 4, EOS], [8, 7, 6, EOS],
+                      [6, 5, 4, 3, EOS]]
+        correct_probabilities = [0.9, 0.7, 0.5, 0.1]
+        probabilities = torch.full((4, 5, 9), 1 / 9, dtype=torch.float64)
+        for row, (reference, probability) in enumerate(
+                zip(references, correct_probabilities)):
+            for position, target in enumerate(reference):
+                probabilities[row, position].fill_((1 - probability) / 8)
+                probabilities[row, position, target] = probability
+        logits = probabilities.log()
+        # All four rows have five storage positions. Only 14 labels are real.
+        generated = torch.tensor([
+            [3, EOS, PAD, PAD, PAD],       # Correct; trailing storage is ignored.
+            [BOS, 5, 4, EOS, PAD],         # An extra BOS is a generated error.
+            [PAD, 8, 7, 6, EOS],           # An extra pre-EOS PAD is also an error.
+            [6, 5, 4, 3, 3],              # Correct colors, but no EOS at the cap.
+        ])
+        with patch.object(self.model, "forward", return_value=logits), patch(
+                "examples.ch02_recurrence.run_examples.greedy_decode",
+                return_value=generated) as decode:
+            actual = evaluate(self.model, sources, generation_cap=5)
+
+        counts = [2, 3, 4, 5]
+        expected_nll = -sum(n * math.log(p) for n, p in
+                            zip(counts, correct_probabilities)) / 14
+        sentence_mean = -sum(map(math.log, correct_probabilities)) / 4
+        self.assertGreater(abs(expected_nll - sentence_mean), 0.1)
+        self.assertAlmostEqual(actual["token_nll"], expected_nll, places=14)
+        self.assertEqual(actual["nonpadding_tokens"], 14)
+        # At p=.1 each other class has probability .1125, so all five
+        # positions in the final row have an incorrect top-ranked token.
+        self.assertEqual(actual["teacher_forced_correct_tokens"], 9)
+        self.assertEqual(actual["sequences"], 4)
+        self.assertEqual(actual["exact_matches"], 1)
+        self.assertEqual(actual["ended_in_eos"], 3)
+        self.assertEqual(actual["predictions"],
+                         [[3, EOS], [BOS, 5, 4, EOS], [PAD, 8, 7, 6, EOS],
+                          [6, 5, 4, 3, 3]])
+        for length, probability in enumerate(correct_probabilities, 1):
+            group = actual["by_length"][str(length)]
+            self.assertEqual(group["sequences"], 1)
+            self.assertAlmostEqual(group["token_nll"], -math.log(probability),
+                                   places=14)
+            self.assertEqual(group["exact_matches"], int(length == 1))
+            self.assertEqual(group["ended_in_eos"], int(length < 4))
+        self.assertEqual(decode.call_args.args[-1], 5)
 
 
 if __name__ == "__main__":

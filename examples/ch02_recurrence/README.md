@@ -110,13 +110,51 @@ validation history, per-length results, and generated IDs.
 and are ignored by Git. Exact floating-point values can vary across versions
 and devices; the source and seeds specify the experiment.
 
+Only the selected checkpoint is saved, not a checkpoint at every validation
+step. To inspect a less-trained model, use an untrained model or run a shorter
+experiment in a separate output directory:
+
+```sh
+python -m examples.ch02_recurrence.run_examples --train --steps 50 --output output/ch02-early
+```
+
+For the default experiment, this Python example reloads the selected model and
+compares scoring with generation on one held-out sequence. Change the checkpoint
+path to inspect the shorter experiment.
+
+```python
+import torch
+from examples.ch02_recurrence.data import VOCAB, collate, make_splits, words
+from examples.ch02_recurrence.model import RecurrentSeq2Seq, greedy_decode
+
+checkpoint = torch.load("output/ch02/best.pt", map_location="cpu", weights_only=True)
+model = RecurrentSeq2Seq()
+model.load_state_dict(checkpoint["model"])
+model.eval()
+_, _, test = make_splits(seed=checkpoint["configuration"]["seed"])
+batch = collate(test[:1])
+with torch.no_grad():
+    scores = model(batch.source, batch.lengths, batch.decoder_input)
+generated = greedy_decode(model, batch.source, batch.lengths, max_new_tokens=7)
+print("Reference:", words(batch.target[0]))
+print("Teacher-forced choices:", [VOCAB[i] for i in scores.argmax(-1)[0].tolist()])
+print("Generated:", words(generated[0]))
+```
+
+The teacher-forced choices use a correct reference prefix at every position;
+they are not one free-running prediction path. All their positions are printed,
+even if an early choice is EOS. The generated row uses only the source and its
+own preceding selections, and ends at its first EOS.
+
 ## Checks and book listings
 
 Tests cover hand-calculated values, NumPy/PyTorch LSTM agreement, disjoint
 balanced splits, BOS/EOS alignment, packed source-padding invariance, decoder
 prefix causality, finite gradients, analytic padding-aware loss, first-step
 agreement between teacher forcing and greedy generation, mixed EOS stopping,
-and the generation cap for a model that never emits EOS.
+and the generation cap for a model that never emits EOS. A separate controlled
+evaluation test checks token-weighted loss, per-length counts, and complete
+sequence grading, including erroneous PAD or BOS before EOS and a missing EOS.
 
 Six book listings are exported from the runnable code:
 
