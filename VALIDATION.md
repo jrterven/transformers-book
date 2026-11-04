@@ -95,3 +95,89 @@ tolerance `1e-11`. In the independent review, the maximum forward error was
 The combined suite passed all 32 tests after these changes; all 14 snippets
 remain synchronized. The model equations and forward/backward implementation
 required no corrections.
+
+## Chapter 6: training and generation
+
+Validated on 2026-11-04 using Python 3.11.17 and PyTorch 2.14.1 on macOS
+(arm64), with CPU float32 training and one CPU thread. Cache-equivalence
+tests also use float64. No packages, pretrained weights, or external datasets
+were downloaded for the run.
+
+| Command | Result |
+| --- | --- |
+| `python -m examples.ch06_training.run_experiment --output output/ch06` | Completed 2000 training updates, validation selection, checkpoint reload, held-out generation, and cache comparison. |
+| `python -m unittest discover -s tests -v` | 47 tests passed with no skips: 14 for Chapter 4, 18 for Chapter 5, and 15 for Chapter 6. |
+| `python scripts/export_snippets.py --check` | All 22 snippets current: 6 for Chapter 4, 8 for Chapter 5, and 8 for Chapter 6. |
+
+The fixed vocabulary has six colors plus PAD, BOS, and EOS. The deterministic,
+disjoint data split contains 512 training, 64 validation, and 64 test sequences.
+Each split balances source lengths 3 through 6. Repeated colors are allowed.
+Targets reverse the source colors and include EOS. Seeds for both model and
+data were 2026.
+
+The trained model has 167,625 parameters: width 64, four heads, FFN width 128,
+two encoder layers, two decoder layers, independent source/target embeddings,
+and an untied output projection. Dropout is 0.0. Matrices use Xavier-uniform
+initialization. Adam uses learning rate 0.001 and betas `(0.9, 0.999)`;
+gradient norms are clipped to 1.0. Each update samples 64 training sequences
+without replacement within the batch. Validation is checked every 100 updates.
+The checkpoint is selected by minimum validation token NLL, not test accuracy.
+
+The final selected checkpoint was at update 2000:
+
+| Metric | Validation | Test |
+| --- | ---: | ---: |
+| Non-padding target tokens, including EOS | 352 | 352 |
+| Token NLL, natural logarithms | 0.0000995075097308 | 0.000179507706145 |
+| Perplexity | 1.00009951246 | 1.00017952382 |
+| Teacher-forced token accuracy | 352/352 | 352/352 |
+| Greedy complete-sequence exact match, including EOS | 64/64 | 64/64 |
+| Generated sequences ending in EOS | 64/64 | 64/64 |
+
+These are results for one small synthetic split and initialization. They do
+not measure translation, extrapolation to longer sequences, or robustness to
+new tokens. The configuration, split hashes, full validation history,
+predictions, and environment are recorded in local `output/ch06/metrics.json`;
+the selected model is in `output/ch06/best.pt`.
+
+The eight held-out examples checked by the demo generated the same IDs with
+and without caching. Comparing cached next-token logits against full-prefix
+logits over their supplied prefixes gave a maximum absolute float32 difference
+of `4.76837158203125e-6`. The float64 test independently compares every prefix
+through two decoder layers with source padding at tolerance `1e-12`.
+
+The same run measured median CPU times over 25 repetitions, batch size 1,
+one thread, and a fixed five-token supplied decoder prefix:
+
+| Timed operation | Median milliseconds |
+| --- | ---: |
+| Source encoding | 0.204167 |
+| Cached target prefill of the first four tokens, through serial steps | 0.786459 |
+| Full five-token prefix to next-token logits | 0.402417 |
+| Cached fifth token to next-token logits | 0.197625 |
+
+Cached decode timing excludes source encoding and target prefill; it is not
+end-to-end latency. Both next-token measurements compute logits at the same
+prefix position. The cached reference grows tensors with `torch.cat` and its
+prefill is serial. These small CPU timings are noisy implementation checks,
+not claims about production serving or GPU speedups.
+
+Both execution paths receive warmup calls. This timing example encodes four
+source tokens without source padding. A second CLI smoke run with
+`--steps 1 --data-seed 2027 --output output/ch06-smoke` verified that the
+benchmark also handles a shorter first source and four-token decoder prefix.
+That one-update run checks the command path, not learned accuracy.
+
+The selected model's test diagnostics were also recorded separately at each
+source length. Every length had 16 test sequences, all terminating with EOS
+and all exactly correct. Their token NLL values were approximately
+`0.0000369741` (length 3), `0.000618374` (length 4), `0.0000366073` (length 5),
+and `0.0000699656` (length 6).
+
+Chapter 6 tests cover split isolation and balance; exact BOS/EOS alignment;
+analytic padding-aware cross-entropy and its gradient; token-weighted
+evaluation across different batch partitions; full-prefix agreement with
+the Chapter 5 forward pass; per-layer self-KV, absolute position offsets,
+and static cross-KV with source padding; immediate EOS, mixed stopping times,
+and maximum-length termination; saved checkpoint snapshots; and actual
+learning and generation on a tiny fixed dataset.

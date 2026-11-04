@@ -43,7 +43,17 @@ python -m examples.ch05_transformer.run_examples
 python -m unittest discover -s tests -v
 ```
 
-The small model runs on a CPU and does not download pretrained weights or a dataset. Its forward and backward passes expose the architecture and check causal information flow; the randomly initialized outputs do not measure translation quality. Chapter 5 tests require PyTorch. With only the Chapter 4 requirements installed, they are explicitly reported as skipped.
+The small model runs on a CPU and does not download pretrained weights or a dataset. Its forward and backward passes expose the architecture and check causal information flow; the randomly initialized outputs do not measure translation quality. Chapter 5 and 6 tests require PyTorch. With only the Chapter 4 requirements installed, they are explicitly reported as skipped.
+
+[Chapter 6: Training and Generation](examples/ch06_training/) trains that architecture on a reproducible sequence-reversal task. It covers shifted targets, padding-aware token loss, validation-selected checkpoints, greedy generation, and incremental decoding with self-attention and cross-attention KV caches. The [chapter guide](examples/ch06_training/README.md) explains the data split, training recipe, metrics, cache conventions, and timing boundaries.
+
+```sh
+python -m pip install -r requirements-ch06.txt
+python -m examples.ch06_training.run_experiment --output output/ch06
+python -m unittest discover -s tests -v
+```
+
+This example trains from scratch on one CPU thread. It writes a model checkpoint and an inspectable metrics record under `output/ch06/`. The generated results remain local; the source, tests, and exact commands are included here. The synthetic task makes training behavior visible and does not measure translation quality or general language ability.
 
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 

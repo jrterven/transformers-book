@@ -23,6 +23,15 @@ CHAPTERS = {
                      "encoder_layer", "decoder_layer", "mask_building",
                      "model_forward", "example"},
     },
+    "ch06": {
+        "sources": ("examples/ch06_training/data.py",
+                    "examples/ch06_training/training.py",
+                    "examples/ch06_training/decoding.py",
+                    "examples/ch06_training/run_experiment.py"),
+        "destination": "snippets/ch06_training",
+        "expected": {"data_shift", "token_loss", "train_step", "evaluate",
+                     "checkpoint", "cache_step", "greedy_decode", "experiment"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
@@ -60,7 +69,7 @@ def collect_snippets(chapter="ch04"):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="check without writing")
-    parser.add_argument("--chapter", choices=("ch04", "ch05", "all"), default="all")
+    parser.add_argument("--chapter", choices=(*CHAPTERS, "all"), default="all")
     args = parser.parse_args()
     chapters = tuple(CHAPTERS) if args.chapter == "all" else (args.chapter,)
     count = 0
