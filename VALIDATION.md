@@ -700,3 +700,24 @@ changing any parameters. The regression test verifies exact parameter
 equality after the rejected step. All 119 tests passed, including 14 for
 Chapter 8. All 57 exports passed the consistency check, and the successful
 CLI output matched the original reference record byte for byte.
+
+## Chapter 9. Scaling Data, Compute, and Expert Capacity
+
+```sh
+python -m examples.ch09_scaling.run_examples --output output/ch09.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+```
+
+On macOS ARM64, all 128 tests passed with Python 3.11.17, PyTorch
+2.14.1, and NumPy 2.4.6. Nine tests cover Chapter 9, including
+equal-compute allocations, stable routing, grouped expert outputs,
+capacity limits, and residual bypass. All 61 listings matched the
+canonical code. The Chapter 9 example JSON also matched byte for byte
+in a NumPy-only environment with Python 3.12.14 and NumPy 2.3.5.
+
+The synthetic sweep selected 10 billion parameters and 400 billion
+training token presentations from the five tested allocations. The
+capacity-three example requested (1, 5, 1, 1) expert slots and filled
+(1, 3, 1, 1). Rows 5 and 6 received zero expert updates. The raw
+balance term from the requests and mean probabilities was 1.4.

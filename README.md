@@ -17,6 +17,7 @@ Applications are a central part of the book. The discussion follows how Transfor
 - Tokens, embeddings, attention, and the original encoder-decoder architecture.
 - GPT, BERT, T5, and the development of pretrained language models.
 - Normalization, gated feed-forward networks, positional representations, and modern decoder blocks.
+- Training compute, data allocation, and sparse mixtures of experts.
 - Training, inference, KV caches, sparse attention, and compressed representations.
 - State space models, Mamba, and architectures that combine attention with recurrent state.
 - Applications, Python implementations, and reproducible experiments.
@@ -121,6 +122,17 @@ position shifts, and a next-token update on a CPU.
 ```sh
 python -m pip install -r requirements-ch05.txt
 python -m examples.ch08_modern.run_examples --output output/ch08.json
+```
+
+[Chapter 9: Scaling Data, Compute, and Expert Capacity](examples/ch09_scaling/)
+compares dense training allocations under the same estimated compute budget.
+It then follows a token through a router and shows how a batch can overflow
+one expert while others still have room. The [chapter guide](examples/ch09_scaling/README.md)
+explains the units, array shapes, and expected results.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch09_scaling.run_examples --output output/ch09.json
 ```
 
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.

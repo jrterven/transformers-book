@@ -69,6 +69,12 @@ CHAPTERS = {
         "expected": {"rms_norm", "swiglu", "rope", "rotary_attention",
                      "modern_block", "modern_decoder", "example_checks"},
     },
+    "ch09": {
+        "sources": ("examples/ch09_scaling/model.py",),
+        "destination": "snippets/ch09_scaling",
+        "expected": {"compute_budget", "allocation_sweep", "top1_routing",
+                     "expert_branch"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
