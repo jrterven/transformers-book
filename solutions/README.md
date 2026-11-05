@@ -75,3 +75,22 @@ jupyter lab
 Open `solutions/ch04_attention/python-solutions.ipynb`, select that Python
 kernel, and run all cells. The notebook uses the NumPy implementation from the
 [Chapter 4 examples](../examples/ch04_attention/).
+
+## Chapter 5. Multiple Heads, Position, and the Complete Architecture
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 2 and 3 | Attention map shapes and sinusoidal positions | [Written solutions (PDF)](ch05_transformer/written-solutions.pdf) |
+| 1 and 4–12 | Heads, normalization, dropout, feed-forward layers, vocabulary loss, padding, causality, and deeper stacks | [Jupyter notebook](ch05_transformer/python-solutions.ipynb) · [Notebook export (PDF)](ch05_transformer/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[Chapter 5 dependencies](../requirements-ch05.txt).
+
+```sh
+python -m pip install -r requirements-ch05.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch05_transformer/python-solutions.ipynb`, select that Python
+kernel, and run all cells. The notebook uses the CPU PyTorch implementation
+from the [Chapter 5 examples](../examples/ch05_transformer/).
