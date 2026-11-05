@@ -1,11 +1,14 @@
 def block_summaries(features, gate_logits, stride, overlap=False):
     """Return weighted summaries and the last position in each window."""
-    features = np.asarray(features, dtype=np.float64)
-    gate_logits = np.asarray(gate_logits, dtype=np.float64)
+    features, gate_logits = map(np.asarray, (features, gate_logits))
     if features.ndim != 2 or features.shape != gate_logits.shape:
         raise ValueError("features and gate logits must share shape [time, width]")
     if features.shape[1] == 0:
         raise ValueError("feature width must be positive")
+    if features.dtype.kind not in "iuf" or gate_logits.dtype.kind not in "iuf":
+        raise ValueError("features and gate logits must be real numbers")
+    features = features.astype(np.float64, copy=False)
+    gate_logits = gate_logits.astype(np.float64, copy=False)
     if not (np.isfinite(features).all() and np.isfinite(gate_logits).all()):
         raise ValueError("features and gate logits must be finite")
     stride = index(stride)

@@ -798,3 +798,21 @@ the worked output (0.75, 0.5). Gathering every allowed row agreed with
 the masked dense reference. The gated scalar summary was 3.7.
 The mixed-history example excluded a summary ending after the query,
 then produced 5.0 from one selected summary and two recent raw entries.
+
+### Chapter 11 study and numerical audit
+
+The four diagrams were checked against the worked examples. The revised
+captions identify the layers in the global relay, distinguish selection
+indices from gathered vectors, and trace the overlapping raw and summarized
+positions. The exercise prompts specify input shapes and the accounting
+boundary for main-attention KV entries.
+
+The examples now reject complex inputs before converting to float64.
+Selection sorts index scores in their input dtype so that large signed
+and unsigned integers keep their order. Independent reference calculations
+agreed with 120 connectivity masks, 720 sparse reads, 300 pooling cases,
+and 1,920 completed-prefix checks under changes to future features or gates.
+
+All 165 tests passed, including 14 for Chapter 11. All 69 excerpts matched
+their source. The command-line example reproduced the published JSON byte
+for byte.

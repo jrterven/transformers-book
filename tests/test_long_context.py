@@ -90,8 +90,33 @@ class SelectionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "k must be positive"):
             selected_attention(q, k, v, [1, 2], 0)
 
+    def test_rejects_complex_projected_arrays_and_index_scores(self):
+        inputs = ([1.0], [[1.0], [0.0]], [[2.0], [4.0]], [1.0, 0.0])
+        for i in range(len(inputs)):
+            changed = list(inputs)
+            changed[i] = np.asarray(changed[i], dtype=complex) + 3j
+            with self.subTest(input_index=i):
+                with self.assertRaisesRegex(ValueError, "real numbers"):
+                    selected_attention(*changed, 1)
+
+    def test_integer_scores_keep_exact_ranking_and_stable_ties(self):
+        large = 2**53
+        for dtype in (np.int64, np.uint64):
+            scores = np.array([large, large + 1, large + 1], dtype=dtype)
+            with self.subTest(dtype=dtype):
+                _, selected, _ = selected_attention(
+                    [0], [[0], [0], [0]], [[2], [4], [8]], scores, 2
+                )
+                np.testing.assert_array_equal(selected, [1, 2])
+
 
 class SummaryTests(unittest.TestCase):
+    def test_rejects_complex_features_and_gates(self):
+        features, gates = np.array([[1.0], [3.0]]), np.zeros((2, 1))
+        for inputs in ((features + 3j, gates), (features, gates + 3j)):
+            with self.assertRaisesRegex(ValueError, "real numbers"):
+                block_summaries(*inputs, 2)
+
     def test_softmax_is_over_time_separately_for_each_coordinate(self):
         features = np.array([[1, 5], [3, 5], [2, 1], [6, 1]])
         logits = np.log([[0.1, 0.4], [0.2, 0.3], [0.3, 0.2], [0.4, 0.1]])

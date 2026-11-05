@@ -26,7 +26,8 @@ value rows, and a separate vector of index scores. The optional Boolean
 takes up to `k` positions, gathers their key and value rows, and calls
 the scaled dot-product attention function from Chapter 4. When index
 scores tie, the earlier candidate ranks first. The returned weights
-are in the same order as the selected positions.
+are in the same order as the selected positions. Ranking uses the
+input score dtype so that integer scores retain their exact order.
 
 The worked example selects indices 1 and 6. Their main attention
 weights are 0.75 and 0.25. The causal check gives index 7 a larger
@@ -42,7 +43,8 @@ window, a softmax over positions assigns weights independently to
 each coordinate. The second return value records each window's last
 position. An unfinished final block contributes no summary. In overlap
 mode, each window contains its stride block and the preceding stride
-block if one exists.
+block if one exists. Both the attention and summary examples expect
+real numeric inputs.
 
 The mixed-history example checks which summary windows are finished at
 the current position, selects one of those summaries, and joins it with
