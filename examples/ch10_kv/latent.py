@@ -9,12 +9,13 @@ from examples.ch04_attention.attention import (
 
 
 def _validate_inputs(q_content, q_rotary, latent, k_rotary, w_uk, w_uv):
-    arrays = tuple(np.asarray(x, dtype=np.float64) for x in (
-        q_content, q_rotary, latent, k_rotary, w_uk, w_uv
-    ))
+    arrays = tuple(map(np.asarray, (q_content, q_rotary, latent, k_rotary, w_uk, w_uv)))
     if any(x.ndim != rank or x.size == 0
            for x, rank in zip(arrays, (2, 2, 2, 2, 3, 3))):
         raise ValueError("queries and histories need rank 2; projections need rank 3")
+    if any(x.dtype.kind not in "iuf" for x in arrays):
+        raise ValueError("queries, histories, and projections must contain real numbers")
+    arrays = tuple(x.astype(np.float64, copy=False) for x in arrays)
     if not all(np.isfinite(x).all() for x in arrays):
         raise ValueError("all inputs must be finite")
 
@@ -61,6 +62,8 @@ def latent_attention(q_content, q_rotary, latent, k_rotary, w_uk, w_uv):
     # Mix the shared latent rows first, then apply each head's value map.
     mixed_latent = weights @ latent
     output = (mixed_latent[:, None, :] @ w_uv)[:, 0, :]
+    if not np.isfinite(output).all():
+        raise ValueError("attention output must be finite")
     return output, weights
 # end-snippet:latent_attention
 

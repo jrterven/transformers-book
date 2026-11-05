@@ -3,6 +3,7 @@
 import argparse
 import json
 import math
+from operator import index
 from pathlib import Path
 
 import numpy as np
@@ -35,7 +36,14 @@ def projected_example():
 
 def run_chunks(q, k, v, chunk_sizes):
     """Process all projected rows in the given sequence of chunks."""
-    if sum(chunk_sizes) != q.shape[-2] or not all(n > 0 for n in chunk_sizes):
+    q, k, v = map(np.asarray, (q, k, v))
+    if any(a.ndim != 4 for a in (q, k, v)):
+        raise ValueError("q, k, and v need four axes")
+    length = q.shape[-2]
+    if not length == k.shape[-2] == v.shape[-2]:
+        raise ValueError("query, key, and value sequence lengths must agree")
+    chunk_sizes = tuple(map(index, chunk_sizes))
+    if not chunk_sizes or min(chunk_sizes) < 1 or sum(chunk_sizes) != length:
         raise ValueError("positive chunk sizes must cover every query")
     cache = None
     outputs = []

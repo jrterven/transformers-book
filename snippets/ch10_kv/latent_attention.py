@@ -13,4 +13,6 @@ def latent_attention(q_content, q_rotary, latent, k_rotary, w_uk, w_uv):
     # Mix the shared latent rows first, then apply each head's value map.
     mixed_latent = weights @ latent
     output = (mixed_latent[:, None, :] @ w_uv)[:, 0, :]
+    if not np.isfinite(output).all():
+        raise ValueError("attention output must be finite")
     return output, weights

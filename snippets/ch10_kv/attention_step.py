@@ -11,7 +11,9 @@ def attention_step(q, k_new, v_new, cache=None):
     if cache is None:
         keys, values = k_new.copy(), v_new.copy()
     else:
-        old_keys, old_values = cache
+        old_keys, old_values = map(np.asarray, cache)
+        if old_keys.ndim != 4 or old_values.ndim != 4:
+            raise ValueError("cached keys and values need four axes")
         past_length = old_keys.shape[-2]
         if old_values.shape[-2] != past_length:
             raise ValueError("cached key and value histories must agree")

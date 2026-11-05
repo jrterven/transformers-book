@@ -1,10 +1,12 @@
 def grouped_attention(q, k, v, allowed=None):
-    """Return per-head outputs and weights from compact keys and values."""
+    """Read compact keys and values; masks broadcast to [B, Hq, Q, T]."""
     q, k, v = map(np.asarray, (q, k, v))
     if any(a.ndim != 4 or 0 in a.shape for a in (q, k, v)):
         raise ValueError("q, k, and v need nonempty [batch, head, time, width]")
     if any(a.dtype.kind not in "iuf" for a in (q, k, v)):
         raise ValueError("projected arrays must contain real numbers")
+    if any(not np.isfinite(a).all() for a in (q, k, v)):
+        raise ValueError("projected arrays must contain only finite values")
     batch, query_heads, query_length, width = q.shape
     kv_heads, key_length = k.shape[1:3]
     if k.shape[:3] != v.shape[:3] or (batch, width) != (k.shape[0], k.shape[-1]):
@@ -18,7 +20,7 @@ def grouped_attention(q, k, v, allowed=None):
     )
     keys = k[:, :, None].swapaxes(-1, -2)
     scores = (queries @ keys) / math.sqrt(width)
-    weights = stable_softmax(scores, allowed)
-    outputs = weights @ v[:, :, None]
-    return (outputs.reshape(batch, query_heads, query_length, v.shape[-1]),
-            weights.reshape(batch, query_heads, query_length, key_length))
+    flat_scores = scores.reshape(batch, query_heads, query_length, key_length)
+    weights = stable_softmax(flat_scores, allowed)
+    outputs = weights.reshape(scores.shape) @ v[:, :, None]
+    return outputs.reshape(batch, query_heads, query_length, v.shape[-1]), weights

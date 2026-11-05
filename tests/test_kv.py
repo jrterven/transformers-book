@@ -59,6 +59,35 @@ class AttentionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "divisible"):
             grouped_attention(q, k, v)
 
+    def test_mask_can_vary_by_batch_or_query_head(self):
+        q = np.zeros((2, 4, 1, 1))
+        k = np.zeros((2, 2, 2, 1))
+        v = np.broadcast_to(np.array([[2.0], [7.0]]), k.shape)
+        per_batch = np.array([[[[True, False]]], [[[False, True]]]])
+        output, _ = grouped_attention(q, k, v, per_batch)
+        np.testing.assert_array_equal(output[:, :, 0, 0], [
+            [2, 2, 2, 2], [7, 7, 7, 7],
+        ])
+
+        per_head = np.array([[[[True, False]], [[False, True]],
+                              [[True, False]], [[False, True]]]])
+        output, _ = grouped_attention(q, k, v, per_head)
+        np.testing.assert_array_equal(output[:, :, 0, 0], [
+            [2, 7, 2, 7], [2, 7, 2, 7],
+        ])
+
+    def test_rejects_nonfinite_projections_even_when_masked(self):
+        q = np.zeros((1, 2, 2, 1))
+        k = v = np.zeros((1, 1, 2, 1))
+        allowed = causal_mask(0, 2, 2)
+        for position in range(3):
+            for value in (np.nan, np.inf):
+                bad = [a.copy() for a in (q, k, v)]
+                bad[position][..., -1, 0] = value
+                with self.subTest(position=position, value=value):
+                    with self.assertRaisesRegex(ValueError, "finite"):
+                        grouped_attention(*bad, allowed=allowed)
+
 
 class CacheTests(unittest.TestCase):
     def test_full_causal_matches_both_incremental_plans(self):
@@ -110,6 +139,27 @@ class CacheTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "dtype"):
             attention_step(q[:, :, 2:3], k[:, :, 2:3].astype(np.float32),
                            v[:, :, 2:3], cache)
+
+    def test_chunk_runner_rejects_mismatched_sequence_lengths(self):
+        q, k, v = projected_example()
+        with self.assertRaisesRegex(ValueError, "sequence lengths"):
+            run_chunks(q[:, :, :5], k, v, (2, 3))
+
+    def test_chunk_runner_accepts_an_iterable_of_integers(self):
+        q, k, v = projected_example()
+        expected, _ = run_chunks(q, k, v, (2, 4))
+        output, _ = run_chunks(q, k, v, iter((np.int64(2), np.int64(4))))
+        np.testing.assert_array_equal(output, expected)
+        with self.assertRaises(TypeError):
+            run_chunks(q, k, v, (2.0, 4.0))
+        with self.assertRaisesRegex(ValueError, "positive chunk sizes"):
+            run_chunks(q, k, v, (2, 0, 4))
+
+    def test_rejects_malformed_cache_rank(self):
+        q, k, v = projected_example()
+        malformed = (np.array([0]), np.array([0]))
+        with self.assertRaisesRegex(ValueError, "cached keys and values need four"):
+            attention_step(q, k, v, malformed)
 
     def test_payload_bytes_including_unequal_widths(self):
         self.assertEqual(cache_bytes(2, 3, 5, 4, 6, 7, 2), 3120)

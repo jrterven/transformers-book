@@ -53,6 +53,25 @@ class LatentAttentionTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "key projections"):
                     attention(q_content, q_rotary, latent, k_rotary, w_uk[:1], w_uv)
 
+    def test_rejects_complex_input_before_float_conversion(self):
+        q_content, q_rotary, latent, k_rotary, w_uk, w_uv = latent_inputs()
+        q_content = q_content + 20j
+        for attention in (expanded_attention, latent_attention):
+            with self.subTest(attention=attention.__name__):
+                with self.assertRaisesRegex(ValueError, "real numbers"):
+                    attention(q_content, q_rotary, latent, k_rotary, w_uk, w_uv)
+
+    def test_rejects_overflowing_value_projection(self):
+        query = np.zeros((1, 1))
+        rotary_key = np.zeros((1, 1))
+        latent = np.array([[1e200]])
+        w_uk = np.zeros((1, 1, 1))
+        w_uv = np.array([[[1e200]]])
+        for attention in (expanded_attention, latent_attention):
+            with self.subTest(attention=attention.__name__), np.errstate(over="ignore"):
+                with self.assertRaisesRegex(ValueError, "finite"):
+                    attention(query, query, latent, rotary_key, w_uk, w_uv)
+
     def test_demo_reports_hand_checks_and_representation_sizes(self):
         report = latent_demo()
         self.assertEqual(report["cached_scalars"], 8)

@@ -759,3 +759,23 @@ The float64 cache arrays used 768, 384, and 192 bytes. The two MLA
 evaluation orders gave the same weights and outputs in the fixed
 example, with eight compact cache scalars versus 20 for expanded
 content with shared rotary keys.
+
+### Chapter 10 study and numerical audit
+
+All four figures and captions were checked against the equations and
+Python results. The numerical exercises were solved from the revised
+instructions, including the mask shape, cache contents, dtype, and score
+scale checks.
+
+Grouped attention applies masks on the batch and query head axes before
+regrouping the weights for the value product. Regression cases distinguish
+batch-specific from head-specific masks. The examples reject nonfinite
+projections and malformed cache inputs, check that chunks cover every
+supplied row, and preserve the storage dtype across appends. The MLA
+implementations reject complex projections, and the absorbed path
+checks for nonfinite outputs.
+
+All 151 tests passed. The 66 excerpts matched their source, and the CLI
+reproduced the published JSON byte for byte. Independent numerical
+references agreed across different batch sizes, head counts, cache
+dtypes, mask shapes, and unequal key, value, and latent widths.

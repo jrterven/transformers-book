@@ -20,9 +20,11 @@ The example starts after the projections. Queries have shape
 [B, Hq, Q, Dk], keys have shape [B, Hkv, T, Dk], and values have shape
 [B, Hkv, T, Dv]. Q is the number of queries being processed together and
 T is the length of the key and value history. Each KV head serves
-Hq / Hkv neighboring query heads. The optional Boolean mask uses True
-for an allowed query–key pair. The teaching cache holds a contiguous,
-unpadded history starting at position zero for each batch item.
+Hq / Hkv neighboring query heads. The optional Boolean mask broadcasts
+to [B, Hq, Q, T], with True for an allowed query–key pair. Use
+[B, 1, Q, T] for a pattern that can vary by sequence and is shared across
+its query heads. The teaching cache holds a contiguous, unpadded history
+starting at position zero for each batch item.
 
 Pass the prompt projections to attention_step with no cache for prefill.
 For each later call, supply the new rows and the returned (keys, values)
