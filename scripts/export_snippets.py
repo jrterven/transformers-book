@@ -54,6 +54,14 @@ CHAPTERS = {
         "expected": {"data_shift", "token_loss", "loss_sanity", "train_step", "evaluate",
                      "checkpoint", "cache_step", "greedy_decode", "experiment"},
     },
+    "ch07": {
+        "sources": ("examples/ch07_pretraining/data.py",
+                    "examples/ch07_pretraining/model.py",
+                    "examples/ch07_pretraining/run_examples.py"),
+        "destination": "snippets/ch07_pretraining",
+        "expected": {"causal_pairs", "bert_corruption", "span_corruption",
+                     "token_stack", "selected_loss", "visibility_probe", "objective_step"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

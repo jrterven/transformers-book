@@ -70,7 +70,7 @@ python -m examples.ch05_transformer.run_examples
 python -m unittest discover -s tests -v
 ```
 
-The small model runs on a CPU and does not download pretrained weights or a dataset. Its forward and backward passes expose the architecture and check causal information flow; the randomly initialized outputs do not measure translation quality. Chapter 5 and 6 tests require PyTorch. With only the NumPy requirements installed, they are explicitly reported as skipped.
+The small model runs on a CPU and does not download pretrained weights or a dataset. Its forward and backward passes expose the architecture and check causal information flow; the randomly initialized outputs do not measure translation quality. Chapter 5, 6, and 7 tests require PyTorch. With only the NumPy requirements installed, they are explicitly reported as skipped.
 
 [Chapter 6: Training and Generation](examples/ch06_training/) trains that architecture on a reproducible sequence-reversal task. It covers shifted targets, padding-aware token loss, validation-selected checkpoints, greedy generation, and incremental decoding with self-attention and cross-attention KV caches. The [chapter guide](examples/ch06_training/README.md) explains the data split, training recipe, metrics, cache conventions, and timing boundaries.
 
@@ -81,6 +81,26 @@ python -m unittest discover -s tests -v
 ```
 
 This example trains from scratch on one CPU thread. It writes a model checkpoint and an inspectable metrics record under `output/ch06/`. The generated results remain local; the source, tests, and exact commands are included here. The synthetic task makes training behavior visible and does not measure translation quality or general language ability.
+
+[Chapter 7: GPT, BERT, and T5](examples/ch07_pretraining/) builds three prediction
+tasks from short sentences. The examples make next-token shifts, selected masked
+labels, missing spans, and encoder/decoder information paths visible. Two small
+stacks with identical weights show what changes when a later input is hidden
+by a causal mask or made available through bidirectional attention. The
+[chapter guide](examples/ch07_pretraining/README.md) explains the arrays, code,
+teaching conventions, and optional fixed-example training check.
+
+```sh
+python -m pip install -r requirements-ch05.txt
+python -m examples.ch07_pretraining.run_examples
+python -m examples.ch07_pretraining.run_examples --train --steps 200 --output output/ch07.json
+```
+
+These models reuse Chapter 5's small blocks, start with random weights, and run
+without downloads. They expose architectural ideas and objectives; they are
+not replicas of the pretrained GPT, BERT, or T5 releases. The optional run
+memorizes one example per objective to check the wiring, and does not compare
+the families' general language abilities.
 
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 

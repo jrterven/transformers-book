@@ -1,0 +1,220 @@
+{
+  "experiment": "chapter_7_prediction_objectives_and_information_paths",
+  "recorded_date": "2026-11-04",
+  "command": "python -m examples.ch07_pretraining.run_examples --train --steps 200 --output output/ch07.json",
+  "environment": {
+    "python": "3.11.17",
+    "pytorch": "2.14.1",
+    "numpy": "2.4.6",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "device": "cpu"
+  },
+  "settings": {
+    "model": {
+      "d_model": 16,
+      "n_heads": 2,
+      "d_ff": 32,
+      "n_layers": 2,
+      "dropout": 0.0,
+      "max_length": 32
+    },
+    "fixed_example_training": {
+      "seed": 72,
+      "threads": 1,
+      "steps": 200,
+      "optimizer": "Adam",
+      "learning_rate": 0.01,
+      "dtype": "float32"
+    },
+    "visibility_probe": {
+      "seed": 71,
+      "dtype": "float64",
+      "same_parameters": true
+    },
+    "bert_example_corruption_seed": 7,
+    "bert_selected_positions": [
+      1
+    ],
+    "t5_half_open_spans": [
+      [
+        1,
+        3
+      ],
+      [
+        6,
+        8
+      ]
+    ]
+  },
+  "validation": {
+    "chapter_tests": 13,
+    "repository_tests": 104,
+    "exported_snippets": 50,
+    "chapter_snippets": 7,
+    "test_skips": 0
+  },
+  "results": {
+    "vocabulary": [
+      "PAD",
+      "BOS",
+      "EOS",
+      "[MASK]",
+      "S0",
+      "S1",
+      "S2",
+      "the",
+      "red",
+      "car",
+      "stopped",
+      "near",
+      "old",
+      "bridge",
+      "today",
+      "blue",
+      "moved"
+    ],
+    "objectives": {
+      "gpt": {
+        "inputs": [
+          [
+            "the",
+            "red",
+            "car"
+          ]
+        ],
+        "labels": [
+          "red",
+          "car",
+          "stopped"
+        ],
+        "selected_labels": 3
+      },
+      "bert": {
+        "inputs": [
+          [
+            "the",
+            "[MASK]",
+            "car",
+            "stopped"
+          ]
+        ],
+        "labels": [
+          "-",
+          "red",
+          "-",
+          "-"
+        ],
+        "selected_labels": 1
+      },
+      "t5": {
+        "inputs": [
+          [
+            "the",
+            "S0",
+            "stopped",
+            "near",
+            "the",
+            "S1",
+            "today",
+            "EOS"
+          ],
+          [
+            "BOS",
+            "S0",
+            "red",
+            "car",
+            "S1",
+            "old",
+            "bridge",
+            "S2"
+          ]
+        ],
+        "labels": [
+          "S0",
+          "red",
+          "car",
+          "S1",
+          "old",
+          "bridge",
+          "S2",
+          "EOS"
+        ],
+        "selected_labels": 8
+      }
+    },
+    "visibility_max_abs_logit_difference": {
+      "causal": 0.0,
+      "bidirectional": 0.19501167953287063
+    },
+    "fixed_example_checks": {
+      "gpt": {
+        "initial_nll": 2.986424684524536,
+        "final_nll": 0.0011647905921563506,
+        "correct_selected": 3,
+        "selected_labels": 3,
+        "selected_predictions": [
+          "red",
+          "car",
+          "stopped"
+        ],
+        "selected_targets": [
+          "red",
+          "car",
+          "stopped"
+        ],
+        "steps": 200
+      },
+      "bert": {
+        "initial_nll": 2.8815746307373047,
+        "final_nll": 0.0004992430913262069,
+        "correct_selected": 1,
+        "selected_labels": 1,
+        "selected_predictions": [
+          "red"
+        ],
+        "selected_targets": [
+          "red"
+        ],
+        "steps": 200
+      },
+      "t5": {
+        "initial_nll": 2.8922839164733887,
+        "final_nll": 0.001537158852443099,
+        "correct_selected": 8,
+        "selected_labels": 8,
+        "selected_predictions": [
+          "S0",
+          "red",
+          "car",
+          "S1",
+          "old",
+          "bridge",
+          "S2",
+          "EOS"
+        ],
+        "selected_targets": [
+          "S0",
+          "red",
+          "car",
+          "S1",
+          "old",
+          "bridge",
+          "S2",
+          "EOS"
+        ],
+        "steps": 200,
+        "generated": [
+          "S0",
+          "red",
+          "car",
+          "S1",
+          "old",
+          "bridge",
+          "S2",
+          "EOS"
+        ],
+        "exact_generated": true
+      }
+    }
+  }
+}

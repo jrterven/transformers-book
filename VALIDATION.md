@@ -564,3 +564,47 @@ four optional experiments.
 All five figures and captions were visually checked. The loss mask label,
 current-position cache notation, cross-attention query path, and BOS/EOS labels
 were clarified. The target-shift and measured learning-curve PDFs were unchanged.
+
+## Chapter 7: GPT, BERT, and T5
+
+The new `examples/ch07_pretraining/` module constructs three learning problems
+from readable word-level arrays: shifted next-token labels, BERT-style selected
+labels and 80/10/10 input treatments, and paper-style T5 span reconstruction.
+The small models reuse Chapter 5's sinusoidal positions, ReLU blocks, and
+post-norm paths. They demonstrate information permissions and objectives;
+they do not reproduce the historical model configurations or pretraining.
+The guide documents a separate BOS start, the terminal reconstruction sentinel,
+hand-selected spans, the small ordinary-word replacement pool, and ignored
+loss labels as teaching conventions.
+
+All 104 repository tests passed without skips, including 13 new Chapter 7
+tests. All 50 exported snippets matched their canonical source, including seven
+new excerpts copied into the private manuscript tree. Tests cover alignment,
+selection and replacement, span boundaries and shifting, loss gradients,
+causal and bidirectional visibility, target causality, source padding, and
+one optimizer update for each family.
+
+The CPU example completed all three fixed-problem runs with 200 Adam updates
+at rate 0.01, seed 72, one thread, width 16, two heads, FFN width 32, two layers
+per stack, and float32. Mean NLL changed from 2.9864246845 to 0.0011647906 for
+continuation, 2.8815746307 to 0.0004992431 for selected-token recovery, and
+2.8922839165 to 0.0015371589 for span reconstruction. All selected labels
+matched (3/3, 1/1, 8/8); the encoder-decoder also generated the exact
+reconstruction including S2 and EOS. These are memorization and wiring checks,
+not a comparison of pretraining quality or generalization.
+
+With identical random weights, seed 71, evaluation mode, and float64, changing
+a future token gave zero earlier-logit difference under causal permissions and
+0.1950116795 under bidirectional permissions. Independent exercise probes also
+confirmed zero earlier-logit change after a later decoder-input change and
+invariance to appended source padding; changing a valid source token affected
+the decoder. All twelve exercises were checked for feasible APIs, numerical
+answers, and increasing difficulty. The first five cover arrays and arithmetic,
+the next four inspect the code, and the last three are optional extensions.
+
+The tracked `examples/ch07_pretraining/reference_run.json` preserves the
+constructed arrays, readable predictions, measured results, environment,
+settings, and validation counts. It was copied to the private source tree as
+`data/ch07_reference_run.json`. The checked environment used Python 3.11.17,
+PyTorch 2.14.1, and NumPy 2.4.6 on macOS ARM64. The four chapter figures were
+rebuilt and inspected with their captions, using the same arrays as the code.
