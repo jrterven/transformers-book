@@ -500,3 +500,29 @@ and vocabulary readout, and expanded practice to twelve exercises. Independent
 arithmetic checks confirmed the multi-head example, positional vectors,
 parameter counts, and existing exercise results. The five figures and captions
 were reviewed for numerical accuracy, arrow directions, and readability.
+
+### Chapter 5 figure and exercise audit
+
+A second independent audit executed every exercise using the public component
+interfaces and separately calculated numerical references. All twelve tasks
+were achievable. Removing the causal triangle while retaining target-key
+validity changed earlier logits by approximately `0.467592678` in the seed-7
+example; restoring the triangle reduced that difference to zero. Keeping the
+source-validity mask fixed while changing padded IDs also gave zero difference
+in target logits. Padded target logits were nonzero, and excluding their labels
+with `ignore_index` matched a loss computed on the valid labels alone.
+
+A model with two layers per stack passed the prefix, future, and padding checks,
+had distinct corresponding layer parameters, and received finite gradients in
+all 64 parameter tensors. The exercise instructions now specify float64,
+evaluation mode for output comparisons, the actual mask-construction helper,
+and the distinction between returned FFN results and a constructed FFN module.
+Their progression is five foundational tasks, five applied tasks, and two
+optional programming challenges. No executable example or exported listing
+changed in this audit.
+
+All five figures were inspected at 240 dpi and checked against independent
+arithmetic. The multi-head diagram's selected-row label was clarified to name
+the attention-weight row explicitly. The other four figure PDFs were unchanged.
+
+The 19 Chapter 5 tests were run again and passed without skips.
