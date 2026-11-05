@@ -526,3 +526,41 @@ arithmetic. The multi-head diagram's selected-row label was clarified to name
 the attention-weight row explicitly. The other four figure PDFs were unchanged.
 
 The 19 Chapter 5 tests were run again and passed without skips.
+
+### Chapter 6 teaching review
+
+The dataset, training, token-weighted evaluation, and decoding algorithms passed
+review without changes. A new deterministic `loss_sanity_example` constructs
+two padded targets and uniform nine-class logits: seven labels contribute,
+giving loss sum `15.380572041353538`, mean NLL `2.1972245773362196`, and
+perplexity 9. Its regression test checks the expected count and arithmetic.
+The CLI prints this check before training, and it can be imported separately.
+
+The complete 2000-update CPU recipe was reproduced in a separate output folder.
+Every deterministic record field matched the reference, including the split
+fingerprints, all 21 validation history points, selected update 2000, validation
+and test metrics, length-group results, examples, and cache agreement. All 65
+checkpoint state tensors were bitwise identical. Validation NLL remained
+`0.00009950750973075628`, test NLL `0.00017950770614499396`, and both splits
+retained 64/64 exact generated sequences including EOS. Timings changed between
+runs; the manuscript keeps its original measured record and curves.
+
+All 91 repository tests passed without skips, including 19 Chapter 6 tests.
+All 43 exported snippets were current, including nine for Chapter 6. The modified
+CLI also passed a one-update smoke run with a different data seed. The checked
+environment used Python 3.11.17, PyTorch 2.14.1, and NumPy 2.4.6 on a macOS ARM64
+CPU with one training thread.
+
+Independent exercise probes checked padded target alignment, logit gradients,
+corpus aggregation, EOS and cap behavior, fixed-batch overfitting, checkpoint
+selection, cache faults, length extrapolation, and fixed-work timing. KV memory
+arithmetic gave 30 KiB self plus 9 KiB cross storage. The ordinary cached evaluator
+is unsuitable for a deliberately noncausal model: that experiment now explicitly
+uses manual teacher-forced NLL and uncached generation with consistent mask
+helpers. In-range and extrapolation comparisons use one explicit output cap.
+The twelve exercises progress from arithmetic to small programs, followed by
+four optional experiments.
+
+All five figures and captions were visually checked. The loss mask label,
+current-position cache notation, cross-attention query path, and BOS/EOS labels
+were clarified. The target-shift and measured learning-curve PDFs were unchanged.

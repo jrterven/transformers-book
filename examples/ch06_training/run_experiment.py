@@ -17,7 +17,19 @@ import torch
 from examples.ch05_transformer.model import Transformer
 from .data import VOCAB, collate, make_splits, words
 from .decoding import CachedDecoder, benchmark, decode_prefix, encode_source, greedy_decode
-from .training import evaluate, load_checkpoint, save_checkpoint, train_step
+from .training import evaluate, load_checkpoint, save_checkpoint, token_loss, train_step
+
+
+# snippet:loss_sanity
+def loss_sanity_example():
+    """Uniform next-token probabilities in a two-example padded batch."""
+    batch = collate([(3, 4, 5), (3, 5)])
+    logits = torch.zeros(*batch.target.shape, len(VOCAB), dtype=torch.float64)
+    total, count = token_loss(logits, batch.target)
+    nll = total / count
+    return {"loss_sum": total.item(), "tokens": count.item(),
+            "nll": nll.item(), "perplexity": torch.exp(nll).item()}
+# end-snippet:loss_sanity
 
 
 def split_fingerprint(split):
@@ -136,6 +148,7 @@ def main():
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--validation-every", type=int, default=100)
     args = parser.parse_args()
+    print("Uniform nine-class loss sanity check:", loss_sanity_example())
     run(**vars(args))
 
 

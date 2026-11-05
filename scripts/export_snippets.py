@@ -51,7 +51,7 @@ CHAPTERS = {
                     "examples/ch06_training/decoding.py",
                     "examples/ch06_training/run_experiment.py"),
         "destination": "snippets/ch06_training",
-        "expected": {"data_shift", "token_loss", "train_step", "evaluate",
+        "expected": {"data_shift", "token_loss", "loss_sanity", "train_step", "evaluate",
                      "checkpoint", "cache_step", "greedy_decode", "experiment"},
     },
 }

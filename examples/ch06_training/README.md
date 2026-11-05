@@ -19,6 +19,15 @@ model checkpoint (`best.pt`) and the complete recorded configuration, validation
 history, held-out metrics, example predictions, and timing results
 (`metrics.json`). These generated outputs are ignored by Git.
 
+A one-update run checks the command path before the longer experiment:
+
+```sh
+python -m examples.ch06_training.run_experiment --steps 1 --output output/ch06-smoke
+```
+
+Use a separate directory for this smoke run. It checks data construction,
+checkpoint selection, generation, and timing, rather than learned accuracy.
+
 ## Data and target construction
 
 The vocabulary is fixed before splitting:
@@ -67,6 +76,22 @@ schedule, label smoothing, dropout, and model scale.
 returns a sum of valid-token losses plus their count. Padding **positions**
 are ignored; the padding vocabulary class remains in each valid softmax
 denominator. The end token counts as a target; the start input does not.
+
+We can inspect those rules without training anything:
+
+```python
+from examples.ch06_training.run_experiment import loss_sanity_example
+
+print(loss_sanity_example())
+```
+
+This separate arithmetic batch contains sources `red green blue` and `red blue`.
+Their target rows have four and three real labels after adding EOS, plus one
+padded storage position. Uniform logits have shape `[2,4,9]`. Every evaluated
+label receives probability `1/9`, so the loss sum is `7 * log(9)`, the count is
+7, the token mean is approximately `2.197225`, and perplexity is 9. The
+two-color source illustrates padding; the actual training split still uses
+lengths three through six. The CLI prints this check before training.
 
 `train_step` enables training mode, clears gradients, takes the token mean,
 backpropagates, clips the gradient norm to 1.0, and updates Adam. Validation
@@ -131,6 +156,28 @@ different source or prefix. Cached self-KV tensors have shape
 The reference uses `torch.cat` to grow tensors, so it exposes the mechanism
 without attempting production memory allocation or kernel optimization.
 
+When comparing a padded batch of reference prefixes with the cache, do not
+pass PAD to `step`. The runner replaces the shorter rows' trailing storage
+with repeated EOS for that comparison, and applies the same replacement in
+the full-prefix reference. For real generation, finished rows already feed
+repeated EOS internally while the returned output pads their completed rows.
+Compare logits with a numerical tolerance: equivalent matrix calculations can
+round differently between one-token and complete-prefix execution.
+
+The chapter also asks what goes wrong if target self-attention is allowed to
+read future reference inputs. Run that experiment in a copy of the project
+and start a fresh Python process after changing the shared `build_masks`
+function in Chapter 5's module. Both the model and `decode_prefix` must use
+the changed function; changing only one already-imported name does not update
+the other module's reference.
+
+Measure the broken model's teacher-forced loss directly with its logits and
+`token_loss`, and use `greedy_decode(..., cached=False)` for free generation.
+The ordinary `evaluate` helper selects cached generation, which is valid for
+the original causal model. With noncausal attention, extending a prefix can
+change earlier states, so its old keys and values cannot simply be reused.
+Restore the causal rule before using the normal evaluator or cache benchmark.
+
 ## Timing
 
 `benchmark` reports median CPU milliseconds for source encoding, cached target
@@ -144,3 +191,7 @@ so the per-token cached timing is not an end-to-end latency number. Tiny
 single-thread CPU measurements are noisy and do not predict GPU speedups.
 
 The complete local validation record is in [VALIDATION.md](../../VALIDATION.md).
+
+The nine book listings are exported from the canonical source files in this
+directory. Run `python scripts/export_snippets.py --chapter ch06` to regenerate
+them, or add `--check` to check their correspondence without writing.

@@ -20,6 +20,7 @@ if torch is not None:
     from examples.ch06_training.training import (
         evaluate, exact_matches, load_checkpoint, save_checkpoint, token_loss, train_step,
     )
+    from examples.ch06_training.run_experiment import loss_sanity_example
 
 
 @unittest.skipIf(torch is None, "Chapter 6 requires PyTorch")
@@ -84,6 +85,15 @@ class TrainingTests(unittest.TestCase):
         self.assertGreater(logits.grad[0, 0, PAD].item(), 0)
         with self.assertRaises(ValueError):
             token_loss(logits, torch.zeros_like(targets))
+
+    def test_worked_loss_sanity_counts_eos_and_excludes_one_padded_label(self):
+        result = loss_sanity_example()
+        # Three colors plus EOS, then two colors plus EOS: seven labels.
+        # Every reference receives probability 1/9 in the uniform vocabulary.
+        self.assertEqual(result["tokens"], 7)
+        self.assertAlmostEqual(result["loss_sum"], 7 * math.log(9), places=12)
+        self.assertAlmostEqual(result["nll"], math.log(9), places=12)
+        self.assertAlmostEqual(result["perplexity"], 9.0, places=12)
 
     def test_evaluation_is_token_weighted_and_batch_partition_invariant(self):
         data = [(3, 4, 5), (4, 4, 6, 6, 5, 3), (5, 3, 6, 4)]
