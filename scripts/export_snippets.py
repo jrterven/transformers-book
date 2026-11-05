@@ -86,6 +86,11 @@ CHAPTERS = {
         "destination": "snippets/ch11_long_context",
         "expected": {"local_mask", "selected_attention", "block_summaries"},
     },
+    "ch12": {
+        "sources": ("examples/ch12_efficient/model.py",),
+        "destination": "snippets/ch12_efficient",
+        "expected": {"online_update", "tiled_attention", "score_workspace"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

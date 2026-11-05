@@ -156,6 +156,16 @@ python -m pip install -r requirements.txt
 python -m examples.ch11_long_context.run_examples --output output/ch11.json
 ```
 
+[Chapter 12: Efficient Execution](examples/ch12_efficient/) follows an online
+softmax update and compares tiled attention with a full-matrix reference. The
+[chapter guide](examples/ch12_efficient/README.md) explains the running state,
+causal positions, and temporary score-array sizes.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch12_efficient.run_examples --output output/ch12.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

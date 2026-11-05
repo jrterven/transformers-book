@@ -816,3 +816,26 @@ and 1,920 completed-prefix checks under changes to future features or gates.
 All 165 tests passed, including 14 for Chapter 11. All 69 excerpts matched
 their source. The command-line example reproduced the published JSON byte
 for byte.
+
+## Chapter 12. Efficient Execution
+
+```sh
+python -m examples.ch12_efficient.run_examples --output output/ch12.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+```
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 174 tests passed,
+including nine for Chapter 12. All 72 excerpts matched their sources.
+The saved JSON matched stdout and the run in the NumPy-only environment.
+
+The two-tile calculation returned 17/6 to float64 accuracy. An extra
+fully masked tile left the state unchanged. For the rectangular example,
+the largest absolute differences from Chapter 4's dense reference were
+`2.22e-16` without a mask and `1.11e-16`
+with the causal mask. A separate scalar calculation checked 144 tiled
+outputs and 294 intermediate row states.
+
+The size example counts one score array. At two bytes per score, the
+full 4096-by-4096 array occupies 32 MiB and a 64-by-128 tile occupies
+16 KiB. These are storage calculations. The examples run on a CPU.
