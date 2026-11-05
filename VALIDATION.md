@@ -608,3 +608,31 @@ settings, and validation counts. It was copied to the private source tree as
 `data/ch07_reference_run.json`. The checked environment used Python 3.11.17,
 PyTorch 2.14.1, and NumPy 2.4.6 on macOS ARM64. The four chapter figures were
 rebuilt and inspected with their captions, using the same arrays as the code.
+
+### Chapter 7 detailed audit
+
+A separate review re-rendered all four figure PDFs at 240 dpi and inspected
+physical pages 108--118 of the compiled chapter, matching every arrow, mask,
+shifted label, sentinel, EOS marker, and caption. No figure correction was needed.
+The complete 200-update CLI run reproduced the tracked reference `results`
+exactly, including losses, selected predictions, and T5 free generation. All
+104 repository tests passed without skips; all 50 exported snippets remained
+current and matched the private manuscript copies. The algorithms, excerpts,
+and reference measurements therefore remain unchanged.
+
+The review clarified one exercise ambiguity. A random BERT replacement equal
+to the original word and the unchanged-input branch can produce the same IDs
+and labels. The replacement exercise now asks readers to reuse one seeded
+generator across calls and log the sampled draw/branch in an experimental
+copy. An independent seed-19 probe found both unchanged and random-equals-
+original cases, confirming why output IDs alone cannot identify the branch.
+
+The optional classifier now suggests a task compatible with the fixed
+vocabulary, varies context independently of the color label, and asks for
+disjoint sentence arrangements, independent copies of the same model/head
+states, and fresh optimizers. The manuscript also defines pooling, explains
+cross-entropy reshaping and ignored rows versus vocabulary classes, and
+makes the second GPT input position's Python index explicit. All twelve
+exercises were checked independently, including the loss arithmetic,
+zero gradients at ignored logit rows, the source/target/padding probes,
+and frozen versus fine-tuned backbone updates.

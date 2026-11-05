@@ -50,7 +50,9 @@ selected positions instead of sampling a corpus recipe, excludes special
 markers from selection, and draws random replacements only from the ordinary
 words in its small vocabulary. A random replacement can equal the original
 word. The input ID alone therefore does not tell us whether a position was
-selected. Labels record that decision.
+selected. Labels record that decision. Even after selection is known, a random
+replacement equal to the original word looks identical to the unchanged
+treatment. To identify which branch ran, inspect the sampled decision too.
 
 `span_corrupt(tokens, spans)` accepts ordered, nonempty, half-open intervals,
 with visible text separating spans. For the sentence
@@ -157,3 +159,26 @@ arrays, and make a single change at a time. Keep the selected positions fixed
 when studying the 80/10/10 treatments, use evaluation mode and identical weights
 when comparing information paths, and report held-out performance separately
 if you extend the fixed-example check into a real learning experiment.
+
+## Working through the exercises
+
+For the replacement experiment, create one seeded `torch.Generator` and reuse
+it across calls while keeping the sentence and selected positions fixed. Its
+state advances as draws are consumed; resetting the seed for every call repeats
+the same choices. In an experimental copy of `bert_corrupt`, temporarily log
+`draw` and its branch. The branch log distinguishes a random replacement that
+happens to equal the original word from the unchanged-input branch. Compare
+that log with the input IDs and labels; every selected label still holds the
+original word.
+
+For the optional classifier, use a task that fits the fixed vocabulary, such
+as identifying whether a sentence contains `red` or `blue`. Include exactly one
+of these colors and vary the other words independently of its label. Reserve
+different sentence arrangements for training, validation, and testing. Extend
+the model to return hidden vectors before the vocabulary projection. A pooling rule selects or combines token vectors
+into one sequence vector; the last nonpadding position is a simple choice for
+a causal stack. Start the frozen-network and fine-tuning experiments from
+independent copies of the same network and new head states, using fresh
+optimizers and the same data splits. Select settings on validation data before
+using the test set. To investigate transfer, initialize both copies from the
+same separately pretrained checkpoint.
