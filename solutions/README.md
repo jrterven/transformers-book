@@ -57,3 +57,21 @@ Open `solutions/ch03_alignment/python-solutions.ipynb`, select that Python
 kernel, and run all cells. The notebook runs the 750-update CPU experiment
 from the [Chapter 3 examples](../examples/ch03_alignment/) and displays the
 attention weights along actual prediction paths.
+
+## Chapter 4. Self-Attention from Vectors to Matrices
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1, 2, and 4–6 | Uniform weights, changed values, sequence shapes, asymmetric attention, and causal normalization | [Written solutions (PDF)](ch04_attention/written-solutions.pdf) |
+| 3 and 7–12 | One query, batch and head axes, masks, permutations, finite differences, and gradients through projections | [Jupyter notebook](ch04_attention/python-solutions.ipynb) · [Notebook export (PDF)](ch04_attention/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with NumPy.
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch04_attention/python-solutions.ipynb`, select that Python
+kernel, and run all cells. The notebook uses the NumPy implementation from the
+[Chapter 4 examples](../examples/ch04_attention/).
