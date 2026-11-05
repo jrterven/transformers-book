@@ -114,3 +114,25 @@ Open `solutions/ch06_training/python-solutions.ipynb`, select that Python
 kernel, and run all cells. The notebook uses CPU models and the synthetic
 color sequences from the [Chapter 6 examples](../examples/ch06_training/).
 It includes the reference training recipe and four optional experiments.
+
+## Chapter 7. GPT, BERT, and T5
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–5 and 12 | Shifted targets, attention grids, BERT selection and replacement, T5 span reconstruction, uniform loss, and fair comparison | [Written solutions (PDF)](ch07_pretraining/written-solutions.pdf) |
+| 6–11 | BERT replacement traces, loss gradients, causal and encoder–decoder information paths, a training run, and a classification head | [Jupyter notebook](ch07_pretraining/python-solutions.ipynb) · [Notebook export (PDF)](ch07_pretraining/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[PyTorch dependencies](../requirements-ch05.txt).
+
+```sh
+python -m pip install -r requirements-ch05.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch07_pretraining/python-solutions.ipynb`, select that Python
+kernel, and run all cells. The notebook uses the
+[Chapter 7 teaching models](../examples/ch07_pretraining/), runs on CPU,
+and needs no datasets or model weights from the internet. The notebook PDF
+includes the code and its recorded outputs. All three optional exercises
+are covered across the two PDFs.
