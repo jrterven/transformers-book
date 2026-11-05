@@ -17,6 +17,8 @@ synthetic loss and expert routes that can be checked by hand.
 It takes raw parameter and token counts. `tokens_at_budget` solves for
 `D` as a continuous quantity. A training run would round to whole tokens
 and account for model-specific work and system overhead separately.
+Integer counts use Python's integer arithmetic to avoid overflow when
+their product exceeds a fixed-width NumPy integer.
 
 `allocation_sweep` takes candidate model sizes in billions. It converts
 each size to raw counts for the FLOP calculation, then converts the
@@ -29,9 +31,12 @@ tokens has the lowest synthetic loss among the five tested allocations.
 
 The router projects rows `x` of shape `[tokens, width]` using weights
 `W_R` of shape `[width, experts]`. In `route_top1`, the softmax acts
-over experts independently for each token. Each row keeps its highest
-probability as a gate. IDs in the arrays start at zero. The printed
-expert labels and token-row numbers start at one.
+over experts independently for each token. The largest logit selects
+the expert, and the corresponding softmax probability becomes its
+gate. Comparing logits preserves the ordering when nearby probabilities
+round to the same value. Ties in the logits go to the lowest expert ID.
+IDs in the arrays start at zero. The printed expert labels and token-row
+numbers start at one.
 
 For each expert, the first requests in input order fill its capacity.
 `expert_branch` gathers those rows, applies a two-matrix ReLU network,

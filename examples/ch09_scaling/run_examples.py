@@ -73,7 +73,7 @@ def capacity_example(capacity=3):
     fraction = requested / len(x)
     mean_probability = probabilities.mean(axis=0)
     return {
-        "capacity": capacity,
+        "capacity": int(capacity),
         "requests": (selected + 1).tolist(),
         "requested_per_expert": requested.tolist(),
         "processed_per_expert": processed.tolist(),

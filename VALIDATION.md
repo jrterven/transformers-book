@@ -721,3 +721,21 @@ training token presentations from the five tested allocations. The
 capacity-three example requested (1, 5, 1, 1) expert slots and filled
 (1, 3, 1, 1). Rows 5 and 6 received zero expert updates. The raw
 balance term from the requests and mean probabilities was 1.4.
+
+### Chapter 9 study and numerical audit
+
+All four figures were checked in the compiled chapter against the equations
+and Python output. The numerical exercises were run from their revised
+instructions, including the eight-row fixture for the balance term and the
+finer allocation sweep at both budgets.
+
+The budget helper now converts NumPy integer counts before multiplying so a
+large FLOP estimate retains its value. Routing chooses the largest logit
+before rounding can make two probabilities equal. The chosen probability
+still scales the expert output. A NumPy integer capacity is saved as a JSON
+integer in the example report.
+
+All 131 tests passed, including 12 Chapter 9 tests, and all 61 excerpts
+matched the source. The CLI reproduced the published reference JSON byte
+for byte. An independent row-by-row reference also agreed with dispatch,
+gated outputs, and residual bypass in 120 generated cases.

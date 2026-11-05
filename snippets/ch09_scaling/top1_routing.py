@@ -1,6 +1,6 @@
 def route_top1(logits, capacity):
     """Return probabilities, zero-based expert IDs, gates, and acceptance."""
-    logits = np.asarray(logits)
+    logits = np.asarray(logits, dtype=np.float64)
     if logits.ndim != 2 or min(logits.shape) == 0:
         raise ValueError("logits must have shape [tokens, experts]")
     if (isinstance(capacity, (bool, np.bool_))
@@ -8,7 +8,8 @@ def route_top1(logits, capacity):
         raise ValueError("capacity must be a nonnegative integer")
 
     probabilities = stable_softmax(logits)
-    selected = probabilities.argmax(axis=1)
+    # The largest logit gives the largest probability before rounding.
+    selected = logits.argmax(axis=1)
     gates = probabilities[np.arange(len(selected)), selected]
     accepted = np.zeros(len(selected), dtype=bool)
     for expert in range(probabilities.shape[1]):

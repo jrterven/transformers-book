@@ -1,5 +1,6 @@
 """Check the Chapter 9 budget, router, and expert computations."""
 
+import json
 import unittest
 
 import numpy as np
@@ -27,6 +28,14 @@ class BudgetTests(unittest.TestCase):
                 self.assertEqual(training_flops(n * BILLION, d * BILLION), BUDGET)
                 self.assertEqual(tokens_at_budget(BUDGET, n * BILLION), d * BILLION)
         self.assertEqual(training_flops(20 * BILLION, 800 * BILLION), 4 * BUDGET)
+
+    def test_numpy_counts_preserve_large_integer_flop_estimate(self):
+        n, d = 10 * BILLION, 400 * BILLION
+        expected = 6 * n * d
+        for parameters, tokens in ((np.int64(n), d), (n, np.int64(d)),
+                                   (np.int64(n), np.int64(d))):
+            with self.subTest(parameters=type(parameters), tokens=type(tokens)):
+                self.assertEqual(training_flops(parameters, tokens), expected)
 
     def test_sweep_preserves_budget_and_compares_synthetic_losses(self):
         rows = allocation_sweep(BUDGET, MODEL_SIZES_B)
@@ -90,6 +99,11 @@ class RoutingTests(unittest.TestCase):
         zero_capacity = capacity_example(0)
         self.assertEqual(zero_capacity["input"], zero_capacity["after_residual"])
 
+    def test_numpy_capacity_has_json_serializable_record(self):
+        record = json.loads(json.dumps(capacity_example(np.int64(2))))
+        self.assertEqual(record["capacity"], 2)
+        self.assertEqual(record["overflow_rows"], [4, 5, 6])
+
     def test_softmax_rows_ties_and_capacity_order(self):
         base = [[2, 2], [1, 2], [2, 1], [1, 2]]
         shifted = base + np.array([[10000.0], [-10000.0], [3.0], [4.0]])
@@ -99,6 +113,13 @@ class RoutingTests(unittest.TestCase):
         np.testing.assert_array_equal(selected, [0, 1, 0, 1])
         np.testing.assert_allclose(gates, probabilities[np.arange(4), selected])
         np.testing.assert_array_equal(accepted, [True, True, False, False])
+
+    def test_largest_logit_wins_when_probabilities_round_to_a_tie(self):
+        probabilities, selected, gates, accepted = route_top1([[0, 1e-20]], 1)
+        np.testing.assert_array_equal(probabilities, [[0.5, 0.5]])
+        np.testing.assert_array_equal(selected, [1])
+        np.testing.assert_array_equal(gates, [0.5])
+        np.testing.assert_array_equal(accepted, [True])
 
     def test_expert_rows_use_own_weights_and_return_to_input_order(self):
         x = [[1, -2], [3, 4], [5, 6], [-1, 2]]
