@@ -18,3 +18,22 @@ jupyter lab
 Open `solutions/ch01_language/python-solutions.ipynb`, select the Python kernel
 from that environment, and run all cells. The notebook uses the fixed weights
 and functions from the [Chapter 1 examples](../examples/ch01_language/).
+
+## Chapter 2. Recurrence and Encoder-Decoder Models
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 2–8 and 12 | Recurrent order, gradient paths, LSTM gates, encoder state transfer, shifted targets, batch shapes, loss, and the information path | [Written solutions (PDF)](ch02_recurrence/written-solutions.pdf) |
+| 1 and 9–11 | The scalar state trace, packed source padding, teacher-forced scoring, greedy generation, and evaluation by source length | [Jupyter notebook](ch02_recurrence/python-solutions.ipynb) · [Notebook export (PDF)](ch02_recurrence/python-solutions.pdf) |
+
+To rerun the notebook, start JupyterLab from the repository root in an
+environment with the [Chapter 2 dependencies](../requirements-ch02.txt).
+
+```sh
+python -m pip install -r requirements-ch02.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch02_recurrence/python-solutions.ipynb`, select that Python
+kernel, and run all cells. The notebook runs the 750-update CPU color-reversal
+experiment from the [Chapter 2 examples](../examples/ch02_recurrence/).
