@@ -21,6 +21,12 @@ Applications are a central part of the book. The discussion follows how Transfor
 - State space models, Mamba, and architectures that combine attention with recurrent state.
 - Applications, Python implementations, and reproducible experiments.
 
+## Exercise solutions
+
+Work through the [Chapter 1 exercise solutions](solutions/). The written PDF
+shows the calculations step by step. The Python exercises are available as an
+executed Jupyter notebook and as a PDF with the code and its output.
+
 ## Python examples
 
 The examples make the book's calculations visible through small implementations, explicit tensor shapes, worked numerical results, and reproducible checks.
