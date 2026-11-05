@@ -450,3 +450,29 @@ source-padding invariance, the attention query's one-step timing, and joint
 annotation/mask permutation invariance within floating-point precision. The
 manuscript review also clarified the scorer's addition node and the exercise
 that compares attention timing with the recurrent update.
+
+### Chapter 4 teaching review
+
+The existing scaled dot-product attention core and manual backward pass passed
+review without algorithm changes. The demonstration now follows one query
+with explicit key-comparison and value-contribution loops before calculating
+all queries with matrices. Its seven exported excerpts include this new
+`one_query_example` function. Fixed expected contributions and every query's
+agreement with the matrix implementation are tested.
+
+Additional checks preserve an output when keys, values, and mask columns are
+permuted together, and reproduce the combined causal/padding exercise. The
+padded key receives zero weight while its query still returns `[0.5, 1.0]`.
+These checks help distinguish key availability from query validity.
+
+On a macOS ARM64 CPU with Python 3.11.17 and NumPy 2.4.6, all 89 repository
+tests passed without skips, including 17 Chapter 4 tests. All 41 exported
+snippets were current. The Chapter 4 runner passed, with maximum absolute
+causal finite-difference gradient error `5.682e-11`.
+
+All twelve revised exercises were independently checked. The optional
+projection-gradient exercise matched central differences to approximately
+`1.8e-10` maximum absolute error across the four differentiated arrays. The
+manuscript now separates this task from finite-difference step selection and
+connects each matrix multiplication to the scalar sums it performs. The four
+teaching figures were revised and visually checked with their captions.

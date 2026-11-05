@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from .attention import attention_backward, scaled_dot_product_attention
+from .attention import attention_backward, scaled_dot_product_attention, stable_softmax
 
 
 # snippet:projections
@@ -17,6 +17,24 @@ Q = H @ W_Q
 K = H @ W_K
 V = H @ W_V
 # end-snippet:projections
+
+
+# snippet:one_query_example
+def one_query_example(query_index=0):
+    """Follow one token's query before doing every query together."""
+    query = Q[query_index]
+    scores = np.empty(len(K), dtype=np.float64)
+    for j in range(len(K)):
+        scores[j] = np.sum(query * K[j]) / np.sqrt(len(query))
+
+    weights = stable_softmax(scores)
+    contributions = np.empty_like(V)
+    output = np.zeros(V.shape[1], dtype=np.float64)
+    for j in range(len(V)):
+        contributions[j] = weights[j] * V[j]
+        output += contributions[j]
+    return scores, weights, contributions, output
+# end-snippet:one_query_example
 
 
 # snippet:batch_heads
@@ -64,8 +82,22 @@ def main():
     np.set_printoptions(precision=4, suppress=True)
     output, weights = scaled_dot_product_attention(Q, K, V)
     scores = (Q @ K.T) / np.sqrt(Q.shape[-1])
-    for label, value in (("H", H), ("Q", Q), ("K", K), ("V", V),
-                         ("Scaled scores", scores), ("Weights", weights),
+    for label, value in (("H", H), ("Q", Q), ("K", K), ("V", V)):
+        print(f"{label}:\n{value}\n")
+
+    row_scores, row_weights, contributions, row_output = one_query_example()
+    print("One query: the first token position")
+    for label, value in (("Scaled scores", row_scores),
+                         ("Weights over keys", row_weights),
+                         ("Weighted value contributions", contributions),
+                         ("Their sum: one output vector", row_output)):
+        print(f"{label}:\n{value}\n")
+    np.testing.assert_allclose(row_scores, scores[0])
+    np.testing.assert_allclose(row_weights, weights[0])
+    np.testing.assert_allclose(row_output, output[0])
+
+    print("All queries: the same calculation in matrices")
+    for label, value in (("Scaled scores", scores), ("Weights", weights),
                          ("Output", output)):
         print(f"{label}:\n{value}\n")
 
@@ -102,8 +134,8 @@ def main():
     if error > 1e-8:
         raise AssertionError(f"gradient check failed: maximum error {error}")
     print(f"Masked backward maximum absolute error: {error:.3e}")
-    print("Checks passed: head isolation, causal prefix/future invariance, "
-          "permutation equivariance, masked backward.")
+    print("Checks passed: one-query/matrix agreement, head isolation, "
+          "causal prefix/future invariance, permutation equivariance, masked backward.")
 
 
 if __name__ == "__main__":

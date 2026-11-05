@@ -34,7 +34,7 @@ CHAPTERS = {
         "sources": ("examples/ch04_attention/attention.py",
                     "examples/ch04_attention/run_examples.py"),
         "destination": "snippets/ch04_attention",
-        "expected": {"projections", "stable_softmax", "attention_core",
+        "expected": {"projections", "one_query_example", "stable_softmax", "attention_core",
                      "batch_heads", "causal_example", "backward"},
     },
     "ch05": {

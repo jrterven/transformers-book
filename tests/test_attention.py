@@ -9,7 +9,7 @@ from examples.ch04_attention.attention import (
     scaled_dot_product_attention,
     stable_softmax,
 )
-from examples.ch04_attention.run_examples import H, K, Q, V
+from examples.ch04_attention.run_examples import H, K, Q, V, one_query_example
 
 
 class SoftmaxTests(unittest.TestCase):
@@ -57,6 +57,22 @@ class SoftmaxTests(unittest.TestCase):
 
 
 class AttentionTests(unittest.TestCase):
+    def test_one_query_contributions_and_matrix_agreement(self):
+        scores, weights, contributions, output = one_query_example()
+        np.testing.assert_allclose(scores, [1 / np.sqrt(2), 0, 1 / np.sqrt(2)])
+        np.testing.assert_allclose(contributions, [
+            [0.4011120926797859, 0.0],
+            [0.0, 0.3955516292808564],
+            [0.4011120926797859, 0.4011120926797859],
+        ], atol=1e-15, rtol=0)
+        np.testing.assert_allclose(output, [0.8022241853595719, 0.7966637219606423],
+                                   atol=1e-15, rtol=0)
+        matrix_output, matrix_weights = scaled_dot_product_attention(Q, K, V)
+        for i in range(len(Q)):
+            _, row_weights, _, row_output = one_query_example(i)
+            np.testing.assert_allclose(row_weights, matrix_weights[i], atol=1e-15)
+            np.testing.assert_allclose(row_output, matrix_output[i], atol=1e-15)
+
     def test_three_token_projection_and_numeric_reference(self):
         np.testing.assert_array_equal(H, [[1, 0, 1, 0], [0, 1, 0, 2], [1, 1, 1, 1]])
         np.testing.assert_array_equal(Q, [[1, 0], [0, 1], [1, 1]])
@@ -105,6 +121,37 @@ class AttentionTests(unittest.TestCase):
         permuted_output, permuted_weights = scaled_dot_product_attention(q[p], k[p], v[p])
         np.testing.assert_allclose(permuted_output, output[p], atol=1e-14, rtol=0)
         np.testing.assert_allclose(permuted_weights, weights[p][:, p], atol=1e-14, rtol=0)
+
+    def test_paired_key_value_reordering_preserves_masked_read(self):
+        rng = np.random.default_rng(53)
+        q = rng.normal(size=(2, 3))
+        k = rng.normal(size=(4, 3))
+        v = rng.normal(size=(4, 2))
+        allowed = np.array([[True, True, False, True],
+                            [False, True, True, False]])
+        output, weights = scaled_dot_product_attention(q, k, v, allowed)
+        order = np.array([2, 0, 3, 1])
+        moved_output, moved_weights = scaled_dot_product_attention(
+            q, k[order], v[order], allowed[:, order]
+        )
+        np.testing.assert_allclose(moved_output, output, atol=1e-14, rtol=0)
+        np.testing.assert_allclose(moved_weights, weights[:, order], atol=1e-14, rtol=0)
+
+    def test_padding_masks_keys_without_erasing_query(self):
+        q = np.broadcast_to(Q, (2, 1, 3, 2))
+        k = np.broadcast_to(K, (2, 1, 3, 2))
+        v = np.broadcast_to(V, (2, 1, 3, 2))
+        causal = np.tril(np.ones((3, 3), dtype=bool))
+        key_valid = np.array([[True, True, True], [True, True, False]])
+        allowed = causal & key_valid[:, None, None, :]
+        output, weights = scaled_dot_product_attention(q, k, v, allowed)
+        np.testing.assert_array_equal(weights[1, 0, :, 2], 0.0)
+        np.testing.assert_array_equal(weights[1, 0, 2], [0.5, 0.5, 0.0])
+        np.testing.assert_array_equal(output[1, 0, 2], [0.5, 1.0])
+        np.testing.assert_allclose(weights.sum(axis=-1), 1.0, atol=1e-15)
+        allowed[1, 0, 2] = False
+        with self.assertRaisesRegex(ValueError, "at least one key"):
+            scaled_dot_product_attention(q, k, v, allowed)
 
     def test_batch_and_head_isolation(self):
         rng = np.random.default_rng(12)
