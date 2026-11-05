@@ -36,7 +36,19 @@ python -m examples.ch02_recurrence.run_examples
 python -m examples.ch02_recurrence.run_examples --train --steps 750 --output output/ch02
 ```
 
-[Chapter 4: Self-Attention](examples/ch04_attention/) then introduces attention. Its NumPy implementation covers query, key, and value projections; stable softmax; scaled dot-product attention; causal masks; independent batch and head axes; and a manual backward pass. The [chapter guide](examples/ch04_attention/README.md) explains the API, shapes, mask convention, and numerical example.
+[Chapter 3: Learning to Align](examples/ch03_alignment/) adds learned additive
+attention to a recurrent encoder-decoder. It works through scores, source-axis
+normalization, masks, weighted contexts, and generated-token alignment maps.
+The experiment reuses Chapter 2's color-reversal split and records attention
+for every generated token, including EOS.
+
+```sh
+python -m pip install -r requirements-ch03.txt
+python -m examples.ch03_alignment.run_examples
+python -m examples.ch03_alignment.run_examples --train --steps 750 --output output/ch03
+```
+
+[Chapter 4: Self-Attention](examples/ch04_attention/) then builds self-attention. Its NumPy implementation covers query, key, and value projections; stable softmax; scaled dot-product attention; causal masks; independent batch and head axes; and a manual backward pass. The [chapter guide](examples/ch04_attention/README.md) explains the API, shapes, mask convention, and numerical example.
 
 Run the following commands from this repository's root directory:
 

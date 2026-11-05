@@ -22,6 +22,14 @@ CHAPTERS = {
         "expected": {"rnn_step", "lstm_update", "encode_decode",
                      "teacher_forcing", "token_loss", "greedy_decode"},
     },
+    "ch03": {
+        "sources": ("examples/ch03_alignment/model.py",
+                    "examples/ch03_alignment/run_examples.py"),
+        "destination": "snippets/ch03_alignment",
+        "expected": {"additive_scores", "masked_context", "encoder_annotations",
+                     "decode_step", "teacher_forward", "greedy_decode",
+                     "numerical_example"},
+    },
     "ch04": {
         "sources": ("examples/ch04_attention/attention.py",
                     "examples/ch04_attention/run_examples.py"),

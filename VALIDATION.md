@@ -354,3 +354,76 @@ The teacher-forced display retains every reference prediction position, even
 after an incorrect EOS choice; a constructed `[EOS, 3, 4, EOS]` score row
 verified that all four choices are printed. Free generation still ends at
 its first EOS.
+
+## Chapter 3: learned recurrent alignment
+
+Validated on 2026-11-04 using Python 3.11.17, NumPy 2.4.6, PyTorch 2.14.1,
+and one CPU thread on macOS. The packages were already available; no
+pretrained weights or external data were downloaded.
+
+| Command or check | Result |
+| --- | --- |
+| `python -m examples.ch03_alignment.run_examples` | Given-score and additive-score arithmetic, masks, shapes, and finite forward/backward checks passed. |
+| `python -m examples.ch03_alignment.run_examples --train --steps 750 --output output/ch03` | Training, validation selection, held-out evaluation, checkpoint writing, and attention-trace recording completed. |
+| `python -m unittest discover -s tests -v` | All 83 tests passed without skips, including 13 new Chapter 3 tests. |
+| `python scripts/export_snippets.py --check` | All 40 snippets are current, including seven Chapter 3 excerpts. |
+| Reload selected checkpoint | Validation/test metric dictionaries and the entire saved attention trace reproduced exactly. |
+| Chapter guide's inspection example | Printed the reference, all teacher-forced choices, generated tokens, and the 7-by-6 greedy attention matrix successfully. |
+
+The first arithmetic example normalizes manually supplied log-probabilities
+to weights `(0.05,0.10,0.85)` and returns context `(0.90,0.95)`.
+The second uses separate hand-chosen additive-score parameters, giving
+scores `(0.933322601637,-0.518922549974,0.117356736813)`, probabilities
+`(0.596567504376,0.139623183989,0.263809311635)`, and context
+`(0.860376816011,0.403432495624)`. Neither example is a measured translation.
+
+The trainable model has 63,401 parameters: width-16 source/target embeddings,
+a one-layer unidirectional width-64 encoder LSTM, width-32 additive attention,
+a width-64 decoder LSTMCell receiving the 16-coordinate embedding plus
+64-coordinate context, and a nine-class hidden-state projection. The encoder's
+final hidden/cell pair initializes the decoder. This is a teaching adaptation,
+rather than an exact implementation of Bahdanau's bidirectional GRU model.
+
+The color-reversal sequences and split fingerprints exactly match Chapter 2.
+Training uses 192 examples; validation and test use 48 each. Every split
+balances source lengths three through six. Seed 2026 fixes data generation,
+parameter initialization, and minibatch selection. Adam uses learning rate
+0.003, default betas, batch size 32, and gradient clipping at norm 1.0.
+Validation is measured every 50 updates. Minimum validation token NLL
+selected update 750 of 750; the generation cap is seven new tokens.
+
+| Selected-checkpoint metric | Validation | Test |
+| --- | ---: | ---: |
+| Non-padding labels, including EOS | 264 | 264 |
+| Token NLL, natural logarithms | 0.001809378154576 | 0.001536062336527 |
+| Teacher-forced correct tokens | 264/264 | 264/264 |
+| Complete greedy exact match, including EOS | 48/48 | 48/48 |
+| Generations ending in EOS | 48/48 | 48/48 |
+
+Each test length has 12/12 exact generations. Test NLL at lengths three,
+four, five, and six is approximately `0.000954897609`, `0.000909666123`,
+`0.000979705830`, and `0.002792459447`. These are one synthetic split and
+initialization. The model has more parameters and a different decoder input
+than Chapter 2's example, so the results do not isolate attention's causal
+benefit or measure translation performance or length extrapolation.
+
+The illustrated greedy trace is test example 11:
+`blue blue yellow green white red` produces
+`red white green yellow blue blue EOS`.
+The seven attention rows include the EOS prediction and six valid source
+columns only. The maxima for ordinary colors follow source positions
+6, 5, 4, 3, 2, and 1. The EOS row is broader; its largest weight is
+approximately 0.3402 at position 1. This picture is an actual generated-path
+trace, not a target-conditioned or manually assigned map. The example is
+chosen after checkpoint selection among correct length-six test sequences
+with the most distinct colors, using test order to break ties.
+
+Tests cover independent scalar-coordinate score calculations, an explicit
+NumPy/PyTorch additive-attention reference, stable source-axis normalization,
+invalid masks, all-padding rejection, padding invariance of states/logits/
+weights, zero gradient at masked annotations, gradient flow through scorer
+parameters, teacher-forced causality, agreement between greedy attention and
+its generated prefixes, batched versus single-sequence generation, EOS-row
+retention and zero rows after termination, and independent token-weighted
+evaluation with complete-sequence grading. The existing Chapter 1, 2, 4, 5,
+and 6 suite remained passing.
