@@ -839,3 +839,25 @@ outputs and 294 intermediate row states.
 The size example counts one score array. At two bytes per score, the
 full 4096-by-4096 array occupies 32 MiB and a 64-by-128 tile occupies
 16 KiB. These are storage calculations. The examples run on a CPU.
+
+## Chapter 13. Structured State Spaces and Long Convolutions
+
+~~~sh
+python -m examples.ch13_state_spaces.run_examples --output output/ch13.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 185 tests passed,
+including 11 for Chapter 13. All 77 excerpts matched their sources. The
+saved JSON matched the command output and the NumPy-only run.
+
+The scalar recurrence and direct convolution both gave (2, 1, 4.5, 2.25).
+They also agreed on a two-coordinate system with a nondiagonal transition.
+The largest FFT error in those two examples was 5.55e-16. In the padding
+example, the length-six FFT gave the causal output (1, 1, 1, 2). At
+length four, the tail folded into the first two positions.
+
+Independent checks covered 64 scans and impulse responses using explicit
+matrix powers, 36 convolution and gating cases using scalar lag sums, and
+nine bilinear conversions using an eigenbasis calculation.

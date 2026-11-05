@@ -91,6 +91,12 @@ CHAPTERS = {
         "destination": "snippets/ch12_efficient",
         "expected": {"online_update", "tiled_attention", "score_workspace"},
     },
+    "ch13": {
+        "sources": ("examples/ch13_state_spaces/model.py",),
+        "destination": "snippets/ch13_state_spaces",
+        "expected": {"ssm_scan", "ssm_kernel", "causal_convolution",
+                     "bilinear_discretize", "hyena_stage"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

@@ -166,6 +166,16 @@ python -m pip install -r requirements.txt
 python -m examples.ch12_efficient.run_examples --output output/ch12.json
 ```
 
+[Chapter 13: Structured State Spaces and Long Convolutions](examples/ch13_state_spaces/)
+runs the same linear state space model as a recurrence and as a convolution.
+The [chapter guide](examples/ch13_state_spaces/README.md) follows the filter
+coefficients, FFT padding, and a gated convolution inspired by Hyena.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch13_state_spaces.run_examples --output output/ch13.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:
