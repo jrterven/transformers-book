@@ -44,6 +44,23 @@ def toy_feed_forward():
     return hidden, output
 
 
+# snippet:vocabulary_readout
+def vocabulary_readout_example():
+    """A separate three-entry vocabulary: el, coche, EOS.
+
+    The state and readout weights are chosen by hand, not learned.
+    """
+    state = torch.tensor([[1., -1., 0., 2.]], dtype=torch.float64)
+    w_vocab = torch.tensor([
+        [1., 0., -1.], [0., -1., 0.], [0., 0., 1.], [.5, 0., .5],
+    ], dtype=torch.float64)
+    bias = torch.zeros(3, dtype=torch.float64)
+    logits = state @ w_vocab + bias
+    probabilities = torch.softmax(logits, dim=-1)
+    return logits, probabilities
+# end-snippet:vocabulary_readout
+
+
 def example_batch():
     """0=PAD, 1=BOS, 2=EOS; remaining ids are illustrative vocabulary entries.
 
@@ -113,6 +130,16 @@ def main():
     hidden, ffn_output = toy_feed_forward()
     print("Toy FFN ReLU hidden:\n", hidden)
     print("Toy FFN output:\n", ffn_output)
+    readout_logits, readout_probabilities = vocabulary_readout_example()
+    print("Separate three-word readout [el, coche, EOS]:")
+    print("  Logits:", readout_logits[0])
+    print("  Vocabulary probabilities:", readout_probabilities[0])
+    torch.testing.assert_close(
+        readout_logits, torch.tensor([[2., 1., 0.]], dtype=torch.float64)
+    )
+    torch.testing.assert_close(
+        readout_probabilities.sum(-1), torch.ones(1, dtype=torch.float64)
+    )
     logits, attention, loss = full_model_example()
     print("Logits shape:", tuple(logits.shape))
     for kind, values in attention.items():

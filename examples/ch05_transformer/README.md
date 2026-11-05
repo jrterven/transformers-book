@@ -36,13 +36,27 @@ checks. No pretrained model, dataset, accelerator, or training loop is needed.
 3. A hand-worked feed-forward example uses row-vector matrices `W1=[I,-I]` and
    `W2=[I;I]`, with zero biases. Its hidden ReLU output is
    `(1,0,0,3,0,2,0,0)` and its output is `(1,2,0,3)`.
-4. A complete model uses width 4, two heads, FFN width 8, one encoder layer, and
+4. A separate vocabulary-readout example starts with the hand-chosen decoder
+   state `(1,-1,0,2)`. A `4 x 3` readout matrix and zero bias produce logits
+   `(2,1,0)` for the three entries `el`, `coche`, and `EOS`. Vocabulary softmax
+   gives approximately `(0.665241,0.244728,0.090031)`. These three entries are
+   a small illustration, separate from the complete model's 12-entry target
+   vocabulary. This normalization distributes probability over vocabulary
+   entries; attention distributes its weights over available key positions.
+5. A complete model uses width 4, two heads, FFN width 8, one encoder layer, and
    one decoder layer. With seed 7, it computes logits and one illustrative
    cross-entropy, calls `backward()`, and checks finite gradients. This check
    verifies connectivity; it does not establish that the model has learned.
 
 For row-vector multiplication `x @ W`, `nn.Linear` stores `W.T`. The attention
 implementation uses batch-first inputs and explicitly splits and merges heads.
+
+`vocabulary_readout_example()` returns `(logits, probabilities)`, each with
+shape `[1,3]`: one target position in the illustrative three-entry vocabulary.
+The logits are scores, so they do not sum to one. The probabilities do. If
+`coche` is the reference token, its negative log-probability is approximately
+`1.407606`. PyTorch's `cross_entropy(logits, label)` calculates this quantity
+directly from the logits; it should not receive the already normalized values.
 
 ## API and shapes
 
@@ -145,7 +159,7 @@ supports different stack depths. For other batches or vocabularies, adapt its
 perturbed positions, replacement IDs, and validity masks. The Transformer
 class itself supports other vocabulary sizes and padding IDs.
 
-The eight book listings are exported from the marked executable source sections:
+The nine book listings are exported from the marked executable source sections:
 
 ```sh
 python scripts/export_snippets.py --chapter ch05
@@ -154,4 +168,6 @@ python scripts/export_snippets.py --chapter ch05 --check
 
 Method excerpts omit their class constructors and some validation helpers; run
 the complete modules rather than individual snippet files. The exporter also
-supports `--chapter ch04` and defaults to both chapters.
+supports the other developed chapters and defaults to all of them. Its
+`--check` flag compares the exported files with the canonical source without
+rewriting them.

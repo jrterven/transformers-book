@@ -19,6 +19,7 @@ if torch is not None:
     )
     from examples.ch05_transformer.run_examples import (
         check_prefix_and_padding, example_batch, full_model_example, toy_feed_forward, toy_multihead,
+        vocabulary_readout_example,
     )
 
 
@@ -132,6 +133,17 @@ class TransformerTests(unittest.TestCase):
         hidden, output = toy_feed_forward()
         self.assertClose(hidden, torch.tensor([1., 0., 0., 3., 0., 2., 0., 0.]).double())
         self.assertClose(output, torch.tensor([1., 2., 0., 3.]).double())
+
+    def test_vocabulary_readout_and_logit_loss(self):
+        logits, probabilities = vocabulary_readout_example()
+        self.assertEqual(tuple(logits.shape), (1, 3))
+        self.assertClose(logits, torch.tensor([[2., 1., 0.]], dtype=torch.float64))
+        self.assertClose(probabilities, torch.tensor([
+            [.6652409557748218, .2447284710547976, .0900305731703805],
+        ], dtype=torch.float64))
+        # With "coche" as the label, CE consumes the logits, not these probabilities.
+        loss = F.cross_entropy(logits, torch.tensor([1]))
+        self.assertAlmostEqual(loss.item(), 1.4076059644443804, places=12)
 
     def test_layer_norm_uses_last_axis_population_variance(self):
         norm = nn.LayerNorm(4, eps=1e-5).double()

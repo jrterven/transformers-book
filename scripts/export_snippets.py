@@ -43,7 +43,7 @@ CHAPTERS = {
         "destination": "snippets/ch05_transformer",
         "expected": {"positional_encoding", "multihead", "feed_forward",
                      "encoder_layer", "decoder_layer", "mask_building",
-                     "model_forward", "example"},
+                     "model_forward", "vocabulary_readout", "example"},
     },
     "ch06": {
         "sources": ("examples/ch06_training/data.py",

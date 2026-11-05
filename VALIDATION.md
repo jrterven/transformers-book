@@ -476,3 +476,27 @@ projection-gradient exercise matched central differences to approximately
 manuscript now separates this task from finite-difference step selection and
 connects each matrix multiplication to the scalar sums it performs. The four
 teaching figures were revised and visually checked with their captions.
+
+### Chapter 5 teaching review
+
+The attention projections, head ordering, masks, post-norm layers, and full
+encoder-decoder backward path passed review without changes to `model.py`.
+The runner now includes a separate hand-chosen vocabulary readout: the state
+`(1,-1,0,2)` and a four-by-three projection produce logits `(2,1,0)` for
+`el`, `coche`, and `EOS`. An independent expected-value test checks the logits,
+probabilities `(0.665240955775,0.244728471055,0.090030573170)`, and cross-entropy
+`1.407605964444` when `coche` is the reference. This small readout is separate
+from the complete twelve-entry, randomly initialized teaching model.
+
+With Python 3.11.17, PyTorch 2.14.1, and NumPy 2.4.6 on a macOS ARM64 CPU,
+all 90 repository tests passed without skips, including 19 Chapter 5 tests.
+All 42 exported snippets were current, including nine for Chapter 5. The
+complete demonstration passed; its original illustrative cross-entropy
+remained `2.973556`. No training or optimizer step was added.
+
+The manuscript review made head split/merge ordering explicit, distinguished
+embedding scaling from attention-score scaling, explained the encoder memory
+and vocabulary readout, and expanded practice to twelve exercises. Independent
+arithmetic checks confirmed the multi-head example, positional vectors,
+parameter counts, and existing exercise results. The five figures and captions
+were reviewed for numerical accuracy, arrow directions, and readability.
