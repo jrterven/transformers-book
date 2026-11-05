@@ -97,6 +97,12 @@ CHAPTERS = {
         "expected": {"ssm_scan", "ssm_kernel", "causal_convolution",
                      "bilinear_discretize", "hyena_stage"},
     },
+    "ch14": {
+        "sources": ("examples/ch14_selective_ssm/model.py",),
+        "destination": "snippets/ch14_selective_ssm",
+        "expected": {"zoh_coefficients", "selective_scan", "compose_diagonal",
+                     "ssd_dense", "ssd_chunked"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

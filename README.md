@@ -176,6 +176,17 @@ python -m pip install -r requirements.txt
 python -m examples.ch13_state_spaces.run_examples --output output/ch13.json
 ```
 
+[Chapter 14: Selective State Spaces](examples/ch14_selective_ssm/) follows
+input-dependent state updates, then evaluates one SSD head as a recurrence,
+as a dense matrix, and in chunks. The
+[chapter guide](examples/ch14_selective_ssm/README.md) explains the retain
+and write coefficients and the state carried between chunks.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch14_selective_ssm.run_examples --output output/ch14.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

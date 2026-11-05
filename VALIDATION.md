@@ -861,3 +861,26 @@ length four, the tail folded into the first two positions.
 Independent checks covered 64 scans and impulse responses using explicit
 matrix powers, 36 convolution and gating cases using scalar lag sums, and
 nine bilinear conversions using an eigenbasis calculation.
+
+## Chapter 14. Selective State Spaces
+
+~~~sh
+python -m examples.ch14_selective_ssm.run_examples --output output/ch14.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 197 tests passed,
+including 12 for Chapter 14. All 82 excerpts matched their sources. The
+saved JSON matched stdout and the NumPy-only run.
+
+The scalar state trace was (1, 1.08, 2.54, 2.5846). All three SSD
+calculations gave (2, 1, 4, 4.25). The second chunk's local outputs
+(4, 4) received (0, 0.25) from the carried state. In the five-position
+case, changing retentions, a warm initial state, and a short final chunk
+still gave agreement across all three forms.
+
+Independent reference sums verified 96 SSD configurations and 528
+chunk schedules, plus 24 diagonal selective scans and grouped prefixes.
+A high-precision calculation checked the scalar retain and write
+coefficients at nine step sizes.
