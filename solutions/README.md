@@ -136,3 +136,25 @@ kernel, and run all cells. The notebook uses the
 and needs no datasets or model weights from the internet. The notebook PDF
 includes the code and its recorded outputs. All three optional exercises
 are covered across the two PDFs.
+
+## Chapter 8. From the Original Block to Modern Decoders
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–5 and 12 | Normalization placement and scaling, SwiGLU calculations and parameter budgets, the sign in RoPE, and a matched experiment | [Written solutions (PDF)](ch08_modern/written-solutions.pdf) |
+| 6–11 | RMSNorm with epsilon, loading gate weights, causal and padding masks, decoder parameter counts, rotary positions in a cache, and residual gradients | [Jupyter notebook](ch08_modern/python-solutions.ipynb) · [Notebook export (PDF)](ch08_modern/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[PyTorch dependencies](../requirements-ch05.txt).
+
+```sh
+python -m pip install -r requirements-ch05.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch08_modern/python-solutions.ipynb`, select that Python
+kernel, and run all cells. The notebook uses the
+[Chapter 8 teaching model](../examples/ch08_modern/) and runs on CPU with
+no external datasets or pretrained weights. The PDF export includes the code
+and its recorded outputs. The three optional exercises are covered across
+the two PDFs.
