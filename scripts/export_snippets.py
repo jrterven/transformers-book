@@ -81,6 +81,11 @@ CHAPTERS = {
         "expected": {"causal_mask", "grouped_attention", "attention_step",
                      "cache_bytes", "latent_attention"},
     },
+    "ch11": {
+        "sources": ("examples/ch11_long_context/model.py",),
+        "destination": "snippets/ch11_long_context",
+        "expected": {"local_mask", "selected_attention", "block_summaries"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

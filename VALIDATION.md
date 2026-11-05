@@ -779,3 +779,22 @@ All 151 tests passed. The 66 excerpts matched their source, and the CLI
 reproduced the published JSON byte for byte. Independent numerical
 references agreed across different batch sizes, head counts, cache
 dtypes, mask shapes, and unequal key, value, and latent widths.
+
+## Chapter 11. Long Context, Sparse Access, and Sequence Compression
+
+~~~sh
+python -m examples.ch11_long_context.run_examples --output output/ch11.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64, all 162 tests passed, including 11 Chapter 11 tests.
+All 69 listings matched their sources. The saved JSON matched the
+command output and the run in the NumPy-only environment byte for byte.
+
+The eight-position grids contained 64, 22, and 34 allowed pairs.
+Gathered attention selected zero-based positions 1 and 6 and returned
+the worked output (0.75, 0.5). Gathering every allowed row agreed with
+the masked dense reference. The gated scalar summary was 3.7.
+The mixed-history example excluded a summary ending after the query,
+then produced 5.0 from one selected summary and two recent raw entries.

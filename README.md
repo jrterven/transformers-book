@@ -146,6 +146,16 @@ python -m pip install -r requirements.txt
 python -m examples.ch10_kv.run_examples --output output/ch10.json
 ```
 
+[Chapter 11: Long Context, Sparse Access, and Sequence Compression](examples/ch11_long_context/)
+builds local and global masks, ranks and gathers entries before main
+attention, and forms summaries over completed blocks. The [chapter guide](examples/ch11_long_context/README.md)
+explains the causal checks and the example that reads a summary beside recent raw entries.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch11_long_context.run_examples --output output/ch11.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:
