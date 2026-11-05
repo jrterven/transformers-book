@@ -175,6 +175,12 @@ class PretrainingTests(unittest.TestCase):
                 if family == "t5":
                     self.assertTrue(result["exact_generated"])
 
+    def test_t5_short_run_does_not_generate_padding_or_another_start(self):
+        result = overfit_example("t5", steps=1)
+        self.assertTrue(result["generated"])
+        self.assertNotIn("PAD", result["generated"])
+        self.assertNotIn("BOS", result["generated"])
+
 
 if __name__ == "__main__":
     unittest.main()

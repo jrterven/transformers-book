@@ -636,3 +636,20 @@ makes the second GPT input position's Python index explicit. All twelve
 exercises were checked independently, including the loss arithmetic,
 zero gradients at ignored logit rows, the source/target/padding probes,
 and frozen versus fine-tuned backbone updates.
+
+### Chapter 7 generation and exercise review
+
+The one-update T5 run previously emitted `BOS` as a continuation. It now
+uses the full-prefix greedy decoder from Chapter 6, which excludes `BOS`
+and `PAD` from token selection. The one-update regression passed, and the
+200-update run reproduced every reference result. All 105 tests passed
+without skips, including 14 Chapter 7 tests. All 50 snippets matched the
+canonical exports, including the seven Chapter 7 listings.
+
+The revised GPT/BERT figure distinguishes the reference labels from the
+vocabulary distribution. A new render confirmed distinct arrowheads at the
+selected BERT state and a single highlighted GPT state label. The exercise
+checks confirmed all three BERT treatments with the seed-19 setup and zero
+change in earlier causal logits when the final word of the blue-car example
+changes. The training exercise names the output fields used to compare
+predictions with their targets.

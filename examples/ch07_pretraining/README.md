@@ -147,12 +147,11 @@ separate. On another numerical environment, compare loss values with a small
 tolerance while checking the input arrays, selected-label counts, causal
 invariance, and generated tokens directly.
 
-The T5 teaching example additionally generates freely from BOS after training.
-It reproduced `S0 red car S1 old bridge S2 EOS`. That check uses its own
-previous choices rather than reference decoder inputs, but it still only
-tests the one memorized example. The GPT demo scores a fixed continuation
-without adding a termination token, and the BERT demo fills a selected slot;
-neither is presented as an independently trained text generator.
+The T5 teaching example generates from `BOS` using Chapter 6's greedy
+decoder. It excludes `PAD` and `BOS` when selecting a continuation and stops
+at `EOS` or the length limit. After 200 updates it reproduced
+`S0 red car S1 old bridge S2 EOS` on the same training example. The GPT demo
+scores a fixed continuation, and the BERT demo fills a selected slot.
 
 To explore the chapter exercises, start with `prepared_examples()`, print the
 arrays, and make a single change at a time. Keep the selected positions fixed
@@ -162,14 +161,18 @@ if you extend the fixed-example check into a real learning experiment.
 
 ## Working through the exercises
 
-For the replacement experiment, create one seeded `torch.Generator` and reuse
-it across calls while keeping the sentence and selected positions fixed. Its
-state advances as draws are consumed; resetting the seed for every call repeats
-the same choices. In an experimental copy of `bert_corrupt`, temporarily log
-`draw` and its branch. The branch log distinguishes a random replacement that
-happens to equal the original word from the unchanged-input branch. Compare
-that log with the input IDs and labels; every selected label still holds the
-original word.
+For the replacement exercise, pass `encode("the red car stopped")` and `[1]`
+to `bert_corrupt`. Reuse a single `torch.Generator().manual_seed(19)` across
+calls. In an experimental copy of `bert_corrupt`, print `draw` and the
+treatment it selects. In the reference CPU setup, the first three calls keep
+`red`, replace it with `[MASK]`, and draw `the`. The trace also identifies a
+random replacement that draws `red` again. Check that the label at index 1
+remains `red` in every case.
+
+For the visibility exercise, use `the blue car stopped` and
+`the blue car moved`. Compare the vocabulary logits at Python index 1 with
+the same weights in both stacks. The causal stack should give identical
+earlier logits within numerical tolerance.
 
 For the optional classifier, use a task that fits the fixed vocabulary, such
 as identifying whether a sentence contains `red` or `blue`. Include exactly one

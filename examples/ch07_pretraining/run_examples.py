@@ -6,8 +6,10 @@ from pathlib import Path
 
 import torch
 
+from examples.ch06_training.decoding import greedy_decode
+
 from .data import (
-    BOS, EOS, IGNORE, VOCAB, bert_corrupt, causal_pairs, encode,
+    IGNORE, VOCAB, bert_corrupt, causal_pairs, encode,
     span_corrupt, token_names,
 )
 from .model import TinyTokenModel, make_model, selected_loss
@@ -84,15 +86,10 @@ def overfit_example(family, steps=200):
               "selected_predictions": token_names(predictions[selected]),
               "selected_targets": token_names(labels[selected]), "steps": steps}
     if family == "t5":
-        # Greedy free generation checks more than teacher-forced token choices.
-        prefix, generated = torch.tensor([[BOS]]), []
-        with torch.no_grad():
-            for _ in range(labels.shape[1]):
-                token = model(inputs[0], prefix)[:, -1].argmax(dim=-1)
-                generated.append(int(token.item()))
-                prefix = torch.cat((prefix, token[:, None]), dim=1)
-                if token.item() == EOS:
-                    break
+        # This vocabulary shares Chapter 6's PAD, BOS, and EOS IDs.
+        generated = greedy_decode(
+            model, inputs[0], max_new_tokens=labels.shape[1], cached=False
+        )[0].tolist()
         result["generated"] = token_names(generated)
         result["exact_generated"] = generated == labels[0].tolist()
     return result
