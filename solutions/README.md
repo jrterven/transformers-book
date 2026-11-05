@@ -94,3 +94,23 @@ jupyter lab
 Open `solutions/ch05_transformer/python-solutions.ipynb`, select that Python
 kernel, and run all cells. The notebook uses the CPU PyTorch implementation
 from the [Chapter 5 examples](../examples/ch05_transformer/).
+
+## Chapter 6. Training and Generating with a Small Transformer
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 2, 4, and 5 | Token loss and its gradient, gradient clipping, and KV cache storage | [Written solutions (PDF)](ch06_training/written-solutions.pdf) |
+| 1, 3, and 6–12 | Padded batches, corpus NLL, generation, model selection, leakage, cache correctness, and timing | [Jupyter notebook](ch06_training/python-solutions.ipynb) · [Notebook export (PDF)](ch06_training/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[Chapter 6 dependencies](../requirements-ch06.txt).
+
+```sh
+python -m pip install -r requirements-ch06.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch06_training/python-solutions.ipynb`, select that Python
+kernel, and run all cells. The notebook uses CPU models and the synthetic
+color sequences from the [Chapter 6 examples](../examples/ch06_training/).
+It includes the reference training recipe and four optional experiments.
