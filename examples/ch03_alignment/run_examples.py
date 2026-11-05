@@ -108,18 +108,25 @@ def alignment_example(model, test, predictions, generation_cap=7):
                   if len(s) == 6 and p == list(reversed(s)) + [EOS]]
     index = (max(candidates, key=lambda i: len(set(test[i]))) if candidates else
              next(i for i, s in enumerate(test) if len(s) == 6))
+    selection = (
+        "correct length-six test example with most distinct colors; ties in test order"
+        if candidates else
+        "first length-six test example; no correct length-six prediction"
+    )
     source = test[index]
     batch = collate([source])
     logits, teacher_attention = model(batch.source, batch.lengths, batch.decoder_input)
     tokens, attention = greedy_decode(model, batch.source, batch.lengths, generation_cap)
     generated = _until_eos(tokens[0].tolist())
+    ended_in_eos = EOS in generated
+    mode = ("greedy generation; rows end at the EOS prediction" if ended_in_eos else
+            "greedy generation; generation cap reached without EOS")
     return {"test_index": index, "source": list(source),
             "target": list(reversed(source)) + [EOS], "generated": generated,
             "attention": attention[0, :len(generated), :len(source)].tolist(),
             "teacher_forced_attention": teacher_attention[0, :, :len(source)].tolist(),
             "teacher_forced_choices": logits.argmax(-1)[0].tolist(),
-            "selection": "correct length-six test example with most distinct colors; ties in test order",
-            "mode": "greedy generation; rows include the EOS prediction"}
+            "selection": selection, "mode": mode, "ended_in_eos": ended_in_eos}
 
 
 def run_training(steps=750, seed=2026, output=Path("output/ch03")):

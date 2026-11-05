@@ -20,17 +20,42 @@ except ImportError:
 # snippet:additive_scores
 def additive_scores(query, annotations, weight_query, weight_annotation,
                     direction, bias=0.0):
-    """NumPy row-vector calculation, with optional leading batch axes."""
+    """Return scores [..., S] for annotations [..., S, H].
+
+    The shared direction has shape [A] or [A, 1]; both give one scalar
+    per source position. Leading query/annotation batch axes may broadcast.
+    """
+    direction = np.asarray(direction)
+    if direction.ndim == 2 and direction.shape[-1] == 1:
+        direction = direction[:, 0]
+    if direction.ndim != 1:
+        raise ValueError("direction must have shape [A] or [A, 1]")
     keys = np.asarray(annotations) @ weight_annotation
     request = np.asarray(query) @ weight_query
     features = np.tanh(keys + np.expand_dims(request, -2) + bias)
+    if direction.shape[0] != features.shape[-1]:
+        raise ValueError("direction width must match the score-feature width")
     return features @ direction
 # end-snippet:additive_scores
 
 
 def weighted_read(scores, annotations, valid=None):
-    """Stable source-axis softmax followed by a weighted sum."""
+    """Read annotations [..., S, H] using scores [..., S].
+
+    Source widths must match; leading batch axes may broadcast. Returned
+    weights have the scores' shape, while context uses the broadcast batch.
+    The optional Boolean validity mask must have the scores' shape.
+    """
     scores = np.asarray(scores, dtype=float)
+    annotations = np.asarray(annotations)
+    if scores.ndim < 1 or annotations.ndim < 2:
+        raise ValueError("scores need a source axis; annotations need source/features")
+    if scores.shape[-1] != annotations.shape[-2]:
+        raise ValueError("provide one score per source annotation")
+    try:
+        np.broadcast_shapes(scores.shape[:-1], annotations.shape[:-2])
+    except ValueError:
+        raise ValueError("score and annotation batch axes are incompatible") from None
     valid = np.ones(scores.shape, dtype=bool) if valid is None else np.asarray(valid)
     if valid.dtype != np.bool_ or valid.shape != scores.shape:
         raise ValueError("valid must be a Boolean array with the scores' shape")
@@ -39,7 +64,7 @@ def weighted_read(scores, annotations, valid=None):
     masked = np.where(valid, scores, -np.inf)
     exponentials = np.exp(masked - masked.max(axis=-1, keepdims=True))
     weights = exponentials / exponentials.sum(axis=-1, keepdims=True)
-    context = (weights[..., None] * np.asarray(annotations)).sum(axis=-2)
+    context = (weights[..., None] * annotations).sum(axis=-2)
     return weights, context
 
 

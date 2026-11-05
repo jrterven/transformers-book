@@ -35,6 +35,13 @@ context:  ( 0.860376816011,  0.403432495624)
 These are separate calculations. The first score row is not the output of
 the second example's parameters. Neither is measured language alignment.
 
+`additive_scores` accepts its direction as either a one-dimensional `[A]`
+array or an `[A,1]` column. Both return one scalar per source position:
+scores have shape `[...,S]`, without an extra final singleton axis.
+`weighted_read` requires annotations `[...,S,H]` with the same source width.
+It rejects mismatched source axes and incompatible leading batch axes,
+rather than silently repeating a score through NumPy broadcasting.
+
 ## The recurrent model
 
 `AttentiveSeq2Seq` uses width-16 embeddings, a width-64 encoder LSTM,
@@ -119,6 +126,11 @@ columns only. Its illustration is chosen after evaluation: among correct
 length-six test examples, prefer more distinct colors, breaking ties by test
 order. If none is correct, display the first length-six example and errors.
 This illustration never selects the checkpoint.
+
+The trace records the selection rule actually used, and `ended_in_eos`
+distinguishes a normal ending from a generation cap reached without EOS.
+Fallback examples and unfinished generations are labelled accordingly, which
+matters when inspecting an untrained model or a shorter training run.
 
 The reference illustration is test example 11: **blue blue yellow green white
 red** generates **red white green yellow blue blue EOS**. Attention maxima

@@ -427,3 +427,26 @@ its generated prefixes, batched versus single-sequence generation, EOS-row
 retention and zero rows after termination, and independent token-weighted
 evaluation with complete-sequence grading. The existing Chapter 1, 2, 4, 5,
 and 6 suite remained passing.
+
+### Chapter 3 review
+
+The follow-up review found a NumPy shape error: passing the scoring direction
+as a column could leave a singleton score axis and normalize over that axis.
+The scorer now accepts both `[A]` and `[A, 1]` and returns one scalar per source
+position. The weighted read rejects mismatched source lengths and incompatible
+batch dimensions. Independent expected scores and contexts cover both direction
+shapes, shared annotations, and batched annotations.
+
+Attention-trace metadata now records whether a correct length-six example was
+available and whether generation actually ended in EOS. Controlled failed runs
+cover the fallback example and a generation cap reached without EOS. Reloading
+the reference checkpoint preserved its numerical metrics and attention weights;
+no retraining was needed.
+
+All 86 tests passed without skips, the Chapter 3 demonstration passed, and all
+40 exported snippets were current. All twelve exercises were checked against
+the available model interface and arithmetic. Additional direct checks confirmed
+source-padding invariance, the attention query's one-step timing, and joint
+annotation/mask permutation invariance within floating-point precision. The
+manuscript review also clarified the scorer's addition node and the exercise
+that compares attention timing with the recurrent update.

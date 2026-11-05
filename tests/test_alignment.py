@@ -17,7 +17,7 @@ if torch is not None:
     from examples.ch02_recurrence.data import BOS, EOS, PAD, collate
     from examples.ch02_recurrence.model import token_loss
     from examples.ch03_alignment.model import AdditiveAttention, AttentiveSeq2Seq, greedy_decode
-    from examples.ch03_alignment.run_examples import evaluate
+    from examples.ch03_alignment.run_examples import alignment_example, evaluate
 
 
 class AlignmentArithmeticTests(unittest.TestCase):
@@ -42,6 +42,43 @@ class AlignmentArithmeticTests(unittest.TestCase):
                 score += direction[k] * math.tanh(z)
             expected.append(score)
         np.testing.assert_allclose(actual, expected, atol=1e-14, rtol=1e-14)
+
+    def test_column_direction_preserves_one_score_per_source(self):
+        annotations = np.array([[1., 0.], [0., 1.], [1., 1.]])
+        query = np.array([.2, -.1])
+        direction = np.array([1., -1.])
+        flat = additive_scores(query, annotations, np.eye(2), np.eye(2), direction)
+        column = additive_scores(query, annotations, np.eye(2), np.eye(2),
+                                 direction[:, None])
+        self.assertEqual(column.shape, (3,))
+        np.testing.assert_array_equal(column, flat)
+        weights, context = weighted_read(column, annotations)
+        np.testing.assert_allclose(weights, [.596567504375604, .139623183989087,
+                                             .263809311635308], atol=1e-14, rtol=0)
+        np.testing.assert_allclose(context, [.860376816010913, .403432495624396],
+                                   atol=1e-14, rtol=0)
+        with self.assertRaisesRegex(ValueError, "direction"):
+            additive_scores(query, annotations, np.eye(2), np.eye(2), np.eye(2))
+
+    def test_weighted_read_broadcasts_batches_but_never_source_positions(self):
+        annotations = np.array([[1., 0.], [0., 1.], [1., 1.]])
+        scores = np.array([np.log([.05, .10, .85]), [0., 0., 0.]])
+        weights, context = weighted_read(scores, annotations)
+        self.assertEqual(weights.shape, (2, 3))
+        np.testing.assert_allclose(context, [[.9, .95], [2 / 3, 2 / 3]],
+                                   atol=1e-15, rtol=0)
+        # One common score row can also read two independent annotation batches.
+        annotation_batch = np.stack((annotations, annotations + 2))
+        shared_weights, batch_context = weighted_read(scores[0], annotation_batch)
+        self.assertEqual(shared_weights.shape, (3,))
+        np.testing.assert_allclose(batch_context, [[.9, .95], [2.9, 2.95]],
+                                   atol=1e-15, rtol=0)
+        # A singleton source axis must not silently repeat its weight three times.
+        for wrong_scores in ([0.], np.zeros((3, 1))):
+            with self.assertRaisesRegex(ValueError, "one score"):
+                weighted_read(wrong_scores, annotations)
+        with self.assertRaisesRegex(ValueError, "batch axes"):
+            weighted_read(np.zeros((2, 3)), np.zeros((4, 3, 2)))
 
     def test_numpy_mask_and_score_shift_and_all_invalid_rows(self):
         annotations = np.array([[1., 2.], [3., 4.], [100., 200.]])
@@ -224,6 +261,26 @@ class AttentiveSequenceTests(unittest.TestCase):
             self.assertAlmostEqual(result["by_length"][str(length)]["token_nll"],
                                    -math.log(probability), places=14)
         self.assertEqual(decode.call_args.args[-1], 5)
+
+    def test_failed_alignment_trace_reports_fallback_and_missing_eos(self):
+        sources = [(3, 4, 5, 6, 7, 8), (3, 3, 3, 3, 3, 3)]
+        with torch.no_grad():
+            self.model.output.weight.zero_()
+            self.model.output.bias.zero_()
+            self.model.output.bias[PAD] = 10
+        results = evaluate(self.model, sources, generation_cap=1)
+        self.assertEqual(results["exact_matches"], 0)
+        trace = alignment_example(self.model, sources, results["predictions"],
+                                  generation_cap=1)
+        self.assertEqual(trace["test_index"], 0)
+        self.assertEqual(trace["generated"], [PAD])
+        self.assertFalse(trace["ended_in_eos"])
+        self.assertEqual(trace["selection"],
+                         "first length-six test example; no correct length-six prediction")
+        self.assertEqual(trace["mode"],
+                         "greedy generation; generation cap reached without EOS")
+        self.assertEqual(len(trace["attention"]), 1)
+        self.assertEqual(len(trace["attention"][0]), 6)
 
 
 if __name__ == "__main__":
