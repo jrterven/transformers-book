@@ -199,3 +199,24 @@ Open `solutions/ch10_kv/python-solutions.ipynb`, select that Python kernel,
 and run all cells. It uses the [Chapter 10 examples](../examples/ch10_kv/)
 on CPU with fixed arrays. The PDF export includes the code and its recorded
 outputs. The written solutions also cover all four optional exercises.
+
+## Chapter 11. Long Context, Sparse Access, and Sequence Compression
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4, 10, and 12 | Attention grids, global relays, ranking and weighting, pooling ambiguity, access counts, and a long-document comparison | [Written solutions (PDF)](ch11_long_context/written-solutions.pdf) |
+| 5–9 and 11 | Local and global masks, causal selection, summary windows, per-coordinate gates, summary visibility, and missed evidence | [Jupyter notebook](ch11_long_context/python-solutions.ipynb) · [Notebook export (PDF)](ch11_long_context/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[NumPy requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch11_long_context/python-solutions.ipynb`, select that Python
+kernel, and run all cells. The notebook uses the
+[Chapter 11 examples](../examples/ch11_long_context/) on CPU with fixed
+synthetic arrays. The PDF export includes the code and its recorded outputs.
+The two PDFs cover all four optional exercises.
