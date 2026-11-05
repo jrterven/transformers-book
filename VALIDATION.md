@@ -739,3 +739,23 @@ All 131 tests passed, including 12 Chapter 9 tests, and all 61 excerpts
 matched the source. The CLI reproduced the published reference JSON byte
 for byte. An independent row-by-row reference also agreed with dispatch,
 gated outputs, and residual bypass in 120 generated cases.
+
+## Chapter 10. Incremental Decoding and KV Representations
+
+~~~sh
+python -m examples.ch10_kv.run_examples --output output/ch10.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64, all 144 tests passed with Python 3.11.17, NumPy 2.4.6,
+and PyTorch 2.14.1. All 13 Chapter 10 tests also passed with Python
+3.12.14 and NumPy 2.3.5. The example JSON matched byte for byte across
+the two environments. All 66 exported excerpts matched their source.
+
+For four query heads and four, two, or one KV heads, the single-token
+and chunked results agreed with a full causal pass within 4e-16.
+The float64 cache arrays used 768, 384, and 192 bytes. The two MLA
+evaluation orders gave the same weights and outputs in the fixed
+example, with eight compact cache scalars versus 20 for expanded
+content with shared rotary keys.

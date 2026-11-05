@@ -135,6 +135,17 @@ python -m pip install -r requirements.txt
 python -m examples.ch09_scaling.run_examples --output output/ch09.json
 ```
 
+[Chapter 10: Incremental Decoding and KV Representations](examples/ch10_kv/)
+compares a full causal pass with prefill and cached decoding. The examples
+count the stored keys and values for MHA, GQA, and MQA, then compare two
+equivalent ways to read a latent cache. See the [chapter guide](examples/ch10_kv/README.md)
+for the array shapes and expected results.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch10_kv.run_examples --output output/ch10.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

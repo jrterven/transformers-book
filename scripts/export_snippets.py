@@ -75,6 +75,12 @@ CHAPTERS = {
         "expected": {"compute_budget", "allocation_sweep", "top1_routing",
                      "expert_branch"},
     },
+    "ch10": {
+        "sources": ("examples/ch10_kv/model.py", "examples/ch10_kv/latent.py"),
+        "destination": "snippets/ch10_kv",
+        "expected": {"causal_mask", "grouped_attention", "attention_step",
+                     "cache_bytes", "latent_attention"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
