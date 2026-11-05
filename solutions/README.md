@@ -37,3 +37,23 @@ jupyter lab
 Open `solutions/ch02_recurrence/python-solutions.ipynb`, select that Python
 kernel, and run all cells. The notebook runs the 750-update CPU color-reversal
 experiment from the [Chapter 2 examples](../examples/ch02_recurrence/).
+
+## Chapter 3. Learning to Align
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1, 3, 4, 6, and 7 | Weighted reads, normalization axes, source masks, query dependence, and tensor shapes | [Written solutions (PDF)](ch03_alignment/written-solutions.pdf) |
+| 2, 5, and 8–12 | Stable softmax, additive scores, source padding, decoder timing, learned attention maps, and annotation order | [Jupyter notebook](ch03_alignment/python-solutions.ipynb) · [Notebook export (PDF)](ch03_alignment/python-solutions.pdf) |
+
+To rerun the notebook, start JupyterLab from the repository root in an
+environment with the [Chapter 3 dependencies](../requirements-ch03.txt).
+
+```sh
+python -m pip install -r requirements-ch03.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch03_alignment/python-solutions.ipynb`, select that Python
+kernel, and run all cells. The notebook runs the 750-update CPU experiment
+from the [Chapter 3 examples](../examples/ch03_alignment/) and displays the
+attention weights along actual prediction paths.

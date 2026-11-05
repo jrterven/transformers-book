@@ -23,9 +23,9 @@ Applications are a central part of the book. The discussion follows how Transfor
 
 ## Exercise solutions
 
-Work through the [exercise solutions](solutions/) for Chapters 1 and 2. The
-written PDFs show the calculations step by step. The Python exercises are
-available as executed Jupyter notebooks and as PDFs with the code and output.
+Work through the [exercise solutions](solutions/) by chapter. The written
+PDFs show the calculations step by step. The Python exercises are available
+as executed Jupyter notebooks and as PDFs with the code and output.
 
 ## Python examples
 
