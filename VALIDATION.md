@@ -685,3 +685,18 @@ Independent exercise probes verified the small-input RMS mean squares,
 the SwiGLU result with known weights, the signed rotary dot product,
 the whole-prefix and split-rotation comparison, the pre- and post-norm
 input gradients, and the parameter count with a third block.
+
+### Chapter 8 study and gradient audit
+
+The four vector figures and the compiled pages were inspected against the
+equations and executable examples. The revised captions distinguish the
+standalone normalization example, the signed RoPE rotation, and LLaMA's
+final stack normalization. Independent probes checked the numerical answers
+and the Python steps for all 12 exercises.
+
+A NaN injected by a backward hook previously reached the SGD update in
+`one_update`. The update now raises on missing or nonfinite gradients before
+changing any parameters. The regression test verifies exact parameter
+equality after the rejected step. All 119 tests passed, including 14 for
+Chapter 8. All 57 exports passed the consistency check, and the successful
+CLI output matched the original reference record byte for byte.

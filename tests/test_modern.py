@@ -182,6 +182,21 @@ class ModernDecoderTests(unittest.TestCase):
         self.assertTrue(math.isfinite(update["loss_after"]))
         self.assertLess(update["loss_after"], update["loss_before"])
 
+    def test_one_update_rejects_nonfinite_gradient_before_changing_parameters(self):
+        model = ModernDecoder().double()
+        ids, labels = prepared_batch()
+        before = {name: p.detach().clone() for name, p in model.named_parameters()}
+        hook = model.vocabulary_projection.weight.register_hook(
+            lambda grad: torch.full_like(grad, float("nan"))
+        )
+        self.addCleanup(hook.remove)
+
+        with self.assertRaisesRegex(FloatingPointError, "finite gradient"):
+            one_update(model, ids, labels)
+
+        for name, parameter in model.named_parameters():
+            torch.testing.assert_close(parameter, before[name], atol=0, rtol=0)
+
 
 if __name__ == "__main__":
     unittest.main()

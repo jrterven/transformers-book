@@ -76,7 +76,9 @@ the starting index for the supplied sequence. The example recomputes the
 whole supplied prefix on each call.
 
 `one_update` uses the Chapter 7 loss helper and one SGD step with learning
-rate 0.01. In the recorded run, the mean loss on the fixed batch changes
+rate 0.01. Every parameter must receive a finite gradient. A missing or
+nonfinite gradient raises `FloatingPointError` before the optimizer can
+change the weights. In the recorded run, the mean loss on the fixed batch changes
 from 3.245774 to 3.197668, and every parameter gradient is finite. Use the
 fixed batch to trace which tokens contribute to the loss and how gradients
 reach the projections and gains.

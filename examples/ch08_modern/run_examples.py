@@ -76,6 +76,8 @@ def one_update(model, ids, labels):
         p.grad is not None and torch.isfinite(p.grad).all().item()
         for p in model.parameters()
     )
+    if not finite_gradients:
+        raise FloatingPointError("each parameter must have a finite gradient")
     optimizer.step()
     with torch.no_grad():
         after = selected_loss(model(ids), labels)
