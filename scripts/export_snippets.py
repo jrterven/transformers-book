@@ -62,6 +62,13 @@ CHAPTERS = {
         "expected": {"causal_pairs", "bert_corruption", "span_corruption",
                      "token_stack", "selected_loss", "visibility_probe", "objective_step"},
     },
+    "ch08": {
+        "sources": ("examples/ch08_modern/model.py",
+                    "examples/ch08_modern/run_examples.py"),
+        "destination": "snippets/ch08_modern",
+        "expected": {"rms_norm", "swiglu", "rope", "rotary_attention",
+                     "modern_block", "modern_decoder", "example_checks"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

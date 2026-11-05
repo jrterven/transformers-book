@@ -653,3 +653,35 @@ checks confirmed all three BERT treatments with the seed-19 setup and zero
 change in earlier causal logits when the final word of the blue-car example
 changes. The training exercise names the output fields used to compare
 predictions with their targets.
+
+## Chapter 8: From the Original Block to Modern Decoders
+
+Run the worked component examples and decoder checks with the Chapter 5
+PyTorch environment.
+
+~~~sh
+python -m examples.ch08_modern.run_examples --output output/ch08.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17, PyTorch 2.14.1, and NumPy 2.4.6,
+all 118 tests passed, including 13 Chapter 8 tests. The exporter checked
+all 57 listings. The Chapter 8 tests compare RMSNorm and rotary attention
+with independent calculations, check low-precision normalization,
+verify causal and padding masks, and test the residual path in the
+forward pass and gradients.
+
+The one-thread float64 demonstration with seed 81 reproduced the
+hand calculations for RMSNorm, SwiGLU, and the shared RoPE shift.
+The decoder returned logits of shape [2, 3, 17] and had 5,744
+parameters. Changing a future token left the earlier logits equal.
+Appending padding and shifting all positions by seven changed the valid
+logits by at most 3.33e-16 and 4.44e-16, respectively. All gradients
+were finite. One SGD update at learning rate 0.01 moved the mean loss
+on the same five labels from 3.245774 to 3.197668.
+
+Independent exercise probes verified the small-input RMS mean squares,
+the SwiGLU result with known weights, the signed rotary dot product,
+the whole-prefix and split-rotation comparison, the pre- and post-norm
+input gradients, and the parameter count with a third block.

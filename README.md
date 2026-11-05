@@ -2,6 +2,10 @@
 
 **Juan Terven and Diana Córdova**
 
+<p align="center">
+  <img src="assets/transformers-cover.jpg" alt="Transformers book cover by Juan Terven and Diana Córdova" width="360">
+</p>
+
 Companion repository for *Transformers*, a historical and practical guide to Transformer architectures and their applications.
 
 The book starts with the problems that led to attention and builds the original Transformer step by step. From there, it follows the development of language model families, modern Transformer blocks, efficient attention, state space models, and hybrid architectures. Each change is explained through the problem it addresses, a small worked example, and the tradeoffs it introduces.
@@ -70,7 +74,7 @@ python -m examples.ch05_transformer.run_examples
 python -m unittest discover -s tests -v
 ```
 
-The small model runs on a CPU and does not download pretrained weights or a dataset. Its forward and backward passes expose the architecture and check causal information flow; the randomly initialized outputs do not measure translation quality. Chapter 5, 6, and 7 tests require PyTorch. With only the NumPy requirements installed, they are explicitly reported as skipped.
+The small model runs on a CPU and does not download pretrained weights or a dataset. Its forward and backward passes expose the architecture and check causal information flow; the randomly initialized outputs do not measure translation quality. The tests for Chapters 5–8 require PyTorch. With only the NumPy requirements installed, they are explicitly reported as skipped.
 
 [Chapter 6: Training and Generation](examples/ch06_training/) trains that architecture on a reproducible sequence-reversal task. It covers shifted targets, padding-aware token loss, validation-selected checkpoints, greedy generation, and incremental decoding with self-attention and cross-attention KV caches. The [chapter guide](examples/ch06_training/README.md) explains the data split, training recipe, metrics, cache conventions, and timing boundaries.
 
@@ -101,6 +105,17 @@ without downloads. They expose architectural ideas and objectives; they are
 not replicas of the pretrained GPT, BERT, or T5 releases. The optional run
 memorizes one example per objective to check the wiring, and does not compare
 the families' general language abilities.
+
+[Chapter 8: From the Original Block to Modern Decoders](examples/ch08_modern/)
+builds a small causal decoder from RMSNorm, SwiGLU, and rotary query and key
+positions. The [chapter guide](examples/ch08_modern/README.md) follows the
+hand calculations, then checks parameter counts, causal and padding behavior,
+position shifts, and a next-token update on a CPU.
+
+```sh
+python -m pip install -r requirements-ch05.txt
+python -m examples.ch08_modern.run_examples --output output/ch08.json
+```
 
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
