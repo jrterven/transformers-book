@@ -561,3 +561,23 @@ Open `solutions/ch28_tabular/python-solutions.ipynb`, select that Python kernel,
 and run all cells. The notebook uses the
 [Chapter 28 examples](../examples/ch28_tabular/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 29. Scientific Sequences and Biological Structure
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–11 | Alignment counts, dipeptides, pooling, geometric thresholds, family splits, embedding comparisons, and structural confidence | [Written solutions (PDF)](ch29_protein/written-solutions.pdf) |
+| 5–8 | Normalized sequence features, padding, contact maps, and macro-F1 | [Jupyter notebook](ch29_protein/python-solutions.ipynb) · [Notebook export (PDF)](ch29_protein/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch29_protein/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 29 examples](../examples/ch29_protein/). The PDF export includes
+the explanations, code, and recorded outputs.
