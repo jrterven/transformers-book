@@ -581,3 +581,23 @@ Open `solutions/ch29_protein/python-solutions.ipynb`, select that Python kernel,
 and run all cells. The notebook uses the
 [Chapter 29 examples](../examples/ch29_protein/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 30. Decisions and Embodied Action
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–11 | Returns, context windows, action bins, episode splits, closed-loop outcomes, and control timing | [Written solutions (PDF)](ch30_decisions/written-solutions.pdf) |
+| 5–8 | Returns-to-go, unsupported requests, layout shifts, and demonstration counts | [Jupyter notebook](ch30_decisions/python-solutions.ipynb) · [Notebook export (PDF)](ch30_decisions/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch30_decisions/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 30 examples](../examples/ch30_decisions/). The PDF export includes
+the explanations, code, and recorded outputs.
