@@ -381,3 +381,23 @@ Open `solutions/ch19_generation/python-solutions.ipynb`, select that Python kern
 and run all cells. The notebook uses the
 [Chapter 19 examples](../examples/ch19_generation/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 20. Search, Retrieval, and Grounded Assistants
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–11 | Term rarity, vector ranking, passage budgets, evidence recall, passage boundaries, abstention, and notice versions | [Written solutions (PDF)](ch20_retrieval/written-solutions.pdf) |
+| 5–8 | BM25 length adjustment, candidate reranking, context packing, and literal matches | [Jupyter notebook](ch20_retrieval/python-solutions.ipynb) · [Notebook export (PDF)](ch20_retrieval/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch20_retrieval/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 20 examples](../examples/ch20_retrieval/). The PDF export includes
+the explanations, code, and recorded outputs.
