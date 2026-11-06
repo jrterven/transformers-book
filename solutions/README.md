@@ -481,3 +481,23 @@ Open `solutions/ch24_speech_audio/python-solutions.ipynb`, select that Python ke
 and run all cells. The notebook uses the
 [Chapter 24 examples](../examples/ch24_speech_audio/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 25. Image and Video Generation
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–11 | Noise mixing, DDIM error, guidance, video attention, sampling latency, motion, and diversity | [Written solutions (PDF)](ch25_visual_generation/written-solutions.pdf) |
+| 5–8 | Noise endpoints, exact and perturbed sampler paths, and guidance scales | [Jupyter notebook](ch25_visual_generation/python-solutions.ipynb) · [Notebook export (PDF)](ch25_visual_generation/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch25_visual_generation/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 25 examples](../examples/ch25_visual_generation/). The PDF export includes
+the explanations, code, and recorded outputs.
