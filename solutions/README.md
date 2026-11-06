@@ -361,3 +361,23 @@ Open `solutions/ch18_understanding/python-solutions.ipynb`, select that Python k
 and run all cells. The notebook uses the
 [Chapter 18 examples](../examples/ch18_understanding/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 19. Translation and Summarization
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–11 | Fact preservation, shifted targets, path probabilities, overlap, source support, truncation, and adaptation evaluation | [Written solutions (PDF)](ch19_generation/written-solutions.pdf) |
+| 5–8 | Padded batches, stopping and beam width, and directional overlap measures | [Jupyter notebook](ch19_generation/python-solutions.ipynb) · [Notebook export (PDF)](ch19_generation/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch19_generation/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 19 examples](../examples/ch19_generation/). The PDF export includes
+the explanations, code, and recorded outputs.
