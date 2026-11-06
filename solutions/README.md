@@ -341,3 +341,23 @@ Open `solutions/ch17_evaluation/python-solutions.ipynb`, select that Python kern
 and run all cells. The notebook uses the
 [Chapter 17 examples](../examples/ch17_evaluation/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 18. Language Understanding
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–11 | Word counts, masking, IOB2 alignment, span scores, label shifts, and evaluation design | [Written solutions (PDF)](ch18_understanding/written-solutions.pdf) |
+| 5–8 | Masked pooling, first-piece labels, tag repair, and exact span metrics | [Jupyter notebook](ch18_understanding/python-solutions.ipynb) · [Notebook export (PDF)](ch18_understanding/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch18_understanding/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 18 examples](../examples/ch18_understanding/). The PDF export includes
+the explanations, code, and recorded outputs.
