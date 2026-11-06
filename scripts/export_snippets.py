@@ -103,6 +103,11 @@ CHAPTERS = {
         "expected": {"zoh_coefficients", "selective_scan", "compose_diagonal",
                      "ssd_dense", "ssd_chunked"},
     },
+    "ch15": {
+        "sources": ("examples/ch15_hybrids/model.py",),
+        "destination": "snippets/ch15_hybrids",
+        "expected": {"delta_step", "attention_token", "stack_step", "history_counts"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

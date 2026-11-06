@@ -187,6 +187,16 @@ python -m pip install -r requirements.txt
 python -m examples.ch14_selective_ssm.run_examples --output output/ch14.json
 ```
 
+[Chapter 15: Delta Rules and Hybrid Stacks](examples/ch15_hybrids/) follows
+a delta-rule correction and a token moving through a recurrent–attention–recurrent
+stack. The [chapter guide](examples/ch15_hybrids/README.md) shows the layer
+traces and how the state and KV cache sizes change with the mixer schedule.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch15_hybrids.run_examples --output output/ch15.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

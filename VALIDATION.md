@@ -884,3 +884,26 @@ Independent reference sums verified 96 SSD configurations and 528
 chunk schedules, plus 24 diagonal selective scans and grouped prefixes.
 A high-precision calculation checked the scalar retain and write
 coefficients at nine step sizes.
+
+## Chapter 15. Delta Rules and Hybrid Stacks
+
+~~~sh
+python -m examples.ch15_hybrids.run_examples --output output/ch15.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 206 tests passed,
+including nine for Chapter 15. All 86 excerpts matched their sources.
+The saved JSON matched stdout and the NumPy-only run.
+
+The delta-rule read gave (2.5, 0.75) and the second state column was
+(0, 1.5). A separate unit-key check with a zero write, alpha 0.8 and
+beta 1.5 gave carry factors -0.4 along the key and 0.8 orthogonal to it.
+At four tokens the all-delta, hybrid, and all-attention toy stacks
+held 12, 24, and 48 history scalars.
+
+Independent calculations checked 144 delta updates and 1,500 streaming
+steps across 240 schedule cases. The comparisons covered projected
+history, state sizes, and the causal boundary. The examples use
+hand-chosen projections and gates and run on a CPU.
