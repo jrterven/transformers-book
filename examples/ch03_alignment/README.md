@@ -46,7 +46,8 @@ rather than silently repeating a score through NumPy broadcasting.
 
 `AttentiveSeq2Seq` uses width-16 embeddings, a width-64 encoder LSTM,
 width-32 additive attention, a width-64 decoder LSTMCell, and a nine-class
-output projection: **63,401 learned parameters**.
+output projection: **63,401 stored parameter entries**, including two 16-entry PAD embedding
+rows fixed at zero.
 
 Packing excludes right-padding from recurrent updates; unpacking retains one
 annotation per source position. Both final encoder states initialize the
@@ -109,8 +110,9 @@ no dropout, and gradient clipping at norm 1.0. Validation is measured every
 50 updates and at the final update. Minimum validation token NLL selects
 the checkpoint. Seven generated tokens allow six colors plus EOS.
 
-The checked run selected update **750**. Validation NLL was `0.001809378155`
-and test NLL `0.001536062337`. Greedy exact match was **48/48** on each split,
+The checked run used Python 3.12.14, PyTorch 2.15.0, and NumPy 2.5.4
+and selected update **750**. Validation NLL was `0.001809385838`
+and test NLL `0.001536057680`. Greedy exact match was **48/48** on each split,
 including EOS; each test-length group had 12/12 correct sequences. These
 are one small synthetic run. More parameters and a different decoder input
 make this an uncontrolled comparison with Chapter 2's no-attention model.
@@ -132,7 +134,7 @@ distinguishes a normal ending from a generation cap reached without EOS.
 Fallback examples and unfinished generations are labelled accordingly, which
 matters when inspecting an untrained model or a shorter training run.
 
-The reference illustration is test example 11: **blue blue yellow green white
+The reference illustration is test index 11 (the 12th example): **blue blue yellow green white
 red** generates **red white green yellow blue blue EOS**. Attention maxima
 move through source positions 6, 5, 4, 3, 2, and 1 for the colors. The EOS row
 is broader and has no unique correct source-word alignment. Repeated words
@@ -180,5 +182,13 @@ Seven excerpts are exported from the runnable source:
 
 ```sh
 python scripts/export_snippets.py --chapter ch03
-python scripts/export_snippets.py --check
+python scripts/export_snippets.py --chapter ch03 --check
 ```
+
+## Exercises and solutions
+
+The [14 exercises](EXERCISES.md) move from reading a weighted average to
+checking decoder timing, inspecting trained predictions, and an optional
+score-gradient derivation. [Worked solutions](../../solutions/ch03_alignment/README.md)
+include the complete written explanations, an executed notebook, and its PDF.
+The same numbering is used in the manuscript and all companion materials.

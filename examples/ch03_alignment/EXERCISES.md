@@ -1,0 +1,37 @@
+# Chapter 3 | Exercises
+
+*Learning to Align*
+
+These are the fourteen exercises in the manuscript, in the same order. Exercises 1–8 build the arithmetic and tensor shapes; 9–13 use the companion code. Exercise 14 is an optional calculus challenge. [Worked solutions](../../solutions/ch03_alignment/README.md) include written answers, an executed notebook, and its PDF.
+
+For the hand calculations, use annotations $(1,0)$, $(0,1)$, and $(1,1)$. The illustrative map has rows $(0.90,0.05,0.05)$, $(0.05,0.10,0.85)$, $(0.05,0.85,0.10)$, and $(1/3,1/3,1/3)$, for reference labels *el*, *coche*, *rojo*, and EOS. The scorer uses $e_j=\tanh(\mathbf q W_s+\mathbf h_j W_h+\mathbf b_a)\mathbf v_a$; its hand parameters are query $(0.2,-0.1)$, identity matrices, zero bias, and direction $(1,-1)^\mathsf T$.
+
+For Exercises 3 and 5, the scores are $(\ln 0.05,\ln 0.10,\ln 0.85)$. Equation and figure numbers below refer to the chapter; the numerical inputs needed here are supplied above.
+
+1. **Distinguish the objects.** For source *the red car*, explain what the embedding of *red*, its forward-encoder annotation, an attention score, an attention weight, and the retrieved context each represent. Which source tokens can influence the annotation at *red*? For three source positions and annotation width two, give the lengths of one attention row and one context. Does a weight of 0.85 on *car* imply an 85% probability of generating *coche*?
+
+2. **Read one row.** Using the three annotations in Equation 3.2, calculate the separate weighted contributions for the *coche* row and add them coordinate by coordinate. Repeat for weights $(0.05,0.85,0.10)$. Explain what changes and what stays fixed. Use the coordinate bounds of a weighted average to explain why context $(1.2,0.95)$ cannot come from these annotations with nonnegative weights summing to one.
+
+3. **Recover weights from scores.** Exponentiate the three log-probability scores in Section 3.2 and apply softmax. Check that the score and weight arrays each have shape `(3,)`, with the source positions along their final axis. Add 1000 to every score and repeat using a stable implementation. Why should the result stay unchanged, and why is directly exponentiating the shifted scores unsafe?
+
+4. **Check the normalization axis.** Calculate all row sums and column sums in the invented map in Figure 3.2. Which sums must equal one? Why can a single source position be read at several target steps, and why does a source position not have to receive the largest weight anywhere?
+
+5. **Let padding steal a read.** Append a zero annotation and score 0 to the three log-probability scores. Verify the four unmasked weights and the resulting context. Apply a source-validity mask and repeat. Explain why zeroing a padding vector alone does not remove it from the softmax denominator.
+
+6. **Open the scorer.** Recalculate the three scores in the identity-matrix example, retaining calculator precision until the final display. Verify the softmax weights and context in Equation 3.5. Check that storing $\mathbf v_a$ as a length-two NumPy array or a $2\times1$ column gives the same three scalar scores. Then change the query to $(-0.2,0.1)$ and inspect how the weights change.
+
+7. **Follow the shapes.** Use batch size two, stored source width five, six decoder positions, annotation and decoder widths 64, and attention width 32. State the shapes of the projected annotations, one score row per batch item, one context, all collected attention weights, and all vocabulary logits for the nine-token color vocabulary. Include the encoder's final state shapes, the decoder cell's state shapes, and the width of its joined input when the target embedding width is 16. Which tensors can be reused across target steps for one source?
+
+8. **Remove the nonlinearity.** Replace $\tanh$ by the identity in Equation 3.4. Separate the score into a query-dependent term and an annotation-dependent term. Show why the query-dependent term cancels in softmax. Does that simplified scorer still let its attention weights depend on the query?
+
+9. **Test source padding.** Append extra source storage while retaining the true lengths. Check the valid decoder logits, the original source weights, and the new padding weights in evaluation mode. Compare the valid results within an appropriate floating-point tolerance; changing a tensor's stored width can slightly change rounding. Explain which quantities should agree and which new weights should be zero. What should the code do with an entirely padded source?
+
+10. **Separate two information rules.** Explain why the decoder can attend to every real source position in offline translation while still being forbidden from receiving future reference target tokens during generation. Change one later teacher-forced decoder input while retaining the preceding inputs, and check the earlier logits and attention rows. Also compare the attention row and vocabulary logits at the changed step, and the attention row at the following step. Distinguish quantities that must agree from quantities that merely can change. Explain the result using the order of the attention read and recurrent update.
+
+11. **Reorder stored annotations.** After encoding a source, permute its annotation rows, their projected rows, and its validity mask together. Keep the same decoder query. Compare the context and the reordered weight vector. Why is this different from permuting the original source token IDs and running the recurrent encoder again?
+
+12. **Inspect an actual prediction path.** Load the selected checkpoint and print a held-out source, its reference, and its greedy output. Display the attention rows up to and including the first generated `EOS`. If generation reaches its cap without ending, retain every emitted row and report the missing ending. Compare with a teacher-forced map, keeping the two kinds of row labels distinct.
+
+13. **Interpret a repeated color carefully.** Choose a source containing a repeated color and inspect a generated row for that color. Explain why its largest weight need not identify one unique source occurrence. Propose an additional experiment to investigate the source information used for the prediction, and state why a heatmap alone would not settle that question. As a separate mathematical check, use annotations $(1,0)$, $(1,0)$, and $(0,1)$ with weight rows $(0.2,0.3,0.5)$ and $(0.4,0.1,0.5)$. Compare their contexts and the decoder logits with the remaining decoder inputs held fixed. Why does a repeated color not guarantee these identical annotations in a real recurrent encoder?
+
+14. **Challenge: follow the learning signal.** Fix the annotations and let $\mathbf r=\sum_j\alpha_j\mathbf h_j$ with $\boldsymbol\alpha=\operatorname{softmax}(\mathbf e)$. Using $\partial\alpha_i/\partial e_j=\alpha_i(\delta_{ij}-\alpha_j)$, where $\delta_{ij}$ is 1 when $i=j$ and 0 otherwise, show that $\partial\mathbf r/\partial e_j=\alpha_j(\mathbf h_j-\mathbf r)$. For the chapter's three teaching annotations, weights $(0.05,0.10,0.85)$, and toy loss $L=\tfrac12\lVert\mathbf r-(0,1)\rVert^2$, calculate the three score derivatives and check them by finite differences or automatic differentiation. Why do they sum to zero? What happens to these derivatives if every annotation is identical? This optional exercise uses the chain rule; the toy loss isolates the read and is not the translation-training objective.

@@ -55,7 +55,10 @@ python -m examples.ch02_recurrence.run_examples --train --steps 750 --output out
 attention to a recurrent encoder-decoder. It works through scores, source-axis
 normalization, masks, weighted contexts, and generated-token alignment maps.
 The experiment reuses Chapter 2's color-reversal split and records attention
-for every generated token, including EOS.
+for every generated token, including EOS. The [14 exercises](examples/ch03_alignment/EXERCISES.md)
+progress from worked reads to implementation checks and an optional gradient
+challenge. [Matching solutions](solutions/ch03_alignment/) include an executed
+notebook and two PDFs generated from it.
 
 ```sh
 python -m pip install -r requirements-ch03.txt

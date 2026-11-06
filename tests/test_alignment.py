@@ -176,12 +176,51 @@ class AttentiveSequenceTests(unittest.TestCase):
         new_logits, new_weights = self.model(b.source, b.lengths, changed)
         torch.testing.assert_close(logits[:, :3], new_logits[:, :3], atol=0, rtol=0)
         torch.testing.assert_close(weights[:, :3], new_weights[:, :3], atol=0, rtol=0)
+        # The current read precedes consumption of the changed input token.
+        torch.testing.assert_close(weights[:, 3], new_weights[:, 3], atol=0, rtol=0)
+        self.assertGreater((logits[:, 3] - new_logits[:, 3]).abs().max().item(), 1e-12)
+        self.assertGreater((weights[:, 4] - new_weights[:, 4]).abs().max().item(), 1e-12)
         token_loss(logits, b.target).backward()
         for parameter in self.model.parameters():
             self.assertIsNotNone(parameter.grad)
             self.assertTrue(torch.isfinite(parameter.grad).all())
         for parameter in self.model.attention.parameters():
             self.assertGreater(parameter.grad.abs().sum().item(), 0)
+
+    def test_permuting_stored_memory_preserves_the_read_and_prediction(self):
+        memory, state = self.model.encode(self.batch.source, self.batch.lengths)
+        order = torch.tensor([2, 0, 3, 1])
+        moved = tuple(component[:, order] for component in memory)
+        context, weights = self.model.attention(state[0], *memory)
+        moved_context, moved_weights = self.model.attention(state[0], *moved)
+        torch.testing.assert_close(moved_context, context, atol=1e-14, rtol=1e-12)
+        torch.testing.assert_close(moved_weights, weights[:, order], atol=1e-14, rtol=1e-12)
+        token = self.batch.decoder_input[:, 0]
+        logits, _, _ = self.model.step(token, state, memory)
+        moved_logits, _, _ = self.model.step(token, state, moved)
+        torch.testing.assert_close(moved_logits, logits, atol=1e-14, rtol=1e-12)
+
+    def test_score_gradient_matches_the_chain_rule_and_finite_differences(self):
+        annotations = np.array([[1., 0.], [0., 1.], [1., 1.]])
+        scores = np.log([.05, .10, .85])
+        target = np.array([0., 1.])
+        weights, context = weighted_read(scores, annotations)
+        chain_rule = weights * ((annotations - context) @ (context - target))
+        np.testing.assert_allclose(chain_rule, [.006875, -.081250, .074375], atol=1e-14)
+        variable = torch.tensor(scores, dtype=torch.float64, requires_grad=True)
+        read = variable.softmax(0) @ torch.tensor(annotations, dtype=torch.float64)
+        (.5 * (read - torch.tensor(target)).square().sum()).backward()
+        np.testing.assert_allclose(variable.grad.numpy(), chain_rule, atol=1e-14)
+        epsilon = 1e-5
+        def loss(values):
+            _, read = weighted_read(values, annotations)
+            return .5 * np.square(read - target).sum()
+        finite_difference = np.array([
+            (loss(scores + epsilon * axis) - loss(scores - epsilon * axis)) / (2 * epsilon)
+            for axis in np.eye(3)
+        ])
+        np.testing.assert_allclose(finite_difference, chain_rule, atol=1e-10, rtol=1e-8)
+        self.assertAlmostEqual(chain_rule.sum(), 0., places=14)
 
     def test_masked_source_annotations_receive_no_gradient(self):
         attention = self.model.attention

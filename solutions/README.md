@@ -41,23 +41,19 @@ temporary directory, preserving existing checkpoints.
 
 ## Chapter 3. Learning to Align
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1, 3, 4, 6, and 7 | Weighted reads, normalization axes, source masks, query dependence, and tensor shapes | [Written solutions (PDF)](ch03_alignment/written-solutions.pdf) |
-| 2, 5, and 8–12 | Stable softmax, additive scores, source padding, decoder timing, learned attention maps, and annotation order | [Jupyter notebook](ch03_alignment/python-solutions.ipynb) · [Notebook export (PDF)](ch03_alignment/python-solutions.pdf) |
+All [14 exercises](../examples/ch03_alignment/EXERCISES.md) have matching
+numbering in the chapter, written solutions, and executed notebook.
 
-To rerun the notebook, start JupyterLab from the repository root in an
-environment with the [Chapter 3 dependencies](../requirements-ch03.txt).
+| Coverage | Materials |
+| --- | --- |
+| Exercises 1–14: explanations, calculations, and interpretation | [Written solutions (PDF)](ch03_alignment/written-solutions.pdf) |
+| Exercises 1–14: executable checks and a complete attention experiment | [Jupyter notebook](ch03_alignment/python-solutions.ipynb) · [Notebook export (PDF)](ch03_alignment/python-solutions.pdf) |
 
-```sh
-python -m pip install -r requirements-ch03.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch03_alignment/python-solutions.ipynb`, select that Python
-kernel, and run all cells. The notebook runs the 750-update CPU experiment
-from the [Chapter 3 examples](../examples/ch03_alignment/) and displays the
-attention weights along actual prediction paths.
+The [solution guide](ch03_alignment/README.md) explains how to execute the
+notebook and rebuild both PDFs. Install the [Chapter 3 requirements](../requirements-ch03.txt)
+and a Jupyter kernel first. The 750-update experiment runs on one CPU thread
+in a temporary directory. Exercises move from weighted averages to source
+masking, decoder timing, measured alignment maps, and an optional gradient challenge.
 
 ## Chapter 4. Self-Attention from Vectors to Matrices
 

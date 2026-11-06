@@ -53,7 +53,8 @@ def arithmetic_demo():
                for p in model.parameters())
     print("Teacher-forced logits:", tuple(logits.shape))
     print("Attention [batch, target step, source position]:", tuple(attention.shape))
-    print("Parameters:", sum(p.numel() for p in model.parameters()))
+    print("Parameter tensor entries:", sum(p.numel() for p in model.parameters()))
+    print("Fixed PAD embedding entries:", 2 * model.source_embedding.embedding_dim)
     print("Arithmetic, source masking, and forward/backward checks passed.")
 
 
