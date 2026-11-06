@@ -219,6 +219,17 @@ python -m pip install -r requirements.txt
 python -m examples.ch17_evaluation.run_examples --output output/ch17.json
 ```
 
+[Chapter 18: Language Understanding](examples/ch18_understanding/) pools
+token features for a sentence classifier, aligns labels to first subwords,
+and checks exact entity spans. The
+[chapter guide](examples/ch18_understanding/README.md) explains the masks,
+word indices, and BIO decoding policy.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch18_understanding.run_examples --output output/ch18.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

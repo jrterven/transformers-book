@@ -961,3 +961,24 @@ with no claim about the performance of trained classifiers.
 
 Independent checks covered 20 group splits, 80 binary metric cases,
 100 reliability and Brier cases, and 48 row or group bootstrap cases.
+
+## Chapter 18. Language Understanding
+
+~~~sh
+python -m examples.ch18_understanding.run_examples --output output/ch18.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 236 tests
+passed, including nine for Chapter 18. All 99 excerpts matched
+their sources. Saved JSON, stdout, and the NumPy-only run agreed.
+
+The three selected rows pooled to (1, 1) and gave logits (0, 1.25).
+The subword example scored six of ten token positions, with one
+target per word. The predicted New span missed Harbor, giving word
+accuracy 5/6 and exact entity precision, recall, and F1 of 0.5.
+The tests checked invalid BIO handling and the optional repair.
+
+Independent calculations checked 108 pooled heads, 100 first-piece
+alignments, and 120 BIO tag streams.

@@ -120,6 +120,12 @@ CHAPTERS = {
         "expected": {"group_split", "binary_metrics", "reliability_bins",
                      "paired_bootstrap"},
     },
+    "ch18": {
+        "sources": ("examples/ch18_understanding/model.py",),
+        "destination": "snippets/ch18_understanding",
+        "expected": {"sentence_logits", "first_piece_labels", "bio_spans",
+                     "span_metrics"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
