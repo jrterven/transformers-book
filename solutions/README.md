@@ -220,3 +220,24 @@ kernel, and run all cells. The notebook uses the
 [Chapter 11 examples](../examples/ch11_long_context/) on CPU with fixed
 synthetic arrays. The PDF export includes the code and its recorded outputs.
 The two PDFs cover all four optional exercises.
+
+## Chapter 12. Efficient Execution
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 10–11 | Response timing, batching, score storage, online softmax rescaling, and performance comparisons | [Written solutions (PDF)](ch12_efficient/written-solutions.pdf) |
+| 5–9 | Uneven tile grids, tile-size agreement, empty tiles, causal offsets, and numerical stability | [Jupyter notebook](ch12_efficient/python-solutions.ipynb) · [Notebook export (PDF)](ch12_efficient/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[NumPy requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch12_efficient/python-solutions.ipynb`, select that Python
+kernel, and run all cells. The notebook uses the
+[Chapter 12 examples](../examples/ch12_efficient/) on CPU with fixed arrays.
+The PDF export includes the code and its recorded outputs. The two PDFs
+cover all three optional exercises.
