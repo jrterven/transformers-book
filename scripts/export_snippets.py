@@ -166,6 +166,12 @@ CHAPTERS = {
         "destination": "snippets/ch25_visual_generation",
         "expected": {"add_noise", "guided_noise", "ddim_step"},
     },
+    "ch26": {
+        "sources": ("examples/ch26_code_models/model.py",),
+        "destination": "snippets/ch26_code_models",
+        "expected": {"interval_candidates", "score_candidate", "pass_at_k",
+                     "serialize_fim"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

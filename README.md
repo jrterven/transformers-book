@@ -307,6 +307,15 @@ python -m pip install -r requirements.txt
 python -m examples.ch25_visual_generation.run_examples --output output/ch25.json
 ```
 
+[Chapter 26: Models for Code](examples/ch26_code_models/) formats an
+infilling prompt and runs checked-in candidate functions against smoke and
+boundary tests. The [chapter guide](examples/ch26_code_models/README.md)
+explains the case records and the per-task pass@k calculation.
+
+```sh
+python -m examples.ch26_code_models.run_examples --output output/ch26.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

@@ -1141,3 +1141,24 @@ fixture returned (1, 0.6) at scale two.
 
 Independent calculations checked 60 forward mixtures, 60 guidance
 settings, and 30 deterministic updates against separate formulas.
+
+## Chapter 26. Models for Code
+
+~~~sh
+python -m examples.ch26_code_models.run_examples --output output/ch26.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17, all 309 tests passed,
+including seven for Chapter 26. All 131 excerpts matched their
+sources. Saved JSON, stdout, and the second Python run agreed.
+
+All four checked-in candidates passed both smoke tests. On the
+six-case suite, they passed four, six, five, and six cases.
+Two passed the entire suite, giving pass@1 of 1/2 and pass@2
+of 5/6. The infilling fixture placed the later function call
+before the middle marker in the serialized prompt.
+
+Independent calculations checked 728 pass@k settings by subset
+enumeration and all four candidates over 2,025 interval pairs.
