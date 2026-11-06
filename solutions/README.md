@@ -301,3 +301,23 @@ Open `solutions/ch15_hybrids/python-solutions.ipynb`, select that Python kernel,
 and run all cells. The notebook uses the
 [Chapter 15 examples](../examples/ch15_hybrids/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 16. From Pretrained Weights to Task Behavior
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 10–11 | Head parameters, shifted targets, low-rank updates, relative preferences, evaluation, and checkpoint reconstruction | [Written solutions (PDF)](ch16_adaptation/written-solutions.pdf) |
+| 5–9 | Response masks, loss perturbations, adapter initialization, training updates, and detached reference scores | [Jupyter notebook](ch16_adaptation/python-solutions.ipynb) · [Notebook export (PDF)](ch16_adaptation/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements-ch05.txt).
+
+```sh
+python -m pip install -r requirements-ch05.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch16_adaptation/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 16 examples](../examples/ch16_adaptation/). The PDF export includes
+the explanations, code, and recorded outputs.
