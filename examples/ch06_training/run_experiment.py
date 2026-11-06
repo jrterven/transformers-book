@@ -58,10 +58,12 @@ def run(output, steps=2000, seed=2026, data_seed=2026, batch_size=64,
         if parameter.ndim > 1:
             torch.nn.init.xavier_uniform_(parameter)
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999))
+    generation_cap = 8  # Six colors, EOS, and one extra diagnostic position.
     experiment = {"seed": seed, "data_seed": data_seed, "steps": steps,
                   "batch_size": batch_size, "learning_rate": 0.001,
                   "optimizer": "Adam", "betas": [0.9, 0.999],
                   "gradient_clip_norm": 1.0, "validation_every": validation_every,
+                  "generation_max_new_tokens": generation_cap,
                   "matrix_initialization": "xavier_uniform",
                   "split_sizes": [len(train), len(validation), len(test)],
                   "min_length": 3, "max_length": 6,
@@ -69,7 +71,7 @@ def run(output, steps=2000, seed=2026, data_seed=2026, batch_size=64,
                                    for name, split in zip(("train", "validation", "test"),
                                                           (train, validation, test))}}
     history = []
-    initial = evaluate(model, validation)
+    initial = evaluate(model, validation, generation_max_new_tokens=generation_cap)
     history.append({"step": 0, "validation": initial})
     best_nll = initial["nll"]
     checkpoint_path = output / "best.pt"
@@ -80,7 +82,8 @@ def run(output, steps=2000, seed=2026, data_seed=2026, batch_size=64,
         batch = collate(rng.sample(train, batch_size))
         training_nll = train_step(model, optimizer, batch)
         if step % validation_every == 0 or step == steps:
-            metrics = evaluate(model, validation)
+            metrics = evaluate(model, validation,
+                               generation_max_new_tokens=generation_cap)
             history.append({"step": step, "training_batch_nll": training_nll,
                             "validation": metrics})
             print(f"step={step:4d} validation_nll={metrics['nll']:.5f} "
@@ -90,9 +93,10 @@ def run(output, steps=2000, seed=2026, data_seed=2026, batch_size=64,
                 save_checkpoint(checkpoint_path, model, model_config,
                                 experiment, step, metrics)
     model, checkpoint = load_checkpoint(checkpoint_path)
-    test_metrics = evaluate(model, test)
+    test_metrics = evaluate(model, test, generation_max_new_tokens=generation_cap)
     # end-snippet:experiment
-    by_length = {str(length): evaluate(model, [s for s in test if len(s) == length])
+    by_length = {str(length): evaluate(model, [s for s in test if len(s) == length],
+                                      generation_max_new_tokens=generation_cap)
                  for length in range(3, 7)}
     elapsed = perf_counter() - started
     example = collate(test[:8])

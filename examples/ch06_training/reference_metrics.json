@@ -1,0 +1,440 @@
+{
+  "experiment": {
+    "seed": 2026,
+    "data_seed": 2026,
+    "steps": 2000,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "gradient_clip_norm": 1.0,
+    "validation_every": 100,
+    "generation_max_new_tokens": 8,
+    "matrix_initialization": "xavier_uniform",
+    "split_sizes": [
+      512,
+      64,
+      64
+    ],
+    "min_length": 3,
+    "max_length": 6,
+    "split_sha256": {
+      "train": "166bac498d095923a41bf83d43b856c295d0e0afbab1b4e3e12487036640861c",
+      "validation": "f9b73c7d5e723175141caa01c800521e261af1e4d493493f2fa76f5fc5022345",
+      "test": "c220c3aec39da9df967882faa4f68ff0d7c77d009b78dd760107181cd7e31beb"
+    }
+  },
+  "model_config": {
+    "source_vocab_size": 9,
+    "target_vocab_size": 9,
+    "d_model": 64,
+    "n_heads": 4,
+    "d_ff": 128,
+    "n_encoder_layers": 2,
+    "n_decoder_layers": 2,
+    "dropout": 0.0,
+    "pad_id": 0,
+    "max_length": 64
+  },
+  "parameters": 167625,
+  "selected_step": 2000,
+  "validation": {
+    "nll": 0.0004995695145970041,
+    "perplexity": 1.0004996943202291,
+    "token_accuracy": 1.0,
+    "exact_match": 1.0,
+    "termination_rate": 1.0,
+    "tokens": 352,
+    "sequences": 64
+  },
+  "test": {
+    "nll": 0.0011071211404421113,
+    "perplexity": 1.001107734225284,
+    "token_accuracy": 1.0,
+    "exact_match": 1.0,
+    "termination_rate": 1.0,
+    "tokens": 352,
+    "sequences": 64
+  },
+  "test_by_length": {
+    "3": {
+      "nll": 0.004950897768139839,
+      "perplexity": 1.0049631737131168,
+      "token_accuracy": 1.0,
+      "exact_match": 1.0,
+      "termination_rate": 1.0,
+      "tokens": 64,
+      "sequences": 16
+    },
+    "4": {
+      "nll": 0.0002823736052960157,
+      "perplexity": 1.0002824134764752,
+      "token_accuracy": 1.0,
+      "exact_match": 1.0,
+      "termination_rate": 1.0,
+      "tokens": 80,
+      "sequences": 16
+    },
+    "5": {
+      "nll": 0.00010083716673155625,
+      "perplexity": 1.0001008422509696,
+      "token_accuracy": 1.0,
+      "exact_match": 1.0,
+      "termination_rate": 1.0,
+      "tokens": 96,
+      "sequences": 16
+    },
+    "6": {
+      "nll": 0.00036230783111282757,
+      "perplexity": 1.0003623734725222,
+      "token_accuracy": 1.0,
+      "exact_match": 1.0,
+      "termination_rate": 1.0,
+      "tokens": 112,
+      "sequences": 16
+    }
+  },
+  "cache_max_abs_error_float32": 3.814697265625e-06,
+  "cached_generation_matches_full": true,
+  "timing": {
+    "source_encode_ms": 0.1747499918565154,
+    "cached_target_prefill_ms": 0.6229169957805425,
+    "full_prefix_next_token_ms": 0.2878340019378811,
+    "cached_next_token_ms": 0.15150001854635775,
+    "prefix_tokens": 5,
+    "batch_size": 1,
+    "source_columns": 4,
+    "source_valid_tokens": 4,
+    "repeats": 25,
+    "threads": 1,
+    "dtype": "torch.float32",
+    "device": "cpu"
+  },
+  "examples": [
+    {
+      "source": "red yellow yellow blue",
+      "expected": "blue yellow yellow red <eos>",
+      "generated": "blue yellow yellow red <eos>"
+    },
+    {
+      "source": "blue green yellow black blue",
+      "expected": "blue black yellow green blue <eos>",
+      "generated": "blue black yellow green blue <eos>"
+    },
+    {
+      "source": "yellow green green white white blue",
+      "expected": "blue white white green green yellow <eos>",
+      "generated": "blue white white green green yellow <eos>"
+    },
+    {
+      "source": "white white white black",
+      "expected": "black white white white <eos>",
+      "generated": "black white white white <eos>"
+    },
+    {
+      "source": "black black red black black",
+      "expected": "black black red black black <eos>",
+      "generated": "black black red black black <eos>"
+    },
+    {
+      "source": "black black white",
+      "expected": "white black black <eos>",
+      "generated": "white black black <eos>"
+    },
+    {
+      "source": "blue yellow white blue",
+      "expected": "blue white yellow blue <eos>",
+      "generated": "blue white yellow blue <eos>"
+    },
+    {
+      "source": "red yellow green yellow",
+      "expected": "yellow green yellow red <eos>",
+      "generated": "yellow green yellow red <eos>"
+    }
+  ],
+  "history": [
+    {
+      "step": 0,
+      "validation": {
+        "nll": 2.4939181587912818,
+        "perplexity": 12.10862681871027,
+        "token_accuracy": 0.16477272727272727,
+        "exact_match": 0.0,
+        "termination_rate": 0.15625,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 100,
+      "training_batch_nll": 0.12047120183706284,
+      "validation": {
+        "nll": 0.2794629227031361,
+        "perplexity": 1.3224193801500033,
+        "token_accuracy": 0.9090909090909091,
+        "exact_match": 0.625,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 200,
+      "training_batch_nll": 0.02633749693632126,
+      "validation": {
+        "nll": 0.21774560754949396,
+        "perplexity": 1.243270748693792,
+        "token_accuracy": 0.9431818181818182,
+        "exact_match": 0.71875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 300,
+      "training_batch_nll": 0.02466142736375332,
+      "validation": {
+        "nll": 0.10556584054773505,
+        "perplexity": 1.111339273300563,
+        "token_accuracy": 0.96875,
+        "exact_match": 0.84375,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 400,
+      "training_batch_nll": 0.03088039718568325,
+      "validation": {
+        "nll": 0.08677441423589533,
+        "perplexity": 1.0906506167124232,
+        "token_accuracy": 0.9630681818181818,
+        "exact_match": 0.8125,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 500,
+      "training_batch_nll": 0.015615970827639103,
+      "validation": {
+        "nll": 0.06355036388744008,
+        "perplexity": 1.0656131528709003,
+        "token_accuracy": 0.9886363636363636,
+        "exact_match": 0.9375,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 600,
+      "training_batch_nll": 0.00539276422932744,
+      "validation": {
+        "nll": 0.057949282906272194,
+        "perplexity": 1.0596612514084143,
+        "token_accuracy": 0.9829545454545454,
+        "exact_match": 0.90625,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 700,
+      "training_batch_nll": 0.007205876987427473,
+      "validation": {
+        "nll": 0.025758044286207718,
+        "perplexity": 1.0260926494565543,
+        "token_accuracy": 0.9914772727272727,
+        "exact_match": 0.953125,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 800,
+      "training_batch_nll": 0.023030798882246017,
+      "validation": {
+        "nll": 0.06902391802180897,
+        "perplexity": 1.0714618360894352,
+        "token_accuracy": 0.9772727272727273,
+        "exact_match": 0.875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 900,
+      "training_batch_nll": 0.0009317941730841994,
+      "validation": {
+        "nll": 0.0036557069556279616,
+        "perplexity": 1.0036623972023435,
+        "token_accuracy": 0.9971590909090909,
+        "exact_match": 0.984375,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1000,
+      "training_batch_nll": 0.0020755731966346502,
+      "validation": {
+        "nll": 0.028204132210124622,
+        "perplexity": 1.0286056345334298,
+        "token_accuracy": 0.9886363636363636,
+        "exact_match": 0.9375,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1100,
+      "training_batch_nll": 0.0012594090076163411,
+      "validation": {
+        "nll": 0.006717785515568473,
+        "perplexity": 1.0067404004490805,
+        "token_accuracy": 0.9971590909090909,
+        "exact_match": 0.984375,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1200,
+      "training_batch_nll": 0.024563608691096306,
+      "validation": {
+        "nll": 0.00274911184202541,
+        "perplexity": 1.0027528941151551,
+        "token_accuracy": 1.0,
+        "exact_match": 1.0,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1300,
+      "training_batch_nll": 0.0005495761288329959,
+      "validation": {
+        "nll": 0.025375528769059616,
+        "perplexity": 1.0257002281545091,
+        "token_accuracy": 0.9943181818181818,
+        "exact_match": 0.96875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1400,
+      "training_batch_nll": 0.022383833304047585,
+      "validation": {
+        "nll": 0.0026600809598510914,
+        "perplexity": 1.0026636221144307,
+        "token_accuracy": 1.0,
+        "exact_match": 1.0,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1500,
+      "training_batch_nll": 0.005656775087118149,
+      "validation": {
+        "nll": 0.016036574136127125,
+        "perplexity": 1.016165850114587,
+        "token_accuracy": 0.9943181818181818,
+        "exact_match": 0.96875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1600,
+      "training_batch_nll": 0.006859624292701483,
+      "validation": {
+        "nll": 0.04523131251335144,
+        "perplexity": 1.0462698472282965,
+        "token_accuracy": 0.9857954545454546,
+        "exact_match": 0.921875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1700,
+      "training_batch_nll": 0.04198377951979637,
+      "validation": {
+        "nll": 0.0020328816026449203,
+        "perplexity": 1.0020349493073457,
+        "token_accuracy": 1.0,
+        "exact_match": 1.0,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1800,
+      "training_batch_nll": 0.009611924178898335,
+      "validation": {
+        "nll": 0.027067951180718162,
+        "perplexity": 1.0274376159906378,
+        "token_accuracy": 0.9857954545454546,
+        "exact_match": 0.921875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1900,
+      "training_batch_nll": 0.0050854794681072235,
+      "validation": {
+        "nll": 0.0005624723959375511,
+        "perplexity": 1.0005626306131985,
+        "token_accuracy": 1.0,
+        "exact_match": 1.0,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 2000,
+      "training_batch_nll": 0.006297487299889326,
+      "validation": {
+        "nll": 0.0004995695145970041,
+        "perplexity": 1.0004996943202291,
+        "token_accuracy": 1.0,
+        "exact_match": 1.0,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    }
+  ],
+  "elapsed_seconds": 13.17702908301726,
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.15.0",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "device": "cpu",
+    "threads": 1
+  }
+}

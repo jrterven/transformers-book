@@ -145,7 +145,8 @@ def benchmark(model, source, prefix, repeats=15):
     """Median CPU milliseconds for fixed work, excluding data loading.
 
     Source encoding and target prefill (all but the final prefix token) are
-    reported separately. Decode times consume that final supplied token;
+    reported separately. Prefill includes constructing the static cross-KV.
+    Decode times consume that final supplied token;
     they do not include sampling or detokenization. Rebuild caches outside
     each decode timing so every repetition starts at the same position.
     """
@@ -188,4 +189,5 @@ def benchmark(model, source, prefix, repeats=15):
             "prefix_tokens": prefix.shape[1], "batch_size": source.shape[0],
             "source_columns": source.shape[1],
             "source_valid_tokens": int((source != model.pad_id).sum().item()),
-            "repeats": repeats, "threads": torch.get_num_threads()}
+            "repeats": repeats, "threads": torch.get_num_threads(),
+            "dtype": str(next(model.parameters()).dtype), "device": "cpu"}

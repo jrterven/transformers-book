@@ -5,13 +5,17 @@ sequences of colors. The task is deliberately small: it exposes shifted
 targets, token-weighted loss, validation, autoregressive generation, and KV
 caching without downloading a dataset or pretrained weights.
 
+The [15 exercises](EXERCISES.md) progress from following one weight update to
+investigating leakage, checkpoint selection, and cache correctness. Every
+exercise has [complete written and executable solutions](../../solutions/ch06_training/README.md).
+
 Run these commands from the repository root:
 
 ```sh
 python -m pip install -r requirements-ch06.txt
 python -m examples.ch06_training.run_experiment --output output/ch06
-python -m unittest discover -s tests -v
-python scripts/export_snippets.py --check
+python -m unittest discover -s tests -p test_training.py -v
+python scripts/export_snippets.py --chapter ch06 --check
 ```
 
 The experiment uses one CPU thread. Its output directory contains a selected
@@ -102,7 +106,9 @@ reference prefixes; exact-match accuracy uses greedy generated prefixes and
 requires the correct complete sequence **including EOS**. A length-capped
 output without EOS is not an exact match.
 Termination rate separately counts the fraction of generated rows containing
-EOS. The final metrics record also breaks held-out results down by source
+EOS. A model that emits EOS immediately can have 100% termination and 0%
+exact match. Teacher-forced token accuracy uses all nine vocabulary classes;
+generation suppresses PAD and BOS. These are separate measurements. The final metrics record also breaks held-out results down by source
 length, making repetition, premature stopping, and length-dependent failures
 easier to investigate.
 
@@ -112,6 +118,11 @@ minibatch size therefore does not give some examples more chances to emit EOS.
 The default limit is the longest source length plus two (EOS and one extra
 token), capped by the model's positional table. Pass an explicit
 `generation_max_new_tokens` to compare different datasets under the same limit.
+
+The runner explicitly uses a cap of eight generated tokens for validation,
+whole-test evaluation, and every per-length test group. The cap is stored in
+the experiment record, so splitting the report into length groups does not
+change their stopping allowance.
 
 The selected checkpoint minimizes validation NLL at the recorded evaluation
 steps. Test data are evaluated only after selection. The checkpoint contains
@@ -164,23 +175,23 @@ repeated EOS internally while the returned output pads their completed rows.
 Compare logits with a numerical tolerance: equivalent matrix calculations can
 round differently between one-token and complete-prefix execution.
 
-The chapter also asks what goes wrong if target self-attention is allowed to
-read future reference inputs. Run that experiment in a copy of the project
-and start a fresh Python process after changing the shared `build_masks`
-function in Chapter 5's module. Both the model and `decode_prefix` must use
-the changed function; changing only one already-imported name does not update
-the other module's reference.
+The leakage experiment temporarily allows future target keys while preserving
+key validity. Its solution uses `unittest.mock.patch` on both the Chapter 5
+model module and Chapter 6 decoding module. Both names refer to the mask
+builder, so both must change together. The context managers restore them;
+no canonical source file is edited.
 
-Measure the broken model's teacher-forced loss directly with its logits and
-`token_loss`, and use `greedy_decode(..., cached=False)` for free generation.
-The ordinary `evaluate` helper selects cached generation, which is valid for
-the original causal model. With noncausal attention, extending a prefix can
-change earlier states, so its old keys and values cannot simply be reused.
-Restore the causal rule before using the normal evaluator or cache benchmark.
+The altered model's whole-reference loss is computed directly with
+`token_loss`, and generation uses `greedy_decode(..., cached=False)`.
+The ordinary `evaluate` helper selects cached generation, which assumes
+causality. Without it, extending a prefix can change earlier states and
+invalidate their saved K/V. Prefix-only teacher-forced loss provides a useful
+third check: supply the true past but cut away future inputs before each
+prediction. Compare that NLL with the whole-reference score and free generation.
 
 ## Timing
 
-`benchmark` reports median CPU milliseconds for source encoding, cached target
+`benchmark` reports the parameter dtype, device, thread count, and median CPU milliseconds for source encoding, cached target
 prefill, one full-prefix next-token calculation, and one cached next-token
 calculation. It uses a fixed supplied prefix, warms the model, and reconstructs
 the cache outside each decode timing. The reported target prefill consumes all
@@ -190,7 +201,16 @@ outside the timed region. Source encoding and target prefill are setup costs,
 so the per-token cached timing is not an end-to-end latency number. Tiny
 single-thread CPU measurements are noisy and do not predict GPU speedups.
 
-The complete local validation record is in [VALIDATION.md](../../VALIDATION.md).
+The November 2026 review ran all 2,000 updates with Python 3.12.14 and
+PyTorch 2.15.0 on one CPU thread. Update 2,000 was selected by validation NLL:
+validation NLL 0.000500 and test NLL 0.001107, with 64/64 exact generated test
+answers including EOS. The [recorded run](reference_metrics.json) contains
+all 21 validation measurements, data fingerprints, generated examples, and
+environment information. These results describe this run of a small reversal
+task; they do not establish reversal at unseen lengths. Different numerical
+environments can change the trajectory and checkpoint, even with fixed seeds.
+
+The historical validation record is in [VALIDATION.md](../../VALIDATION.md).
 
 The nine book listings are exported from the canonical source files in this
 directory. Run `python scripts/export_snippets.py --chapter ch06` to regenerate

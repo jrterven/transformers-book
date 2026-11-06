@@ -95,10 +95,12 @@ All [15 Chapter 5 exercises](examples/ch05_transformer/EXERCISES.md) have matchi
 ```sh
 python -m pip install -r requirements-ch06.txt
 python -m examples.ch06_training.run_experiment --output output/ch06
-python -m unittest discover -s tests -v
+python -m unittest discover -s tests -p test_training.py -v
 ```
 
-This example trains from scratch on one CPU thread. It writes a model checkpoint and an inspectable metrics record under `output/ch06/`. The generated results remain local; the source, tests, and exact commands are included here. The synthetic task makes training behavior visible and does not measure translation quality or general language ability.
+All [15 exercises](examples/ch06_training/EXERCISES.md) have matching [written and executable solutions](solutions/ch06_training/README.md).
+
+This example trains from scratch on one CPU thread. It writes a model checkpoint and an inspectable metrics record under `output/ch06/`. New run outputs remain local. A [reference metrics record](examples/ch06_training/reference_metrics.json), source, tests, and exact commands are included here. The synthetic task makes training behavior visible and does not measure translation quality or general language ability.
 
 [Chapter 7: GPT, BERT, and T5](examples/ch07_pretraining/) builds three prediction
 tasks from short sentences. The examples make next-token shifts, selected masked

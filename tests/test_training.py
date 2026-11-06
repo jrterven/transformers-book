@@ -1,6 +1,8 @@
 """Checks of learning, evaluation, and incremental execution in Chapter 6."""
 
 import math
+from contextlib import redirect_stdout
+from io import StringIO
 from pathlib import Path
 import tempfile
 import unittest
@@ -20,7 +22,7 @@ if torch is not None:
     from examples.ch06_training.training import (
         evaluate, exact_matches, load_checkpoint, save_checkpoint, token_loss, train_step,
     )
-    from examples.ch06_training.run_experiment import loss_sanity_example
+    from examples.ch06_training.run_experiment import loss_sanity_example, run
 
 
 @unittest.skipIf(torch is None, "Chapter 6 requires PyTorch")
@@ -268,9 +270,23 @@ class TrainingTests(unittest.TestCase):
                            self.batch.decoder_input[:1, :3], repeats=2)
         self.assertEqual(result["prefix_tokens"], 3)
         self.assertEqual(result["batch_size"], 1)
+        self.assertEqual(result["dtype"], "torch.float64")
+        self.assertEqual(result["device"], "cpu")
         for key, value in result.items():
             if key.endswith("_ms"):
                 self.assertTrue(math.isfinite(value) and value > 0)
+
+    def test_runner_keeps_one_generation_cap_for_whole_and_per_length_scores(self):
+        # Shorter groups must not receive a different stopping allowance.
+        with tempfile.TemporaryDirectory() as directory, redirect_stdout(StringIO()):
+            with patch("examples.ch06_training.run_experiment.evaluate",
+                       wraps=evaluate) as scoring:
+                result = run(directory, steps=1, validation_every=1)
+        self.assertEqual(result["experiment"]["generation_max_new_tokens"], 8)
+        self.assertEqual(len(result["test_by_length"]), 4)
+        self.assertGreaterEqual(scoring.call_count, 7)
+        self.assertTrue(all(call.kwargs["generation_max_new_tokens"] == 8
+                            for call in scoring.call_args_list))
 
 
 if __name__ == "__main__":

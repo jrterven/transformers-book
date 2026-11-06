@@ -565,6 +565,34 @@ All five figures and captions were visually checked. The loss mask label,
 current-position cache notation, cross-attention query path, and BOS/EOS labels
 were clarified. The target-shift and measured learning-curve PDFs were unchanged.
 
+### Chapter 6 detailed teaching and solution review (November 2026)
+
+This revision uses Python 3.12.14 and PyTorch 2.15.0 on one CPU thread.
+It is a fresh measured run, distinct from the historical environments above.
+All 20 Chapter 6 tests passed. The runner now records and applies one cap of
+eight generated tokens to validation, whole-test scores, and every per-length
+report. A regression check verifies the same cap reaches every evaluation.
+The benchmark records parameter dtype and device alongside its timing phases.
+
+The 2,000-update recipe selected update 2,000: validation NLL 0.0004995695,
+test NLL 0.0011071211, and 64/64 exact generated test answers including EOS.
+The full numerical record is [reference_metrics.json](examples/ch06_training/reference_metrics.json).
+Running that recipe again inside the solution notebook reproduced all 21
+validation records. Timing values are separate measurements and can vary.
+
+All 15 exercises now have complete explanations in both PDF editions and
+32 sequentially executed notebook code cells. They include all four optional
+investigations. The length experiment gets 64/64 in-range answers but 0/64
+length-7/8 answers with the same checkpoint and cap 10; 54 longer answers
+end early. The leakage comparison changes only the two imported mask bindings
+inside restoring contexts. Whole-reference/prefix-only NLLs are 0.8531/0.8531
+for the causal model and 0.8460/7.1246 for the altered model. These comparisons
+use validation examples, fresh paired initializations, and uncached generation.
+
+The nine exported snippets were checked against canonical source. The private
+manuscript uses the same recorded run for its table and learning curve. PDFs
+are generated reproducibly from the executed notebook and visually inspected.
+
 ## Chapter 7: GPT, BERT, and T5
 
 The new `examples/ch07_pretraining/` module constructs three learning problems

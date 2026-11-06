@@ -89,23 +89,17 @@ notebook PDF are generated from the same executed notebook.
 
 ## Chapter 6. Training and Generating with a Small Transformer
 
+All [15 exercises](../examples/ch06_training/EXERCISES.md) are solved in each
+edition, in the chapter's order.
+
 | Exercises | Topics | Files |
 | --- | --- | --- |
-| 2, 4, and 5 | Token loss and its gradient, gradient clipping, and KV cache storage | [Written solutions (PDF)](ch06_training/written-solutions.pdf) |
-| 1, 3, and 6–12 | Padded batches, corpus NLL, generation, model selection, leakage, cache correctness, and timing | [Jupyter notebook](ch06_training/python-solutions.ipynb) · [Notebook export (PDF)](ch06_training/python-solutions.pdf) |
+| 1–15 | Updates, shifts, loss, clipping, generation, caches, checkpoints, generalization, selection, leakage, and timing | [Written solutions (PDF)](ch06_training/written-solutions.pdf) · [Jupyter notebook](ch06_training/python-solutions.ipynb) · [Notebook export (PDF)](ch06_training/python-solutions.pdf) |
 
-Start JupyterLab from the repository root in an environment with the
-[Chapter 6 dependencies](../requirements-ch06.txt).
-
-```sh
-python -m pip install -r requirements-ch06.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch06_training/python-solutions.ipynb`, select that Python
-kernel, and run all cells. The notebook uses CPU models and the synthetic
-color sequences from the [Chapter 6 examples](../examples/ch06_training/).
-It includes the reference training recipe and four optional experiments.
+See the [solution guide](ch06_training/README.md) for execution and PDF export.
+The notebook trains small CPU models, includes all four optional experiments,
+and restores temporary mask changes automatically. Both PDF editions are
+built from that executed notebook.
 
 ## Chapter 7. GPT, BERT, and T5
 
