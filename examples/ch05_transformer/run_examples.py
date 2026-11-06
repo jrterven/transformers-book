@@ -8,14 +8,22 @@ from .model import (
 )
 
 
-def toy_multihead():
-    """Return the book's deterministic, unmasked two-head calculation."""
+def toy_multihead(output_projection=None):
+    """Return (output, weights, concatenation) for the two-head example.
+
+    An optional finite 4-by-4 output_projection replaces only W^O, using
+    the book's row-vector convention. It leaves both head reads unchanged.
+    """
     dtype = torch.float64
     x = torch.tensor([[1, 0, 1, 0], [0, 1, 0, 2], [1, 1, 1, 1]], dtype=dtype)[None]
     w_v = torch.tensor([[0, 0, 1, 0], [0, 0, 0, 1],
                         [1, 0, 0, 0], [0, 1, 0, 0]], dtype=dtype)
     w_o = torch.tensor([[1, 0, .5, 0], [0, 1, 0, .5],
                         [.5, 0, 1, 0], [0, .5, 0, 1]], dtype=dtype)
+    if output_projection is not None:
+        w_o = torch.as_tensor(output_projection, dtype=dtype, device="cpu")
+        if w_o.shape != (4, 4) or not torch.isfinite(w_o).all():
+            raise ValueError("output_projection must be a finite 4-by-4 matrix")
     module = MultiHeadAttention(4, 2).to(dtype=dtype)
     with torch.no_grad():
         module.q_proj.weight.copy_(torch.eye(4, dtype=dtype))

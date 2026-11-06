@@ -340,6 +340,36 @@ class TransformerTests(unittest.TestCase):
         expected = F.cross_entropy(logits[labels != 0], labels[labels != 0])
         self.assertClose(actual, expected)
 
+    def test_output_projection_changes_only_mixed_features(self):
+        original, weights, concatenated = toy_multihead()
+        identity, new_weights, new_concat = toy_multihead(torch.eye(4))
+        self.assertClose(new_weights, weights)
+        self.assertClose(new_concat, concatenated)
+        self.assertClose(identity, concatenated)
+        self.assertFalse(torch.allclose(identity, original))
+        # A nonsymmetric matrix detects a forgotten row-convention transpose.
+        projection = torch.arange(16, dtype=torch.float64).reshape(4, 4) / 8
+        mixed, _, _ = toy_multihead(projection)
+        self.assertClose(mixed, concatenated @ projection)
+        for invalid in (torch.eye(3), torch.full((4, 4), float("nan"))):
+            with self.assertRaises(ValueError):
+                toy_multihead(invalid)
+
+    def test_ignored_label_gradient_and_valid_mean(self):
+        _, _, labels = example_batch()
+        logits = torch.zeros(2, 4, 12, dtype=torch.float64, requires_grad=True)
+        rows = F.cross_entropy(logits.reshape(-1, 12), labels.flatten(),
+                               ignore_index=0, reduction="none").reshape(2, 4)
+        loss = F.cross_entropy(logits.reshape(-1, 12), labels.flatten(),
+                               ignore_index=0)
+        self.assertEqual((labels != 0).sum().item(), 7)
+        self.assertClose(loss, logits.new_tensor(math.log(12)))
+        self.assertClose(rows.mean(), loss * (7 / 8))
+        loss.backward()
+        self.assertClose(logits.grad[labels == 0], torch.zeros_like(logits.grad[labels == 0]))
+        # PAD remains a competing vocabulary class at every scored row.
+        self.assertClose(logits.grad[..., 0][labels != 0], logits.new_full((7,), 1 / 84))
+
     def test_full_demo(self):
         logits, attention, loss = full_model_example()
         self.assertEqual(tuple(logits.shape), (2, 4, 12))

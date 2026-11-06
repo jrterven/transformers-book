@@ -8,6 +8,10 @@ feed-forward networks, residual paths, post-norm layers, and a vocabulary head.
 It follows the block ordering of the 2017 architecture. The worked model is
 randomly initialized and runs on a CPU; it is not a trained translation system.
 
+The [15 exercises](EXERCISES.md) progress from tracing one prediction to
+testing complete stacks. Every exercise has a [worked solution](../../solutions/ch05_transformer/README.md)
+in the notebook and both PDF editions.
+
 ## Run the examples
 
 From the companion repository root:
@@ -17,8 +21,8 @@ python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-ch05.txt
 python -m examples.ch05_transformer.run_examples
-python -m unittest discover -s tests -v
-python scripts/export_snippets.py --check
+python -m unittest discover -s tests -p test_transformer.py -v
+python scripts/export_snippets.py --chapter ch05 --check
 ```
 
 Chapter 4 needs only NumPy. The Chapter 5 test class is skipped if PyTorch is not
@@ -50,6 +54,11 @@ checks. No pretrained model, dataset, accelerator, or training loop is needed.
 
 For row-vector multiplication `x @ W`, `nn.Linear` stores `W.T`. The attention
 implementation uses batch-first inputs and explicitly splits and merges heads.
+
+`toy_multihead(output_projection=None)` returns `(output, weights, concatenation)`.
+Supply a finite `4 x 4` row-convention matrix to replace only the output
+projection. For example, `toy_multihead(torch.eye(4))` preserves the head
+weights and concatenation while returning the concatenation unchanged.
 
 `vocabulary_readout_example()` returns `(logits, probabilities)`, each with
 shape `[1,3]`: one target position in the illustrative three-entry vocabulary.
@@ -125,6 +134,10 @@ For the first example, the decoder sees `BOS el coche rojo` and predicts
 `el coche rojo EOS`. The last padded label in the second example is excluded by
 `ignore_index=0`. `cross_entropy` receives logits directly; applying softmax
 before it would be incorrect for this API. The runner does not call an optimizer.
+Seven labels contribute to the ordinary mean loss. Averaging all eight
+unreduced entries, including a zero at the ignored row, would use the wrong
+denominator. Ignoring a PAD label does not remove PAD as a competing class
+from the vocabulary normalization at valid rows.
 
 ## Scope and checks
 
@@ -171,3 +184,9 @@ the complete modules rather than individual snippet files. The exporter also
 supports the other developed chapters and defaults to all of them. Its
 `--check` flag compares the exported files with the canonical source without
 rewriting them.
+
+The Chapter 5 review passed 21 tests and checked all nine exported listings
+with Python 3.12.14, PyTorch 2.15.0, and NumPy 2.5.4 on CPU. The executed
+solution notebook includes all 15 exercises in 26 code cells. The checked
+seed-7 full-model loss is approximately 2.973556; this is an initialization
+check, not a measure of learned translation quality.

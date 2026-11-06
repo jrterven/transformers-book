@@ -76,22 +76,16 @@ to regenerate both PDFs from the executed notebook.
 
 ## Chapter 5. Multiple Heads, Position, and the Complete Architecture
 
+All [15 exercises](../examples/ch05_transformer/EXERCISES.md) are covered in
+each edition, in the same order as the chapter.
+
 | Exercises | Topics | Files |
 | --- | --- | --- |
-| 2 and 3 | Attention map shapes and sinusoidal positions | [Written solutions (PDF)](ch05_transformer/written-solutions.pdf) |
-| 1 and 4–12 | Heads, normalization, dropout, feed-forward layers, vocabulary loss, padding, causality, and deeper stacks | [Jupyter notebook](ch05_transformer/python-solutions.ipynb) · [Notebook export (PDF)](ch05_transformer/python-solutions.pdf) |
+| 1–15 | Prediction paths, projected heads, positions, post-norm, dropout, FFNs, vocabulary loss, padding, causality, and deeper stacks | [Written solutions (PDF)](ch05_transformer/written-solutions.pdf) · [Jupyter notebook](ch05_transformer/python-solutions.ipynb) · [Notebook export (PDF)](ch05_transformer/python-solutions.pdf) |
 
-Start JupyterLab from the repository root in an environment with the
-[Chapter 5 dependencies](../requirements-ch05.txt).
-
-```sh
-python -m pip install -r requirements-ch05.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch05_transformer/python-solutions.ipynb`, select that Python
-kernel, and run all cells. The notebook uses the CPU PyTorch implementation
-from the [Chapter 5 examples](../examples/ch05_transformer/).
+See the [Chapter 5 solution guide](ch05_transformer/README.md) for execution,
+validation, and reproducible PDF export instructions. The written PDF and
+notebook PDF are generated from the same executed notebook.
 
 ## Chapter 6. Training and Generating with a Small Transformer
 
