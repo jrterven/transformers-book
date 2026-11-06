@@ -501,3 +501,23 @@ Open `solutions/ch25_visual_generation/python-solutions.ipynb`, select that Pyth
 and run all cells. The notebook uses the
 [Chapter 25 examples](../examples/ch25_visual_generation/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 26. Models for Code
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–11 | Half-open intervals, code infilling, test boundaries, pass@k, repository context, and benchmark splits | [Written solutions (PDF)](ch26_code_models/written-solutions.pdf) |
+| 5–8 | Per-case records, one-integer overlaps, pass@k, and shortest-candidate selection | [Jupyter notebook](ch26_code_models/python-solutions.ipynb) · [Notebook export (PDF)](ch26_code_models/python-solutions.pdf) |
+
+The exercises use the Python standard library. Start JupyterLab from
+the repository root.
+
+```sh
+python -m pip install jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch26_code_models/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 26 examples](../examples/ch26_code_models/). The PDF export includes
+the explanations, code, and recorded outputs.
