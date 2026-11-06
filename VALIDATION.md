@@ -907,3 +907,30 @@ Independent calculations checked 144 delta updates and 1,500 streaming
 steps across 240 schedule cases. The comparisons covered projected
 history, state sizes, and the causal boundary. The examples use
 hand-chosen projections and gates and run on a CPU.
+
+## Chapter 16. From Pretrained Weights to Task Behavior
+
+~~~sh
+python -m examples.ch16_adaptation.run_examples --output output/ch16.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and PyTorch 2.14.1, all 216 tests
+passed, including ten for Chapter 16. All 91 excerpts matched their
+sources. Repeated runs produced identical JSON.
+
+The head-only run trained 8 of 17 parameters and left the encoder
+unchanged. Full fine-tuning trained all 17 and changed its largest
+encoder entry by about 0.468. Both runs classified all four held-out
+synthetic points correctly after training.
+
+The shifted labels scored Yes and EOS. The example returned completion
+log-probability -1.7917594692 and mean supervised loss 0.8958797346.
+The adapted, merged, and reloaded rank-one projection all returned
+(7, 3). The DPO example gave a margin of 1 and loss 0.3132616875.
+The tests checked zero gradients on ignored logit rows, adapter gradients
+with the base frozen, and detached preference reference scores.
+
+Independent reference calculations checked 54 response batches with varied
+lengths, 36 LoRA configurations, and 80 batches of preference pairs.

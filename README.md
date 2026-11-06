@@ -197,6 +197,17 @@ python -m pip install -r requirements.txt
 python -m examples.ch15_hybrids.run_examples --output output/ch15.json
 ```
 
+[Chapter 16: From Pretrained Weights to Task Behavior](examples/ch16_adaptation/)
+compares a frozen feature extractor with full fine-tuning, aligns response
+targets, and checks low-rank adaptation and the DPO objective. The
+[chapter guide](examples/ch16_adaptation/README.md) explains the trainable
+parameters, the response mask, and the adapter checkpoint roundtrip.
+
+```sh
+python -m pip install -r requirements-ch05.txt
+python -m examples.ch16_adaptation.run_examples --output output/ch16.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

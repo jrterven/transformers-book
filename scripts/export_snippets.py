@@ -108,6 +108,12 @@ CHAPTERS = {
         "destination": "snippets/ch15_hybrids",
         "expected": {"delta_step", "attention_token", "stack_step", "history_counts"},
     },
+    "ch16": {
+        "sources": ("examples/ch16_adaptation/model.py",),
+        "destination": "snippets/ch16_adaptation",
+        "expected": {"train_classifier", "response_labels", "completion_logprob",
+                     "lora_linear", "dpo_loss"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
