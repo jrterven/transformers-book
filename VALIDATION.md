@@ -1162,3 +1162,25 @@ before the middle marker in the serialized prompt.
 
 Independent calculations checked 728 pass@k settings by subset
 enumeration and all four candidates over 2,025 interval pairs.
+
+## Chapter 27. Time-Series Forecasting
+
+~~~sh
+python -m examples.ch27_time_series.run_examples --output output/ch27.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 319 tests
+passed, including ten for Chapter 27. All 135 excerpts matched
+their sources. Saved JSON, stdout, and the NumPy-only run agreed.
+
+The fixture fit a drift of four on values before index 24. It
+omitted origins 22 and 23 because their targets cross the split,
+then scored six origins from 24 through 29. The seasonal-naive
+MAE was (4, 4, 4) and the fitted drift MAE was (0, 0, 0).
+
+The separate two-origin interval example gave MAE (0.5, 0.5, 1.5),
+coverage (1, 1, 0.5), and mean width (2, 2, 2). Independent
+calculations checked 96 window configurations, 60 seasonal
+forecasts, and 80 interval cases.

@@ -316,6 +316,17 @@ explains the case records and the per-task pass@k calculation.
 python -m examples.ch26_code_models.run_examples --output output/ch26.json
 ```
 
+[Chapter 27: Time-Series Forecasting](examples/ch27_time_series/) builds
+windows in time order, compares seasonal forecasts with and without
+fitted drift, and measures interval coverage by horizon. The
+[chapter guide](examples/ch27_time_series/README.md) explains which
+observations the forecaster can use at each origin.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch27_time_series.run_examples --output output/ch27.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

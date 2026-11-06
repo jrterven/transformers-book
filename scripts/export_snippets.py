@@ -172,6 +172,12 @@ CHAPTERS = {
         "expected": {"interval_candidates", "score_candidate", "pass_at_k",
                      "serialize_fim"},
     },
+    "ch27": {
+        "sources": ("examples/ch27_time_series/model.py",),
+        "destination": "snippets/ch27_time_series",
+        "expected": {"rolling_windows", "seasonal_naive", "seasonal_drift",
+                     "forecast_metrics"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
