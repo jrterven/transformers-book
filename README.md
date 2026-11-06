@@ -243,6 +243,17 @@ python -m pip install -r requirements-ch06.txt
 python -m examples.ch19_generation.run_examples --train-step
 ```
 
+[Chapter 20: Search, Retrieval, and Grounded Assistants](examples/ch20_retrieval/)
+ranks a local passage collection with BM25 and dense scores, reranks a
+candidate set, and checks what survives the context budget. The
+[chapter guide](examples/ch20_retrieval/README.md) explains the distinction
+between literal evidence, annotated recall, and answer support.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch20_retrieval.run_examples --output output/ch20.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

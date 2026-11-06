@@ -1006,3 +1006,24 @@ scored five labels. Mean loss on the same batch changed from
 2.45547187158 to 2.36915952961 after one CPU update. Independent
 checks covered 60 ragged batches, 80 probability trees, and 245
 token pairs for the overlap calculations.
+
+## Chapter 20. Search, Retrieval, and Grounded Assistants
+
+~~~sh
+python -m examples.ch20_retrieval.run_examples --output output/ch20.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 256 tests
+passed, including nine for Chapter 20. All 109 excerpts matched
+their sources. Saved JSON, stdout, and the NumPy-only run agreed.
+
+BM25 ranked P2 first and P1 second. The hand-chosen dense scores
+were 0.8, 0.6, and 0 for P1, P2, and P3. Reranking the two lexical
+candidates placed P1 first. With a budget of ten words, the input
+contained P1 and the literal phrase "mobility desk." The price case
+had no annotated evidence or answer in the fixture.
+
+Independent calculations checked 48 lexical configurations, 18 dense
+score and rank cases, and 20 packing, evidence, and reranking cases.

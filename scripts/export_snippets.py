@@ -133,6 +133,12 @@ CHAPTERS = {
         "expected": {"collate_pairs", "beam_search", "clipped_precision",
                      "rouge_l", "encoder_decoder_step"},
     },
+    "ch20": {
+        "sources": ("examples/ch20_retrieval/model.py",),
+        "destination": "snippets/ch20_retrieval",
+        "expected": {"bm25_scores", "dense_scores", "rank_passages", "pack_context",
+                     "evidence_occurrence"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
