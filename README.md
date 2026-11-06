@@ -327,6 +327,16 @@ python -m pip install -r requirements.txt
 python -m examples.ch27_time_series.run_examples --output output/ch27.json
 ```
 
+[Chapter 28: Learning from Tables](examples/ch28_tabular/) fits an
+encoding on training rows, weights labeled context rows, and checks
+binary probability predictions. The [chapter guide](examples/ch28_tabular/README.md)
+explains the missing and unknown indicators and the Brier score.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch28_tabular.run_examples --output output/ch28.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

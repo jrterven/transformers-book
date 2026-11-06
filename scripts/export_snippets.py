@@ -178,6 +178,11 @@ CHAPTERS = {
         "expected": {"rolling_windows", "seasonal_naive", "seasonal_drift",
                      "forecast_metrics"},
     },
+    "ch28": {
+        "sources": ("examples/ch28_tabular/model.py",),
+        "destination": "snippets/ch28_tabular",
+        "expected": {"fit_row_encoder", "encode_rows", "context_probability", "brier_score"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

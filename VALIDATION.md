@@ -1184,3 +1184,24 @@ The separate two-origin interval example gave MAE (0.5, 0.5, 1.5),
 coverage (1, 1, 0.5), and mean width (2, 2, 2). Independent
 calculations checked 96 window configurations, 60 seasonal
 forecasts, and 80 interval cases.
+
+## Chapter 28. Learning from Tables
+
+~~~sh
+python -m examples.ch28_tabular.run_examples --output output/ch28.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 327 tests
+passed, including eight for Chapter 28. All 139 excerpts matched
+their sources. Saved JSON, stdout, and the NumPy-only run agreed.
+
+The four training rows gave median 4 and levels shop and web.
+The missing-number, unseen-channel row encoded as (4, 1, 0, 0, 0, 1).
+A held-out value of 100 and a held-out category left the fit fixed.
+
+The weighted context example gave weights (1/6, 1/3, 1/2) and
+positive-class probability 5/6. The binary Brier example gave 0.07.
+Independent checks covered 80 fitted schemas, 80 context cases,
+and 50 probability scores.
