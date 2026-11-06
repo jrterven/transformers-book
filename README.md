@@ -296,6 +296,17 @@ python -m pip install -r requirements.txt
 python -m examples.ch24_speech_audio.run_examples --output output/ch24.json
 ```
 
+[Chapter 25: Image and Video Generation](examples/ch25_visual_generation/)
+mixes a clean grid with noise, follows a deterministic diffusion sampler,
+and compares conditional and unconditional predictions. The
+[chapter guide](examples/ch25_visual_generation/README.md) explains the
+four-value fixture and the two sampler outputs.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch25_visual_generation.run_examples --output output/ch25.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

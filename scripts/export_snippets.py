@@ -161,6 +161,11 @@ CHAPTERS = {
         "destination": "snippets/ch24_speech_audio",
         "expected": {"frame_power_spectrogram", "tone_label", "word_error_rate"},
     },
+    "ch25": {
+        "sources": ("examples/ch25_visual_generation/model.py",),
+        "destination": "snippets/ch25_visual_generation",
+        "expected": {"add_noise", "guided_noise", "ddim_step"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

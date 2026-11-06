@@ -1120,3 +1120,24 @@ insertion and an undefined clip-level rate.
 
 Independent calculations checked 252 framing and transform
 configurations and 961 transcript pairs.
+
+## Chapter 25. Image and Video Generation
+
+~~~sh
+python -m examples.ch25_visual_generation.run_examples --output output/ch25.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 302 tests
+passed, including eight for Chapter 25. All 127 excerpts matched
+their sources. Saved JSON, stdout, and the NumPy-only run agreed.
+
+The noisy diagonal grid moved from cumulative signal coefficient
+0.36 to 0.64 and then 1. With the supplied exact noise it recovered
+the clean grid. Increasing one noise prediction by 0.25 in both
+updates left an error of one third at that coordinate. The guidance
+fixture returned (1, 0.6) at scale two.
+
+Independent calculations checked 60 forward mixtures, 60 guidance
+settings, and 30 deterministic updates against separate formulas.
