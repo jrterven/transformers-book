@@ -1247,3 +1247,24 @@ target stopped before the first action.
 
 Independent checks covered 300 return sequences, 300 count-policy
 fits, and 25,000 rollouts against a separate grid implementation.
+
+## Chapter 31. What Changed, and What Remains?
+
+~~~sh
+python -m examples.ch31_perspective.run_examples --output output/ch31.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17, all 357 tests passed,
+including ten for Chapter 31. All 148 excerpts matched their
+sources. Saved JSON, stdout, and the second Python run agreed.
+
+At lengths 8 and 16, the full causal counts were 36 and 136.
+A three-event window gave 21 and 45. For the delivery histories,
+the three-event window recovered the first code after one or
+two route updates and lost it after four or eight. All four
+rules returned the latest route.
+
+Independent checks covered 32,790 memory comparisons and 5,200
+causal pair-count configurations.

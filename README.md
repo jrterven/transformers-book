@@ -357,6 +357,15 @@ explains the trajectory format and how the shifted trap affects a rollout.
 python -m examples.ch30_decisions.run_examples --output output/ch30.json
 ```
 
+[Chapter 31: What Changed, and What Remains?](examples/ch31_perspective/)
+counts causal attention pairs and compares four ways to retain a
+stream of delivery events. The [chapter guide](examples/ch31_perspective/README.md)
+explains the two questions and the units used to record stored information.
+
+```sh
+python -m examples.ch31_perspective.run_examples --output output/ch31.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

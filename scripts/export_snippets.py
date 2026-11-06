@@ -194,6 +194,11 @@ CHAPTERS = {
         "destination": "snippets/ch30_decisions",
         "expected": {"returns_to_go", "fit_count_policies", "rollout"},
     },
+    "ch31": {
+        "sources": ("examples/ch31_perspective/model.py",),
+        "destination": "snippets/ch31_perspective",
+        "expected": {"compare_memory", "causal_pair_counts"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
