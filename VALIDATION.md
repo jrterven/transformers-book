@@ -1304,3 +1304,31 @@ KV accounting, state-space, diffusion, and pair-count examples. The
 repository-wide run passed 357 tests. All 148 excerpts matched their
 canonical source, and the corresponding manuscript listings matched
 these excerpts byte for byte.
+
+
+### Chapter 7 complete textbook review - November 6, 2026
+
+This review expands the exercise sequence from 12 to 14, with matching public
+statements, all explanations in both PDF editions, and 23 executed notebook
+cells. The written edition now includes the programming investigations' measured
+results as well as the conceptual answers. New exercises distinguish input
+corruption, key validity, and loss selection, and compare prompting, frozen
+features, and full adaptation. The T5 exercise includes unequal source and target
+lengths. The manuscript uses row-vector classification notation consistently.
+
+The canonical BERT helper now exposes an optional `return_trace=True` result
+without changing its two-output default or consuming extra random draws.
+`TinyTokenModel.encode_hidden` exposes final position vectors before the
+vocabulary head. Sixteen Chapter 7 tests passed without skips, including tests
+of both additions; all seven exported snippets match their canonical sources.
+The notebook executed in order with no errors on one CPU thread using Python
+3.12.14, PyTorch 2.15.0, and NumPy 2.4.6. A fresh 200-update run reproduced the
+recorded losses and selected predictions; the same reference JSON is copied
+into the private manuscript repository. The classifier starts randomly and is
+explicitly distinguished from an experiment on pretrained transfer.
+
+The chapter's five figures explain parameter reuse, attention permissions,
+GPT/BERT target paths, the three masking decisions, and T5 span reconstruction
+including the shifted decoder input. Figure source and manuscript remain in
+the private repository. Both solution PDFs are reproducible from the executed
+notebook using `solutions/ch07_pretraining/build_pdfs.py`.

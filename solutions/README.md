@@ -103,25 +103,20 @@ built from that executed notebook.
 
 ## Chapter 7. GPT, BERT, and T5
 
-| Exercises | Topics | Files |
+All [14 exercises](../examples/ch07_pretraining/EXERCISES.md) are covered in each edition.
+
+| Edition | Contents | File |
 | --- | --- | --- |
-| 1–5 and 12 | Shifted targets, attention grids, BERT selection and replacement, T5 span reconstruction, uniform loss, and fair comparison | [Written solutions (PDF)](ch07_pretraining/written-solutions.pdf) |
-| 6–11 | BERT replacement traces, loss gradients, causal and encoder–decoder information paths, a training run, and a classification head | [Jupyter notebook](ch07_pretraining/python-solutions.ipynb) · [Notebook export (PDF)](ch07_pretraining/python-solutions.pdf) |
+| Written | Step-by-step explanations, calculations, and measured result tables for all 14 exercises | [Written solutions (PDF)](ch07_pretraining/written-solutions.pdf) |
+| Executable | The same explanations plus 23 executed Python cells and saved outputs | [Notebook](ch07_pretraining/python-solutions.ipynb) |
+| Python PDF | The complete executed notebook typeset for reading and printing | [Notebook export (PDF)](ch07_pretraining/python-solutions.pdf) |
 
-Start JupyterLab from the repository root in an environment with the
-[PyTorch dependencies](../requirements-ch05.txt).
-
-```sh
-python -m pip install -r requirements-ch05.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch07_pretraining/python-solutions.ipynb`, select that Python
-kernel, and run all cells. The notebook uses the
-[Chapter 7 teaching models](../examples/ch07_pretraining/), runs on CPU,
-and needs no datasets or model weights from the internet. The notebook PDF
-includes the code and its recorded outputs. All three optional exercises
-are covered across the two PDFs.
+Exercises 1-7 build intuition; 8-11 investigate corruption, gradients,
+visibility, and fitting the prepared examples; optional exercises 12-14
+study encoder-decoder paths, classification heads, and fair comparison.
+The last exercise specifies an evaluation protocol. The classifier compares
+random starting weights and makes no claim about pretrained transfer.
+See the [reproduction and export guide](ch07_pretraining/README.md).
 
 ## Chapter 8. From the Original Block to Modern Decoders
 

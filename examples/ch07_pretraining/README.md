@@ -11,8 +11,8 @@ Run from the repository root, using the PyTorch environment from Chapter 5:
 python -m pip install -r requirements-ch05.txt
 python -m examples.ch07_pretraining.run_examples
 python -m examples.ch07_pretraining.run_examples --train --steps 200 --output output/ch07.json
-python -m unittest discover -s tests -v
-python scripts/export_snippets.py --check
+python -m unittest discover -s tests -p test_pretraining.py -v
+python scripts/export_snippets.py --chapter ch07 --check
 ```
 
 The default command prints the constructed examples and a visibility check.
@@ -36,7 +36,7 @@ word supplies context rather than a scored target; this deliberately short
 example adds no BOS or EOS. To teach a termination rule, include an end token
 in the original sequence before shifting it.
 
-`bert_corrupt(tokens, selected, generator=None)` takes explicit prediction
+`bert_corrupt(tokens, selected, generator=None, *, return_trace=False)` takes explicit prediction
 positions. At each selected position it saves the original word as the label,
 then chooses an input treatment: mask with probability 0.8, draw a random
 ordinary word with probability 0.1, or retain the original with probability
@@ -52,7 +52,9 @@ words in its small vocabulary. A random replacement can equal the original
 word. The input ID alone therefore does not tell us whether a position was
 selected. Labels record that decision. Even after selection is known, a random
 replacement equal to the original word looks identical to the unchanged
-treatment. To identify which branch ran, inspect the sampled decision too.
+treatment. Pass `return_trace=True` to receive `(inputs, labels, trace)`. Each trace entry
+records the actual draw, treatment, position, input ID, and label ID without
+consuming an extra random draw. The default still returns `(inputs, labels)`.
 
 `span_corrupt(tokens, spans)` accepts ordered, nonempty, half-open intervals,
 with visible text separating spans. For the sentence
@@ -68,6 +70,9 @@ it returns three arrays:
 Sentinels are dedicated IDs rather than sequences of characters. This small
 builder supports one or two hand-chosen spans and a paper-style terminal new
 sentinel. It does not sample the original T5 corruption rate or span lengths.
+For $N$ words, $R$ removed words, and $K$ separated spans, the source has
+$N-R+K+1$ tokens and the target has $R+K+2$. The decoder input has the target
+length. One span `(1, 4)` gives source length eight and target length six.
 Some production preprocessors have different boundary conventions. Here
 `BOS` is an explicit start marker inherited from Chapter 6. Actual T5 uses its
 padding-token ID as decoder start and keeps that start position valid; replacing
@@ -83,6 +88,12 @@ educational models of information flow. They do not reproduce the original
 families' learned positions, GELU/MLM heads, T5 normalization, relative position
 biases, tied weights, or other model-specific details. Their weights start
 random; the names identify the objective and broad arrangement being studied.
+
+`TinyTokenModel.encode_hidden(ids)` returns the final `[B,T,d]` position
+vectors before the vocabulary projection. Its ordinary forward pass adds
+that projection and returns `[B,T,V]` token scores. A task head can read the
+hidden vectors directly; for a causal sentence classifier, pool the last
+valid position so its vector can use the whole sentence.
 
 `selected_loss(logits, labels)` receives raw vocabulary logits and a label
 slot per input position. It ignores `-100` label slots and averages over the
@@ -143,9 +154,11 @@ python -m examples.ch07_pretraining.run_examples --train --steps 200 --output ou
 ```
 
 The output file contains the new measurements; the checked reference is kept
-separate. On another numerical environment, compare loss values with a small
-tolerance while checking the input arrays, selected-label counts, causal
-invariance, and generated tokens directly.
+separate. The November 6, 2026 review used Python 3.12.14, PyTorch 2.15.0, and NumPy
+2.4.6: all 16 Chapter 7 tests passed without skips, and all seven exported
+listings matched. Other versions can change training trajectories and chosen
+checkpoints. Check the input arrays, selected-label counts, and masked
+information paths directly; treat the recorded metrics as a reference run.
 
 The T5 teaching example generates from `BOS` using Chapter 6's greedy
 decoder. It excludes `PAD` and `BOS` when selecting a continuation and stops
@@ -163,8 +176,8 @@ if you extend the fixed-example check into a real learning experiment.
 
 For the replacement exercise, pass `encode("the red car stopped")` and `[1]`
 to `bert_corrupt`. Reuse a single `torch.Generator().manual_seed(19)` across
-calls. In an experimental copy of `bert_corrupt`, print `draw` and the
-treatment it selects. In the reference CPU setup, the first three calls keep
+calls. Pass `return_trace=True` and inspect its `draw` and `treatment`
+fields without editing the helper. In the reference CPU setup, the first three calls keep
 `red`, replace it with `[MASK]`, and draw `the`. The trace also identifies a
 random replacement that draws `red` again. Check that the label at index 1
 remains `red` in every case.
@@ -177,11 +190,17 @@ earlier logits within numerical tolerance.
 For the optional classifier, use a task that fits the fixed vocabulary, such
 as identifying whether a sentence contains `red` or `blue`. Include exactly one
 of these colors and vary the other words independently of its label. Reserve
-different sentence arrangements for training, validation, and testing. Extend
-the model to return hidden vectors before the vocabulary projection. A pooling rule selects or combines token vectors
+different sentence arrangements for training, validation, and testing. Call
+`encode_hidden(ids)` for hidden vectors before the vocabulary projection. A pooling rule selects or combines token vectors
 into one sequence vector; the last nonpadding position is a simple choice for
 a causal stack. Start the frozen-network and fine-tuning experiments from
 independent copies of the same network and new head states, using fresh
 optimizers and the same data splits. Select settings on validation data before
 using the test set. To investigate transfer, initialize both copies from the
 same separately pretrained checkpoint.
+
+
+All [14 exercise statements](EXERCISES.md) have matching [complete solutions](../../solutions/ch07_pretraining/README.md).
+The written PDF contains every explanation and result table; the executed
+notebook and its PDF also include the code and saved outputs. Exercises 1-7
+build intuition, 8-11 inspect the objectives, and 12-14 extend the investigation.

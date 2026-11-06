@@ -1,4 +1,5 @@
-def forward(self, ids):
+def encode_hidden(self, ids):
+    """Return one final hidden vector per input position, before a head."""
     valid = ids != PAD                       # [B, T]
     _check_right_padding(valid)
     allowed = valid[:, None, None, :]         # available keys
@@ -10,4 +11,7 @@ def forward(self, ids):
     x = self.position(self.embedding(ids) * math.sqrt(self.d_model))
     for layer in self.layers:
         x, _ = layer(x, allowed)
-    return self.vocabulary_projection(x)     # [B, T, V]
+    return x                                # [B, T, d_model]
+
+def forward(self, ids):
+    return self.vocabulary_projection(self.encode_hidden(ids))  # [B, T, V]

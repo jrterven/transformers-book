@@ -108,7 +108,11 @@ labels, missing spans, and encoder/decoder information paths visible. Two small
 stacks with identical weights show what changes when a later input is hidden
 by a causal mask or made available through bidirectional attention. The
 [chapter guide](examples/ch07_pretraining/README.md) explains the arrays, code,
-teaching conventions, and optional fixed-example training check.
+teaching conventions, and optional fixed-example training check. All
+[14 exercises](examples/ch07_pretraining/EXERCISES.md) have
+[complete written and executable solutions](solutions/ch07_pretraining/README.md),
+including the distinction between input replacement, attention permissions,
+and loss selection.
 
 ```sh
 python -m pip install -r requirements-ch05.txt

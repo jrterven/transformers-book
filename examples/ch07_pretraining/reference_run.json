@@ -1,11 +1,11 @@
 {
   "experiment": "chapter_7_prediction_objectives_and_information_paths",
-  "recorded_date": "2026-11-04",
+  "recorded_date": "2026-11-06",
   "command": "python -m examples.ch07_pretraining.run_examples --train --steps 200 --output output/ch07.json",
   "environment": {
-    "python": "3.11.17",
-    "pytorch": "2.14.1",
-    "numpy": "2.4.6",
+    "python": "3.12.14",
+    "pytorch": "2.15.0",
+    "numpy": "2.5.4",
     "platform": "macOS-27.0.1-arm64-arm-64bit",
     "device": "cpu"
   },
@@ -47,9 +47,7 @@
     ]
   },
   "validation": {
-    "chapter_tests": 13,
-    "repository_tests": 104,
-    "exported_snippets": 50,
+    "chapter_tests": 16,
     "chapter_snippets": 7,
     "test_skips": 0
   },
@@ -179,7 +177,7 @@
       },
       "t5": {
         "initial_nll": 2.8922839164733887,
-        "final_nll": 0.001537158852443099,
+        "final_nll": 0.0015371737536042929,
         "correct_selected": 8,
         "selected_labels": 8,
         "selected_predictions": [

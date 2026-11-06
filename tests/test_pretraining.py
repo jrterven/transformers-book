@@ -73,6 +73,46 @@ class PretrainingTests(unittest.TestCase):
             with self.subTest(selected=selected), self.assertRaises(ValueError):
                 bert_corrupt(tokens, selected)
 
+    def test_corruption_trace_observes_without_changing_random_choices(self):
+        original = encode("the red car stopped")
+        plain_rng = torch.Generator().manual_seed(19)
+        trace_rng = torch.Generator().manual_seed(19)
+        treatments, random_same_word = set(), False
+        for _ in range(128):
+            plain, labels = bert_corrupt(original, [1], plain_rng)
+            traced, traced_labels, trace = bert_corrupt(
+                original, [1], trace_rng, return_trace=True)
+            self.assertTrue(torch.equal(plain, traced))
+            self.assertTrue(torch.equal(labels, traced_labels))
+            self.assertTrue(torch.equal(plain_rng.get_state(), trace_rng.get_state()))
+            record = trace[0]
+            expected = ("mask" if record["draw"] < .8 else
+                        "random" if record["draw"] < .9 else "unchanged")
+            self.assertEqual(record["treatment"], expected)
+            self.assertEqual(record["position"], 1)
+            self.assertEqual(record["input_id"], traced[1].item())
+            self.assertEqual(record["label_id"], original[1])
+            treatments.add(expected)
+            random_same_word |= expected == "random" and record["input_id"] == original[1]
+        self.assertEqual(treatments, {"mask", "random", "unchanged"})
+        self.assertTrue(random_same_word)
+
+    def test_hidden_vectors_support_a_separate_task_head(self):
+        ids = torch.tensor([encode("the red car stopped"),
+                            encode("the blue car") + [PAD]])
+        for causal in (True, False):
+            with self.subTest(causal=causal):
+                model = TinyTokenModel(causal).double().eval()
+                hidden = model.encode_hidden(ids)
+                self.assertEqual(hidden.shape, (2, 4, model.d_model))
+                torch.testing.assert_close(model(ids), model.vocabulary_projection(hidden))
+                last_valid = (ids != PAD).sum(1) - 1
+                pooled = hidden[torch.arange(2), last_valid]
+                head = torch.nn.Linear(model.d_model, 2).double()
+                head(pooled).sum().backward()
+                self.assertIsNotNone(model.embedding.weight.grad)
+                self.assertGreater(model.embedding.weight.grad.abs().sum().item(), 0)
+
     def test_span_reconstruction_is_aligned_and_records_removed_text(self):
         original = encode("the red car stopped near the old bridge today")
         source, decoder_input, labels = span_corrupt(original, [(1, 3), (6, 8)])
