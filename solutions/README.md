@@ -601,3 +601,23 @@ Open `solutions/ch30_decisions/python-solutions.ipynb`, select that Python kerne
 and run all cells. The notebook uses the
 [Chapter 30 examples](../examples/ch30_decisions/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 31. What Changed, and What Remains?
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–12 | Causal pairs, architectural changes, summary fields, history budgets, recall tests, update composition, and ablation | [Written solutions (PDF)](ch31_perspective/written-solutions.pdf) |
+| 5–8 | Window boundaries, missing events, and storage records for four memory rules | [Jupyter notebook](ch31_perspective/python-solutions.ipynb) · [Notebook export (PDF)](ch31_perspective/python-solutions.pdf) |
+
+The exercises use the Python standard library. Start JupyterLab from
+the repository root.
+
+```sh
+python -m pip install jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch31_perspective/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 31 examples](../examples/ch31_perspective/). The PDF export includes
+the explanations, code, and recorded outputs.
