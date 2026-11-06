@@ -366,6 +366,19 @@ explains the two questions and the units used to record stored information.
 python -m examples.ch31_perspective.run_examples --output output/ch31.json
 ```
 
+## Examples for the appendices
+
+The reference appendices use calculations from the chapter examples.
+
+| Appendix | Companion examples |
+| --- | --- |
+| A. Notation and tensor shapes | [Self-attention and masks](examples/ch04_attention/) |
+| B. Calculus and optimization | [Training the small Transformer](examples/ch06_training/) |
+| C. Stable numerics | [Stable softmax](examples/ch04_attention/) and [normalization](examples/ch08_modern/) |
+| D. Complexity and memory | [KV accounting](examples/ch10_kv/) and [causal pair counts](examples/ch31_perspective/) |
+| E. Convolution and scans | [Structured state spaces](examples/ch13_state_spaces/) and [selective updates](examples/ch14_selective_ssm/) |
+| F. Diffusion foundations | [Noise, guidance, and DDIM](examples/ch25_visual_generation/) |
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

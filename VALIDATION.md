@@ -1268,3 +1268,11 @@ rules returned the latest route.
 
 Independent checks covered 32,790 memory comparisons and 5,200
 causal pair-count configurations.
+
+## Appendix references and final checks
+
+The appendices use the existing attention, training, normalization,
+KV accounting, state-space, diffusion, and pair-count examples. The
+repository-wide run passed 357 tests. All 148 excerpts matched their
+canonical source, and the corresponding manuscript listings matched
+these excerpts byte for byte.
