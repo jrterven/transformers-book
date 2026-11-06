@@ -241,3 +241,23 @@ kernel, and run all cells. The notebook uses the
 [Chapter 12 examples](../examples/ch12_efficient/) on CPU with fixed arrays.
 The PDF export includes the code and its recorded outputs. The two PDFs
 cover all three optional exercises.
+
+## Chapter 13. Structured State Spaces and Long Convolutions
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 10–11 | State updates, filter lags, bilinear discretization, streaming storage, and time-varying coefficients | [Written solutions (PDF)](ch13_state_spaces/written-solutions.pdf) |
+| 5–9 | Scan and convolution equivalence, circular wraparound, saved state, gate placement, and initial-state correction | [Jupyter notebook](ch13_state_spaces/python-solutions.ipynb) · [Notebook export (PDF)](ch13_state_spaces/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch13_state_spaces/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 13 examples](../examples/ch13_state_spaces/). The PDF export includes
+the explanations, code, and recorded outputs.
