@@ -281,3 +281,23 @@ Open `solutions/ch14_selective_ssm/python-solutions.ipynb`, select that Python k
 and run all cells. The notebook uses the
 [Chapter 14 examples](../examples/ch14_selective_ssm/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 15. Delta Rules and Hybrid Stacks
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–10 | Delta corrections, sign changes, Jamba layer types, mixed history bytes, overlapping keys, and controlled tests | [Written solutions (PDF)](ch15_hybrids/written-solutions.pdf) |
+| 5–8 | State reads, persistent stores, mixer replacement, and cached causal attention | [Jupyter notebook](ch15_hybrids/python-solutions.ipynb) · [Notebook export (PDF)](ch15_hybrids/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch15_hybrids/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 15 examples](../examples/ch15_hybrids/). The PDF export includes
+the explanations, code, and recorded outputs.
