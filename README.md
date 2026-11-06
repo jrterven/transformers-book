@@ -275,6 +275,17 @@ python -m pip install -r requirements.txt
 python -m examples.ch22_detection.run_examples --output output/ch22.json
 ```
 
+[Chapter 23: Vision–Language and Multimodal Models](examples/ch23_multimodal/)
+computes a contrastive similarity matrix, scores retrieval with multiple
+relevant items, and projects cross-attention outputs to a language width.
+The [chapter guide](examples/ch23_multimodal/README.md) explains the two
+retrieval directions and the visual bridge.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch23_multimodal.run_examples --output output/ch23.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

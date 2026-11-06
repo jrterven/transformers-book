@@ -1071,3 +1071,27 @@ single-threshold all-points AP was 5/6.
 
 Independent calculations checked 120 box pairs, 120 mask pairs, 150
 assignments, and 288 ranked detection evaluations.
+
+## Chapter 23. Vision–Language and Multimodal Models
+
+~~~sh
+python -m examples.ch23_multimodal.run_examples --output output/ch23.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 284 tests
+passed, including nine for Chapter 23. All 121 excerpts matched
+their sources. Saved JSON, stdout, and the NumPy-only run agreed.
+
+The two-pair logits were [[2, 1.2], [0, 1.6]]. The directional
+losses were about 0.277501 and 0.319972, with mean 0.298736.
+The retrieval fixture gave mean recall 0.75 at rank one and
+1.0 at rank two in both directions. Queries without annotated
+relevant items were excluded from those means.
+
+The bridge weights were (0.25, 0.75), with context (0.5, 3) and
+projected row (0.5, 3, -2.5).
+
+Independent calculations checked 27 scaled similarity configurations,
+20 contrastive batches, 64 retrieval settings, and 48 visual bridges.

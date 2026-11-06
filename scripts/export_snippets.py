@@ -150,6 +150,12 @@ CHAPTERS = {
         "destination": "snippets/ch22_detection",
         "expected": {"iou", "match_queries", "precision_recall", "all_points_ap"},
     },
+    "ch23": {
+        "sources": ("examples/ch23_multimodal/model.py",),
+        "destination": "snippets/ch23_multimodal",
+        "expected": {"contrastive_logits", "contrastive_loss", "bidirectional_recall",
+                     "image_feature_bridge"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
