@@ -1027,3 +1027,27 @@ had no annotated evidence or answer in the fixture.
 
 Independent calculations checked 48 lexical configurations, 18 dense
 score and rank cases, and 20 packing, evidence, and reranking cases.
+
+## Chapter 21. Image and Video Understanding
+
+~~~sh
+python -m examples.ch21_vision.run_examples --output output/ch21.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 265 tests
+passed, including nine for Chapter 21. All 113 excerpts matched
+their sources. Saved JSON, stdout, and the NumPy-only run agreed.
+
+The 8-by-8 RGB image gave four rows of 48 patch features and a
+five-by-six token array after projection, CLS, and position addition.
+Two ten-parameter heads trained on 12 synthetic images. On eight
+held-out images, ordered patch means gave accuracy 1.0 and mean loss
+0.08948969. Sorted means gave accuracy 0.5 and mean loss 0.69314718.
+
+Three frames with four patches each gave 144 joint attention pairs,
+or 36 temporal and 48 spatial pairs in the patch-only divided count.
+
+Independent calculations checked 54 patch and projection cases,
+27 probe fits, and 16 video pair enumerations.

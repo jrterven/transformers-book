@@ -139,6 +139,12 @@ CHAPTERS = {
         "expected": {"bm25_scores", "dense_scores", "rank_passages", "pack_context",
                      "evidence_occurrence"},
     },
+    "ch21": {
+        "sources": ("examples/ch21_vision/model.py",),
+        "destination": "snippets/ch21_vision",
+        "expected": {"patchify", "patch_embeddings", "linear_probe",
+                     "space_time_pairs"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

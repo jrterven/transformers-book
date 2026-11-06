@@ -254,6 +254,17 @@ python -m pip install -r requirements.txt
 python -m examples.ch20_retrieval.run_examples --output output/ch20.json
 ```
 
+[Chapter 21: Image and Video Understanding](examples/ch21_vision/) extracts
+image patches, fits linear probes on frozen features, and compares joint
+and divided video attention counts. The
+[chapter guide](examples/ch21_vision/README.md) follows the patch order
+and the held-out synthetic images.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch21_vision.run_examples --output output/ch21.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:
