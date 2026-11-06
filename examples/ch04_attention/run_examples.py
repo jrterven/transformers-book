@@ -58,11 +58,17 @@ def causal_example():
 # end-snippet:causal_example
 
 
-def gradient_max_error(q, k, v, upstream, allowed_mask):
-    """Compare the manual backward pass with central finite differences."""
+def gradient_max_error(q, k, v, upstream, allowed_mask, step=1e-6):
+    """Return the largest absolute derivative error for a finite positive step.
+
+    Vary one Q/K/V entry at a time; keep the incoming gradient and mask fixed.
+    Copies ensure that the caller's inputs are unchanged by the experiment.
+    """
+    step = float(step)
+    if not np.isfinite(step) or step <= 0:
+        raise ValueError("step must be finite and positive")
     analytic = attention_backward(q, k, v, upstream, allowed_mask)
-    inputs = [q.copy(), k.copy(), v.copy()]
-    step = 1e-6
+    inputs = [np.array(array, dtype=np.float64, copy=True) for array in (q, k, v)]
     max_error = 0.0
     for argument, array in enumerate(inputs):
         for index in np.ndindex(array.shape):
@@ -117,11 +123,22 @@ def main():
 
     prefix, _ = scaled_dot_product_attention(Q[:2], K[:2], V[:2], allowed[:2, :2])
     np.testing.assert_allclose(prefix, causal_output[:2])
-    future_k, future_v = K.copy(), V.copy()
-    future_k[2] += 100.0
-    future_v[2] -= 100.0
-    changed, _ = scaled_dot_product_attention(Q, future_k, future_v, allowed)
+    future_h = H.copy()
+    future_h[2] += np.array([2.0, -1.0, 3.0, -2.0])
+    changed_inputs = (future_h @ W_Q, future_h @ W_K, future_h @ W_V)
+    changed, _ = scaled_dot_product_attention(*changed_inputs, allowed)
     np.testing.assert_allclose(changed[:2], causal_output[:2])
+    unmasked_changed, _ = scaled_dot_product_attention(*changed_inputs)
+    assert not np.allclose(unmasked_changed[:2], output[:2])
+    print("Changing a later input row leaves the causal prefix unchanged.")
+
+    changed_values = V.copy()
+    changed_values[2] = [3.0, -1.0]
+    changed_read, same_weights = scaled_dot_product_attention(Q, K, changed_values)
+    np.testing.assert_array_equal(same_weights, weights)
+    np.testing.assert_allclose(changed_read - output,
+                               weights[:, 2, None] * [2.0, -2.0])
+    print("New first output after changing only value 3:", changed_read[0])
 
     permutation = np.array([2, 0, 1])
     permuted, _ = scaled_dot_product_attention(

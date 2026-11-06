@@ -59,8 +59,7 @@ masking, decoder timing, measured alignment maps, and an optional gradient chall
 
 | Exercises | Topics | Files |
 | --- | --- | --- |
-| 1, 2, and 4–6 | Uniform weights, changed values, sequence shapes, asymmetric attention, and causal normalization | [Written solutions (PDF)](ch04_attention/written-solutions.pdf) |
-| 3 and 7–12 | One query, batch and head axes, masks, permutations, finite differences, and gradients through projections | [Jupyter notebook](ch04_attention/python-solutions.ipynb) · [Notebook export (PDF)](ch04_attention/python-solutions.pdf) |
+| 1–15 | Roles, weighted reads, scaling, axes, masks, information flow, permutations, and optional gradients | [Written solutions (PDF)](ch04_attention/written-solutions.pdf) · [Jupyter notebook](ch04_attention/python-solutions.ipynb) · [Notebook export (PDF)](ch04_attention/python-solutions.pdf) |
 
 Start JupyterLab from the repository root in an environment with NumPy.
 
@@ -71,7 +70,9 @@ jupyter lab
 
 Open `solutions/ch04_attention/python-solutions.ipynb`, select that Python
 kernel, and run all cells. The notebook uses the NumPy implementation from the
-[Chapter 4 examples](../examples/ch04_attention/).
+[Chapter 4 examples](../examples/ch04_attention/). The [exercise sheet](../examples/ch04_attention/EXERCISES.md)
+and [solution guide](ch04_attention/README.md) describe the progression and how
+to regenerate both PDFs from the executed notebook.
 
 ## Chapter 5. Multiple Heads, Position, and the Complete Architecture
 

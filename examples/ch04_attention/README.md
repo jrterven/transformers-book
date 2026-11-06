@@ -18,14 +18,19 @@ Run these commands from the companion repository root (`transformers-book/`):
 ```sh
 python3 -m pip install -r requirements.txt
 python3 -m examples.ch04_attention.run_examples
-python3 -m unittest discover -s tests -v
-python3 scripts/export_snippets.py
-python3 scripts/export_snippets.py --check
+python3 -m unittest discover -s tests -p test_attention.py -v
+python3 scripts/export_snippets.py --chapter ch04
+python3 scripts/export_snippets.py --check --chapter ch04
 ```
 
 The install command can be skipped when NumPy is already available. The runner
 prints each stage rounded to four decimal places and checks the results at full
 precision. No model download, accelerator, network access, or training is needed.
+
+The [15 exercises](EXERCISES.md) progress from roles and hand calculations to
+masking, tensor axes, permutations, and two optional gradient challenges.
+[All solutions](../../solutions/ch04_attention/README.md) are available in an
+executed notebook and two PDFs generated from that notebook.
 
 `one_query_example(query_index=0)` in `run_examples.py` returns the scaled scores,
 weights, separate weighted value contributions, and their sum. For the first
@@ -86,6 +91,12 @@ The tests check fixed numerical references, one-query/matrix agreement, causal
 prefix and future-perturbation invariance, and isolation between batch/head
 slices. Reordering keys and values together, along with their mask columns,
 preserves the read; reordering them independently would change their pairing.
+A future-input test changes the third row of `H` and recomputes all three
+projections. The first two causal outputs stay unchanged, while the unmasked
+outputs can change. This assumes earlier input rows do not already carry future
+information. A separate value intervention verifies
+`new_output - output = weights[:, 2, None] * [2, -2]` when only the third value
+changes from `[1, 1]` to `[3, -1]` and the weights remain fixed.
 A separate check reproduces the combined padding/causal exercise: the padded
 key receives zero weight, but its query still reads valid values and returns
 `[0.5, 1.0]`. These are different rules, so excluding a key does not erase a query.
@@ -95,6 +106,14 @@ The backward function differentiates attention with respect to independent
 self-attention, when all three come from `H`, combine the paths as
 `dH = dQ @ W_Q.T + dK @ W_K.T + dV @ W_V.T`. These examples do not add dropout,
 an output projection, residual connections, normalization, or a training loop.
+
+`run_examples.gradient_max_error(q, k, v, upstream, allowed_mask, step=1e-6)`
+compares the backward pass with central differences. The optional finite,
+positive step lets Exercise 14 compare truncation and rounding errors without
+copying the gradient-check implementation. The helper leaves its inputs unchanged.
+The recorded Python 3.12.14 / NumPy 2.5.4 run passes all 20 Chapter 4 tests and
+checks all seven exported listings. With the demonstration's causal inputs,
+the default-step maximum absolute error is approximately `5.682e-11`.
 
 The book's listings are generated from marked sections in `attention.py` and
 `run_examples.py`. Edit those canonical files, then run the exporter. Its

@@ -75,10 +75,10 @@ python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 python -m examples.ch04_attention.run_examples
-python -m unittest discover -s tests -v
+python -m unittest discover -s tests -p test_attention.py -v
 ```
 
-The Chapter 4 demo uses NumPy and runs on a CPU. It prints the three-token example, its causal version, tensor shapes, and a finite-difference check of the backward pass.
+The Chapter 4 demo uses NumPy and runs on a CPU. It prints the three-token example, its causal version, tensor shapes, value and future-input interventions, and a finite-difference check of the backward pass. Its [15 exercises](examples/ch04_attention/EXERCISES.md) progress from hand calculations to information-flow checks and optional gradients. [Complete solutions](solutions/ch04_attention/README.md) include an executed notebook and two matching PDFs.
 
 [Chapter 5: The Complete Transformer](examples/ch05_transformer/) assembles multi-head attention, sinusoidal positions, positionwise feed-forward networks, residual connections, and post-norm encoder and decoder layers in PyTorch. The [chapter guide](examples/ch05_transformer/README.md) describes the model, masks, shapes, and deterministic numerical examples. Run it in the same environment after installing the additional requirements:
 

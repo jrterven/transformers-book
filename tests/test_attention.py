@@ -9,7 +9,9 @@ from examples.ch04_attention.attention import (
     scaled_dot_product_attention,
     stable_softmax,
 )
-from examples.ch04_attention.run_examples import H, K, Q, V, one_query_example
+from examples.ch04_attention.run_examples import (
+    H, K, Q, V, W_Q, W_K, W_V, gradient_max_error, one_query_example,
+)
 
 
 class SoftmaxTests(unittest.TestCase):
@@ -57,6 +59,18 @@ class SoftmaxTests(unittest.TestCase):
 
 
 class AttentionTests(unittest.TestCase):
+    def test_future_input_cannot_change_causal_prefix(self):
+        mask = np.tril(np.ones((3, 3), dtype=bool))
+        original, _ = scaled_dot_product_attention(Q, K, V, mask)
+        changed_h = H.copy()
+        changed_h[2] += [2, -1, 3, -2]
+        projected = (changed_h @ W_Q, changed_h @ W_K, changed_h @ W_V)
+        causal, _ = scaled_dot_product_attention(*projected, mask)
+        np.testing.assert_array_equal(causal[:2], original[:2])
+        unmasked, _ = scaled_dot_product_attention(Q, K, V)
+        changed_unmasked, _ = scaled_dot_product_attention(*projected)
+        self.assertFalse(np.allclose(changed_unmasked[:2], unmasked[:2]))
+
     def test_one_query_contributions_and_matrix_agreement(self):
         scores, weights, contributions, output = one_query_example()
         np.testing.assert_allclose(scores, [1 / np.sqrt(2), 0, 1 / np.sqrt(2)])
@@ -195,6 +209,30 @@ class AttentionTests(unittest.TestCase):
 
 
 class BackwardTests(unittest.TestCase):
+    def test_one_allowed_key_has_no_score_gradient(self):
+        mask = np.array([[False, True, False]])
+        upstream = np.array([[0.3, -0.7]])
+        d_q, d_k, d_v = attention_backward(Q[:1], K, V, upstream, mask)
+        np.testing.assert_array_equal(d_q, 0.0)
+        np.testing.assert_array_equal(d_k, 0.0)
+        np.testing.assert_array_equal(d_v[[0, 2]], 0.0)
+        np.testing.assert_array_equal(d_v[1], upstream[0])
+
+    def test_gradient_helper_step_and_input_preservation(self):
+        mask = np.tril(np.ones((3, 3), dtype=bool))
+        upstream = np.array([[0.2, -0.4], [0.5, 0.3], [-0.1, 0.6]])
+        originals = [array.copy() for array in (Q, K, V)]
+        coarse = gradient_max_error(Q, K, V, upstream, mask, step=1e-2)
+        fine = gradient_max_error(Q, K, V, upstream, mask, step=1e-4)
+        self.assertLess(fine, 1e-8)
+        self.assertLess(fine, coarse)
+        for array, original in zip((Q, K, V), originals):
+            np.testing.assert_array_equal(array, original)
+        for step in (0, -1, np.nan, np.inf):
+            with self.subTest(step=step):
+                with self.assertRaisesRegex(ValueError, "finite and positive"):
+                    gradient_max_error(Q, K, V, upstream, mask, step=step)
+
     def assert_finite_differences(self, q, k, v, upstream, allowed, coordinates):
         gradients = attention_backward(q, k, v, upstream, allowed)
         inputs = [q.copy(), k.copy(), v.copy()]
