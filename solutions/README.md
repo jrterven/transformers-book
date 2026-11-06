@@ -541,3 +541,23 @@ Open `solutions/ch27_time_series/python-solutions.ipynb`, select that Python ker
 and run all cells. The notebook uses the
 [Chapter 27 examples](../examples/ch27_time_series/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 28. Learning from Tables
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–11 | Available features, row encodings, weighted predictions, Brier score, customer splits, learning curves, and calibration | [Written solutions (PDF)](ch28_tabular/written-solutions.pdf) |
+| 5–8 | Training-only fitting, category flags, context weights, and confidence scores | [Jupyter notebook](ch28_tabular/python-solutions.ipynb) · [Notebook export (PDF)](ch28_tabular/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch28_tabular/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 28 examples](../examples/ch28_tabular/). The PDF export includes
+the explanations, code, and recorded outputs.
