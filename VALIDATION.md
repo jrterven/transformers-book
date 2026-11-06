@@ -982,3 +982,27 @@ The tests checked invalid BIO handling and the optional repair.
 
 Independent calculations checked 108 pooled heads, 100 first-piece
 alignments, and 120 BIO tag streams.
+
+## Chapter 19. Translation and Summarization
+
+~~~sh
+python -m examples.ch19_generation.run_examples --output output/ch19.json
+python -m examples.ch19_generation.run_examples --train-step
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17, NumPy 2.4.6, and PyTorch 2.14.1,
+all 247 tests passed, including 11 for Chapter 19. All 104 excerpts
+matched their sources. Default JSON matched the NumPy-only run.
+
+Greedy decoding returned A then EOS with probability 0.33. Beam
+width two returned B then EOS with probability 0.38. A one-step
+limit returned an unfinished prefix. The clipped unigram precision
+was 0.5, and the single-pair ROUGE-L F1 was 0.6.
+
+The small encoder-decoder produced logits of shape (2, 3, 11) and
+scored five labels. Mean loss on the same batch changed from
+2.45547187158 to 2.36915952961 after one CPU update. Independent
+checks covered 60 ragged batches, 80 probability trees, and 245
+token pairs for the overlap calculations.

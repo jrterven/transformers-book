@@ -230,6 +230,19 @@ python -m pip install -r requirements.txt
 python -m examples.ch18_understanding.run_examples --output output/ch18.json
 ```
 
+[Chapter 19: Translation and Summarization](examples/ch19_generation/)
+builds shifted text pairs, compares greedy and beam decoding, and computes
+clipped precision and subsequence overlap. The
+[chapter guide](examples/ch19_generation/README.md) explains the completion
+flag and the optional encoder-decoder training step.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch19_generation.run_examples --output output/ch19.json
+python -m pip install -r requirements-ch06.txt
+python -m examples.ch19_generation.run_examples --train-step
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

@@ -126,6 +126,13 @@ CHAPTERS = {
         "expected": {"sentence_logits", "first_piece_labels", "bio_spans",
                      "span_metrics"},
     },
+    "ch19": {
+        "sources": ("examples/ch19_generation/model.py",
+                    "examples/ch19_generation/training.py"),
+        "destination": "snippets/ch19_generation",
+        "expected": {"collate_pairs", "beam_search", "clipped_precision",
+                     "rouge_l", "encoder_decoder_step"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
