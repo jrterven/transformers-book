@@ -189,6 +189,11 @@ CHAPTERS = {
         "expected": {"residue_composition", "dipeptide_frequencies",
                      "mean_pool_residues", "contact_map"},
     },
+    "ch30": {
+        "sources": ("examples/ch30_decisions/model.py",),
+        "destination": "snippets/ch30_decisions",
+        "expected": {"returns_to_go", "fit_count_policies", "rollout"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

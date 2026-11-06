@@ -1226,3 +1226,24 @@ indices. The second distance equals the inclusive threshold.
 
 Independent checks covered 120 sequence and pair counts, 32 masked
 means, and 360 distance and sequence-separation settings.
+
+## Chapter 30. Decisions and Embodied Action
+
+~~~sh
+python -m examples.ch30_decisions.run_examples --output output/ch30.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17, all 347 tests passed,
+including ten for Chapter 30. All 146 excerpts matched their
+sources. Saved JSON, stdout, and the second Python run agreed.
+
+Rewards (1, -2, 3) gave returns-to-go (2, 1, 3). On the original
+grid, the state-only policy chose R and scored -1. With target
++1 the conditioned policy chose D, R, R, U and scored +1. On the
+shifted grid it chose D, R and scored -1. An unsupported initial
+target stopped before the first action.
+
+Independent checks covered 300 return sequences, 300 count-policy
+fits, and 25,000 rollouts against a separate grid implementation.

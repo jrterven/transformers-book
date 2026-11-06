@@ -348,6 +348,15 @@ python -m pip install -r requirements.txt
 python -m examples.ch29_protein.run_examples --output output/ch29.json
 ```
 
+[Chapter 30: Decisions and Embodied Action](examples/ch30_decisions/)
+builds return-to-go targets, fits two count policies, and runs them in a
+small grid. The [chapter guide](examples/ch30_decisions/README.md)
+explains the trajectory format and how the shifted trap affects a rollout.
+
+```sh
+python -m examples.ch30_decisions.run_examples --output output/ch30.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:
