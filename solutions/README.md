@@ -4,8 +4,13 @@
 
 | Exercises | Topics | Files |
 | --- | --- | --- |
-| 1–7 and 9 | Token IDs, embedding lookup, vocabulary renumbering, subwords, softmax, context order, batch shapes, and sentence probabilities | [Written solutions (PDF)](ch01_language/written-solutions.pdf) |
-| 8 and 10 | Next-token training pairs and the limits of a two-token context | [Jupyter notebook](ch01_language/python-solutions.ipynb) · [Notebook export (PDF)](ch01_language/python-solutions.pdf) |
+| 1–12 | All written explanations and answers, from token IDs and shapes through probability, loss, context, and numerical stability | [Written solutions (PDF)](ch01_language/written-solutions.pdf) |
+| 1–12 | Executable checks for every exercise, with full outputs | [Jupyter notebook](ch01_language/python-solutions.ipynb) · [Notebook export (PDF)](ch01_language/python-solutions.pdf) |
+
+The [exercise statements](../examples/ch01_language/EXERCISES.md) match the revised
+manuscript. Exercises 1–7 introduce the foundations, 8–10 combine calculations and
+Python, and 11–12 are challenges. Both PDFs are generated from the same executed
+notebook; [rebuild instructions](ch01_language/README.md) keep them synchronized.
 
 The notebook includes its executed outputs. To rerun it, start JupyterLab from
 the repository root in a Python environment with NumPy installed.

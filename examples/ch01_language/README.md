@@ -10,14 +10,17 @@ From the repository root:
 ```sh
 python -m pip install -r requirements.txt
 python -m examples.ch01_language.run_examples
-python -m unittest discover -s tests -v
+python -m unittest discover -s tests -p test_language.py -v
 python scripts/export_snippets.py --chapter ch01 --check
 ```
 
-The first two commands run on a CPU with NumPy alone. The complete repository
-suite also contains optional PyTorch tests for Chapters 5 and 6; those are
-reported as skipped when PyTorch is unavailable. No corpus or model download is
-needed.
+These chapter-specific examples and tests run on a CPU with NumPy alone.
+No corpus or model download is needed.
+
+The [12 exercises](EXERCISES.md) progress from representations and shapes to
+probability calculations, coding, and challenges. The [worked solutions](../../solutions/ch01_language/)
+include all 12 answers, an executed notebook, and its PDF export. Their numbering
+matches the revised manuscript.
 
 ## Follow the calculation
 

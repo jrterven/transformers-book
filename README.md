@@ -28,6 +28,10 @@ Work through the [exercise solutions](solutions/) by chapter. The written
 PDFs show the calculations step by step. The Python exercises are available
 as executed Jupyter notebooks and as PDFs with the code and output.
 
+Start with the [12 Chapter 1 exercises](examples/ch01_language/EXERCISES.md),
+ordered from foundational questions to two challenges. The written solutions,
+executed notebook, and notebook PDF all use the same numbering.
+
 ## Python examples
 
 The examples make the book's calculations visible through small implementations, explicit tensor shapes, worked numerical results, and reproducible checks.
