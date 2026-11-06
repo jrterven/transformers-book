@@ -441,3 +441,23 @@ Open `solutions/ch22_detection/python-solutions.ipynb`, select that Python kerne
 and run all cells. The notebook uses the
 [Chapter 22 examples](../examples/ch22_detection/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 23. Vision–Language and Multimodal Models
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–11 | Normalized similarities, directional probabilities, caption recall, visual projection, scene splits, and image-grounded evaluation | [Written solutions (PDF)](ch23_multimodal/written-solutions.pdf) |
+| 5–8 | Logit scale, symmetric contrastive loss, rectangular retrieval, and visual cross-attention | [Jupyter notebook](ch23_multimodal/python-solutions.ipynb) · [Notebook export (PDF)](ch23_multimodal/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch23_multimodal/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 23 examples](../examples/ch23_multimodal/). The PDF export includes
+the explanations, code, and recorded outputs.
