@@ -1,0 +1,6 @@
+optimizer.zero_grad(set_to_none=True)
+logits = model(batch.source, batch.lengths, batch.decoder_input)
+loss = token_loss(logits, batch.target)
+loss.backward()
+torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+optimizer.step()

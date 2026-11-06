@@ -43,7 +43,7 @@ python -m pip install -r requirements.txt
 python -m examples.ch01_language.run_examples
 ```
 
-[Chapter 2: Recurrence and Encoder-Decoder Models](examples/ch02_recurrence/) follows a scalar recurrent update and an LSTM memory cell, then implements an LSTM encoder-decoder without attention. Its optional training experiment reverses short color sequences and compares teacher-forced token predictions with complete greedy generations. The [chapter guide](examples/ch02_recurrence/README.md) explains state transfer, source lengths, BOS/EOS alignment, padding, and the local reference results.
+[Chapter 2: Recurrence and Encoder-Decoder Models](examples/ch02_recurrence/) follows a scalar recurrent update and an LSTM memory cell, then implements an LSTM encoder-decoder without attention. Its optional training experiment reverses short color sequences and compares teacher-forced token predictions with complete greedy generations. The [chapter guide](examples/ch02_recurrence/README.md) explains state transfer, source lengths, BOS/EOS alignment, padding, and the local reference results. The [14 progressive exercises](examples/ch02_recurrence/EXERCISES.md) have matching [worked solutions and executed notebooks](solutions/ch02_recurrence/README.md).
 
 ```sh
 python -m pip install -r requirements-ch02.txt

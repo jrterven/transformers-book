@@ -87,15 +87,15 @@ all splits use the same six colors. Targets reverse the source and add EOS.
 This checkable task does not model translation or language understanding.
 
 Both embeddings have width 16 and each LSTM has hidden width 64. The model has
-42,857 learned parameters and no dropout. Adam uses learning rate `0.003`,
+42,857 parameter-tensor entries and no dropout. This count includes two 16-entry PAD embedding rows that remain fixed at zero; it does not count the changing recurrent states. Adam uses learning rate `0.003`,
 batch size 32, and gradient clipping at norm 1.0. Each update samples without
 replacement within the batch. Validation is checked every 50 updates and at
 the final update. The checkpoint minimizes validation token negative
 log-likelihood; test results do not select it.
 
-The local reference run selected update 600. Validation NLL was
-`0.106928281486` with 40/48 exact greedy sequences. Test NLL was
-`0.090296871960` with 43/48 exact sequences: 12/12 at each source length three,
+The checked CPU run (Python 3.12.14, PyTorch 2.15.0, NumPy 2.5.4) selected update 600. Validation NLL was
+`0.106924302876` with 40/48 exact greedy sequences. Test NLL was
+`0.090301297605` with 43/48 exact sequences: 12/12 at each source length three,
 four, and five, and 7/12 at length six. These results describe one split and
 initialization, not a general length limit or a comparison with a Transformer.
 
@@ -156,9 +156,24 @@ and the generation cap for a model that never emits EOS. A separate controlled
 evaluation test checks token-weighted loss, per-length counts, and complete
 sequence grading, including erroneous PAD or BOS before EOS and a missing EOS.
 
-Six book listings are exported from the runnable code:
+Seven book listings are exported from the runnable code:
 
 ```sh
 python scripts/export_snippets.py --chapter ch02
-python scripts/export_snippets.py --check
+python scripts/export_snippets.py --chapter ch02 --check
 ```
+
+## Exercises and solutions
+
+The [14 exercises](EXERCISES.md) progress from distinguishing states and weights
+to recurrent arithmetic, gates, state transfer, shifted labels, padding, and
+analysis of a training experiment. The final challenge separates greedy
+selection from the most probable complete sequence.
+
+[Worked solutions](../../solutions/ch02_recurrence/README.md) cover every
+exercise in a written PDF and an executed notebook with its own PDF export.
+The training-update listing connects the forward model to gradient calculation
+and parameter updates.
+
+Implementation references: [PyTorch LSTM](https://docs.pytorch.org/docs/2.15/generated/torch.nn.LSTM.html)
+and [Embedding padding behavior](https://docs.pytorch.org/docs/2.15/generated/torch.nn.Embedding.html).

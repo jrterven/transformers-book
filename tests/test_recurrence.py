@@ -134,6 +134,20 @@ class RecurrentSequenceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             token_loss(logits, torch.zeros_like(target))
 
+    def test_padding_embedding_rows_stay_fixed_during_an_optimizer_update(self):
+        model = RecurrentSeq2Seq().double()
+        self.assertEqual(sum(p.numel() for p in model.parameters()), 42857)
+        optimizer = torch.optim.Adam(model.parameters(), lr=0.003)
+        source_before = model.source_embedding.weight.detach().clone()
+        logits = model(self.batch.source, self.batch.lengths, self.batch.decoder_input)
+        token_loss(logits, self.batch.target).backward()
+        for embedding in (model.source_embedding, model.target_embedding):
+            self.assertTrue(torch.equal(embedding.weight.grad[PAD], torch.zeros(16).double()))
+        optimizer.step()
+        for embedding in (model.source_embedding, model.target_embedding):
+            self.assertTrue(torch.equal(embedding.weight[PAD], torch.zeros(16).double()))
+        self.assertGreater((model.source_embedding.weight[3:] - source_before[3:]).abs().sum(), 0)
+
     def test_greedy_stops_at_eos_and_pads_finished_rows(self):
         source, lengths = self.batch.source[:2], self.batch.lengths[:2]
         first, second = torch.zeros(2, 9), torch.zeros(2, 9)

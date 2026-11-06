@@ -46,7 +46,8 @@ def arithmetic_demo():
     print("Teacher-forced logits shape:", tuple(logits.shape))
     print("Encoder state shapes:", [tuple(s.shape) for s in
                                       model.encode(batch.source, batch.lengths)])
-    print("Parameters:", sum(p.numel() for p in model.parameters()))
+    print("Parameter tensor entries:", sum(p.numel() for p in model.parameters()))
+    print("Fixed PAD embedding entries:", 2 * model.source_embedding.embedding_dim)
     print(f"Untrained demonstration loss: {loss.item():.12f}")
     print("Untrained greedy IDs:", generated.tolist())
     print("Forward/backward checks passed; these are not trained predictions.")
@@ -115,12 +116,14 @@ def run_training(steps=750, seed=2026, output=Path("output/ch02")):
     for step in range(1, steps + 1):
         model.train()
         batch = collate(rng.sample(train, 32))
+        # snippet:training_update
         optimizer.zero_grad(set_to_none=True)
         logits = model(batch.source, batch.lengths, batch.decoder_input)
         loss = token_loss(logits, batch.target)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         optimizer.step()
+        # end-snippet:training_update
         if step % 50 == 0 or step == steps:
             metrics = evaluate(model, validation)
             record = {"step": step, "train_batch_nll": loss.item(),

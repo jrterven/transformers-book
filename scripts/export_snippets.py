@@ -17,10 +17,12 @@ CHAPTERS = {
     },
     "ch02": {
         "sources": ("examples/ch02_recurrence/model.py",
-                    "examples/ch02_recurrence/data.py"),
+                    "examples/ch02_recurrence/data.py",
+                    "examples/ch02_recurrence/run_examples.py"),
         "destination": "snippets/ch02_recurrence",
         "expected": {"rnn_step", "lstm_update", "encode_decode",
-                     "teacher_forcing", "token_loss", "greedy_decode"},
+                     "teacher_forcing", "token_loss", "greedy_decode",
+                     "training_update"},
     },
     "ch03": {
         "sources": ("examples/ch03_alignment/model.py",

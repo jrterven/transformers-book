@@ -26,22 +26,18 @@ and functions from the [Chapter 1 examples](../examples/ch01_language/).
 
 ## Chapter 2. Recurrence and Encoder-Decoder Models
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 2–8 and 12 | Recurrent order, gradient paths, LSTM gates, encoder state transfer, shifted targets, batch shapes, loss, and the information path | [Written solutions (PDF)](ch02_recurrence/written-solutions.pdf) |
-| 1 and 9–11 | The scalar state trace, packed source padding, teacher-forced scoring, greedy generation, and evaluation by source length | [Jupyter notebook](ch02_recurrence/python-solutions.ipynb) · [Notebook export (PDF)](ch02_recurrence/python-solutions.pdf) |
+All [14 exercises](../examples/ch02_recurrence/EXERCISES.md) have matching
+numbering in the chapter, written solutions, and executed notebook.
 
-To rerun the notebook, start JupyterLab from the repository root in an
-environment with the [Chapter 2 dependencies](../requirements-ch02.txt).
+| Coverage | Materials |
+| --- | --- |
+| Exercises 1-14: explanations, calculations, and interpretation | [Written solutions (PDF)](ch02_recurrence/written-solutions.pdf) |
+| Exercises 1-14: executable checks and a complete color-reversal run | [Jupyter notebook](ch02_recurrence/python-solutions.ipynb) · [Notebook export (PDF)](ch02_recurrence/python-solutions.pdf) |
 
-```sh
-python -m pip install -r requirements-ch02.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch02_recurrence/python-solutions.ipynb`, select that Python
-kernel, and run all cells. The notebook runs the 750-update CPU color-reversal
-experiment from the [Chapter 2 examples](../examples/ch02_recurrence/).
+The [solution guide](ch02_recurrence/README.md) explains how to execute the
+notebook and rebuild both PDFs. Install the [Chapter 2 requirements](../requirements-ch02.txt)
+and a Jupyter kernel first. The 750-update experiment runs on a CPU in a
+temporary directory, preserving existing checkpoints.
 
 ## Chapter 3. Learning to Align
 
