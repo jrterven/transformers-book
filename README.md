@@ -208,6 +208,17 @@ python -m pip install -r requirements-ch05.txt
 python -m examples.ch16_adaptation.run_examples --output output/ch16.json
 ```
 
+[Chapter 17: Designing Reproducible Evaluations](examples/ch17_evaluation/)
+splits related examples by group, computes binary metrics and reliability
+bins, and compares paired predictions. The
+[chapter guide](examples/ch17_evaluation/README.md) explains the resampling
+unit and the scope of the resulting interval.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch17_evaluation.run_examples --output output/ch17.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

@@ -934,3 +934,30 @@ with the base frozen, and detached preference reference scores.
 
 Independent reference calculations checked 54 response batches with varied
 lengths, 36 LoRA configurations, and 80 batches of preference pairs.
+
+## Chapter 17. Designing Reproducible Evaluations
+
+~~~sh
+python -m examples.ch17_evaluation.run_examples --output output/ch17.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 227 tests
+passed, including 11 for Chapter 17. All 95 excerpts matched their
+sources. Saved JSON, stdout, and the NumPy-only run were identical.
+
+The split assigned six groups to three partitions with 8, 1, and 3
+rows and no shared groups. Both classifiers reached 75% accuracy on
+the twelve-example fixture, with recall of 0.50 and 0.75. The three
+reliability points were (0.20, 0.25), (0.50, 0.50), and (0.80, 0.75).
+Their example-level Brier score was about 0.198333.
+
+With 20,000 paired draws at seed 17, the percentile interval for
+accuracy B minus A was about [-0.42, 0.42] by row and [-0.56, 0.54]
+by group. The grouped resampling draws complete groups and weights
+the replicate by its sampled rows. The fixtures illustrate calculation,
+with no claim about the performance of trained classifiers.
+
+Independent checks covered 20 group splits, 80 binary metric cases,
+100 reliability and Brier cases, and 48 row or group bootstrap cases.

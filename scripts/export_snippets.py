@@ -114,6 +114,12 @@ CHAPTERS = {
         "expected": {"train_classifier", "response_labels", "completion_logprob",
                      "lora_linear", "dpo_loss"},
     },
+    "ch17": {
+        "sources": ("examples/ch17_evaluation/model.py",),
+        "destination": "snippets/ch17_evaluation",
+        "expected": {"group_split", "binary_metrics", "reliability_bins",
+                     "paired_bootstrap"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
