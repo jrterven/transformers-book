@@ -421,3 +421,23 @@ Open `solutions/ch21_vision/python-solutions.ipynb`, select that Python kernel,
 and run all cells. The notebook uses the
 [Chapter 21 examples](../examples/ch21_vision/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 22. Object Detection and Segmentation
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 9–11 | Box and mask overlap, one-to-one assignment, ranked precision and recall, prompt protocols, coordinates, and error analysis | [Written solutions (PDF)](ch22_detection/written-solutions.pdf) |
+| 5–8 | Touching edges, empty foreground, matching indices, overlap thresholds, and all-points AP | [Jupyter notebook](ch22_detection/python-solutions.ipynb) · [Notebook export (PDF)](ch22_detection/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch22_detection/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 22 examples](../examples/ch22_detection/). The PDF export includes
+the explanations, code, and recorded outputs.
