@@ -337,6 +337,17 @@ python -m pip install -r requirements.txt
 python -m examples.ch28_tabular.run_examples --output output/ch28.json
 ```
 
+[Chapter 29: Scientific Sequences and Biological Structure](examples/ch29_protein/)
+counts residues and ordered pairs, pools supplied residue vectors, and
+builds a contact map from four coordinates. The
+[chapter guide](examples/ch29_protein/README.md) explains the alphabet,
+mask, and distance convention.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch29_protein.run_examples --output output/ch29.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

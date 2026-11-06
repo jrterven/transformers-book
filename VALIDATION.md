@@ -1205,3 +1205,24 @@ The weighted context example gave weights (1/6, 1/3, 1/2) and
 positive-class probability 5/6. The binary Brier example gave 0.07.
 Independent checks covered 80 fitted schemas, 80 context cases,
 and 50 probability scores.
+
+## Chapter 29. Scientific Sequences and Biological Structure
+
+~~~sh
+python -m examples.ch29_protein.run_examples --output output/ch29.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 337 tests
+passed, including ten for Chapter 29. All 143 excerpts matched
+their sources. Saved JSON, stdout, and the NumPy-only run agreed.
+
+ACAC and AACC had the same composition and different ordered-pair
+frequencies. Masking the two marker rows and padding gave a pooled
+residue vector of (1, 1). With distance threshold 5 and sequence
+separation 2, the contact pairs were (1, 3) and (2, 4) in one-based
+indices. The second distance equals the inclusive threshold.
+
+Independent checks covered 120 sequence and pair counts, 32 masked
+means, and 360 distance and sequence-separation settings.

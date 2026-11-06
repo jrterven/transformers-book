@@ -183,6 +183,12 @@ CHAPTERS = {
         "destination": "snippets/ch28_tabular",
         "expected": {"fit_row_encoder", "encode_rows", "context_probability", "brier_score"},
     },
+    "ch29": {
+        "sources": ("examples/ch29_protein/model.py",),
+        "destination": "snippets/ch29_protein",
+        "expected": {"residue_composition", "dipeptide_frequencies",
+                     "mean_pool_residues", "contact_map"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
