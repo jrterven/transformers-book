@@ -286,6 +286,16 @@ python -m pip install -r requirements.txt
 python -m examples.ch23_multimodal.run_examples --output output/ch23.json
 ```
 
+[Chapter 24: Speech and Audio](examples/ch24_speech_audio/) builds an
+overlapping-frame spectrogram, labels clean and noisy synthetic tones,
+and scores word edits. The [chapter guide](examples/ch24_speech_audio/README.md)
+explains the frame axes and the convention for transcripts without reference words.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch24_speech_audio.run_examples --output output/ch24.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

@@ -156,6 +156,11 @@ CHAPTERS = {
         "expected": {"contrastive_logits", "contrastive_loss", "bidirectional_recall",
                      "image_feature_bridge"},
     },
+    "ch24": {
+        "sources": ("examples/ch24_speech_audio/model.py",),
+        "destination": "snippets/ch24_speech_audio",
+        "expected": {"frame_power_spectrogram", "tone_label", "word_error_rate"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 

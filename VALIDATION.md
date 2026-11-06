@@ -1095,3 +1095,28 @@ projected row (0.5, 3, -2.5).
 
 Independent calculations checked 27 scaled similarity configurations,
 20 contrastive batches, 64 retrieval settings, and 48 visual bridges.
+
+## Chapter 24. Speech and Audio
+
+~~~sh
+python -m examples.ch24_speech_audio.run_examples --output output/ch24.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 294 tests
+passed, including ten for Chapter 24. All 124 excerpts matched
+their sources. Saved JSON, stdout, and the NumPy-only run agreed.
+
+The four-sample example gave raw powers 2.25, 1.125, and 0 at
+0, 2, and 4 Hz. Each generated clip gave a seven-by-129 power
+array. The 500 and 1,000 Hz labels held for the clean and noisy
+fixtures, and the zero clip was labeled silence.
+
+The transcript pair required one substitution, one deletion,
+and one insertion over five reference words, giving WER 0.60.
+A one-word hypothesis against an empty reference returned one
+insertion and an undefined clip-level rate.
+
+Independent calculations checked 252 framing and transform
+configurations and 961 transcript pairs.
