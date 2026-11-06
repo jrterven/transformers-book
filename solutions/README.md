@@ -261,3 +261,23 @@ Open `solutions/ch13_state_spaces/python-solutions.ipynb`, select that Python ke
 and run all cells. The notebook uses the
 [Chapter 13 examples](../examples/ch13_state_spaces/). The PDF export includes
 the explanations, code, and recorded outputs.
+
+## Chapter 14. Selective State Spaces
+
+| Exercises | Topics | Files |
+| --- | --- | --- |
+| 1–4 and 10 | Selective updates, hold coefficients, affine composition, causal matrix entries, and memory tests | [Written solutions (PDF)](ch14_selective_ssm/written-solutions.pdf) |
+| 5–9 | Stable small steps, per-coordinate retention, chunk equivalence, causality, and state reset | [Jupyter notebook](ch14_selective_ssm/python-solutions.ipynb) · [Notebook export (PDF)](ch14_selective_ssm/python-solutions.pdf) |
+
+Start JupyterLab from the repository root in an environment with the
+[companion requirements](../requirements.txt).
+
+```sh
+python -m pip install -r requirements.txt jupyterlab
+jupyter lab
+```
+
+Open `solutions/ch14_selective_ssm/python-solutions.ipynb`, select that Python kernel,
+and run all cells. The notebook uses the
+[Chapter 14 examples](../examples/ch14_selective_ssm/). The PDF export includes
+the explanations, code, and recorded outputs.
