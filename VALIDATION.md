@@ -1051,3 +1051,23 @@ or 36 temporal and 48 spatial pairs in the patch-only divided count.
 
 Independent calculations checked 54 patch and projection cases,
 27 probe fits, and 16 video pair enumerations.
+
+## Chapter 22. Object Detection and Segmentation
+
+~~~sh
+python -m examples.ch22_detection.run_examples --output output/ch22.json
+python -m unittest discover -s tests -v
+python scripts/export_snippets.py --check
+~~~
+
+On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 275 tests
+passed, including ten for Chapter 22. All 117 excerpts matched
+their sources. Saved JSON, stdout, and the NumPy-only run agreed.
+
+The box and mask IoUs were 1/3 and 1/2. The cost example matched
+Q2 to A and Q1 to B, leaving Q3 unused at total cost 3. The scored
+boxes gave true positive, false positive, true positive. The
+single-threshold all-points AP was 5/6.
+
+Independent calculations checked 120 box pairs, 120 mask pairs, 150
+assignments, and 288 ranked detection evaluations.

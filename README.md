@@ -265,6 +265,16 @@ python -m pip install -r requirements.txt
 python -m examples.ch21_vision.run_examples --output output/ch21.json
 ```
 
+[Chapter 22: Object Detection and Segmentation](examples/ch22_detection/)
+computes box and mask overlap, matches object slots to annotations, and
+scores ranked detections. The [chapter guide](examples/ch22_detection/README.md)
+explains the coordinate convention and the single-threshold AP example.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch22_detection.run_examples --output output/ch22.json
+```
+
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
 The book's code listings are generated from the runnable source. After editing a marked section, regenerate the snippets and check that they are current:

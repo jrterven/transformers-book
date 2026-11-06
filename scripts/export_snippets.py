@@ -145,6 +145,11 @@ CHAPTERS = {
         "expected": {"patchify", "patch_embeddings", "linear_probe",
                      "space_time_pairs"},
     },
+    "ch22": {
+        "sources": ("examples/ch22_detection/model.py",),
+        "destination": "snippets/ch22_detection",
+        "expected": {"iou", "match_queries", "precision_recall", "all_points_ap"},
+    },
 }
 MARKER = re.compile(r"^\s*# (snippet|end-snippet):([a-z][a-z0-9_]*)\s*$")
 
