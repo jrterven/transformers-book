@@ -12,7 +12,7 @@ from torch.nn.utils.rnn import pad_sequence
 from examples.ch07_pretraining.data import IGNORE, PAD, VOCAB, causal_pairs, encode
 from examples.ch07_pretraining.model import selected_loss
 
-from .model import ModernDecoder, SwiGLU, rms_norm
+from .model import ModernDecoder, SwiGLU, rms_norm, rotate_pairs
 
 
 def normalization_example():
@@ -64,6 +64,23 @@ def prepared_batch():
     inputs, labels = zip(*rows)
     return (pad_sequence(inputs, batch_first=True, padding_value=PAD),
             pad_sequence(labels, batch_first=True, padding_value=IGNORE))
+
+
+def pair_score_example():
+    """Connect two independently rotated feature pairs to one head logit."""
+    content = torch.tensor([[[[1., 0., 1., 0.]]]], dtype=torch.float64)
+    q = rotate_pairs(content, torch.tensor([3]))
+    k = rotate_pairs(content, torch.tensor([1]))
+    contributions = (q * k).reshape(2, 2).sum(dim=-1)
+    return {
+        "query_position": 3,
+        "key_position": 1,
+        "frequencies": [1.0, 0.01],
+        "relative_angles": [-2.0, -0.02],
+        "pair_contributions": contributions.tolist(),
+        "unscaled_score": contributions.sum().item(),
+        "scaled_logit": (contributions.sum() / math.sqrt(4)).item(),
+    }
 
 
 # snippet:example_checks
@@ -121,6 +138,7 @@ def run():
             "normalization": normalization_example(),
             "swiglu": swiglu_example(),
             "rotation": rotation_example(),
+            "pair_score": pair_score_example(),
             "decoder": decoder_example(),
         }
 

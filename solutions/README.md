@@ -120,25 +120,19 @@ See the [reproduction and export guide](ch07_pretraining/README.md).
 
 ## Chapter 8. From the Original Block to Modern Decoders
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–5 and 12 | Normalization placement and scaling, SwiGLU calculations and parameter budgets, the sign in RoPE, and a matched experiment | [Written solutions (PDF)](ch08_modern/written-solutions.pdf) |
-| 6–11 | RMSNorm with epsilon, loading gate weights, causal and padding masks, decoder parameter counts, rotary positions in a cache, and residual gradients | [Jupyter notebook](ch08_modern/python-solutions.ipynb) · [Notebook export (PDF)](ch08_modern/python-solutions.pdf) |
+All [14 exercises](../examples/ch08_modern/EXERCISES.md) have complete solutions
+in each format:
 
-Start JupyterLab from the repository root in an environment with the
-[PyTorch dependencies](../requirements-ch05.txt).
+| Format | Contents |
+| --- | --- |
+| [Written solutions (PDF)](ch08_modern/written-solutions.pdf) | All explanations, derivations, and results |
+| [Executed notebook](ch08_modern/python-solutions.ipynb) | The same solutions with 20 code cells and saved outputs |
+| [Notebook export (PDF)](ch08_modern/python-solutions.pdf) | The full notebook typeset for reading and printing |
 
-```sh
-python -m pip install -r requirements-ch05.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch08_modern/python-solutions.ipynb`, select that Python
-kernel, and run all cells. The notebook uses the
-[Chapter 8 teaching model](../examples/ch08_modern/) and runs on CPU with
-no external datasets or pretrained weights. The PDF export includes the code
-and its recorded outputs. The three optional exercises are covered across
-the two PDFs.
+The progression covers pre-norm, RMSNorm geometry, SwiGLU, RoPE signs and
+multiple frequencies, model checks, cache positions, and residual gradients.
+The final exercise plans a matched architecture comparison. All examples run
+locally on CPU. See the [reproduction and export guide](ch08_modern/README.md).
 
 ## Chapter 9. Scaling Data, Compute, and Expert Capacity
 

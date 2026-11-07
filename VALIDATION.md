@@ -684,50 +684,48 @@ predictions with their targets.
 
 ## Chapter 8: From the Original Block to Modern Decoders
 
-Run the worked component examples and decoder checks with the Chapter 5
-PyTorch environment.
+The detailed review on November 6, 2026 used Python 3.12.14, PyTorch 2.15.0,
+and NumPy 2.4.6 on macOS ARM64. Numerical probes use CPU float64 and one thread.
 
-~~~sh
+```sh
 python -m examples.ch08_modern.run_examples --output output/ch08.json
-python -m unittest discover -s tests -v
-python scripts/export_snippets.py --check
-~~~
+python -m unittest discover -s tests -p test_modern.py -v
+python scripts/export_snippets.py --chapter ch08 --check
+```
 
-On macOS ARM64 with Python 3.11.17, PyTorch 2.14.1, and NumPy 2.4.6,
-all 118 tests passed, including 13 Chapter 8 tests. The exporter checked
-all 57 listings. The Chapter 8 tests compare RMSNorm and rotary attention
-with independent calculations, check low-precision normalization,
-verify causal and padding masks, and test the residual path in the
-forward pass and gradients.
+All 16 chapter tests passed without skips, and all seven listings matched
+canonical code. Tests compare RMSNorm and rotary attention with PyTorch,
+check reduced-precision statistics, rotation signs and feature pairs,
+causal and padding information paths, residual identity and gradients,
+parameter counts, and rejection of nonfinite gradients before an update.
+The new pair-score check uses independent scalar cosines, and a second
+regression distinguishes a shared position shift from prepended content.
 
-The one-thread float64 demonstration with seed 81 reproduced the
-hand calculations for RMSNorm, SwiGLU, and the shared RoPE shift.
-The decoder returned logits of shape [2, 3, 17] and had 5,744
-parameters. Changing a future token left the earlier logits equal.
-Appending padding and shifting all positions by seven changed the valid
-logits by at most 3.33e-16 and 4.44e-16, respectively. All gradients
-were finite. One SGD update at learning rate 0.01 moved the mean loss
-on the same five labels from 3.245774 to 3.197668.
+The decoder has 5,744 parameters (2,592 per block) and returns `[2, 3, 17]`
+logits for the five-target demonstration. All gradients are finite. One SGD
+step at learning rate 0.01 changes same-batch loss from 3.2457738665872364
+to 3.1976679142366016. This is a computation check, not a quality benchmark.
+Earlier-logit change after editing the last token is zero. The appended-PAD
+and shared-offset changes are below 5e-16 in the CLI run.
 
-Independent exercise probes verified the small-input RMS mean squares,
-the SwiGLU result with known weights, the signed rotary dot product,
-the whole-prefix and split-rotation comparison, the pre- and post-norm
-input gradients, and the parameter count with a third block.
+All 20 notebook cells executed in order without errors. The notebook and
+both PDF editions cover every one of the 14 exercises. Checks include RMS
+mean squares 1/9 and 25/27, a two-frequency scaled logit of 0.2918265851,
+a three-block parameter count of 8,336, and correct versus reset cache
+positions. The offset experiment changes logits by less than 1e-15, while
+prepending token 16 changes aligned logits by about 0.3506926041.
 
-### Chapter 8 study and gradient audit
+The revised gradient exercise uses three features and two losses. Its
+nonzero post-norm gradient is approximately `(0.572703, -0.859054, 0.286351)`;
+a central finite-difference check at step 1e-5 agrees within 1.2e-11.
+This avoids the degenerate two-feature, zero-epsilon LayerNorm example
+being mistaken for a general claim about post-norm gradients.
 
-The four vector figures and the compiled pages were inspected against the
-equations and executable examples. The revised captions distinguish the
-standalone normalization example, the signed RoPE rotation, and LLaMA's
-final stack normalization. Independent probes checked the numerical answers
-and the Python steps for all 12 exercises.
-
-A NaN injected by a backward hook previously reached the SGD update in
-`one_update`. The update now raises on missing or nonfinite gradients before
-changing any parameters. The regression test verifies exact parameter
-equality after the rejected step. All 119 tests passed, including 14 for
-Chapter 8. All 57 exports passed the consistency check, and the successful
-CLI output matched the original reference record byte for byte.
+Five manuscript vector figures support the worked calculations. Their
+captions distinguish normalization placement from normalization type,
+signed relative rotation from absolute angles, and logits from probabilities.
+The PDF exporter regenerates both editions from the executed notebook and
+rejects missing results, notebook errors, and significant typesetting warnings.
 
 ## Chapter 9. Scaling Data, Compute, and Expert Capacity
 

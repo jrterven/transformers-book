@@ -17,7 +17,7 @@ if torch is not None:
         rms_norm, rotate_pairs,
     )
     from examples.ch08_modern.run_examples import (
-        one_update, prepared_batch, rotation_example, swiglu_example,
+        one_update, pair_score_example, prepared_batch, rotation_example, swiglu_example,
     )
 
 
@@ -105,6 +105,25 @@ class ModernDecoderTests(unittest.TestCase):
             rotate_pairs(x, torch.zeros(2))
         with self.assertRaisesRegex(ValueError, "even head width"):
             RotarySelfAttention(6, 2)
+
+    def test_two_frequency_head_sums_pair_scores_before_scaling(self):
+        result = pair_score_example()
+        expected = [math.cos(2), math.cos(0.02)]
+        for actual, reference in zip(result["pair_contributions"], expected):
+            self.assertAlmostEqual(actual, reference, places=12)
+        self.assertAlmostEqual(result["unscaled_score"], sum(expected), places=12)
+        self.assertAlmostEqual(result["scaled_logit"], sum(expected) / 2, places=12)
+
+    def test_shared_shift_is_different_from_prepending_content(self):
+        model = ModernDecoder().double().eval()
+        original = torch.tensor([[7, 8, 9, 10]])
+        prepended = torch.tensor([[16, 7, 8, 9, 10]])
+        with torch.no_grad():
+            baseline = model(original)
+            shifted = model(original, start_pos=7)
+            added_context = model(prepended)[:, 1:]
+        torch.testing.assert_close(baseline, shifted, atol=1e-12, rtol=0)
+        self.assertGreater((added_context - baseline).abs().max().item(), 1e-6)
 
     def test_attention_matches_pytorch_with_unrotated_values_and_boolean_mask(self):
         layer = RotarySelfAttention(8, 2).double()

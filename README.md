@@ -137,6 +137,12 @@ python -m pip install -r requirements-ch05.txt
 python -m examples.ch08_modern.run_examples --output output/ch08.json
 ```
 
+The [14 progressive exercises](examples/ch08_modern/EXERCISES.md) and
+[complete solutions](solutions/ch08_modern/README.md) connect hand calculations
+to executable checks, including multiple RoPE frequencies, padding masks,
+position offsets, and a finite-difference gradient comparison.
+
+
 [Chapter 9: Scaling Data, Compute, and Expert Capacity](examples/ch09_scaling/)
 compares dense training allocations under the same estimated compute budget.
 It then follows a token through a router and shows how a batch can overflow
