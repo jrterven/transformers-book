@@ -153,23 +153,18 @@ controlled experiment. See the [reproduction and export guide](ch09_scaling/READ
 
 ## Chapter 10. Incremental Decoding and KV Representations
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–12 | Prefill and decoding, attention work, shared heads, cache budgets, rotary positions, latent score scaling, and inference measurement | [Written solutions (PDF)](ch10_kv/written-solutions.pdf) |
-| 5–8 | Chunk masks, cached attention equality, storage dtype and byte counts, and expanded versus latent attention | [Jupyter notebook](ch10_kv/python-solutions.ipynb) · [Notebook export (PDF)](ch10_kv/python-solutions.pdf) |
+All [12 exercises](../examples/ch10_kv/EXERCISES.md) are solved in every edition:
 
-Start JupyterLab from the repository root in an environment with the
-[NumPy requirements](../requirements.txt).
+| Edition | Contents |
+| --- | --- |
+| [Written solutions](ch10_kv/written-solutions.pdf) | Complete explanations, derivations, tables, and the chunk-mask diagram |
+| [Executed notebook](ch10_kv/python-solutions.ipynb) | The same solutions with 19 executed code cells and recorded outputs |
+| [Notebook PDF](ch10_kv/python-solutions.pdf) | Every explanation, code cell, diagram, and result |
 
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch10_kv/python-solutions.ipynb`, select that Python kernel,
-and run all cells. It uses the [Chapter 10 examples](../examples/ch10_kv/)
-on CPU with fixed arrays. The PDF export includes the code and its recorded
-outputs. The written solutions also cover all four optional exercises.
+The four hand calculations lead to four Python investigations and four
+optional extensions. Topics include prediction timing, attention work,
+shared KV heads, cache bytes, causal chunks, storage rounding, RoPE positions,
+and MLA reassociation. See the [reproduction and export guide](ch10_kv/README.md).
 
 ## Chapter 11. Long Context, Sparse Access, and Sequence Compression
 

@@ -50,3 +50,11 @@ eight scalars for the latent rows and rotary keys. Expanded content
 with the same shared rotary keys would use 20. The fixed arrays let
 you compare the two calculations on a CPU without model weights or
 a dataset.
+
+## Exercises and complete solutions
+
+Follow the [12 progressive exercises](EXERCISES.md): four hand calculations,
+four Python investigations, and four optional extensions. The
+[solution guide](../../solutions/ch10_kv/README.md) links all solutions in a
+written PDF, an executed notebook, and its PDF export. It also explains how
+to reproduce the checks and rebuild both PDFs from the notebook.

@@ -170,6 +170,11 @@ python -m pip install -r requirements.txt
 python -m examples.ch10_kv.run_examples --output output/ch10.json
 ```
 
+The [12 progressive exercises](examples/ch10_kv/EXERCISES.md) and
+[complete solutions](solutions/ch10_kv/README.md) connect cache mechanics to
+causality, actual storage, and latent attention. Every exercise is included
+in the notebook and both PDF editions.
+
 [Chapter 11: Long Context, Sparse Access, and Sequence Compression](examples/ch11_long_context/)
 builds local and global masks, ranks and gathers entries before main
 attention, and forms summaries over completed blocks. The [chapter guide](examples/ch11_long_context/README.md)

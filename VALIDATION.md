@@ -834,6 +834,28 @@ reproduced the published JSON byte for byte. Independent numerical
 references agreed across different batch sizes, head counts, cache
 dtypes, mask shapes, and unequal key, value, and latent widths.
 
+### Chapter 10 detailed textbook review — 2026-11-07
+
+Validated on CPU with Python 3.12.14 and NumPy 2.4.6:
+
+- All 14 `test_kv.py` tests and six `test_latent.py` tests passed.
+- All five Chapter 10 snippets were current and matched the private manuscript copies.
+- The complete notebook executed all 19 code cells without errors. All 12
+  exercises have worked solutions; Exercises 1-11 include recorded numerical
+  results and Exercise 12 specifies a proposed comparison protocol.
+- The chunk test agrees with full attention within absolute tolerance 1e-12.
+  Changing values at future position 4 leaves outputs 0-3 unchanged and changes
+  the output at position 4, independently checking causal visibility.
+- The PDF editions were rebuilt from that same executed notebook and visually
+  reviewed. The exporter checks the exercise coverage, execution sequence,
+  recorded results, and typesetting warnings.
+
+The review distinguishes sampled outputs from consumed inputs, allowed pairs
+from executed arithmetic, cache payload from reserved memory and traffic,
+and exact MLA reassociation from the architectural choice of a latent width.
+Canonical implementations are unchanged; the added checks live in the
+worked exercises. Historical full-suite results above describe their own runs.
+
 ## Chapter 11. Long Context, Sparse Access, and Sequence Compression
 
 ~~~sh
