@@ -41,3 +41,27 @@ example has one duplicate prediction and AP of `5/6`. With
 targets and no predictions, AP is zero. With no targets, recall
 and AP are `None`. The book discusses the additional protocol
 choices involved in a COCO evaluation.
+
+## Interpret the checks
+
+Training minimizes a total assignment cost; ranked evaluation claims
+annotations in descending prediction score. They use different matching
+rules for different purposes. A one-to-one constraint does not guarantee
+a unique optimum: the Exercise 3 matrix has two minima of cost four.
+
+Continuous box edges have width `x1 - x0`, with no extra endpoint unit.
+An empty mask union is undefined (`None`), while exactly one empty mask
+has IoU zero. Undo padding before scale when returning predictions to the
+original image. A box can remain in bounds despite using the wrong inverse.
+
+All-points AP uses a backward precision maximum and recall increments.
+Unattained recall contributes zero area. Confidence cutoffs filter
+predictions; IoU thresholds determine acceptable overlap. Dataset AP pools
+ranked predictions across images per class rather than averaging image AP.
+False positives in images without that class must remain in the dataset
+ranking. Use an official evaluator for COCO results.
+
+See the [11 exercises](EXERCISES.md) and [complete worked solutions](../../solutions/ch22_detection/README.md),
+including all explanations and three plots in both PDF editions. Prompting
+protocols distinguish supplied annotated locations from detector boxes,
+with misses and extra detections reported explicitly.

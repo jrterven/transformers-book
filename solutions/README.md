@@ -298,23 +298,17 @@ and [run/export guide](ch21_vision/README.md).
 
 ## Chapter 22. Object Detection and Segmentation
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Box and mask overlap, one-to-one assignment, ranked precision and recall, prompt protocols, coordinates, and error analysis | [Written solutions (PDF)](ch22_detection/written-solutions.pdf) |
-| 5–8 | Touching edges, empty foreground, matching indices, overlap thresholds, and all-points AP | [Jupyter notebook](ch22_detection/python-solutions.ipynb) · [Notebook export (PDF)](ch22_detection/python-solutions.pdf) |
+All eleven exercises have complete worked solutions, including both
+minimum-cost assignments, precision envelopes and coordinate inversion.
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
+| Edition | Contents |
+| --- | --- |
+| [Written solutions](ch22_detection/written-solutions.pdf) | Explanations, calculations, tables and three plots for Exercises 1-11 |
+| [Executed notebook](ch22_detection/python-solutions.ipynb) | The same solutions with 16 executed cells and saved outputs |
+| [Notebook PDF](ch22_detection/python-solutions.pdf) | All explanations, code, figures and results |
 
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch22_detection/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 22 examples](../examples/ch22_detection/). The PDF export includes
-the explanations, code, and recorded outputs.
+See the [exercise statements](../examples/ch22_detection/EXERCISES.md)
+and [run/export guide](ch22_detection/README.md).
 
 ## Chapter 23. Vision–Language and Multimodal Models
 

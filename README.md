@@ -315,7 +315,10 @@ python -m examples.ch21_vision.run_examples --output output/ch21.json
 [Chapter 22: Object Detection and Segmentation](examples/ch22_detection/)
 computes box and mask overlap, matches object slots to annotations, and
 scores ranked detections. The [chapter guide](examples/ch22_detection/README.md)
-explains the coordinate convention and the single-threshold AP example.
+explains the coordinate convention and the single-threshold AP example. The
+[11 exercises](examples/ch22_detection/EXERCISES.md) and
+[complete solutions](solutions/ch22_detection/README.md) add mask diagrams,
+precision envelopes and coordinate checks.
 
 ```sh
 python -m pip install -r requirements.txt

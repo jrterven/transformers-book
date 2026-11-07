@@ -1587,3 +1587,27 @@ from resolution changes. Their numeric cells are explicit fixtures, not
 trained-model benchmarks. Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib
 3.11.2. Both PDFs are generated from the same notebook by
 `solutions/ch21_vision/build_pdfs.py`.
+
+## Chapter 22 detailed textbook review (2026-11-07)
+
+All eleven exercises have complete explanations in the written PDF,
+executed notebook and notebook PDF. Sixteen code cells execute without
+errors and retain three plots: mask sets, precision envelopes and error
+categories. All ten chapter tests passed and all four canonical snippets
+are current and match the private manuscript. Helpers are unchanged.
+
+Exercise 3 explicitly asks for both one-to-one minima (cost 4), separating
+the constraint from uniqueness of the optimum. Exercise 4's maximum recall
+is 2/3 and its all-points AP is 4/9, with unattained recall contributing
+zero. At IoU thresholds .50 and .75, Exercise 8 gives flags TP-FP-TP and
+FP-TP-TP, with AP 5/6 and 2/3. These are not full COCO results.
+
+The coordinate fixture maps (1,0,3,2) to (3,2,7,6) after doubling and adding
+left/top padding (1,2). Correct inversion has IoU 1; division alone has
+IoU 3/13 despite staying in bounds. The mask fixture checks exact foreground
+locations as well as shape. Prompting evaluation preserves missed-object
+denominators and reports extra predictions separately. Synthetic audit
+fixtures make no trained-model performance claim.
+
+Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2. Both PDFs are
+built from the executed notebook by `solutions/ch22_detection/build_pdfs.py`.
