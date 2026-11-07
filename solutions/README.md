@@ -387,23 +387,15 @@ versus risk separation. See the [solution guide](ch28_tabular/README.md).
 
 ## Chapter 29. Scientific Sequences and Biological Structure
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Alignment counts, dipeptides, pooling, geometric thresholds, family splits, embedding comparisons, and structural confidence | [Written solutions (PDF)](ch29_protein/written-solutions.pdf) |
-| 5–8 | Normalized sequence features, padding, contact maps, and macro-F1 | [Jupyter notebook](ch29_protein/python-solutions.ipynb) · [Notebook export (PDF)](ch29_protein/python-solutions.pdf) |
+All [eleven exercises](../examples/ch29_protein/EXERCISES.md) have complete,
+ordered solutions in the [written PDF](ch29_protein/written-solutions.pdf),
+[executed notebook](ch29_protein/python-solutions.ipynb), and
+[notebook PDF](ch29_protein/python-solutions.pdf).
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch29_protein/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 29 examples](../examples/ch29_protein/). The PDF export includes
-the explanations, code, and recorded outputs.
+Eighteen executed cells check alignment counts, composition, dipeptide collisions,
+masked pooling, translations and rotations, threshold boundaries, macro-F1,
+family assignment, length eligibility and directional PAE. Three plots explain
+the core distinctions. See the [solution guide](ch29_protein/README.md).
 
 ## Chapter 30. Decisions and Embodied Action
 

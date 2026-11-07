@@ -1758,3 +1758,27 @@ it is not used to fit a recalibration map.
 Both PDFs are exported from the same executed notebook by
 `solutions/ch28_tabular/build_pdfs.py`.
 Runtime: Python 3.12.14, NumPy 2.5.4 and Matplotlib 3.11.2.
+
+## Chapter 29 detailed textbook review (2026-11-07)
+
+Ten canonical tests pass and four exported snippets are current and identical
+to the manuscript copies. Canonical helpers are unchanged.
+All eleven exercises have complete written and executable solutions.
+Eighteen cells execute in order and retain three plots.
+
+The alignment gives CG twice and SA twice. Pair-array memory examples are
+64/256 MiB for lengths 512/1024, width 64 and float32, not whole-model costs.
+AACAC and ACAAC share composition and AA/AC/CA counts despite different order.
+Special-token cancellation still changes a mean's denominator.
+Translation and the exact 90-degree rotation preserve the contact fixture.
+Moving the cutoff just below 5 removes only the distance-5 pair.
+Macro-F1 changes from 11/15 to 1/3 when the sole B prediction becomes A.
+
+Evaluation fixtures retain whole families, explicitly restrict the supported-class
+macro, and define common eligibility and length bins. The synthetic confidence
+matrix has asymmetric cross-domain PAE 18/12 versus within-domain 2; it is not
+a geometric distance matrix, a measured error, or a model result.
+
+Both PDFs are exported from the same executed notebook by
+`solutions/ch29_protein/build_pdfs.py`.
+Runtime: Python 3.12.14, NumPy 2.5.4 and Matplotlib 3.11.2.

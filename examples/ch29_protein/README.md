@@ -37,3 +37,21 @@ minimum separation. Both off-diagonal orientations of a contact
 appear in the Boolean matrix. The example reads the upper
 triangle to report each pair once and adds one to the indices for
 display. Its coordinates and thresholds illustrate the calculation.
+
+## Keep the represented quantities distinct
+
+Composition divides by L; adjacent-pair counts divide by L-1 when L>1.
+The one-residue pair result is an all-zero special case. Two different sequences
+can have identical composition and dipeptide frequencies.
+
+The residue mask controls the pooling numerator and denominator; it does not
+replace the encoder's attention mask. Contact maps use both a distance cutoff
+and sequence separation. The helper assumes consecutive positions in one chain;
+missing residues or multiple chains require explicit indexing rules.
+
+A learned pair vector is not a distance or contact probability. PAE is predicted
+aligned error and need not be symmetric. High local confidence does not establish
+the orientation of two domains or a proposed binding function.
+
+See the [11 exercises](EXERCISES.md) and
+[complete solutions](../../solutions/ch29_protein/README.md).

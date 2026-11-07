@@ -413,6 +413,10 @@ builds a contact map from four coordinates. The
 [chapter guide](examples/ch29_protein/README.md) explains the alphabet,
 mask, and distance convention.
 
+The [11 exercises](examples/ch29_protein/EXERCISES.md) and
+[complete solutions](solutions/ch29_protein/README.md) distinguish sequence
+statistics, contextual pooling, contact geometry and structural confidence.
+
 ```sh
 python -m pip install -r requirements.txt
 python -m examples.ch29_protein.run_examples --output output/ch29.json
