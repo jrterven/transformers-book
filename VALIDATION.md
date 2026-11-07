@@ -1636,3 +1636,28 @@ appropriate responses and unsupported visual claims.
 
 Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2. Both PDFs are
 built from the executed notebook by `solutions/ch23_multimodal/build_pdfs.py`.
+
+## Chapter 24 detailed textbook review (2026-11-07)
+
+Ten canonical tests passed; all three exported snippets are current and
+match the private manuscript. Canonical helpers are unchanged. All eleven
+exercises are solved in both PDFs and the notebook. Sixteen cells execute
+in order, retaining three plots and no execution errors.
+
+Complete-frame checks give five starts for L=24, N=8, H=4 and three for H=8.
+Tone peaks occur at bins 2 and 4 for 1,000 and 2,000 Hz with N=16 and fs=8,000.
+Direct Fourier sums match the FFT, including symmetric Hann weights.
+Reversing the exercise alignment preserves distance two but changes WER
+from 2/5 to 2/6. The diagonal-first tie rule returns two substitutions
+for a b versus b a; a deletion/insertion alignment has the same total.
+
+Pooled WER is 1/6 versus mean clip WER 1/4; adding two no-speech insertions
+changes the pooled score to 3/6. The eight-clip no-speech fixture has
+2/8 affected clips and three false words in 80 seconds (2.25 per minute).
+Speaker groups and their clean/noisy versions are disjoint across splits.
+Caption first-correct and correct-stabilization delays are 150 and 420 ms;
+the three-word fixture reports coverage 2/3 and 1/3 instead of dropping
+undefined latencies. All evaluation outputs are explicitly synthetic.
+
+Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2. Both PDFs are
+built from the executed notebook by `solutions/ch24_speech_audio/build_pdfs.py`.

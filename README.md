@@ -342,6 +342,9 @@ python -m examples.ch23_multimodal.run_examples --output output/ch23.json
 overlapping-frame spectrogram, labels clean and noisy synthetic tones,
 and scores word edits. The [chapter guide](examples/ch24_speech_audio/README.md)
 explains the frame axes and the convention for transcripts without reference words.
+The [11 exercises](examples/ch24_speech_audio/EXERCISES.md) and
+[complete solutions](solutions/ch24_speech_audio/README.md) add window,
+spectrum and caption-timing plots with executed checks.
 
 ```sh
 python -m pip install -r requirements.txt

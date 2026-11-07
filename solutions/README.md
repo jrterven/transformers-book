@@ -327,23 +327,15 @@ and [run/export guide](ch23_multimodal/README.md).
 
 ## Chapter 24. Speech and Audio
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Framing, frequency bins, decoding tasks, word alignments, speaker splits, false words, and streaming latency | [Written solutions (PDF)](ch24_speech_audio/written-solutions.pdf) |
-| 5–8 | Spectrogram axes, tone peaks, pooled word error rate, and alignment ties | [Jupyter notebook](ch24_speech_audio/python-solutions.ipynb) · [Notebook export (PDF)](ch24_speech_audio/python-solutions.pdf) |
+All [eleven exercises](../examples/ch24_speech_audio/EXERCISES.md) have complete,
+ordered solutions in the [written PDF](ch24_speech_audio/written-solutions.pdf),
+[executed notebook](ch24_speech_audio/python-solutions.ipynb), and
+[notebook PDF](ch24_speech_audio/python-solutions.pdf).
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch24_speech_audio/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 24 examples](../examples/ch24_speech_audio/). The PDF export includes
-the explanations, code, and recorded outputs.
+Sixteen executed cells check frame counts, frequency axes, transcript alignments,
+pooled WER, no-speech insertions, speaker splits and caption latency. Three plots
+show overlapping windows, tone spectra and first-correct versus stable text.
+See the [chapter solution guide](ch24_speech_audio/README.md) for setup and export.
 
 ## Chapter 25. Image and Video Generation
 
