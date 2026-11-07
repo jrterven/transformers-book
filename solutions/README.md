@@ -351,23 +351,15 @@ See the [solution guide](ch25_visual_generation/README.md) for setup and export.
 
 ## Chapter 26. Models for Code
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Half-open intervals, code infilling, test boundaries, pass@k, repository context, and benchmark splits | [Written solutions (PDF)](ch26_code_models/written-solutions.pdf) |
-| 5–8 | Per-case records, one-integer overlaps, pass@k, and shortest-candidate selection | [Jupyter notebook](ch26_code_models/python-solutions.ipynb) · [Notebook export (PDF)](ch26_code_models/python-solutions.pdf) |
+All [eleven exercises](../examples/ch26_code_models/EXERCISES.md) have complete,
+ordered solutions in the [written PDF](ch26_code_models/written-solutions.pdf),
+[executed notebook](ch26_code_models/python-solutions.ipynb), and
+[notebook PDF](ch26_code_models/python-solutions.pdf).
 
-The exercises use the Python standard library. Start JupyterLab from
-the repository root.
-
-```sh
-python -m pip install jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch26_code_models/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 26 examples](../examples/ch26_code_models/). The PDF export includes
-the explanations, code, and recorded outputs.
+Seventeen executed cells check interval boundaries, infilling format,
+per-case and complete-candidate scores, subset coverage, task aggregation,
+selection, repository helper contracts, regressions and split rules.
+Three plots show the key distinctions. See the [solution guide](ch26_code_models/README.md).
 
 ## Chapter 27. Time-Series Forecasting
 

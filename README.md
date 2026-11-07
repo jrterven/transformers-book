@@ -370,6 +370,10 @@ infilling prompt and runs checked-in candidate functions against smoke and
 boundary tests. The [chapter guide](examples/ch26_code_models/README.md)
 explains the case records and the per-task pass@k calculation.
 
+The [11 exercises](examples/ch26_code_models/EXERCISES.md) and
+[complete solutions](solutions/ch26_code_models/README.md) distinguish
+per-case accuracy, complete-candidate success and task-level pass@k.
+
 ```sh
 python -m examples.ch26_code_models.run_examples --output output/ch26.json
 ```

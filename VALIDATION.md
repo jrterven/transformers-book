@@ -1685,3 +1685,28 @@ not measured model performance. All saved code outputs match the explanations.
 Both PDFs are exported from the same executed notebook by
 `solutions/ch25_visual_generation/build_pdfs.py`. Runtime: Python 3.12.14,
 NumPy 2.5.4 and Matplotlib 3.11.2.
+
+## Chapter 26 detailed textbook review (2026-11-07)
+
+Seven canonical tests pass and all four exported snippets are current and
+identical to the manuscript copies. The canonical helpers are unchanged.
+All eleven exercises have complete written and executable solutions.
+Seventeen code cells execute in order and retain three plots.
+
+The complete fixture passes 21/24 individual checks but only 2/4 candidates.
+The negative-start overlap contains only -3 and rejects only needs_two.
+Five-candidate coverage gives pass@1=2/5, pass@2=7/10 and pass@5=1.
+Task pools (4,2) and (4,0) average to pass@2=5/12; mixing the pools incorrectly
+gives 13/28. Exact binomial weighting of four-sample pool estimates under
+true p=1/2 recovers fresh two-attempt probability 3/4.
+
+The shortest candidate fails despite pool pass@2=1. Cleanup-helper cases
+check both booking sides and preserve empty intervals. An always-False
+patch repairs adjacency but breaks genuine overlap. The synthetic split
+excludes a recent task from a training-repository fork. No real model
+performance is inferred from these known fixtures and evaluation designs.
+
+The notebook's mathematical notation is corrected and validated before export.
+Both PDFs are exported from the same executed notebook by
+`solutions/ch26_code_models/build_pdfs.py`.
+Runtime: Python 3.12.14 and Matplotlib 3.11.2.
