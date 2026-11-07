@@ -411,20 +411,12 @@ explanations. See the [solution guide](ch30_decisions/README.md).
 
 ## Chapter 31. What Changed, and What Remains?
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–12 | Causal pairs, architectural changes, summary fields, history budgets, recall tests, update composition, and ablation | [Written solutions (PDF)](ch31_perspective/written-solutions.pdf) |
-| 5–8 | Window boundaries, missing events, and storage records for four memory rules | [Jupyter notebook](ch31_perspective/python-solutions.ipynb) · [Notebook export (PDF)](ch31_perspective/python-solutions.pdf) |
+All [twelve exercises](../examples/ch31_perspective/EXERCISES.md) have full,
+ordered solutions in the [written PDF](ch31_perspective/written-solutions.pdf),
+[executed notebook](ch31_perspective/python-solutions.ipynb), and
+[notebook PDF](ch31_perspective/python-solutions.pdf).
 
-The exercises use the Python standard library. Start JupyterLab from
-the repository root.
-
-```sh
-python -m pip install jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch31_perspective/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 31 examples](../examples/ch31_perspective/). The PDF export includes
-the explanations, code, and recorded outputs.
+Nineteen executed cells check causal pairs, KV bytes, exact-summary capacity,
+hybrid budgets, window boundaries, zero/missing values, storage units,
+controlled histories, composed retrieval and forecast availability.
+Three plots support the explanations. See the [solution guide](ch31_perspective/README.md).

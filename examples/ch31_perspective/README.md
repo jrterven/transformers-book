@@ -35,3 +35,19 @@ fixed rules for reading and updating their contents.
 including each query's self-pair. For a window of three it returns
 `(36, 21)` at length eight and `(136, 45)` at length sixteen. These are
 connectivity counts.
+
+## Read the units before comparing
+
+An event and a summary field are different logical units. Python integers may
+grow and strings may have different lengths; constant field count alone does
+not prove constant byte storage. An unavailable answer uses `None`, while
+zero is a valid code. Inspect the input and rule to distinguish absent,
+omitted and evicted information.
+
+A width-three window retains the first code through two route assignments;
+the third assignment fills the window with routes. A two-field summary answers
+the two chosen questions but cannot reconstruct all intermediate routes.
+The sweep uses two specified histories per length, not a learned model.
+
+See the [12 exercises](EXERCISES.md) and
+[complete solutions](../../solutions/ch31_perspective/README.md).

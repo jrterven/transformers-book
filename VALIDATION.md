@@ -1804,3 +1804,28 @@ With 0.1-second actions, execution horizons 8/2 give ideal refresh intervals
 times 0.95/0.35 seconds; these are scheduling arithmetic, not benchmark latency.
 The written and notebook PDFs are generated from the same executed source by
 `solutions/ch30_decisions/build_pdfs.py`.
+
+## Chapter 31 detailed textbook review (2026-11-07)
+
+Ten canonical tests pass and two exported snippets are current and identical
+to the manuscript copies. Canonical helpers remain unchanged.
+All twelve exercises have complete explanations; 19 cells execute in order
+and retain three figures.
+
+At length ten, full causal attention permits 55 pairs and a window of four
+permits 34. At one layer, 1024 positions, eight KV heads, key/value widths 64
+and two-byte scalars give 2 MiB; one KV head gives 0.25 MiB.
+All 4000 code/route combinations round-trip through a 12-bit fixed-length
+encoding. The hybrid count is 8n+12; 92 scalars allow ten positions.
+Window width four changes this to 8 min(n,4)+12, bounded by 44 scalars.
+
+The sweep's width-three window has first-code accuracies 1,1,0,0 at
+1,2,4,8 route updates; each point uses two supplied histories.
+Zero is distinguished from None. Delay and interference fixtures control
+abstract event geometry; real token lengths require a tokenizer-specific audit.
+Matched address and activation changes alter the correct answer separately.
+Mutating forecasts unavailable by issue or receipt time leaves the as-of feature
+unchanged in the specified fixture.
+
+The written and notebook PDFs are generated from the same executed source by
+`solutions/ch31_perspective/build_pdfs.py`.
