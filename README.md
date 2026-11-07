@@ -232,6 +232,10 @@ compares a frozen feature extractor with full fine-tuning, aligns response
 targets, and checks low-rank adaptation and the DPO objective. The
 [chapter guide](examples/ch16_adaptation/README.md) explains the trainable
 parameters, the response mask, and the adapter checkpoint roundtrip.
+The [twelve exercises](examples/ch16_adaptation/EXERCISES.md) have complete
+[worked solutions](solutions/ch16_adaptation/README.md) in an executed
+notebook and both PDF editions, including batch averaging, frozen gradient
+paths and checkpoint probes.
 
 ```sh
 python -m pip install -r requirements-ch05.txt

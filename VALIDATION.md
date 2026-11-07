@@ -1084,30 +1084,42 @@ remain in the private repository.
 
 ## Chapter 16. From Pretrained Weights to Task Behavior
 
-~~~sh
+Detailed textbook review verified on November 7, 2026, using Python 3.12.14,
+PyTorch 2.15.0, NumPy 2.5.4 and Matplotlib 3.11.2 on CPU.
+
+```sh
+python -m unittest discover -s tests -p test_adaptation.py -v
 python -m examples.ch16_adaptation.run_examples --output output/ch16.json
-python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
-~~~
+```
 
-On macOS ARM64 with Python 3.11.17 and PyTorch 2.14.1, all 216 tests
-passed, including ten for Chapter 16. All 91 excerpts matched their
-sources. Repeated runs produced identical JSON.
+All ten Chapter 16 tests passed, and all 149 repository listings were current,
+including the five for this chapter. Canonical executable code was unchanged.
+The head-only run trains 8 of 17 parameters and leaves the encoder unchanged;
+full tuning trains all 17 and changes its largest encoder entry by
+0.4677634579. Both classify the four synthetic held-out points correctly.
+This verifies the training switches, not comparative model quality.
 
-The head-only run trained 8 of 17 parameters and left the encoder
-unchanged. Full fine-tuning trained all 17 and changed its largest
-encoder entry by about 0.468. Both runs classified all four held-out
-synthetic points correctly after training.
+The response example returns summed log-probability -1.7917594692 and mean
+loss 0.8958797346. Adapted, merged and restored LoRA paths return (7, 3).
+The DPO example gives margin 1 and loss 0.3132616875. Tests also cover target
+alignment, ignored-row gradients, zero adapter initialization, fixed base
+weights, detached reference scores and half-precision promotion.
 
-The shifted labels scored Yes and EOS. The example returned completion
-log-probability -1.7917594692 and mean supervised loss 0.8958797346.
-The adapted, merged, and reloaded rank-one projection all returned
-(7, 3). The DPO example gave a margin of 1 and loss 0.3132616875.
-The tests checked zero gradients on ignored logit rows, adapter gradients
-with the base frozen, and detached preference reference scores.
+The expanded notebook solves all twelve exercises and executes 26 code
+cells without errors. Its two plots show loss weighting and DPO gradient
+magnitude. Independent checks confirm token mean 2.5 versus response mean
+2.0, unchanged results with extra padding, first-step LoRA gradients
+(a=0, b=8), second-pass gradients (a=3.84, b=-4.8), and gradient 36 through
+a frozen multiplier. Coordinate probes catch a wrong matrix that a single
+input misses; named projection probes distinguish query and value adapters.
+All written explanations, plots and recorded outputs are exported to both
+solution PDFs and visually checked. Exercises, solutions and manuscript
+references use the same twelve-item order.
 
-Independent reference calculations checked 54 response batches with varied
-lengths, 36 LoRA configurations, and 80 batches of preference pairs.
+Earlier validation (Python 3.11.17 / PyTorch 2.14.1) also checked 54 response
+batches, 36 LoRA configurations and 80 preference batches independently.
+Those historical counts are retained as earlier evidence, not new runs.
 
 ## Chapter 17. Designing Reproducible Evaluations
 

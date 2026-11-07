@@ -217,23 +217,16 @@ and [run/export guide](ch15_hybrids/README.md).
 
 ## Chapter 16. From Pretrained Weights to Task Behavior
 
-| Exercises | Topics | Files |
+All twelve exercises are fully solved in each edition:
+
+| Edition | Contents | File |
 | --- | --- | --- |
-| 1–4 and 10–11 | Head parameters, shifted targets, low-rank updates, relative preferences, evaluation, and checkpoint reconstruction | [Written solutions (PDF)](ch16_adaptation/written-solutions.pdf) |
-| 5–9 | Response masks, loss perturbations, adapter initialization, training updates, and detached reference scores | [Jupyter notebook](ch16_adaptation/python-solutions.ipynb) · [Notebook export (PDF)](ch16_adaptation/python-solutions.pdf) |
+| Written | Derivations, exact checks, two plots and comparison protocol | [PDF](ch16_adaptation/written-solutions.pdf) |
+| Notebook | The same explanations with 26 executed code cells | [Jupyter notebook](ch16_adaptation/python-solutions.ipynb) |
+| Notebook export | Every code cell and saved result | [PDF](ch16_adaptation/python-solutions.pdf) |
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements-ch05.txt).
-
-```sh
-python -m pip install -r requirements-ch05.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch16_adaptation/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 16 examples](../examples/ch16_adaptation/). The PDF export includes
-the explanations, code, and recorded outputs.
+See the [exercise statements](../examples/ch16_adaptation/EXERCISES.md)
+and [run/export guide](ch16_adaptation/README.md).
 
 ## Chapter 17. Designing Reproducible Evaluations
 

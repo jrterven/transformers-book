@@ -49,3 +49,30 @@ the factors can be attached to the intended weights.
 the policy's chosen-versus-rejected gap with the corresponding gap from
 a frozen reference. A positive `beta` scales that difference before
 `softplus` computes the loss. The reference scores are detached.
+
+
+## Exercises and complete solutions
+
+The [twelve exercises](EXERCISES.md) progress from hand calculations to
+tensor checks, checkpoint reconstruction and an evaluation protocol.
+The [solutions guide](../../solutions/ch16_adaptation/README.md) links the
+executed notebook and both PDF editions; each covers every exercise.
+
+Keep three distinctions visible when running the examples. Freezing a
+weight leaves its operation available to backpropagation; `no_grad` can
+break that path. Ignoring a prompt target removes its direct loss while
+the prompt still supplies context. DPO compares response probability
+ratios relative to a reference, so a common shift of both policy scores
+leaves a pair's loss unchanged.
+
+`response_loss` uses a mean over all selected tokens in the batch. Longer
+responses therefore supply more token contributions. `completion_logprob`
+returns one sum per response, from which a different, equal-response
+reduction can be built explicitly. The helpers require a right-padded
+prefix, a distinct padding ID and at least one selected target per row;
+they do not create the model's causal attention mask.
+
+LoRA's rank constrains the update, not the full merged matrix. Random `a`
+and zero `b` initially preserve the base output while letting `b` receive
+a gradient. Both factors initialized to zero would stall ordinary gradient
+descent. The wrapper has no adapter dropout or nonlinear bottleneck.
