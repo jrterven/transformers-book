@@ -35,3 +35,19 @@ model with a learned inference procedure.
 `brier_score` averages squared differences between binary labels
 and positive-class probabilities. The worked probability example
 uses a separate fixed prediction vector for this calculation.
+
+## Interpret the representation and scores
+
+With K known categories, the teaching encoder has K+4 columns. An imputed value
+retains its missingness flag. A present but unseen category activates the
+unknown column; two unseen names collapse to the same representation.
+Reserving a column does not teach a model how a new category behaves.
+
+The context-weighted label sum illustrates normalized influence and is not a
+TabPFN implementation. Increasing a negative row's similarity can lower the
+positive estimate. Brier loss measures overall probability error; a reliability
+plot answers a different question. Two empirically calibrated predictors can
+have different Brier scores when one separates risk groups better.
+
+See the [11 exercises](EXERCISES.md) and
+[complete solutions](../../solutions/ch28_tabular/README.md).

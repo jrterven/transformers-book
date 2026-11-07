@@ -1733,3 +1733,28 @@ coverage at unchanged widths. These fixtures are not model performance claims.
 Both PDFs are exported from the same executed notebook by
 `solutions/ch27_time_series/build_pdfs.py`.
 Runtime: Python 3.12.14, NumPy 2.5.4 and Matplotlib 3.11.2.
+
+## Chapter 28 detailed textbook review (2026-11-07)
+
+Eight canonical tests pass; all four exported snippets are current and identical
+to the manuscript copies. The canonical helpers are unchanged.
+All eleven exercises have complete written and executable solutions.
+Twenty code cells execute in order and retain three plots.
+
+The flipped-label exercise changes the Brier scores from .065/.16 to .565/.36,
+showing that higher confidence can hurt. The two unseen category names have
+identical encodings and the training unknown column is zero.
+Raising a negative context row's score changes the positive estimate from 1/3
+to 1/5. The 20-case construction has exact empirical calibration for both models
+but Brier .25 versus .16. These are arithmetic fixtures, not population evidence.
+
+The split fixture has 350/75/75 customers and 1050/225/225 rows. Global dates
+respect 30-day label maturity. A small repeated-customer example distinguishes
+order-weighted .14 from customer-weighted .34 mean loss.
+Nested customer subsets preserve fixed validation/test groups. The diagnostic
+bin [0.7,0.8) has four orders, three customers, mean prediction .74 and rate .5;
+it is not used to fit a recalibration map.
+
+Both PDFs are exported from the same executed notebook by
+`solutions/ch28_tabular/build_pdfs.py`.
+Runtime: Python 3.12.14, NumPy 2.5.4 and Matplotlib 3.11.2.

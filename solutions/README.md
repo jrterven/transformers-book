@@ -375,23 +375,15 @@ See the [solution guide](ch27_time_series/README.md).
 
 ## Chapter 28. Learning from Tables
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Available features, row encodings, weighted predictions, Brier score, customer splits, learning curves, and calibration | [Written solutions (PDF)](ch28_tabular/written-solutions.pdf) |
-| 5–8 | Training-only fitting, category flags, context weights, and confidence scores | [Jupyter notebook](ch28_tabular/python-solutions.ipynb) · [Notebook export (PDF)](ch28_tabular/python-solutions.pdf) |
+All [eleven exercises](../examples/ch28_tabular/EXERCISES.md) have complete,
+ordered solutions in the [written PDF](ch28_tabular/written-solutions.pdf),
+[executed notebook](ch28_tabular/python-solutions.ipynb), and
+[notebook PDF](ch28_tabular/python-solutions.pdf).
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch28_tabular/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 28 examples](../examples/ch28_tabular/). The PDF export includes
-the explanations, code, and recorded outputs.
+Twenty executed cells check availability, fixed encodings, context probabilities,
+confidence, empirical calibration, split units, nested data budgets and mature
+outcomes. Three plots explain expected loss, normalized influence and calibration
+versus risk separation. See the [solution guide](ch28_tabular/README.md).
 
 ## Chapter 29. Scientific Sequences and Biological Structure
 

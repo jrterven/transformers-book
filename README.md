@@ -398,6 +398,10 @@ encoding on training rows, weights labeled context rows, and checks
 binary probability predictions. The [chapter guide](examples/ch28_tabular/README.md)
 explains the missing and unknown indicators and the Brier score.
 
+The [11 exercises](examples/ch28_tabular/EXERCISES.md) and
+[complete solutions](solutions/ch28_tabular/README.md) explain missing and
+unseen values, context weighting, calibration and deployment-matched evaluation.
+
 ```sh
 python -m pip install -r requirements.txt
 python -m examples.ch28_tabular.run_examples --output output/ch28.json
