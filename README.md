@@ -247,6 +247,10 @@ splits related examples by group, computes binary metrics and reliability
 bins, and compares paired predictions. The
 [chapter guide](examples/ch17_evaluation/README.md) explains the resampling
 unit and the scope of the resulting interval.
+The [twelve exercises](examples/ch17_evaluation/EXERCISES.md) have complete
+[worked solutions](solutions/ch17_evaluation/README.md) in an executed
+notebook and both PDF editions, including error-cost decisions and explicit
+long-context placement controls.
 
 ```sh
 python -m pip install -r requirements.txt

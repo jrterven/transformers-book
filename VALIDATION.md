@@ -1123,30 +1123,41 @@ Those historical counts are retained as earlier evidence, not new runs.
 
 ## Chapter 17. Designing Reproducible Evaluations
 
-~~~sh
+Detailed textbook review verified on November 7, 2026, with Python 3.12.14,
+NumPy 2.5.4 and Matplotlib 3.11.2 on CPU.
+
+```sh
+python -m unittest discover -s tests -p test_evaluation.py -v
 python -m examples.ch17_evaluation.run_examples --output output/ch17.json
-python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
-~~~
+```
 
-On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 227 tests
-passed, including 11 for Chapter 17. All 95 excerpts matched their
-sources. Saved JSON, stdout, and the NumPy-only run were identical.
+All eleven Chapter 17 tests passed. All 149 repository excerpts were current,
+including this chapter's four. Canonical code and excerpts were unchanged.
+The group split has row counts 8, 1 and 3. Both fixture classifiers have
+75% accuracy, with recall 0.50 and 0.75. Reliability points are (0.20, 0.25),
+(0.50, 0.50) and (0.80, 0.75), with Brier score 2.38/12 = 0.1983333333.
+At 20,000 draws and seed 17, paired intervals are [-5/12, 5/12] by row and
+[-5/9, 7/13] by whole group, retaining the per-message denominator.
 
-The split assigned six groups to three partitions with 8, 1, and 3
-rows and no shared groups. Both classifiers reached 75% accuracy on
-the twelve-example fixture, with recall of 0.50 and 0.75. The three
-reliability points were (0.20, 0.25), (0.50, 0.50), and (0.80, 0.75).
-Their example-level Brier score was about 0.198333.
+The complete notebook executes 21 code cells without errors and saves two
+plots. Checks include per-check 5/6 versus mean-conversation 0.9 versus
+complete-conversation 0.5; Brier 1.82/6 versus constant-predictor 0.25;
+threshold 0.2 for miss/false costs 4/1; and a weighting reversal from -1/4
+per message to +1/6 per customer. The six-message exercise gives a 1/6 gap
+with intervals [-1/3, 2/3] by row and [-1/2, 1] by customer. ID joins recover
+4/6 accuracy from an erroneous positional 2/6 and reject missing, unexpected
+and duplicate IDs. The layout calculations explicitly verify a 128-token
+evidence-to-question suffix at three body lengths.
 
-With 20,000 paired draws at seed 17, the percentile interval for
-accuracy B minus A was about [-0.42, 0.42] by row and [-0.56, 0.54]
-by group. The grouped resampling draws complete groups and weights
-the replicate by its sampled rows. The fixtures illustrate calculation,
-with no claim about the performance of trained classifiers.
+The notebook and both PDF editions contain all twelve solutions. Every page
+and plot was visually inspected, and statements share the manuscript order.
+These fixtures validate evaluation calculations, not a model-quality claim.
 
-Independent checks covered 20 group splits, 80 binary metric cases,
-100 reliability and Brier cases, and 48 row or group bootstrap cases.
+Earlier validation with Python 3.11.17 / NumPy 2.4.6 passed 227 then-current
+repository tests, 95 excerpts, and independent checks covering 20 group splits,
+80 binary metric cases, 100 reliability/Brier cases and 48 bootstrap cases.
+These are retained historical checks, not new runs from this review.
 
 ## Chapter 18. Language Understanding
 

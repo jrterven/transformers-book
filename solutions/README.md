@@ -230,23 +230,16 @@ and [run/export guide](ch16_adaptation/README.md).
 
 ## Chapter 17. Designing Reproducible Evaluations
 
-| Exercises | Topics | Files |
+All twelve exercises are fully solved in each edition:
+
+| Edition | Contents | File |
 | --- | --- | --- |
-| 1–4 and 9–11 | Scoring units, error costs, calibration, paired resampling, and reproducible comparison designs | [Written solutions (PDF)](ch17_evaluation/written-solutions.pdf) |
-| 5–8 | Group splits, empty bins, paired intervals, and joining predictions by ID | [Jupyter notebook](ch17_evaluation/python-solutions.ipynb) · [Notebook export (PDF)](ch17_evaluation/python-solutions.pdf) |
+| Written | Calculations, interpretations, two plots and comparison designs | [PDF](ch17_evaluation/written-solutions.pdf) |
+| Notebook | The same explanations with 21 executed code cells | [Jupyter notebook](ch17_evaluation/python-solutions.ipynb) |
+| Notebook export | Every code cell and saved result | [PDF](ch17_evaluation/python-solutions.pdf) |
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch17_evaluation/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 17 examples](../examples/ch17_evaluation/). The PDF export includes
-the explanations, code, and recorded outputs.
+See the [exercise statements](../examples/ch17_evaluation/EXERCISES.md)
+and [run/export guide](ch17_evaluation/README.md).
 
 ## Chapter 18. Language Understanding
 

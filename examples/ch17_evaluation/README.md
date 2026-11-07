@@ -47,3 +47,25 @@ The function returns the original accuracy gap and the percentile
 interval of the resampled gaps. The sampling unit determines which
 dependencies are preserved. The examples compare row and group
 resampling on six small groups and use a fixed seed for reproducibility.
+
+
+## Exercises and complete solutions
+
+The [twelve exercises](EXERCISES.md) progress from calculations to code and
+controlled evaluation designs. The [solutions guide](../../solutions/ch17_evaluation/README.md)
+links the executed notebook and both PDF editions; each covers every exercise.
+
+Choose the question before the denominator. Per-check accuracy, the mean
+of conversation accuracies, and complete-conversation success can all differ.
+For binary probabilities, the Brier score averages `(p-y)**2` for the named
+positive class. A constant prevalence estimate can be empirically calibrated
+while failing to distinguish cases. Error costs can make a threshold below
+0.5 appropriate; tune it using validation data, then freeze it for testing.
+
+Grouped resampling preserves within-group dependence. It does not automatically
+change the helper's per-message statistic into an equal-customer average.
+The nominal confidence level is an approximate repeated-sampling coverage
+target. An interval spanning zero does not prove equivalence, and more draws
+do not add independent evaluation cases. Training-seed variation is separate.
+The helper stores a draw-index matrix for these small fixtures; large-scale
+evaluation can process bootstrap draws in bounded batches instead.
