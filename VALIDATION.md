@@ -1829,3 +1829,33 @@ unchanged in the specified fixture.
 
 The written and notebook PDFs are generated from the same executed source by
 `solutions/ch31_perspective/build_pdfs.py`.
+
+## Expanded appendices A-F (2026-11-07)
+
+All six notebooks execute independently in fresh Python processes: nine code
+cells each, 48 complete problem/solution pairs, and twelve retained plots.
+The written and code-inclusive PDFs are derived from those same executed
+notebooks with `scripts/build_appendix_pdfs.py`; no separate answer source can
+drift from the recorded calculations.
+
+Eighty-seven canonical unittest cases pass across attention, training,
+normalization, state spaces, selective updates, and visual generation.
+All 149 exported chapter snippets remain current; no canonical source listing
+changed in this appendix expansion.
+
+The numerical checks include indexed attention references, key/query mask
+broadcasting, masked-value/key invariance, matrix finite differences, shared
+branch gradients, token-weighted accumulation, clipping order and first-step
+AdamW bias correction. Low-precision fixtures distinguish rounded inputs from
+arithmetic error, verify empty-mask rejection, and check finite logit losses
+when target probabilities underflow.
+
+Memory fixtures reconcile packed/reserved slots, live-allocation peaks and
+explicit throughput boundaries. Convolution checks use independent Toeplitz
+and impulse references, padded FFTs, nonzero initialization, all affine-map
+prefixes and reversed-order counterexamples. Diffusion checks cover independent
+versus correlated noise, velocity rotation endpoints, DDIM results, guidance
+conversion and the failure of equivalence after nonlinear clipping.
+
+These are deterministic teaching calculations and controlled numerical tests,
+not GPU benchmarks or evidence of trained-model quality.

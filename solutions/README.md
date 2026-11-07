@@ -420,3 +420,23 @@ Nineteen executed cells check causal pairs, KV bytes, exact-summary capacity,
 hybrid budgets, window boundaries, zero/missing values, storage units,
 controlled histories, composed retrieval and forecast availability.
 Three plots support the explanations. See the [solution guide](ch31_perspective/README.md).
+
+## Appendices A-F. Mathematical foundations
+
+Each expanded appendix now has eight ordered exercises, full written answers,
+and an executed notebook with numerical checks and two explanatory plots.
+All six notebooks run offline on CPU, reusing the canonical chapter helpers.
+
+| Appendix | Exercises | Written answers | Executable answers |
+| --- | --- | --- | --- |
+| A. Notation and tensor shapes | [8 exercises](appendix_a_shapes/EXERCISES.md) | [PDF](appendix_a_shapes/written-solutions.pdf) | [Notebook](appendix_a_shapes/python-solutions.ipynb) / [PDF](appendix_a_shapes/python-solutions.pdf) |
+| B. Calculus and optimization | [8 exercises](appendix_b_calculus/EXERCISES.md) | [PDF](appendix_b_calculus/written-solutions.pdf) | [Notebook](appendix_b_calculus/python-solutions.ipynb) / [PDF](appendix_b_calculus/python-solutions.pdf) |
+| C. Stable numerical computation | [8 exercises](appendix_c_numerics/EXERCISES.md) | [PDF](appendix_c_numerics/written-solutions.pdf) | [Notebook](appendix_c_numerics/python-solutions.ipynb) / [PDF](appendix_c_numerics/python-solutions.pdf) |
+| D. Complexity and memory accounting | [8 exercises](appendix_d_memory/EXERCISES.md) | [PDF](appendix_d_memory/written-solutions.pdf) | [Notebook](appendix_d_memory/python-solutions.ipynb) / [PDF](appendix_d_memory/python-solutions.pdf) |
+| E. Convolution and parallel scans | [8 exercises](appendix_e_scans/EXERCISES.md) | [PDF](appendix_e_scans/written-solutions.pdf) | [Notebook](appendix_e_scans/python-solutions.ipynb) / [PDF](appendix_e_scans/python-solutions.pdf) |
+| F. Diffusion foundations | [8 exercises](appendix_f_diffusion/EXERCISES.md) | [PDF](appendix_f_diffusion/written-solutions.pdf) | [Notebook](appendix_f_diffusion/python-solutions.ipynb) / [PDF](appendix_f_diffusion/python-solutions.pdf) |
+
+Rebuild an appendix's two PDFs from its executed notebook with
+`python scripts/build_appendix_pdfs.py solutions/appendix_a_shapes`
+(or the corresponding appendix directory). The exporter checks all eight
+solutions and ordered execution before producing the PDFs.

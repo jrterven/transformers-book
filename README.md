@@ -452,6 +452,20 @@ python -m examples.ch31_perspective.run_examples --output output/ch31.json
 
 The reference appendices use calculations from the chapter examples.
 
+Each expanded appendix now has eight ordered exercises, full written answers,
+and an executed notebook with numerical checks and two explanatory plots.
+All six notebooks run offline on CPU, reusing the canonical chapter helpers.
+
+| Appendix | Exercises | Written answers | Executable answers |
+| --- | --- | --- | --- |
+| A. Notation and tensor shapes | [8 exercises](solutions/appendix_a_shapes/EXERCISES.md) | [PDF](solutions/appendix_a_shapes/written-solutions.pdf) | [Notebook](solutions/appendix_a_shapes/python-solutions.ipynb) / [PDF](solutions/appendix_a_shapes/python-solutions.pdf) |
+| B. Calculus and optimization | [8 exercises](solutions/appendix_b_calculus/EXERCISES.md) | [PDF](solutions/appendix_b_calculus/written-solutions.pdf) | [Notebook](solutions/appendix_b_calculus/python-solutions.ipynb) / [PDF](solutions/appendix_b_calculus/python-solutions.pdf) |
+| C. Stable numerical computation | [8 exercises](solutions/appendix_c_numerics/EXERCISES.md) | [PDF](solutions/appendix_c_numerics/written-solutions.pdf) | [Notebook](solutions/appendix_c_numerics/python-solutions.ipynb) / [PDF](solutions/appendix_c_numerics/python-solutions.pdf) |
+| D. Complexity and memory accounting | [8 exercises](solutions/appendix_d_memory/EXERCISES.md) | [PDF](solutions/appendix_d_memory/written-solutions.pdf) | [Notebook](solutions/appendix_d_memory/python-solutions.ipynb) / [PDF](solutions/appendix_d_memory/python-solutions.pdf) |
+| E. Convolution and parallel scans | [8 exercises](solutions/appendix_e_scans/EXERCISES.md) | [PDF](solutions/appendix_e_scans/written-solutions.pdf) | [Notebook](solutions/appendix_e_scans/python-solutions.ipynb) / [PDF](solutions/appendix_e_scans/python-solutions.pdf) |
+| F. Diffusion foundations | [8 exercises](solutions/appendix_f_diffusion/EXERCISES.md) | [PDF](solutions/appendix_f_diffusion/written-solutions.pdf) | [Notebook](solutions/appendix_f_diffusion/python-solutions.ipynb) / [PDF](solutions/appendix_f_diffusion/python-solutions.pdf) |
+
+
 | Appendix | Companion examples |
 | --- | --- |
 | A. Notation and tensor shapes | [Self-attention and masks](examples/ch04_attention/) |
