@@ -39,3 +39,16 @@ interval hit indicators, and widths over the origins. Coverage
 includes values on either endpoint. The interval fixture shows
 how the third horizon can have a larger error and lower coverage
 even when widths are the same across all horizons.
+
+## Keep time and uncertainty distinct
+
+There are six test origins, 18 forecast-target pairs and eight distinct target
+timestamps in the rolling fixture. A value may be scored at several horizons.
+The fitted drift stays fixed while the input history is refreshed.
+
+Quantile loss penalizes the two error directions differently. Coverage counts
+outcomes within issued intervals; width describes their precision. Increasing
+the width leaves point MAE unchanged. Choose interval rules before test outcomes
+arrive and preserve the versions of covariates available at each origin.
+
+See the [11 exercises](EXERCISES.md) and [complete solutions](../../solutions/ch27_time_series/README.md).

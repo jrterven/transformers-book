@@ -1710,3 +1710,26 @@ The notebook's mathematical notation is corrected and validated before export.
 Both PDFs are exported from the same executed notebook by
 `solutions/ch26_code_models/build_pdfs.py`.
 Runtime: Python 3.12.14 and Matplotlib 3.11.2.
+
+## Chapter 27 detailed textbook review (2026-11-07)
+
+Ten canonical tests pass; all four exported snippets are current and identical
+to the manuscript copies. The canonical forecasting helpers are unchanged.
+All eleven exercises have complete written and executable solutions.
+Eighteen code cells execute in order and retain three plots.
+
+The split exercise omits origins 14 and 15, and the patch exercise leaves index
+7 unused. Quantile losses for actual 10 and forecasts 8/12 are 1.8/0.2 at tau=.9.
+Seasonal drift adds increments 1,1,2,2,3 across five horizons. Setting drift zero
+reproduces seasonal naive at every origin. Widening intervals changes coverage
+and width without changing point MAE. Future perturbations leave the trailing
+feature unchanged but alter the centered feature.
+
+The weekly-refit design uses 54 test origins and seven updates, with 162 scored
+pairs but 56 distinct target days. The shift design separates six transition
+origins, freezes earlier calibration offsets and scores synthetic before/after
+coverage at unchanged widths. These fixtures are not model performance claims.
+
+Both PDFs are exported from the same executed notebook by
+`solutions/ch27_time_series/build_pdfs.py`.
+Runtime: Python 3.12.14, NumPy 2.5.4 and Matplotlib 3.11.2.

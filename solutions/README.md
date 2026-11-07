@@ -363,23 +363,15 @@ Three plots show the key distinctions. See the [solution guide](ch26_code_models
 
 ## Chapter 27. Time-Series Forecasting
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Available information, split boundaries, patches, coverage, feature leakage, refits, and demand shifts | [Written solutions (PDF)](ch27_time_series/written-solutions.pdf) |
-| 5–8 | Rolling windows, seasonal forecasts, drift, horizon errors, and interval widths | [Jupyter notebook](ch27_time_series/python-solutions.ipynb) · [Notebook export (PDF)](ch27_time_series/python-solutions.pdf) |
+All [eleven exercises](../examples/ch27_time_series/EXERCISES.md) have complete,
+ordered solutions in the [written PDF](ch27_time_series/written-solutions.pdf),
+[executed notebook](ch27_time_series/python-solutions.ipynb), and
+[notebook PDF](ch27_time_series/python-solutions.pdf).
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch27_time_series/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 27 examples](../examples/ch27_time_series/). The PDF export includes
-the explanations, code, and recorded outputs.
+Eighteen executed cells check availability, split boundaries, patches, quantile
+loss, windows, seasonal cycles, fixed drift, interval widths, leakage, weekly
+refits and regime changes. Three plots explain the key distinctions.
+See the [solution guide](ch27_time_series/README.md).
 
 ## Chapter 28. Learning from Tables
 

@@ -384,6 +384,10 @@ fitted drift, and measures interval coverage by horizon. The
 [chapter guide](examples/ch27_time_series/README.md) explains which
 observations the forecaster can use at each origin.
 
+The [11 exercises](examples/ch27_time_series/EXERCISES.md) and
+[complete solutions](solutions/ch27_time_series/README.md) distinguish
+information availability, seasonal drift, point error and interval calibration.
+
 ```sh
 python -m pip install -r requirements.txt
 python -m examples.ch27_time_series.run_examples --output output/ch27.json
