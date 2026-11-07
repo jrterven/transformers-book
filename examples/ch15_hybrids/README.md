@@ -46,3 +46,19 @@ The comparison counts persistent mixer history for the toy schedules.
 Model parameters, output traces, and temporary workspaces are separate.
 The fixed projections and gates let you inspect the history
 calculation without training a model.
+
+## Exercises and complete solutions
+
+The [ten exercises](EXERCISES.md) progress from hand calculations to numerical
+checks and experiment design. All are solved in the [notebook and both PDFs](../../solutions/ch15_hybrids/README.md).
+
+The exact unit-key overwrite needs both unit key norm and a complete correction.
+With decay disabled, repeating the same complete write leaves the updated
+state unchanged. General keys can overlap: a correction changes another
+read in proportion to the key-query inner product. The low-level `delta_step`
+uses supplied vectors directly; `stack_step` normalizes its recurrent vectors.
+
+`attention_token` concatenates arrays to expose the cache operation clearly.
+Production caches can reserve storage to avoid copying the old prefix at every
+step. The examples count live persistent payloads, excluding old snapshots,
+output traces, temporary workspaces and Python object overhead.

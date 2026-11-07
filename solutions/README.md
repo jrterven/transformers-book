@@ -206,23 +206,14 @@ and [run/export guide](ch14_selective_ssm/README.md).
 
 ## Chapter 15. Delta Rules and Hybrid Stacks
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–10 | Delta corrections, sign changes, Jamba layer types, mixed history bytes, overlapping keys, and controlled tests | [Written solutions (PDF)](ch15_hybrids/written-solutions.pdf) |
-| 5–8 | State reads, persistent stores, mixer replacement, and cached causal attention | [Jupyter notebook](ch15_hybrids/python-solutions.ipynb) · [Notebook export (PDF)](ch15_hybrids/python-solutions.pdf) |
+All **10 exercises** are completely solved in every edition: [written PDF](ch15_hybrids/written-solutions.pdf), [executed notebook](ch15_hybrids/python-solutions.ipynb), and [notebook PDF](ch15_hybrids/python-solutions.pdf).
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch15_hybrids/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 15 examples](../examples/ch15_hybrids/). The PDF export includes
-the explanations, code, and recorded outputs.
+Follow predictions and corrections, compare queries and overlapping writes,
+trace separate stores through a hybrid, and test causal cache equivalence.
+The notebook has 21 executed code cells and two plots. The final design varies
+table size and update length separately and distinguishes circular counting
+from order-sensitive swaps. See the [exercise statements](../examples/ch15_hybrids/EXERCISES.md)
+and [run/export guide](ch15_hybrids/README.md).
 
 ## Chapter 16. From Pretrained Weights to Task Behavior
 

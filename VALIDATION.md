@@ -1055,6 +1055,33 @@ steps across 240 schedule cases. The comparisons covered projected
 history, state sizes, and the causal boundary. The examples use
 hand-chosen projections and gates and run on a CPU.
 
+### Chapter 15 detailed textbook revision (November 2026)
+
+All nine chapter tests pass with Python 3.12.14 and NumPy 2.5.4. All four
+canonical snippets and their private manuscript copies match. The CLI checks
+the two-by-two delta update, the negative carry coefficient, the four-token
+layer trace and all three storage schedules.
+
+All ten exercises are solved in each edition. The notebook executes 21 code
+cells and saves two plots. It verifies mixed-precision payloads of 150 and
+220 bytes, equality of states under different queries, idempotence of a
+complete unit-key write with no decay, and the failure of that overwrite
+property for a supplied key with squared norm four. Full causal attention
+matches streaming outputs; changing input three leaves the first two outputs
+unchanged in both routes.
+
+For overlapping unit keys, the second write changes the first read from 2 to
+1 + 5/sqrt(2). Restoring that first read changes the second to
+2.5 + 1/sqrt(2). Orthogonal writes preserve the other read when decay is one.
+The evaluation exercise separates growing table size from longer update
+streams, gives exact answer oracles, identifies the commutative circular-move
+shortcut, and checks a noncommuting pair of swaps. These are generator and
+arithmetic checks, not trained-model accuracy measurements.
+
+Both PDFs are reproducibly exported from the executed notebook with
+`solutions/ch15_hybrids/build_pdfs.py`. Manuscript text and figure sources
+remain in the private repository.
+
 ## Chapter 16. From Pretrained Weights to Task Behavior
 
 ~~~sh

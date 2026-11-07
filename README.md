@@ -217,13 +217,13 @@ including 21 executed code cells, two plots, and a controlled memory-task design
 python -m examples.ch14_selective_ssm.run_examples --output output/ch14.json
 ```
 
-[Chapter 15: Delta Rules and Hybrid Stacks](examples/ch15_hybrids/) follows
-a delta-rule correction and a token moving through a recurrent–attention–recurrent
-stack. The [chapter guide](examples/ch15_hybrids/README.md) shows the layer
-traces and how the state and KV cache sizes change with the mixer schedule.
+[Chapter 15: Delta Rules and Hybrid Stacks](examples/ch15_hybrids/) traces
+prediction-error writes, interfering key directions, and separate per-layer
+states and caches. Its [ten exercises](examples/ch15_hybrids/EXERCISES.md) have
+[complete solutions in all editions](solutions/ch15_hybrids/README.md), with
+21 executed notebook cells and two plots.
 
 ```sh
-python -m pip install -r requirements.txt
 python -m examples.ch15_hybrids.run_examples --output output/ch15.json
 ```
 
