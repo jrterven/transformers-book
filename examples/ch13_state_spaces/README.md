@@ -49,3 +49,13 @@ discrete transition and input map.
 and multiplies by an output gate. Both gate vectors have one entry
 per input position. The function returns all three intermediate
 sequences so the effect of each gate can be inspected.
+
+## Exercises and complete solutions
+
+The [eleven exercises](EXERCISES.md) progress from hand calculations to
+NumPy investigations and optional extensions. Every solution appears in
+the [executed notebook and both PDFs](../../solutions/ch13_state_spaces/README.md).
+The code's saved state trace uses `n * N` values; the streaming recurrence
+carries only `N` state values between steps. The supplied gate arrays are
+controlled teaching inputs. Gate-producing operations in an autoregressive
+model must also be causal.

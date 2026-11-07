@@ -185,23 +185,14 @@ Python investigations' explanations and results as well as the conceptual answer
 
 ## Chapter 13. Structured State Spaces and Long Convolutions
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 10–11 | State updates, filter lags, bilinear discretization, streaming storage, and time-varying coefficients | [Written solutions (PDF)](ch13_state_spaces/written-solutions.pdf) |
-| 5–9 | Scan and convolution equivalence, circular wraparound, saved state, gate placement, and initial-state correction | [Jupyter notebook](ch13_state_spaces/python-solutions.ipynb) · [Notebook export (PDF)](ch13_state_spaces/python-solutions.pdf) |
+All **11 exercises** are fully solved in every edition: [written PDF](ch13_state_spaces/written-solutions.pdf), [executed notebook](ch13_state_spaces/python-solutions.ipynb), and [notebook PDF](ch13_state_spaces/python-solutions.pdf).
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch13_state_spaces/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 13 examples](../examples/ch13_state_spaces/). The PDF export includes
-the explanations, code, and recorded outputs.
+The sequence covers state summaries, lag filters, discretization, FFT padding,
+chunk continuation, gate placement, saved-state corrections, streaming storage,
+and time-varying updates. Seventeen executed code cells and two plots expose
+the calculations. See the [exercise statements](../examples/ch13_state_spaces/EXERCISES.md)
+and [run/export guide](ch13_state_spaces/README.md). The written edition also
+includes the Python investigations' explanations and numerical results.
 
 ## Chapter 14. Selective State Spaces
 

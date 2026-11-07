@@ -964,6 +964,27 @@ Independent checks covered 64 scans and impulse responses using explicit
 matrix powers, 36 convolution and gating cases using scalar lag sums, and
 nine bilinear conversions using an eigenbasis calculation.
 
+### Chapter 13 detailed textbook revision (November 2026)
+
+All 11 chapter tests pass on Python 3.12.14 and NumPy 2.4.6. The five
+exported snippets match their canonical sources and private manuscript
+copies. The CLI reproduces the scalar states (2, 1, 4.5, 2.25), the
+coupled two-coordinate example, bilinear conversion, and gated filter.
+The maximum FFT discrepancies are 4.44e-16 and 5.55e-16 for the scalar
+and vector examples, respectively.
+
+The complete eleven-exercise notebook executes all 17 code cells with
+two saved plots. Changing only the last input by 10 changes padded causal
+outputs by (0, 0, 0, 0, 10), while the short circular transform changes
+them by (-10, 10, 0, 0, 10). Saved-state continuation matches the whole
+scan; resetting the second chunk drops the earlier history's contribution.
+Additional checks cover equal states from distinct histories, a zero
+readout from a nonzero state, and a linear but time-varying update.
+
+Both PDF editions are generated from the executed notebook by
+`solutions/ch13_state_spaces/build_pdfs.py`, with all eleven solutions.
+Manuscript text and vector figure sources remain in the private repository.
+
 ## Chapter 14. Selective State Spaces
 
 ~~~sh

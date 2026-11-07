@@ -197,12 +197,13 @@ python -m examples.ch12_efficient.run_examples --output output/ch12.json
 ```
 
 [Chapter 13: Structured State Spaces and Long Convolutions](examples/ch13_state_spaces/)
-runs the same linear state space model as a recurrence and as a convolution.
-The [chapter guide](examples/ch13_state_spaces/README.md) follows the filter
-coefficients, FFT padding, and a gated convolution inspired by Hyena.
+compares recurrent, direct-convolution, and FFT evaluations of the same linear
+system. It traces saved history, circular wraparound, and gates placed before
+or after a filter. The [eleven exercises](examples/ch13_state_spaces/EXERCISES.md)
+have [complete solutions in every edition](solutions/ch13_state_spaces/README.md),
+with 17 executed code cells and two diagnostic plots.
 
 ```sh
-python -m pip install -r requirements.txt
 python -m examples.ch13_state_spaces.run_examples --output output/ch13.json
 ```
 
