@@ -356,6 +356,9 @@ mixes a clean grid with noise, follows a deterministic diffusion sampler,
 and compares conditional and unconditional predictions. The
 [chapter guide](examples/ch25_visual_generation/README.md) explains the
 four-value fixture and the two sampler outputs.
+The [11 exercises](examples/ch25_visual_generation/EXERCISES.md) and
+[complete solutions](solutions/ch25_visual_generation/README.md) add
+error propagation, guidance geometry and separate quality/diversity checks.
 
 ```sh
 python -m pip install -r requirements.txt

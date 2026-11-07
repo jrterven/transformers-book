@@ -339,23 +339,15 @@ See the [chapter solution guide](ch24_speech_audio/README.md) for setup and expo
 
 ## Chapter 25. Image and Video Generation
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Noise mixing, DDIM error, guidance, video attention, sampling latency, motion, and diversity | [Written solutions (PDF)](ch25_visual_generation/written-solutions.pdf) |
-| 5–8 | Noise endpoints, exact and perturbed sampler paths, and guidance scales | [Jupyter notebook](ch25_visual_generation/python-solutions.ipynb) · [Notebook export (PDF)](ch25_visual_generation/python-solutions.pdf) |
+All [eleven exercises](../examples/ch25_visual_generation/EXERCISES.md) have
+complete, ordered solutions in the [written PDF](ch25_visual_generation/written-solutions.pdf),
+[executed notebook](ch25_visual_generation/python-solutions.ipynb), and
+[notebook PDF](ch25_visual_generation/python-solutions.pdf).
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch25_visual_generation/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 25 examples](../examples/ch25_visual_generation/). The PDF export includes
-the explanations, code, and recorded outputs.
+Fifteen executed cells check noise mixtures, DDIM outputs and errors,
+guidance increments, video pair counts and repeated compositions.
+Three plots make the numerical behavior visible.
+See the [solution guide](ch25_visual_generation/README.md) for setup and export.
 
 ## Chapter 26. Models for Code
 

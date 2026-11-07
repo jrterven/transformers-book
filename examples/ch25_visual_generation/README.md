@@ -40,3 +40,23 @@ prediction fixed across the two steps in each run. The difference
 in the final arrays isolates how a prediction error enters this
 calculation. In model sampling, a denoiser can produce a new
 prediction at each step.
+
+## Understand the boundary cases
+
+The square roots scale amplitudes; their squares, not the amplitudes, add
+to one. The fixed noise array is a teaching fixture, not a Gaussian draw.
+`add_noise` permits `alpha_bar=0`; `ddim_step` cannot use zero as its current
+level because estimating the clean sample divides by its square root.
+Sampling toward cleaner states increases `alpha_bar`.
+
+Holding a noise prediction fixed preserves the first clean estimate across
+DDIM updates. Ending at level one removes the explicit noise term, but it
+does not repair an inaccurate clean estimate. A real denoiser recomputes
+its prediction from the updated state.
+
+Guidance uses two predictions at the same state and noise level. Negative
+coordinates and values above one are valid noise estimates. Batching the
+two predictions does not make the second prediction computationally free.
+Measure appearance, adherence, temporal behavior and variety separately.
+
+See the [11 exercises](EXERCISES.md) and [complete solutions](../../solutions/ch25_visual_generation/README.md).

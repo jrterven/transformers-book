@@ -1661,3 +1661,27 @@ undefined latencies. All evaluation outputs are explicitly synthetic.
 
 Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2. Both PDFs are
 built from the executed notebook by `solutions/ch24_speech_audio/build_pdfs.py`.
+
+## Chapter 25 detailed textbook review (2026-11-07)
+
+Eight canonical tests pass and all three exported snippets are current and
+identical to the manuscript copies. The canonical numerical helpers are
+unchanged. All eleven exercises have complete written and executable solutions;
+the notebook runs 15 code cells in order with three retained plots.
+
+The scalar mixture gives 1.0 and 0.4 at signal coefficients 0.64 and 0.36.
+Using predicted noise -0.5 gives clean estimate 1.625 and next sample 1.244555;
+the exact-noise next sample is 1.364110. Its difference splits into clean and
+noise contributions -0.3375 and +0.217945. The lower-left perturbation exercise
+gives middle entry -97/150 and final entry -2/15, with all other entries intact.
+The zero-current-level sampler call is rejected as required.
+
+Video attention counts are 900 joint pairs versus 180 spatial plus 150 temporal
+pairs per clip and head. Guidance increments are (1, -0.5). Composition groups
+(4,2,1,1) and (3,2,2,1) give same-category pair fractions 7/28 and 5/28.
+Timing counts and motion-scoring records are explicitly illustrative protocols,
+not measured model performance. All saved code outputs match the explanations.
+
+Both PDFs are exported from the same executed notebook by
+`solutions/ch25_visual_generation/build_pdfs.py`. Runtime: Python 3.12.14,
+NumPy 2.5.4 and Matplotlib 3.11.2.
