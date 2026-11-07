@@ -44,3 +44,27 @@ patches across all frames. Divided attention adds a spatial count
 within each frame and a temporal count at each patch location.
 For three frames with four patches each, the joint count is 144
 and the two divided counts sum to 84.
+
+## Understand what the representation preserves
+
+Flattening rearranges pixels; it does not compress them. The learned
+projection can. A list's row order alone does not give a position-free
+full-attention encoder access to location. Fixed position vectors associate
+patch content with its grid location. The ordered mean features used here
+are hand-designed spatial coordinates, not a pretrained ViT's output.
+
+The paired sorted features impose a 50% ceiling on deterministic binary
+classification: each identical feature row has opposite labels. This is
+an information limit, not simply an unsuccessful optimizer. The supplied
+runner obtains 8/8 versus 4/8 on eight held-out synthetic images.
+
+In temporal-then-spatial attention, information can travel from one frame
+and location to a different frame at the same location, then to a different
+location in that frame. The intermediate representation is the output of
+the temporal stage. Patch-only divided/joint score counts have ratio
+`1/T + 1/S`; counts do not predict runtime or imply identical attention maps.
+
+See the [12 exercises](EXERCISES.md) and [complete solutions](../../solutions/ch21_vision/README.md).
+All editions include every solution, with plots for patch order and video
+counts. Evaluation designs cover recording and camera leakage, frame
+reversal with temporal position information, and controlled resolution changes.

@@ -303,7 +303,9 @@ python -m examples.ch20_retrieval.run_examples --output output/ch20.json
 image patches, fits linear probes on frozen features, and compares joint
 and divided video attention counts. The
 [chapter guide](examples/ch21_vision/README.md) follows the patch order
-and the held-out synthetic images.
+and the held-out synthetic images. The [12 exercises](examples/ch21_vision/EXERCISES.md)
+and [complete solutions](solutions/ch21_vision/README.md) trace pixels into
+tokens, explain position information, and design video evaluation protocols.
 
 ```sh
 python -m pip install -r requirements.txt

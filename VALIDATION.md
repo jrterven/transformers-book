@@ -1564,3 +1564,26 @@ The optional audit cells are labeled fixtures and proposed evaluation designs.
 They do not claim a retriever or generator benchmark. Runtime: Python 3.12.14,
 NumPy 2.5.4, Matplotlib 3.11.2. Both PDF editions are generated from the notebook
 by `solutions/ch20_retrieval/build_pdfs.py`.
+
+## Chapter 21 detailed textbook review (2026-11-07)
+
+All twelve exercises have complete explanations in the written PDF,
+executed notebook and notebook PDF. Nineteen code cells run in sequence
+without errors; two plots trace patch values and compare attention counts.
+All nine chapter tests passed and all four canonical snippets are current
+and match the private manuscript. Canonical helpers remain unchanged.
+
+The 4-by-6 single-channel fixture gives six rows of four values, including
+[0,1,6,7] and [16,17,22,23]. Identical patches project to [4,-2]; adding
+position [0,1] gives [4,-1]. The four-row ordered probe predicts [0,1,0,1],
+while the sorted zero-initialized head retains equal logits. The separate
+runner's eight held-out synthetic images yield 8/8 versus 4/8 correct.
+For 24 video tokens, joint attention counts 576 scores; divided attention
+counts 336, 240 and 240 for grids (2,12), (4,6) and (6,4).
+
+The design exercises separate new recordings from new cameras, preserve
+original/reversed pairs when splitting, and distinguish checkpoint changes
+from resolution changes. Their numeric cells are explicit fixtures, not
+trained-model benchmarks. Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib
+3.11.2. Both PDFs are generated from the same notebook by
+`solutions/ch21_vision/build_pdfs.py`.

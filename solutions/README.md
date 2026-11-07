@@ -284,23 +284,17 @@ and [run/export guide](ch20_retrieval/README.md).
 
 ## Chapter 21. Image and Video Understanding
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–12 | Patch grids, input scaling, attention counts, tubelets, and evaluation by recording, frame order, and resolution | [Written solutions (PDF)](ch21_vision/written-solutions.pdf) |
-| 5–8 | Patch order and position, linear probes on ordered and sorted features, and divided space–time attention | [Jupyter notebook](ch21_vision/python-solutions.ipynb) · [Notebook export (PDF)](ch21_vision/python-solutions.pdf) |
+All twelve exercises have complete worked solutions, including patch
+ordering, position information and controlled visual evaluation.
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
+| Edition | Contents |
+| --- | --- |
+| [Written solutions](ch21_vision/written-solutions.pdf) | Explanations, calculations, tables and two plots for Exercises 1-12 |
+| [Executed notebook](ch21_vision/python-solutions.ipynb) | The same solutions with 19 executed cells and saved outputs |
+| [Notebook PDF](ch21_vision/python-solutions.pdf) | All explanations, code, figures and results |
 
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch21_vision/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 21 examples](../examples/ch21_vision/). The PDF export includes
-the explanations, code, and recorded outputs.
+See the [exercise statements](../examples/ch21_vision/EXERCISES.md)
+and [run/export guide](ch21_vision/README.md).
 
 ## Chapter 22. Object Detection and Segmentation
 
