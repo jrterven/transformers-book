@@ -174,24 +174,14 @@ See the [exercise statements](../examples/ch11_long_context/EXERCISES.md) and [r
 
 ## Chapter 12. Efficient Execution
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 10–11 | Response timing, batching, score storage, online softmax rescaling, and performance comparisons | [Written solutions (PDF)](ch12_efficient/written-solutions.pdf) |
-| 5–9 | Uneven tile grids, tile-size agreement, empty tiles, causal offsets, and numerical stability | [Jupyter notebook](ch12_efficient/python-solutions.ipynb) · [Notebook export (PDF)](ch12_efficient/python-solutions.pdf) |
+All **11 exercises** are fully solved in every edition: [written PDF](ch12_efficient/written-solutions.pdf), [executed notebook](ch12_efficient/python-solutions.ipynb), and [notebook PDF](ch12_efficient/python-solutions.pdf).
 
-Start JupyterLab from the repository root in an environment with the
-[NumPy requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch12_efficient/python-solutions.ipynb`, select that Python
-kernel, and run all cells. The notebook uses the
-[Chapter 12 examples](../examples/ch12_efficient/) on CPU with fixed arrays.
-The PDF export includes the code and its recorded outputs. The two PDFs
-cover all three optional exercises.
+The sequence covers response timing, score storage, online softmax, partial tiles,
+masked rows, query offsets, numerical stability, and fair performance measurement.
+Sixteen executed code cells and two diagrams make the calculations inspectable.
+See the [exercise statements](../examples/ch12_efficient/EXERCISES.md) and
+[run/export guide](ch12_efficient/README.md). The written edition includes the
+Python investigations' explanations and results as well as the conceptual answers.
 
 ## Chapter 13. Structured State Spaces and Long Convolutions
 

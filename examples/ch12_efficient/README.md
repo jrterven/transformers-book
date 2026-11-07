@@ -47,3 +47,12 @@ depends on values, masks, accumulators, other temporary arrays, and the
 output. The NumPy code illustrates the calculation order of tiled
 attention. GPU kernels also account for data movement and device-specific
 execution.
+
+## Exercises and complete solutions
+
+The [eleven exercise statements](EXERCISES.md) progress from hand calculations
+to NumPy investigations and optional performance analysis. Every solution
+appears in the [executed notebook and both PDF editions](../../solutions/ch12_efficient/README.md).
+In particular, compare the incorrect average of independently normalized tile
+outputs with the correctly combined numerator and denominator. Counting a small
+score tile establishes its size; it does not predict total memory or speedup.

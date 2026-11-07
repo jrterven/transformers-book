@@ -922,6 +922,26 @@ The size example counts one score array. At two bytes per score, the
 full 4096-by-4096 array occupies 32 MiB and a 64-by-128 tile occupies
 16 KiB. These are storage calculations. The examples run on a CPU.
 
+### Chapter 12 detailed textbook revision (November 2026)
+
+All nine chapter tests pass on Python 3.12.14 and NumPy 2.4.6. The three
+exported snippets match their canonical sources and the private manuscript
+copies. The CLI reproduces the online result 17/6, largest-score counts 63
+versus 12, and 32 MiB versus 16 KiB for the illustrative large score buffers.
+Unmasked and offset-causal comparisons have maximum absolute errors of
+2.22e-16 and 1.11e-16 for the supplied arrays.
+
+The complete eleven-exercise notebook executes all 16 code cells, including
+two saved plots. The rescaling exercise checks both tile orders and shows
+why the average of tile outputs (2.25) differs from complete attention (2).
+The bottleneck exercise computes a 90 ms step after halving a 20 ms attention
+component within a 100 ms workload. All timings in those exercises are teaching
+assumptions. The final GPU protocol is proposed, not measured.
+
+Both PDF editions are generated from the executed notebook by
+`solutions/ch12_efficient/build_pdfs.py`, with all eleven solutions. Figure
+sources and manuscript text remain in the private repository.
+
 ## Chapter 13. Structured State Spaces and Long Convolutions
 
 ~~~sh
