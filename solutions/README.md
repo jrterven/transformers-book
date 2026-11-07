@@ -399,23 +399,15 @@ the core distinctions. See the [solution guide](ch29_protein/README.md).
 
 ## Chapter 30. Decisions and Embodied Action
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Returns, context windows, action bins, episode splits, closed-loop outcomes, and control timing | [Written solutions (PDF)](ch30_decisions/written-solutions.pdf) |
-| 5–8 | Returns-to-go, unsupported requests, layout shifts, and demonstration counts | [Jupyter notebook](ch30_decisions/python-solutions.ipynb) · [Notebook export (PDF)](ch30_decisions/python-solutions.pdf) |
+All [eleven exercises](../examples/ch30_decisions/EXERCISES.md) have full,
+ordered solutions in the [written PDF](ch30_decisions/written-solutions.pdf),
+[executed notebook](ch30_decisions/python-solutions.ipynb), and
+[notebook PDF](ch30_decisions/python-solutions.pdf).
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch30_decisions/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 30 examples](../examples/ch30_decisions/). The PDF export includes
-the explanations, code, and recorded outputs.
+Twenty-one executed cells check reward indexing, discounted and undiscounted
+returns, causal windows, action bins, absent targets, shifted rewards, tied
+demonstrations, episode groups and refresh schedules. Three plots support the
+explanations. See the [solution guide](ch30_decisions/README.md).
 
 ## Chapter 31. What Changed, and What Remains?
 

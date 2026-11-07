@@ -40,3 +40,22 @@ original grid. The same table follows `D, R` into the trap when it
 moves to `(1, 1)`. Both tables are simple counts over the recorded
 actions. They illustrate how a desired return changes the lookup
 and how a changed environment can change the outcome.
+
+## What the examples establish
+
+The reward index refers to the action that earns it. Recorded returns describe
+completed episodes; requested returns condition a policy. Neither a large request
+nor a valid action token guarantees a successful outcome.
+
+The shifted trap is omitted from the policy inputs. Equal position/return keys
+therefore produce equal first actions, despite different consequences.
+An unsupported target is distinct from a terminal trap or a time limit.
+Target 0 is absent from the log but attainable by a wall policy at the step cap;
+target +2 is impossible under this grid's terminal rewards.
+
+The notebook adds a discounted-return extension without changing the canonical
+undiscounted helper. It also checks tied demonstrations and separates an
+eight-action prediction horizon from the number executed before refreshing.
+
+See the [11 exercises](EXERCISES.md) and
+[complete solutions](../../solutions/ch30_decisions/README.md).

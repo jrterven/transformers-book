@@ -427,6 +427,10 @@ builds return-to-go targets, fits two count policies, and runs them in a
 small grid. The [chapter guide](examples/ch30_decisions/README.md)
 explains the trajectory format and how the shifted trap affects a rollout.
 
+The [11 exercises](examples/ch30_decisions/EXERCISES.md) and
+[complete solutions](solutions/ch30_decisions/README.md) connect causal action
+prediction, return requests, changed environments and control timing.
+
 ```sh
 python -m examples.ch30_decisions.run_examples --output output/ch30.json
 ```

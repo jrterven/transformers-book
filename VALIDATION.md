@@ -1782,3 +1782,25 @@ a geometric distance matrix, a measured error, or a model result.
 Both PDFs are exported from the same executed notebook by
 `solutions/ch29_protein/build_pdfs.py`.
 Runtime: Python 3.12.14, NumPy 2.5.4 and Matplotlib 3.11.2.
+
+## Chapter 30 detailed textbook review (2026-11-07)
+
+Ten canonical tests pass and three exported snippets are current and identical
+to the manuscript copies. Canonical helpers remain unchanged.
+All eleven exercises have complete explanations; 21 cells execute in order
+and retain three figures.
+
+Returns (5,5,3,4) include current rewards (0,2,-1,4); discount 0.5 gives
+(1.25,2.5,1,4), with the corresponding divided forward recurrence.
+The two-step window at s2 admits G1,s1,a1,G2,s2 and excludes a2.
+Targets 0 and 2 are absent from the learned table; an explicit wall policy
+demonstrates that zero total reward is feasible at the step limit.
+The shifted rollout differs first in the second action's reward, not its position.
+A two-to-two tie selects R by the canonical fixed priority.
+
+Illustrative split IDs are disjoint (64/16/20); they are not a measured dataset.
+With 0.1-second actions, execution horizons 8/2 give ideal refresh intervals
+0.8/0.2 seconds. Adding 0.15 seconds of blocking inference yields serial cycle
+times 0.95/0.35 seconds; these are scheduling arithmetic, not benchmark latency.
+The written and notebook PDFs are generated from the same executed source by
+`solutions/ch30_decisions/build_pdfs.py`.
