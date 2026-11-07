@@ -310,25 +310,20 @@ minimum-cost assignments, precision envelopes and coordinate inversion.
 See the [exercise statements](../examples/ch22_detection/EXERCISES.md)
 and [run/export guide](ch22_detection/README.md).
 
-## Chapter 23. Vision–Language and Multimodal Models
+## Chapter 23. Vision-Language and Multimodal Models
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Normalized similarities, directional probabilities, caption recall, visual projection, scene splits, and image-grounded evaluation | [Written solutions (PDF)](ch23_multimodal/written-solutions.pdf) |
-| 5–8 | Logit scale, symmetric contrastive loss, rectangular retrieval, and visual cross-attention | [Jupyter notebook](ch23_multimodal/python-solutions.ipynb) · [Notebook export (PDF)](ch23_multimodal/python-solutions.pdf) |
+All eleven exercises have complete explanations in all three editions.
+They cover candidate-dependent probabilities, symmetric contrastive loss,
+multiple-positive retrieval, visual projection and paired evaluation.
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
+| Edition | Contents |
+| --- | --- |
+| [Written solutions](ch23_multimodal/written-solutions.pdf) | All eleven worked solutions, tables and three plots |
+| [Executed notebook](ch23_multimodal/python-solutions.ipynb) | The same explanations with 14 executed cells and saved outputs |
+| [Notebook PDF](ch23_multimodal/python-solutions.pdf) | All prose, code, figures and results |
 
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch23_multimodal/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 23 examples](../examples/ch23_multimodal/). The PDF export includes
-the explanations, code, and recorded outputs.
+See the [exercise statements](../examples/ch23_multimodal/EXERCISES.md)
+and [run/export guide](ch23_multimodal/README.md).
 
 ## Chapter 24. Speech and Audio
 

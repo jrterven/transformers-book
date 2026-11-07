@@ -1611,3 +1611,28 @@ fixtures make no trained-model performance claim.
 
 Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2. Both PDFs are
 built from the executed notebook by `solutions/ch22_detection/build_pdfs.py`.
+
+## Chapter 23 detailed textbook review (2026-11-07)
+
+Nine canonical tests passed; all four exported snippets are current and
+match the private manuscript. Canonical helpers are unchanged. All eleven
+exercises are solved in both PDFs and the notebook. Fourteen code cells
+execute in order and retain three plots.
+
+Exercise 5 now measures the effect of changing scale and candidate count.
+At scale 2, the first-image probability of text 1 is 0.804430; duplicating
+text 2 changes it to 0.672842 without changing the original logits. At
+scale 4 with two candidates it is 0.944193. Rankings are unchanged.
+Exercise 6 exchanges losses 0.313262 and 0.680925 on transpose, preserving
+their mean 0.497093. Exercise 7 gives directional recalls .75 and 2/3 at
+k=1, and one in both directions at k=2.
+
+The spatial-pair fixture gives image accuracy .5, both-correct pair
+accuracy .25 and answer-change frequency .5. A deterministic question-only
+baseline differs from independent random guesses; neither is reported as
+a measured trained-model result. Scene groups preserve all captions and
+related photos across splits. A final labeled fixture separately counts
+appropriate responses and unsupported visual claims.
+
+Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2. Both PDFs are
+built from the executed notebook by `solutions/ch23_multimodal/build_pdfs.py`.

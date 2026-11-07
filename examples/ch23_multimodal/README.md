@@ -44,3 +44,24 @@ projection maps each resulting context row to the language-model
 width. The example's query weights the two image values by
 `(0.25, 0.75)`, then projects `(0.5, 3)` to `(0.5, 3, -2.5)`.
 The small arrays expose the bridge calculation with fixed values.
+
+## Trace the distinction
+
+Equal feature widths permit a dot product; paired training aligns the
+representations. Positive feature rescaling disappears under row
+normalization. Positive logit rescaling preserves rankings while changing
+softmax probabilities. Candidate duplication can change those probabilities
+without changing the image or its scores for the original candidates.
+
+The visual bridge changes two dimensions separately: query count sets the
+number of output rows, while the final projection sets their feature width.
+Projected rows are continuous inputs, not vocabulary IDs. Freezing the
+language model's weights still permits derivatives with respect to its
+inputs when training the bridge.
+
+For paired visual tests, report both image accuracy and the fraction of
+pairs with both answers correct. Merely changing answers can include
+changing in the wrong direction. Keep ambiguity handling and unsupported
+claims as separate judgments.
+
+See the [11 exercises](EXERCISES.md) and [complete solutions](../../solutions/ch23_multimodal/README.md).
