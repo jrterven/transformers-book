@@ -243,23 +243,16 @@ and [run/export guide](ch17_evaluation/README.md).
 
 ## Chapter 18. Language Understanding
 
-| Exercises | Topics | Files |
+All twelve exercises are fully solved in each edition:
+
+| Edition | Contents | File |
 | --- | --- | --- |
-| 1–4 and 9–11 | Word counts, masking, IOB2 alignment, span scores, label shifts, and evaluation design | [Written solutions (PDF)](ch18_understanding/written-solutions.pdf) |
-| 5–8 | Masked pooling, first-piece labels, tag repair, and exact span metrics | [Jupyter notebook](ch18_understanding/python-solutions.ipynb) · [Notebook export (PDF)](ch18_understanding/python-solutions.pdf) |
+| Written | Calculations, interpretations, two plots and evaluation designs | [PDF](ch18_understanding/written-solutions.pdf) |
+| Notebook | The same explanations with 19 executed code cells | [Jupyter notebook](ch18_understanding/python-solutions.ipynb) |
+| Notebook export | Every code cell and saved result | [PDF](ch18_understanding/python-solutions.pdf) |
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch18_understanding/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 18 examples](../examples/ch18_understanding/). The PDF export includes
-the explanations, code, and recorded outputs.
+See the [exercise statements](../examples/ch18_understanding/EXERCISES.md)
+and [run/export guide](ch18_understanding/README.md).
 
 ## Chapter 19. Translation and Summarization
 

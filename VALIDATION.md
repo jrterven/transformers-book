@@ -1161,24 +1161,41 @@ These are retained historical checks, not new runs from this review.
 
 ## Chapter 18. Language Understanding
 
-~~~sh
+Detailed textbook review verified on November 7, 2026, with Python 3.12.14,
+NumPy 2.5.4 and Matplotlib 3.11.2 on CPU.
+
+```sh
+python -m unittest discover -s tests -p test_understanding.py -v
 python -m examples.ch18_understanding.run_examples --output output/ch18.json
-python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
-~~~
+```
 
-On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 236 tests
-passed, including nine for Chapter 18. All 99 excerpts matched
-their sources. Saved JSON, stdout, and the NumPy-only run agreed.
-
+All nine Chapter 18 tests passed. All 149 repository excerpts were current,
+including this chapter's four. Canonical code and excerpts were unchanged.
 The three selected rows pooled to (1, 1) and gave logits (0, 1.25).
-The subword example scored six of ten token positions, with one
-target per word. The predicted New span missed Harbor, giving word
-accuracy 5/6 and exact entity precision, recall, and F1 of 0.5.
-The tests checked invalid BIO handling and the optional repair.
+The subword example supervises six of ten positions, one per word. The
+shortened location gives word accuracy 5/6 and exact entity precision,
+recall and F1 of 0.5. Tests cover invalid IOB2, explicit repair, empty
+denominators, batched pooling and nonfinite values in excluded padding.
 
-Independent calculations checked 108 pooled heads, 100 first-piece
-alignments, and 120 BIO tag streams.
+The complete notebook executes 19 code cells and saves two plots. It checks
+masked (1, 4/3) versus unmasked (9/4, 5/2), first-piece targets and predictions,
+repair to adjacent LOC [0,2) and PER [2,4), and three different one-tag errors.
+A cross-sentence collision has true F1 zero but falsely yields one after IDs
+are removed. A separate count fixture gives micro F1 1/2 versus mean-sentence
+F1 2/3. The prevalence exercise gives precision 54/61 versus 18/27 while
+holding recall and false-positive rate fixed. Additional checks detect a
+customer crossing office boundaries and keep a shortened predicted name in
+the full gold name's unseen slice.
+
+All twelve solutions appear in the notebook and both PDF editions. All pages
+and both plots were visually reviewed. These
+small fixtures validate calculations and alignment, not a model-quality claim.
+
+Earlier validation with Python 3.11.17 / NumPy 2.4.6 passed 236 then-current
+repository tests and 99 excerpts, with independent calculations covering
+108 pooled heads, 100 first-piece alignments and 120 BIO streams. These are
+retained historical checks, not new runs from this review.
 
 ## Chapter 19. Translation and Summarization
 

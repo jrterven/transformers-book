@@ -43,3 +43,28 @@ An exact match needs the same start, end, and type. Span precision,
 recall, and F1 return `None` when their respective denominators are
 zero. Word accuracy compares the supplied tags and returns `None`
 for an empty word sequence. Prediction repair affects span decoding.
+
+
+## Exercises and complete solutions
+
+The [twelve exercises](EXERCISES.md) progress from hand calculations to code and
+evaluation designs. The [solutions guide](../../solutions/ch18_understanding/README.md)
+links an executed notebook and two PDF editions, each covering every exercise.
+
+The attention mask controls access within the encoder. The pooling mask selects
+output rows for a summary. The loss mask selects supervised predictions.
+Changing excluded padding rows in fixed features leaves masked means unchanged;
+this does not test whether an encoder incorrectly attended to padded inputs.
+An ignored continuation piece can still influence the first piece through attention.
+The `-100` target is a loss sentinel, whereas `O` is a real supervised class.
+
+The decoder uses IOB2. Convert IOB1 annotations explicitly before calling it.
+Changing a span's boundary or type creates an unmatched prediction and an
+unfound gold entity. To calculate dataset micro scores, add per-sentence
+match, predicted and gold counts before dividing, or retain sentence IDs in
+the span keys. Identical offsets in different sentences are not a match.
+An average of sentence F1 scores generally differs from micro F1.
+
+For flat BIO tagging, each word has one label; nested or discontinuous entities
+need a different representation. Recover original word indices and declare
+how truncated or partially retained words are handled before scoring.
