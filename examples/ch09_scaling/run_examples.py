@@ -6,7 +6,9 @@ from pathlib import Path
 
 import numpy as np
 
-from .model import BILLION, allocation_sweep, expert_branch, route_top1, training_flops
+from .model import (
+    BILLION, allocation_sweep, expert_branch, route_top1, topk_gates, training_flops,
+)
 
 
 BUDGET = 2.4e22
@@ -81,10 +83,53 @@ def capacity_example(capacity=3):
         "requested_fraction": fraction.tolist(),
         "mean_probability": mean_probability.tolist(),
         "raw_balance_term": float(experts * (fraction @ mean_probability)),
+        "overflow_fraction": float((~accepted).mean()),
+        "reserved_slots": int(experts * capacity),
+        "slot_utilization": (float(accepted.sum() / (experts * capacity))
+                             if capacity else None),
         "input": x.tolist(),
         "branch": branch.tolist(),
         "after_residual": (x + branch).tolist(),
     }
+
+
+def top2_example():
+    """Combine the given vectors in the chapter's two-expert hand example."""
+    probabilities = np.array([[0.1, 0.6, 0.2, 0.1]])
+    selected, gates = topk_gates(np.log(probabilities), 2)
+    # These are given vectors, separate from teaching_weights()'s fixed bank.
+    given_outputs = np.array([[0., 0., 0., 0.], [2., -1., 0., 3.],
+                              [0., 1., 4., -1.], [0., 0., 0., 0.]])
+    contributions = gates[0, :, None] * given_outputs[selected[0]]
+    branch = contributions.sum(axis=0)
+    return {
+        "experts": (selected[0] + 1).tolist(),
+        "gates": gates[0].tolist(),
+        "contributions": contributions.tolist(),
+        "branch": branch.tolist(),
+        "after_residual": (np.array([1., 0., 0., 0.]) + branch).tolist(),
+    }
+
+
+def balance_diagnostic_example():
+    """Show why the raw auxiliary term alone cannot certify balanced load."""
+    balanced = np.full((4, 4), 0.1)
+    np.fill_diagonal(balanced, 0.7)
+    result = {}
+    for name, logits in (("tied", np.zeros((4, 4))),
+                         ("balanced", np.log(balanced))):
+        probabilities, selected, _, accepted = route_top1(logits, 1)
+        counts = np.bincount(selected, minlength=4)
+        fraction = counts / 4
+        mean_probability = probabilities.mean(axis=0)
+        result[name] = {
+            "requests_per_expert": counts.tolist(),
+            "mean_probability": mean_probability.tolist(),
+            "raw_balance_term": float(4 * (fraction @ mean_probability)),
+            "accepted_rows": (np.flatnonzero(accepted) + 1).tolist(),
+            "overflow_fraction": float((~accepted).mean()),
+        }
+    return result
 
 
 def main():
@@ -95,6 +140,8 @@ def main():
         "dense_budget": budget_example(),
         "one_token": token_example(),
         "capacity_batch": capacity_example(),
+        "two_experts": top2_example(),
+        "balance_diagnostic": balance_diagnostic_example(),
     }
     output = json.dumps(result, indent=2, allow_nan=False)
     print(output)

@@ -154,6 +154,11 @@ python -m pip install -r requirements.txt
 python -m examples.ch09_scaling.run_examples --output output/ch09.json
 ```
 
+The [14 progressive exercises](examples/ch09_scaling/EXERCISES.md) and
+[complete solutions](solutions/ch09_scaling/README.md) connect budget arithmetic
+to expert routing, including the difference between a balance statistic and
+actual load, and between Switch gates and selected-logit normalization.
+
 [Chapter 10: Incremental Decoding and KV Representations](examples/ch10_kv/)
 compares a full causal pass with prefill and cached decoding. The examples
 count the stored keys and values for MHA, GQA, and MQA, then compare two

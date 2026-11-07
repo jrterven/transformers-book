@@ -10,6 +10,7 @@ from examples.ch09_scaling.model import (
     allocation_sweep,
     expert_branch,
     route_top1,
+    topk_gates,
     tokens_at_budget,
     training_flops,
 )
@@ -17,6 +18,8 @@ from examples.ch09_scaling.run_examples import (
     BUDGET,
     MODEL_SIZES_B,
     capacity_example,
+    balance_diagnostic_example,
+    top2_example,
     token_example,
 )
 
@@ -140,6 +143,45 @@ class RoutingTests(unittest.TestCase):
         for capacity in (-1, 1.5, True):
             with self.subTest(capacity=capacity), self.assertRaises(ValueError):
                 route_top1([[0, 1]], capacity)
+
+    def test_top_two_combines_given_experts_before_one_residual_addition(self):
+        result = top2_example()
+        self.assertEqual(result["experts"], [2, 3])
+        np.testing.assert_allclose(result["gates"], [0.75, 0.25], atol=1e-14)
+        np.testing.assert_allclose(result["branch"], [1.5, -0.5, 1, 2], atol=1e-14)
+        np.testing.assert_allclose(result["after_residual"], [2.5, -0.5, 1, 2])
+
+    def test_selected_gate_normalization_differs_from_switch_and_ignores_offset(self):
+        scores = np.log([[0.1, 0.6, 0.2, 0.1]])
+        ids, gates = topk_gates(scores, 1)
+        np.testing.assert_array_equal(ids, [[1]])
+        np.testing.assert_array_equal(gates, [[1.]])
+        self.assertAlmostEqual(route_top1(scores, 1)[2][0], 0.6)
+        a_ids, a_gates = topk_gates(scores, 2)
+        b_ids, b_gates = topk_gates(scores + 1000, 2)
+        np.testing.assert_array_equal(a_ids, b_ids)
+        np.testing.assert_allclose(a_gates, b_gates, rtol=0, atol=1e-12)
+
+    def test_topk_resolves_ties_in_expert_order_and_validates_selection(self):
+        ids, gates = topk_gates([[0, 0, 0, 0]], 2)
+        np.testing.assert_array_equal(ids, [[0, 1]])
+        np.testing.assert_array_equal(gates, [[0.5, 0.5]])
+        for k in (0, 5, True, 1.5):
+            with self.subTest(k=k), self.assertRaises(ValueError):
+                topk_gates([[0, 1, 2, 3]], k)
+        with self.assertRaises(ValueError):
+            topk_gates([[np.nan, 0]], 1)
+
+    def test_auxiliary_reference_value_does_not_certify_equal_request_counts(self):
+        result = balance_diagnostic_example()
+        for record in result.values():
+            self.assertAlmostEqual(record["raw_balance_term"], 1.)
+        self.assertEqual(result["tied"]["requests_per_expert"], [4, 0, 0, 0])
+        self.assertEqual(result["tied"]["accepted_rows"], [1])
+        self.assertEqual(result["tied"]["overflow_fraction"], 0.75)
+        self.assertEqual(result["balanced"]["requests_per_expert"], [1, 1, 1, 1])
+        self.assertEqual(result["balanced"]["accepted_rows"], [1, 2, 3, 4])
+        self.assertEqual(result["balanced"]["overflow_fraction"], 0.)
 
 
 if __name__ == "__main__":

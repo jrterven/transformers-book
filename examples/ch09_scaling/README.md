@@ -57,3 +57,35 @@ residual preserves their inputs. Change `capacity_example(3)` to
 of processed rows. The output also gives the expert assignment fractions
 and mean probabilities before capacity filtering, and their raw balance
 term before any training coefficient is applied.
+
+The output distinguishes the fraction of requests rejected from the fraction
+of reserved slots occupied. At capacity three these are 25% overflow and
+50% slot utilization. At capacity five they become 0% and 40%. When capacity
+is zero, utilization is `null` because there are no reserved slots to divide by.
+
+## Compare gate rules and routing diagnostics
+
+`topk_gates` selects the largest logits and applies softmax only to those
+selected logits. Equal scores keep expert-ID order. It returns IDs and gates;
+it does not perform capacity filtering or run experts. For probabilities
+`(0.1, 0.6, 0.2, 0.1)`, selecting two gives gates `(0.75, 0.25)`. Selecting
+one gives gate 1, whereas Switch's `route_top1` retains gate 0.6.
+
+`top2_example()` uses the given expert vectors from the hand calculation,
+separate from `teaching_weights()`. Its two contributions sum to
+`(1.5, -0.5, 1, 2)`; adding the input once gives `(2.5, -0.5, 1, 2)`.
+
+`balance_diagnostic_example()` compares four tied probability rows with
+four rows that request different experts. Both raw balance terms are 1,
+yet the tied router sends every request to expert 1. At capacity one,
+it rejects three rows; the balanced router rejects none. Inspect request
+counts, accepted counts, and overflow alongside the auxiliary scalar.
+
+## Work through the exercises
+
+The [14 exercise statements](EXERCISES.md) match the revised chapter:
+six hand calculations, five Python investigations, and three optional
+extensions. The [complete solutions](../../solutions/ch09_scaling/README.md)
+include every exercise in an executed notebook and both PDF editions.
+The notebook adds a plot of the synthetic allocation tradeoff. No training
+results from a real large model are claimed by these teaching examples.

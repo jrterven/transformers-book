@@ -766,6 +766,34 @@ matched the source. The CLI reproduced the published reference JSON byte
 for byte. An independent row-by-row reference also agreed with dispatch,
 gated outputs, and residual bypass in 120 generated cases.
 
+### Chapter 9 complete textbook review - November 6, 2026
+
+All 16 chapter tests passed without skips on Python 3.12.14 and NumPy 2.4.6.
+All four exported snippets match the canonical code and the private manuscript
+copies. The CLI reproduces the existing budget and routing calculations and
+adds selected-logit top-two gates and a balance-diagnostic counterexample.
+The selected top-two gates are (0.75, 0.25), the update is
+(1.5, -0.5, 1, 2), and adding the input once gives (2.5, -0.5, 1, 2).
+With one selected logit, the normalized gate is 1; Switch retains 0.6.
+
+Four identical uniform-probability rows and four balanced requests both give
+raw balance term 1. At capacity one, they accept one and four rows,
+respectively. The capacity-three eight-row example has 25% overflow and
+50% slot utilization. At capacity five, these become 0% and 40%.
+
+The exercise sequence now has 14 matching statements and complete solutions
+in both PDFs and the notebook. All 23 code cells executed in order with no
+errors, including a saved plot of the synthetic loss and its competing terms.
+The continuous optimum is approximately 12.649111B parameters and 316.227766B
+token presentations; quadrupling compute doubles both continuous counts.
+The 0.1B grids select 12.6B and 25.3B. These are results for the stated teaching
+loss, not empirical recommendations for real models. Exercise 14 specifies a
+controlled dense-versus-routed experiment and claims no measured winner.
+
+The five vector figures and their generator remain in the private manuscript
+repository. Both solution PDFs are reproducible from the executed notebook
+with `solutions/ch09_scaling/build_pdfs.py`.
+
 ## Chapter 10. Incremental Decoding and KV Representations
 
 ~~~sh

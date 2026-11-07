@@ -66,6 +66,24 @@ def route_top1(logits, capacity):
 # end-snippet:top1_routing
 
 
+def topk_gates(logits, k):
+    """Select k experts per row and normalize only their logits.
+
+    Equal scores keep expert-ID order. Unlike Switch's retained original
+    probability, this gate rule gives a gate of one when k is one.
+    This helper does not impose capacity or execute expert networks.
+    """
+    logits = np.asarray(logits, dtype=np.float64)
+    if logits.ndim != 2 or min(logits.shape) == 0 or not np.isfinite(logits).all():
+        raise ValueError("logits must be finite with shape [tokens, experts]")
+    if (isinstance(k, (bool, np.bool_)) or not isinstance(k, (int, np.integer))
+            or not 1 <= k <= logits.shape[1]):
+        raise ValueError("k must be an integer from one to the expert count")
+    selected = np.argsort(-logits, axis=1, kind="stable")[:, :k]
+    selected_logits = np.take_along_axis(logits, selected, axis=1)
+    return selected, stable_softmax(selected_logits)
+
+
 # snippet:expert_branch
 def expert_branch(x, selected, gates, accepted, w_up, w_down):
     """Compute accepted updates and place them back in token order."""

@@ -136,24 +136,20 @@ locally on CPU. See the [reproduction and export guide](ch08_modern/README.md).
 
 ## Chapter 9. Scaling Data, Compute, and Expert Capacity
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4, 10, and 12 | Compute budgets, token presentations, expert gates, stored and used weights, device traffic, and a dense versus routed comparison | [Written solutions (PDF)](ch09_scaling/written-solutions.pdf) |
-| 5–9 and 11 | Allocation sweeps, stable softmax, capacity and overflow, residual bypass, router balance, and the continuous optimum | [Jupyter notebook](ch09_scaling/python-solutions.ipynb) · [Notebook export (PDF)](ch09_scaling/python-solutions.pdf) |
+All [14 exercises](../examples/ch09_scaling/EXERCISES.md) have complete solutions
+in each edition, ordered from hand calculations to Python investigations and
+three optional extensions.
 
-Start JupyterLab from the repository root in an environment with the
-[NumPy requirements](../requirements.txt).
+| Edition | Contents |
+| --- | --- |
+| [Written solutions (PDF)](ch09_scaling/written-solutions.pdf) | All explanations, calculations, tables, and the allocation plot |
+| [Executed notebook](ch09_scaling/python-solutions.ipynb) | The same solutions with 23 code cells and saved outputs |
+| [Notebook export (PDF)](ch09_scaling/python-solutions.pdf) | The complete notebook typeset for reading and printing |
 
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch09_scaling/python-solutions.ipynb`, select that Python
-kernel, and run all cells. It uses the
-[Chapter 9 examples](../examples/ch09_scaling/) on CPU with fixed inputs.
-The PDF export includes the code and its recorded outputs. The two PDFs
-cover all three optional exercises.
+The exercises compare dense allocations, corpus reuse, expert weight counts,
+Switch and top-two gates, capacity, overflow, balance diagnostics, communication,
+and the continuous optimum of the teaching loss. The final exercise designs a
+controlled experiment. See the [reproduction and export guide](ch09_scaling/README.md).
 
 ## Chapter 10. Incremental Decoding and KV Representations
 
