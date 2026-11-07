@@ -275,7 +275,9 @@ python -m examples.ch18_understanding.run_examples --output output/ch18.json
 builds shifted text pairs, compares greedy and beam decoding, and computes
 clipped precision and subsequence overlap. The
 [chapter guide](examples/ch19_generation/README.md) explains the completion
-flag and the optional encoder-decoder training step.
+flag and the optional encoder-decoder training step. The [12 exercises](examples/ch19_generation/EXERCISES.md)
+and [complete worked solutions](solutions/ch19_generation/README.md) add an
+LCS table, a corpus-aggregation comparison, and a source-support audit.
 
 ```sh
 python -m pip install -r requirements.txt

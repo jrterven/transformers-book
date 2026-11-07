@@ -1518,3 +1518,26 @@ GPT/BERT target paths, the three masking decisions, and T5 span reconstruction
 including the shifted decoder input. Figure source and manuscript remain in
 the private repository. Both solution PDFs are reproducible from the executed
 notebook using `solutions/ch07_pretraining/build_pdfs.py`.
+
+## Chapter 19 detailed textbook review (2026-11-07)
+
+The exercise set now contains twelve problems, ordered from hand calculations
+through code to optional source audits and experiment design. Every problem
+has a worked explanation in the written PDF, executed notebook, and notebook
+PDF. Eighteen code cells execute in order with two embedded plots and no errors.
+The new exercise contrasts corpus unigram precision 0.5 with mean sentence
+precision 0.575; neither is reported as complete BLEU. An LCS table makes
+repetition and ordered matching visible. The source audit obtains ROUGE-L
+F1 0.9 while identifying an unsupported causal connector.
+
+All eleven Chapter 19 tests passed, including the real PyTorch training step;
+all five canonical snippets were current and matched the private manuscript.
+The tested batch has five supervised labels and logits of shape [2, 3, 11].
+One CPU update changes its mean loss from 2.4554718716 to 2.3691595296.
+The projected data and probability trees are teaching fixtures. No pretrained
+translation, summarization, or adaptation benchmark is claimed.
+
+Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2, PyTorch 2.15.0.
+The notebook uses NumPy and Matplotlib; the separately tested optional update
+uses PyTorch. Both PDFs can be regenerated with
+`solutions/ch19_generation/build_pdfs.py`. Canonical helper code is unchanged.

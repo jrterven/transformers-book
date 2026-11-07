@@ -23,7 +23,7 @@ same-batch loss before and after a single update of a small
 randomly initialized model.
 
 ```sh
-python -m pip install -r requirements-ch05.txt
+python -m pip install -r requirements-ch06.txt
 python -m examples.ch19_generation.run_examples --train-step --output output/ch19-training.json
 ```
 
@@ -52,3 +52,18 @@ and F1. An empty candidate or reference has zero overlap scores.
 Provide token lists using the same tokenization for both sides.
 Inspect source coverage and unsupported additions alongside these
 reference overlap measures.
+
+## Work through the exercises
+
+The [12 exercise statements](EXERCISES.md) progress from hand calculations
+to batch and beam investigations, then to a source audit and an adaptation
+study design. The [complete solutions](../../solutions/ch19_generation/README.md)
+include an executed notebook, a written PDF, and a notebook PDF. Both editions
+contain every explanation and both plots.
+
+Corpus n-gram precision adds clipped matches and candidate n-gram counts
+before dividing; averaging per-sentence precisions gives a different weighting.
+The helper is one component, not a complete BLEU implementation. The ROUGE-L
+helper uses one candidate-reference pair, beta=1, and zero scores for empty
+inputs. Neither reference metric establishes whether a causal claim is
+supported by the source. The notebook makes these distinctions explicit.

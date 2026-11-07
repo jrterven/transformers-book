@@ -256,23 +256,17 @@ and [run/export guide](ch18_understanding/README.md).
 
 ## Chapter 19. Translation and Summarization
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Fact preservation, shifted targets, path probabilities, overlap, source support, truncation, and adaptation evaluation | [Written solutions (PDF)](ch19_generation/written-solutions.pdf) |
-| 5–8 | Padded batches, stopping and beam width, and directional overlap measures | [Jupyter notebook](ch19_generation/python-solutions.ipynb) · [Notebook export (PDF)](ch19_generation/python-solutions.pdf) |
+All twelve exercises have complete solutions in every edition, including
+the new corpus-aggregation calculation and the source-support audit.
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
+| Edition | Contents |
+| --- | --- |
+| [Written solutions](ch19_generation/written-solutions.pdf) | Explanations, calculations, tables, and two plots for Exercises 1-12 |
+| [Executed notebook](ch19_generation/python-solutions.ipynb) | The same solutions with 18 executed cells and saved outputs |
+| [Notebook PDF](ch19_generation/python-solutions.pdf) | All explanations, code, figures, and results |
 
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch19_generation/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 19 examples](../examples/ch19_generation/). The PDF export includes
-the explanations, code, and recorded outputs.
+See the [exercise statements](../examples/ch19_generation/EXERCISES.md)
+and [run/export guide](ch19_generation/README.md).
 
 ## Chapter 20. Search, Retrieval, and Grounded Assistants
 
