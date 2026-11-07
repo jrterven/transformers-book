@@ -290,7 +290,9 @@ python -m examples.ch19_generation.run_examples --train-step
 ranks a local passage collection with BM25 and dense scores, reranks a
 candidate set, and checks what survives the context budget. The
 [chapter guide](examples/ch20_retrieval/README.md) explains the distinction
-between literal evidence, annotated recall, and answer support.
+between literal evidence, annotated recall, and answer support. The [12 exercises](examples/ch20_retrieval/EXERCISES.md)
+and [complete solutions](solutions/ch20_retrieval/README.md) add worked
+probability mixtures and visual checks of evidence lost during packing.
 
 ```sh
 python -m pip install -r requirements.txt

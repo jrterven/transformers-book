@@ -39,3 +39,23 @@ leaves the answer blank. Literal occurrence and human judgments of
 answer support are separate checks. `evidence_recall` reports the
 fraction of annotated relevant IDs in the requested top ranks and
 returns `None` when the annotation set is empty.
+
+## Work through the exercises
+
+The [12 exercises](EXERCISES.md) and [complete solutions](../../solutions/ch20_retrieval/README.md)
+include a written PDF, executed notebook, and notebook PDF. Every edition
+contains all solutions and two plots. The RAG-mixture calculation uses one
+fixed prefix and original retrieved set, exposing why averaging before or
+after multiplying changes its probability.
+
+The supplied dense vectors have unit norm, but the helper computes raw dot
+products. Scores across lexical and dense systems are not on a common scale.
+Packing is a greedy whole-passage rule, not an evidence-coverage optimum.
+The worked budgets use passage-text word counts. For a decoder-only generator,
+reserve output space in the shared context window and count all formatted
+prompt tokens; encoder-decoder input and output limits are separate.
+
+Audit source authority, effective intervals and exact versions alongside the
+claim. A later upload need not govern a current question. Track evidence at
+retrieval and packing separately, and report false abstentions on answerable
+questions separately from unsupported answers on unanswerable questions.

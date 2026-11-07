@@ -270,23 +270,17 @@ and [run/export guide](ch19_generation/README.md).
 
 ## Chapter 20. Search, Retrieval, and Grounded Assistants
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 9–11 | Term rarity, vector ranking, passage budgets, evidence recall, passage boundaries, abstention, and notice versions | [Written solutions (PDF)](ch20_retrieval/written-solutions.pdf) |
-| 5–8 | BM25 length adjustment, candidate reranking, context packing, and literal matches | [Jupyter notebook](ch20_retrieval/python-solutions.ipynb) · [Notebook export (PDF)](ch20_retrieval/python-solutions.pdf) |
+All twelve exercises have complete worked solutions, including the RAG
+mixture calculation and the source-version audit.
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
+| Edition | Contents |
+| --- | --- |
+| [Written solutions](ch20_retrieval/written-solutions.pdf) | Explanations, calculations, tables and two plots for Exercises 1-12 |
+| [Executed notebook](ch20_retrieval/python-solutions.ipynb) | The same solutions with 17 executed code cells and saved results |
+| [Notebook PDF](ch20_retrieval/python-solutions.pdf) | All explanations, code, figures and outputs |
 
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch20_retrieval/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 20 examples](../examples/ch20_retrieval/). The PDF export includes
-the explanations, code, and recorded outputs.
+See the [exercise statements](../examples/ch20_retrieval/EXERCISES.md)
+and [run/export guide](ch20_retrieval/README.md).
 
 ## Chapter 21. Image and Video Understanding
 

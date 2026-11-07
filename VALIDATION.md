@@ -1541,3 +1541,26 @@ Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2, PyTorch 2.15.0.
 The notebook uses NumPy and Matplotlib; the separately tested optional update
 uses PyTorch. Both PDFs can be regenerated with
 `solutions/ch19_generation/build_pdfs.py`. Canonical helper code is unchanged.
+
+## Chapter 20 detailed textbook review (2026-11-07)
+
+Twelve exercises now progress from hand calculations to code and optional
+evaluation design. Every exercise has a complete explanation in the written
+PDF, executed notebook and notebook PDF. Seventeen code cells execute in
+sequence without errors and retain two plots. The new fixed-prefix mixture
+exercise produces 0.216 for RAG-Sequence and 0.3024 for RAG-Token. Neither
+requires another retrieval for the second token. These probabilities do not
+measure answer quality.
+
+All nine chapter tests passed, and all five canonical snippets were current
+and matched the private manuscript. The canonical helper code is unchanged.
+The default lexical scores are approximately [0.888105, 0.940007, 0]; removing
+the length adjustment ties the first two scores. At a 14-word passage budget,
+P2-first packing excludes the renewal location; P1-first packing preserves it.
+The notebook distinguishes retrieved and packed evidence, literal matches
+and support, complete versus missing annotations, and source applicability.
+
+The optional audit cells are labeled fixtures and proposed evaluation designs.
+They do not claim a retriever or generator benchmark. Runtime: Python 3.12.14,
+NumPy 2.5.4, Matplotlib 3.11.2. Both PDF editions are generated from the notebook
+by `solutions/ch20_retrieval/build_pdfs.py`.
