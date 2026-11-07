@@ -208,13 +208,12 @@ python -m examples.ch13_state_spaces.run_examples --output output/ch13.json
 ```
 
 [Chapter 14: Selective State Spaces](examples/ch14_selective_ssm/) follows
-input-dependent state updates, then evaluates one SSD head as a recurrence,
-as a dense matrix, and in chunks. The
-[chapter guide](examples/ch14_selective_ssm/README.md) explains the retain
-and write coefficients and the state carried between chunks.
+input-dependent retain, write, and read operations, then compares recurrent,
+dense, and chunked SSD. The [ten exercises](examples/ch14_selective_ssm/EXERCISES.md)
+have [complete solutions in every edition](solutions/ch14_selective_ssm/README.md),
+including 21 executed code cells, two plots, and a controlled memory-task design.
 
 ```sh
-python -m pip install -r requirements.txt
 python -m examples.ch14_selective_ssm.run_examples --output output/ch14.json
 ```
 

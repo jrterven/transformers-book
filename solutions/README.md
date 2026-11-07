@@ -196,23 +196,13 @@ includes the Python investigations' explanations and numerical results.
 
 ## Chapter 14. Selective State Spaces
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4 and 10 | Selective updates, hold coefficients, affine composition, causal matrix entries, and memory tests | [Written solutions (PDF)](ch14_selective_ssm/written-solutions.pdf) |
-| 5–9 | Stable small steps, per-coordinate retention, chunk equivalence, causality, and state reset | [Jupyter notebook](ch14_selective_ssm/python-solutions.ipynb) · [Notebook export (PDF)](ch14_selective_ssm/python-solutions.pdf) |
+All **10 exercises** are fully solved in every edition: [written PDF](ch14_selective_ssm/written-solutions.pdf), [executed notebook](ch14_selective_ssm/python-solutions.ipynb), and [notebook PDF](ch14_selective_ssm/python-solutions.pdf).
 
-Start JupyterLab from the repository root in an environment with the
-[companion requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch14_selective_ssm/python-solutions.ipynb`, select that Python kernel,
-and run all cells. The notebook uses the
-[Chapter 14 examples](../examples/ch14_selective_ssm/). The PDF export includes
-the explanations, code, and recorded outputs.
+The sequence covers selective updates, sigmoid write gates, affine composition,
+causal matrix entries, stable small steps, coordinate retentions, chunk handoffs,
+resets, and memory-test design. Twenty-one executed code cells and two plots
+make the calculations inspectable. See the [exercise statements](../examples/ch14_selective_ssm/EXERCISES.md)
+and [run/export guide](ch14_selective_ssm/README.md).
 
 ## Chapter 15. Delta Rules and Hybrid Stacks
 

@@ -48,3 +48,16 @@ final chunk. A retain factor of zero removes the previous state's
 contribution at that step while the new write remains. The examples
 use precomputed arrays and float64 arithmetic to expose the update
 rules of simplified SSM cores.
+
+## Exercises and complete solutions
+
+The [ten exercises](EXERCISES.md) progress from hand calculations to NumPy
+investigations and a controlled memory-task design. Every solution appears
+in the [executed notebook and both PDFs](../../solutions/ch14_selective_ssm/README.md).
+
+The exact zero retention used in the reset fixture is a discrete test input.
+A finite positive step has strictly positive exponential retention in exact
+arithmetic. The scan's saved trajectory stores `n * N` state values; streaming
+the simplified core carries only the last `N` values. A complete block also
+retains its short convolution buffer. Fixed-size state can store both first
+and latest facts when its update is designed to preserve them.

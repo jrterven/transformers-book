@@ -1008,6 +1008,30 @@ chunk schedules, plus 24 diagonal selective scans and grouped prefixes.
 A high-precision calculation checked the scalar retain and write
 coefficients at nine step sizes.
 
+### Chapter 14 detailed textbook revision (November 2026)
+
+All 12 chapter tests pass with Python 3.12.14 and NumPy 2.4.6. The five
+canonical listings and their private manuscript copies match. The CLI
+reproduces selective states (1, 1.08, 2.54, 2.5846), SSD outputs
+(2, 1, 4, 4.25), and the nonzero-initial-state fixture with a short final chunk.
+
+All ten exercises have complete solutions in each edition. The notebook
+executes 21 code cells and saves two plots. It checks time-order-sensitive
+composition and both groupings of three updates; stable writes against an
+80-digit decimal reference; coordinate-specific and shared retention; and
+chunk sizes 1, 2, 3, and 5 against dense and recurrent references.
+
+Changing input 3 by +4 changes outputs by (0, 0, 4, 2, 0.5). Setting
+retention 3 to zero makes warm and cold runs identical from position 3
+onward while preserving the new write. The memory-task oracle stores first
+and latest locations in two slots; two histories with the same slots can
+still require different answers for an intermediate update. The illustrative
+224-byte state-plus-convolution payload excludes weights and workspace.
+
+Both PDFs are generated from the executed notebook with
+`solutions/ch14_selective_ssm/build_pdfs.py`. The complete manuscript and
+its numerical vector figure sources remain in the private repository.
+
 ## Chapter 15. Delta Rules and Hybrid Stacks
 
 ~~~sh
