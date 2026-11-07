@@ -893,6 +893,12 @@ All 165 tests passed, including 14 for Chapter 11. All 69 excerpts matched
 their source. The command-line example reproduced the published JSON byte
 for byte.
 
+### Chapter 11 detailed textbook revision (November 2026)
+
+The 14 Chapter 11 tests pass on Python 3.12.14 and NumPy 2.4.6. The three exported snippets match the canonical source and the private manuscript copies. The command-line fixtures reproduce the 64/22/34 connection counts, the selected output (0.75, 0.5), and the causal mixed-history output 5.
+
+The solution notebook now covers all twelve exercises and executes 19 cells in order. It checks the causal relay, pooling ambiguity, the new joint-normalization calculation (17/3 versus 4.75), and the complete 24-case ranking/budget sweep. Finding the target can still leave a nonzero difference from dense attention; keeping every row agrees with the dense reference. The written and notebook PDFs are exported from the same saved notebook and contain both explanatory plots. Exercise 12 specifies a protocol rather than reporting an unrun model benchmark.
+
 ## Chapter 12. Efficient Execution
 
 ```sh

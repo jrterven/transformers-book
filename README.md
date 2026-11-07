@@ -178,7 +178,7 @@ in the notebook and both PDF editions.
 [Chapter 11: Long Context, Sparse Access, and Sequence Compression](examples/ch11_long_context/)
 builds local and global masks, ranks and gathers entries before main
 attention, and forms summaries over completed blocks. The [chapter guide](examples/ch11_long_context/README.md)
-explains the causal checks and the example that reads a summary beside recent raw entries.
+explains the causal checks and the example that reads a summary beside recent raw entries. The [twelve exercises](examples/ch11_long_context/EXERCISES.md) have [complete solutions](solutions/ch11_long_context/README.md) in an executed notebook and two PDF editions.
 
 ```sh
 python -m pip install -r requirements.txt

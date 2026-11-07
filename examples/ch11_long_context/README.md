@@ -51,3 +51,9 @@ the current position, selects one of those summaries, and joins it with
 two recent raw entries. Main attention uses one softmax over the three
 gathered rows. These fixtures use hand-chosen scores, features, and small
 arrays so the intermediate steps can be inspected.
+
+## Work through the exercises
+
+The [twelve exercises](EXERCISES.md) and [complete solutions](../../solutions/ch11_long_context/README.md) cover hand calculations, code, and experimental design. All exercises appear in the notebook and both PDFs. The notebook includes a causal relay counterexample, a joint-softmax comparison (17/3 versus 4.75), and a visual sweep of evidence selection versus output error.
+
+The summary end-position rule assumes causal features and gates. It permits a completed summary at its last token; the DeepSeek-V4 report waits until the next block. The toy also omits learned normalization, RoPE, and the learned sink. Its purpose is to make visibility, pooling, and joint normalization inspectable.

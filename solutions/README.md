@@ -168,24 +168,9 @@ and MLA reassociation. See the [reproduction and export guide](ch10_kv/README.md
 
 ## Chapter 11. Long Context, Sparse Access, and Sequence Compression
 
-| Exercises | Topics | Files |
-| --- | --- | --- |
-| 1–4, 10, and 12 | Attention grids, global relays, ranking and weighting, pooling ambiguity, access counts, and a long-document comparison | [Written solutions (PDF)](ch11_long_context/written-solutions.pdf) |
-| 5–9 and 11 | Local and global masks, causal selection, summary windows, per-coordinate gates, summary visibility, and missed evidence | [Jupyter notebook](ch11_long_context/python-solutions.ipynb) · [Notebook export (PDF)](ch11_long_context/python-solutions.pdf) |
+All twelve exercises are covered in the [written PDF](ch11_long_context/written-solutions.pdf), [executed notebook](ch11_long_context/python-solutions.ipynb), and [notebook PDF](ch11_long_context/python-solutions.pdf). The solutions include causal relays, selection and renormalization, ambiguous summaries, joint normalization, memory/read accounting, and a controlled evaluation protocol.
 
-Start JupyterLab from the repository root in an environment with the
-[NumPy requirements](../requirements.txt).
-
-```sh
-python -m pip install -r requirements.txt jupyterlab
-jupyter lab
-```
-
-Open `solutions/ch11_long_context/python-solutions.ipynb`, select that Python
-kernel, and run all cells. The notebook uses the
-[Chapter 11 examples](../examples/ch11_long_context/) on CPU with fixed
-synthetic arrays. The PDF export includes the code and its recorded outputs.
-The two PDFs cover all four optional exercises.
+See the [exercise statements](../examples/ch11_long_context/EXERCISES.md) and [run/export instructions](ch11_long_context/README.md). The notebook contains 19 executed cells with saved results and two explanatory figures.
 
 ## Chapter 12. Efficient Execution
 
