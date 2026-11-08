@@ -452,9 +452,12 @@ python -m examples.ch31_perspective.run_examples --output output/ch31.json
 
 The reference appendices use calculations from the chapter examples.
 
-Each expanded appendix now has eight ordered exercises, full written answers,
-and an executed notebook with numerical checks and two explanatory plots.
-All six notebooks run offline on CPU, reusing the canonical chapter helpers.
+The book appendices are worked introductions without end-of-appendix exercises.
+The earlier practice sets are retained here as optional companion material,
+separate from the manuscript. Each has eight questions, complete written answers,
+and an executed notebook. All six notebooks run offline on CPU using the canonical
+chapter helpers. For new observations of pretrained models, see
+[attention, loss gradients, and learned filters](examples/appendix_models/).
 
 | Appendix | Exercises | Written answers | Executable answers |
 | --- | --- | --- | --- |

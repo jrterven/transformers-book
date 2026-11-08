@@ -421,11 +421,14 @@ hybrid budgets, window boundaries, zero/missing values, storage units,
 controlled histories, composed retrieval and forecast availability.
 Three plots support the explanations. See the [solution guide](ch31_perspective/README.md).
 
-## Appendices A-F. Mathematical foundations
+## Optional practice for Appendices A-F
 
-Each expanded appendix now has eight ordered exercises, full written answers,
-and an executed notebook with numerical checks and two explanatory plots.
-All six notebooks run offline on CPU, reusing the canonical chapter helpers.
+The book appendices are worked introductions without end-of-appendix exercises.
+The earlier practice sets are retained here as optional companion material,
+separate from the manuscript. Each has eight questions, complete written answers,
+and an executed notebook. All six notebooks run offline on CPU using the canonical
+chapter helpers. For new observations of pretrained models, see
+[attention, loss gradients, and learned filters](../examples/appendix_models/).
 
 | Appendix | Exercises | Written answers | Executable answers |
 | --- | --- | --- | --- |

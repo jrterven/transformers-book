@@ -1,0 +1,202 @@
+{
+  "language_model": {
+    "model": "distilbert/distilgpt2",
+    "revision": "2290a62682d06624634c1f46a6ad5be0f47f38aa",
+    "weights_sha256": "e1ff18884359fe8beb795a5f414feb85a6ce3d929ad019c0d958c039d2b94a1b",
+    "dtype": "float32",
+    "device": "cpu",
+    "eval_mode": true,
+    "attention_implementation": "eager",
+    "weights_updated": false,
+    "text": "The small cat sat on the warm mat.",
+    "token_ids": [
+      464,
+      1402,
+      3797,
+      3332,
+      319,
+      262,
+      5814,
+      2603,
+      13
+    ],
+    "tokens": [
+      "The",
+      "\u00b7small",
+      "\u00b7cat",
+      "\u00b7sat",
+      "\u00b7on",
+      "\u00b7the",
+      "\u00b7warm",
+      "\u00b7mat",
+      "."
+    ],
+    "attention_shape": [
+      6,
+      12,
+      9,
+      9
+    ],
+    "displayed_layer": 6,
+    "displayed_heads": [
+      1,
+      2
+    ],
+    "maximum_row_sum_error": 1.7881393432617188e-07,
+    "maximum_future_weight": 0.0,
+    "cache": [
+      {
+        "tokens": 9,
+        "layers": 6,
+        "key_shape": [
+          1,
+          12,
+          9,
+          64
+        ],
+        "value_shape": [
+          1,
+          12,
+          9,
+          64
+        ],
+        "dtype": "torch.float32",
+        "bytes": 331776,
+        "kib": 324.0
+      },
+      {
+        "tokens": 18,
+        "layers": 6,
+        "key_shape": [
+          1,
+          12,
+          18,
+          64
+        ],
+        "value_shape": [
+          1,
+          12,
+          18,
+          64
+        ],
+        "dtype": "torch.float32",
+        "bytes": 663552,
+        "kib": 648.0
+      }
+    ],
+    "loss_prompt": "The cat sat on the",
+    "supplied_target": " mat",
+    "target_id": 2603,
+    "vocabulary_size": 50257,
+    "loss": 5.626498348259794,
+    "selected_tokens": [
+      "\u00b7floor",
+      "\u00b7bed",
+      "\u00b7couch",
+      "\u00b7table",
+      "\u00b7back",
+      "\u00b7mat"
+    ],
+    "selected_ids": [
+      4314,
+      3996,
+      18507,
+      3084,
+      736,
+      2603
+    ],
+    "selected_probabilities": [
+      0.06504197759885476,
+      0.06364881128246887,
+      0.055288077289203895,
+      0.05194012521539123,
+      0.05102341322216995,
+      0.0036011632948486187
+    ],
+    "selected_gradients": [
+      0.0650419775988543,
+      0.06364881128246842,
+      0.0552880772892035,
+      0.051940125215390855,
+      0.051023413222169585,
+      -0.9963988367051514
+    ],
+    "all_gradient_sum": -7.022160630754115e-15,
+    "precision_check": {
+      "offset": 1000,
+      "offset_dtype": "float32",
+      "naive_finite_entries": 0,
+      "stable_sum": 1.0000000000000004,
+      "max_probability_change": 1.248733429430604e-06
+    }
+  },
+  "convolution": {
+    "model": "ResNet-18",
+    "weights": "IMAGENET1K_V1",
+    "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth",
+    "weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+    "source_image_sha256": "644c6cfcaf012ef111eb3ff38d938e1964a0edd9ad4398505a3a36c34d07ee1b",
+    "input_provenance": "Appendix F DDPM output, seed 20261110",
+    "crop": [
+      16,
+      16,
+      240,
+      240
+    ],
+    "mean": [
+      0.48500001430511475,
+      0.4560000002384186,
+      0.4059999883174896
+    ],
+    "std": [
+      0.2290000021457672,
+      0.2240000069141388,
+      0.22499999403953552
+    ],
+    "input_shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "weight_shape": [
+      64,
+      3,
+      7,
+      7
+    ],
+    "response_shape": [
+      1,
+      64,
+      112,
+      112
+    ],
+    "stride": 2,
+    "zero_padding": 3,
+    "displayed_channels": [
+      1,
+      14,
+      61
+    ],
+    "response_stage": "conv1, before batch normalization and ReLU",
+    "dtype": "float32",
+    "device": "cpu",
+    "weights_updated": false,
+    "shared_display_limit": 11.799155235290527
+  },
+  "packages": {
+    "torch": "2.15.0",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.1",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "Pillow": "13.0.0"
+  },
+  "source_sha256": "d1ae90f2c260431d6ecbb4892ea17e9f5ab323214ca18be9cc3f99f4b7278732",
+  "outputs": {
+    "app_a_pretrained_attention.png": "1c8ae80c01d6c644b4e3eda3b7e3a18cf24a819454603692410f630ab08cc2aa",
+    "app_b_pretrained_gradients.png": "567598700a9c35764508ef4f9d9eef5704847f9b0e61bf822cd2cc35a7209608",
+    "app_e_pretrained_convolution.png": "5f076434c4489f83acd246c3ffe77b627b369a8afae73506aac98d36dd359815"
+  },
+  "arrays_sha256": "073db4530b76e1d6efd9c6525ef87ba2e5e73f30d90bad3d985a781d36f1763e"
+}

@@ -1,6 +1,6 @@
 # Appendix A: Notation and Tensor Shapes
 
-Eight complete worked solutions, matching the expanded appendix. [Exercises](EXERCISES.md), [written solutions](written-solutions.pdf), [executed notebook](python-solutions.ipynb), and [notebook PDF](python-solutions.pdf).
+Eight optional practice questions with complete worked solutions. These are separate companion material; the book appendix is a guided introduction without an exercise section. [Exercises](EXERCISES.md), [written solutions](written-solutions.pdf), [executed notebook](python-solutions.ipynb), and [notebook PDF](python-solutions.pdf).
 
 Run the notebook top to bottom from inside this repository. To regenerate both PDFs after execution, run from the repository root:
 

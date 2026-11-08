@@ -1,0 +1,9 @@
+# Optional observations of pretrained models; the regular examples stay offline.
+torch>=2.6
+transformers==4.57.1
+tokenizers==0.22.1
+huggingface_hub==0.35.3
+safetensors==0.6.2
+numpy>=1.26
+Pillow>=10
+matplotlib>=3.8
