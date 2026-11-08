@@ -1,0 +1,8 @@
+# Optional dependencies for the public-checkpoint image figures in Appendix F.
+torch>=2.2
+diffusers==0.35.1
+huggingface_hub==0.35.3
+safetensors==0.6.2
+numpy>=1.26
+Pillow>=10
+matplotlib>=3.8
