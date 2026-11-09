@@ -62,6 +62,11 @@ progress from worked reads to implementation checks and an optional gradient
 challenge. [Matching solutions](solutions/ch03_alignment/) include an executed
 notebook and two PDFs generated from it.
 
+The [measured attention figures](examples/ch03_alignment/TRAINED_FIGURES.md)
+expose the trained model's raw scores, source weights, and vector contributions,
+then isolate the effects of source padding and decoder input timing with
+controlled interventions.
+
 ```sh
 python -m pip install -r requirements-ch03.txt
 python -m examples.ch03_alignment.run_examples

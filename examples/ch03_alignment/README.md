@@ -140,6 +140,13 @@ move through source positions 6, 5, 4, 3, 2, and 1 for the colors. The EOS row
 is broader and has no unique correct source-word alignment. Repeated words
 occupy different positions. A weight map is not a complete causal explanation.
 
+The [measured figure guide](TRAINED_FIGURES.md) opens that ending row into
+scores, weights, and original-annotation contributions. It also records two
+controlled interventions: removing only the source score mask from one
+read, and changing one previous-token input to follow its effect through
+the decoder. The optional `inspect_trained` command saves three plots,
+complete arrays, provenance, and checks against native attention operations.
+
 Reload and inspect without retraining:
 
 ```python

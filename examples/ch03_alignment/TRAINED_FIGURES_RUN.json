@@ -1,0 +1,133 @@
+{
+  "checkpoint_sha256": "2eb844c439d8cdf1883502fb6f71d4cd3138bacb85e99b4d9953caa28bda25bf",
+  "parameter_sha256": "870bd59b9625c0c0a84cccd90481446b08092c6ef9ce362572bd439b949dc18c",
+  "selected_update": 750,
+  "configuration": {
+    "seed": 2026,
+    "updates": 750,
+    "batch_size": 32,
+    "embedding_width": 16,
+    "hidden_width": 64,
+    "alignment_width": 32,
+    "encoder_layers": 1,
+    "encoder_directions": 1,
+    "dropout": 0.0,
+    "learning_rate": 0.003,
+    "gradient_clip_norm": 1.0,
+    "validation_interval": 50,
+    "generation_cap": 7,
+    "split_sizes": [
+      192,
+      48,
+      48
+    ],
+    "source_lengths": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "checkpoint_selection": "minimum validation token NLL"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "pillow": "13.0.0",
+    "device": "cpu",
+    "threads": 1
+  },
+  "test_token_nll": 0.001536057679913938,
+  "test_exact_matches": 48,
+  "vocabulary": [
+    "<pad>",
+    "<bos>",
+    "<eos>",
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "white",
+    "black"
+  ],
+  "read": {
+    "test_index": 11,
+    "source": [
+      "blue",
+      "blue",
+      "yellow",
+      "green",
+      "white",
+      "red"
+    ],
+    "generated": [
+      "red",
+      "white",
+      "green",
+      "yellow",
+      "blue",
+      "blue",
+      "<eos>"
+    ],
+    "step": 7,
+    "selection": "correct length-six test example with most distinct colors; ties in test order",
+    "scores": [
+      4.455885887145996,
+      3.512063980102539,
+      3.5796992778778076,
+      3.595082998275757,
+      3.430147171020508,
+      3.4133846759796143
+    ],
+    "weights": [
+      0.34020188450813293,
+      0.13238538801670074,
+      0.1416490525007248,
+      0.14384500682353973,
+      0.12197310477495193,
+      0.11994556337594986
+    ],
+    "context_first_two": [
+      -0.33229368925094604,
+      0.5165473818778992
+    ],
+    "p_eos": 0.9995991587638855
+  },
+  "padding": {
+    "test_index": 0,
+    "source": [
+      "red",
+      "white",
+      "black"
+    ],
+    "selection": "first length-three test source, before inspecting effect",
+    "step": 4,
+    "added_pad_positions": 3,
+    "unmasked_padding_mass": 0.7730057239532471,
+    "correct_p_eos": 0.9995074272155762,
+    "unmasked_p_eos": 0.9985373020172119,
+    "control": "memory, parameters, query, cell state and token fixed; mask removed for one read"
+  },
+  "timing": {
+    "step": 2,
+    "original_input": "red",
+    "changed_input": "blue",
+    "common_next_input": "white",
+    "current_max_attention_difference": 0.0,
+    "next_max_attention_difference": 0.7771669626235962,
+    "current_max_probability_difference": 0.7290322184562683,
+    "control": "same encoded memory and preceding hidden/cell; one input changed, next input held fixed"
+  },
+  "arrays_sha256": "4f5b30f2b5737c8a92bc8b932e419d134b22aa90bc52b74185d21f58ebf98d46",
+  "figure_sha256": {
+    "ch03_trained_read.png": "703d617f66c7f4c002425f0961750a52e83a21cc5335b5f76fcf1fcc15f7a952",
+    "ch03_trained_padding.png": "339663bd1a959d2ae2663aeac76f118d6f84c2608287d4564f6bf3a0443d82b6",
+    "ch03_trained_timing.png": "e1283a1244710551b6c7c8c7f2352ac06d7b9d43295173c067fcc482afe950d7"
+  },
+  "source_sha256": {
+    "examples/ch03_alignment/inspect_trained.py": "c8fd18d1c671c0a55ae4965fa798342b410b85d502c9575ed9bfb3866cadaa9a",
+    "examples/ch03_alignment/model.py": "2dcef4d561738f9ab6e02ac9dc26c78d95a5c1eb4fb28c5640a4d6c56226ad99",
+    "examples/ch03_alignment/run_examples.py": "9e8ca856856fb61744aebc77e3ae9db22561628e1abf24cedc97e58bd871cef7"
+  }
+}
