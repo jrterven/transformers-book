@@ -190,6 +190,11 @@ The [14 progressive exercises](examples/ch09_scaling/EXERCISES.md) and
 to expert routing, including the difference between a balance statistic and
 actual load, and between Switch gates and selected-logit normalization.
 
+The optional [Chapter 9 pretrained inspection](examples/ch09_scaling/PRETRAINED_FIGURES.md)
+follows a fixed token through a real Switch-base-8 router, ReLU expert, and
+residual addition. Four measured figures also reveal overflow under a local
+capacity change and distinguish stored weights from selected matrix entries.
+
 [Chapter 10: Incremental Decoding and KV Representations](examples/ch10_kv/)
 compares a full causal pass with prefill and cached decoding. The examples
 count the stored keys and values for MHA, GQA, and MQA, then compare two

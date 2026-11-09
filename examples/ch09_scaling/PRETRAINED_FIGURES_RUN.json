@@ -1,0 +1,217 @@
+{
+  "model": "google/switch-base-8",
+  "revision": "92fe2d22b024d9937146fe097ba3d3a7ba146e1b",
+  "weight_file": "pytorch_model.bin",
+  "weights_sha256": "ff91705b718f692fa0c994a49d094154583db40b536e80f20f52e05498ff6856",
+  "loader": "weights_only=True; no remote Python; encoder weights only",
+  "loaded_encoder_parameters": 307846272,
+  "loading": {
+    "missing_keys": [],
+    "unused_decoder_or_head_key_count": 250
+  },
+  "text": "The red car stopped near the old bridge. The blue car moved toward the river.",
+  "pieces": [
+    "\u00b7The",
+    "\u00b7red",
+    "\u00b7car",
+    "\u00b7stopped",
+    "\u00b7near",
+    "\u00b7the",
+    "\u00b7old",
+    "\u00b7bridge",
+    ".",
+    "\u00b7The",
+    "\u00b7blue",
+    "\u00b7car",
+    "\u00b7moved",
+    "\u00b7toward",
+    "\u00b7the",
+    "\u00b7river",
+    ".",
+    "</s>"
+  ],
+  "input_ids": [
+    37,
+    1131,
+    443,
+    4910,
+    1084,
+    8,
+    625,
+    4716,
+    5,
+    37,
+    1692,
+    443,
+    2301,
+    2957,
+    8,
+    4033,
+    5,
+    1
+  ],
+  "tokens_including_eos": 18,
+  "probe": {
+    "array_position": 2,
+    "encoder_block_index": 1,
+    "encoder_block_label": 2,
+    "expert_index": 4,
+    "expert_label": 5,
+    "displayed_feature_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "configuration": {
+    "d_model": 768,
+    "d_ff": 3072,
+    "num_experts": 8,
+    "expert_capacity": 64,
+    "num_layers": 12,
+    "num_sparse_encoder_layers": 6,
+    "vocab_size": 32128
+  },
+  "routing": {
+    "requests_indices": [
+      7,
+      5,
+      4,
+      4,
+      6,
+      6,
+      5,
+      4,
+      2,
+      7,
+      5,
+      4,
+      3,
+      3,
+      3,
+      4,
+      2,
+      7
+    ],
+    "request_counts": [
+      0,
+      0,
+      2,
+      3,
+      5,
+      3,
+      2,
+      3
+    ],
+    "request_fractions": [
+      0.0,
+      0.0,
+      0.1111111111111111,
+      0.16666666666666666,
+      0.2777777777777778,
+      0.16666666666666666,
+      0.1111111111111111,
+      0.16666666666666666
+    ],
+    "mean_probabilities": [
+      0.061511123501178294,
+      0.04363383350169493,
+      0.15677772679676613,
+      0.1355733965174295,
+      0.17909651651603375,
+      0.1177862537248681,
+      0.12148961036776502,
+      0.18413153297216114
+    ],
+    "raw_balance": 1.2286625806900477,
+    "probe_logits": [
+      1.3322433233261108,
+      -1.1928467750549316,
+      0.6781700253486633,
+      -2.318542003631592,
+      2.7426652908325195,
+      0.5506485104560852,
+      0.6830360293388367,
+      1.561378002166748
+    ],
+    "probe_probabilities": [
+      0.12560799717903137,
+      0.010055058635771275,
+      0.06530656665563583,
+      0.0032621310092508793,
+      0.5147019028663635,
+      0.05748770385980606,
+      0.0656251311302185,
+      0.15795350074768066
+    ],
+    "probe_gate": 0.5147019028663635,
+    "logit_reconstruction_max_error": 3.31366896766383e-06,
+    "probability_reconstruction_max_error": 4.7233344357966445e-07
+  },
+  "expert": {
+    "first_output": 10.199013710021973,
+    "first_gated_update": 5.249451637268066,
+    "first_residual_input": 17.98398208618164,
+    "first_residual_output": 23.23343276977539,
+    "relu_zero_count": 2921,
+    "output_reconstruction_max_error": 2.0452962088413074e-05,
+    "residual_addition_matches_exactly": true
+  },
+  "capacity_experiment": {
+    "published_capacity": 64,
+    "reduced_capacity": 3,
+    "input_and_router_logits_unchanged": true,
+    "admitted_counts": [
+      0,
+      0,
+      2,
+      3,
+      3,
+      3,
+      2,
+      3
+    ],
+    "overflow_array_positions": [
+      11,
+      15
+    ],
+    "overflow_fraction": 0.1111111111111111,
+    "reserved_slots": 24,
+    "slot_utilization": 0.6666666666666666,
+    "overflow_branch_exactly_zero": true,
+    "overflow_residual_exactly_preserved": true
+  },
+  "parameters": {
+    "one_expert": 4718592,
+    "router": 6144,
+    "stored_sparse_branch": 37754880,
+    "one_accepted_token": 4724736,
+    "distinct_requested_experts": 6,
+    "this_input_active_matrix_entries": 28317696
+  },
+  "execution": "Frozen CPU float32 encoder inference; one thread; eval mode; no training or sampling",
+  "selection": "Fixed text, first sparse encoder block, array position 2, and first eight features chosen before inspection",
+  "software": {
+    "python": "3.12.14",
+    "torch": "2.15.0",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.1",
+    "huggingface_hub": "0.35.3",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "Pillow": "13.0.0"
+  },
+  "artifacts": {
+    "observations.npz": "2cb0cb78d6f9779cc6e8e3c8ccc01e9d4694c35d2876daf4f0945082bbac973b",
+    "ch09_pretrained_router.png": "b9af7ec73c35ff0151109f4ea687b23cc3202c7b0ca8019a8f667d78b86dedda",
+    "ch09_pretrained_expert.png": "d71c137320f97dcc7e37b650330855612d7efee8d6823b50bd37f846c7efafa9",
+    "ch09_pretrained_capacity.png": "4eec68aeac3bcec3db2aace01928b24ab7853d969de141e7039e1602b2fe30c4",
+    "ch09_pretrained_balance_storage.png": "111812511505f7667e8d0bae58ad9e0af93a6f121318285679dd101e81a312cc"
+  },
+  "source_sha256": "eaee773912bfa663545247a9915c51a8ca08c3f607c1e91e09db1371c798eb6f"
+}

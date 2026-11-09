@@ -81,6 +81,21 @@ yet the tied router sends every request to expert 1. At capacity one,
 it rejects three rows; the balanced router rejects none. Inspect request
 counts, accepted counts, and overflow alongside the auxiliary scalar.
 
+## Inspect a pretrained expert layer
+
+The optional [pretrained inspection](PRETRAINED_FIGURES.md) follows the same
+operations in Switch-base-8. Four measured figures show actual router
+probabilities, ReLU expert computation, a local capacity intervention, and
+stored versus selected matrix entries. The fixed input has 18 positions;
+its first `car` selects expert 5 with gate about 0.514702. Reducing only the
+captured sublayer's capacity from 64 to three produces two overflow rows
+without changing its request probabilities.
+
+This separate encoder inspection uses published learned weights and optional
+PyTorch dependencies. Input positions use zero-based array indices, while
+printed expert labels remain one-based. Its complete-input counts and
+capacity setting differ from the eight-row classroom bank above.
+
 ## Work through the exercises
 
 The [14 exercise statements](EXERCISES.md) match the revised chapter:

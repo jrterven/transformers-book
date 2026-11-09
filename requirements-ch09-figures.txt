@@ -1,0 +1,2 @@
+# Optional pinned Switch-base-8 observations; the NumPy teaching bank stays offline.
+-r requirements-appendix-figures.txt
