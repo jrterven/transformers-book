@@ -17,6 +17,12 @@ python scripts/export_snippets.py --chapter ch01 --check
 These chapter-specific examples and tests run on a CPU with NumPy alone.
 No corpus or model download is needed.
 
+The optional [pretrained-model observations](PRETRAINED_FIGURES.md) connect these
+small calculations to three figures from an actual frozen DistilGPT2 checkpoint:
+tokenization, lookup versus contextual vectors, and next-token probabilities
+under different earlier contexts. Their code, exact inputs, and run record
+are separate from the NumPy teaching model.
+
 The [12 exercises](EXERCISES.md) progress from representations and shapes to
 probability calculations, coding, and challenges. The [worked solutions](../../solutions/ch01_language/)
 include all 12 answers, an executed notebook, and its PDF export. Their numbering

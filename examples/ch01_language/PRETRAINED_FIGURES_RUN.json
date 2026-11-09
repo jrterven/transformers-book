@@ -1,0 +1,232 @@
+{
+  "model": "distilbert/distilgpt2",
+  "revision": "2290a62682d06624634c1f46a6ad5be0f47f38aa",
+  "weights_sha256": "e1ff18884359fe8beb795a5f414feb85a6ce3d929ad019c0d958c039d2b94a1b",
+  "mode": "eval; frozen weights; CPU float32 forward pass; no sampling",
+  "normalization": "float64 softmax of the observed float32 logits, full vocabulary",
+  "vocabulary_size": 50257,
+  "embedding_width": 768,
+  "tokenization": [
+    {
+      "text": "the red car",
+      "ids": [
+        1169,
+        2266,
+        1097
+      ],
+      "pieces": [
+        "the",
+        "\u00b7red",
+        "\u00b7car"
+      ]
+    },
+    {
+      "text": "The red car.",
+      "ids": [
+        464,
+        2266,
+        1097,
+        13
+      ],
+      "pieces": [
+        "The",
+        "\u00b7red",
+        "\u00b7car",
+        "."
+      ]
+    },
+    {
+      "text": "unhelpfulness",
+      "ids": [
+        403,
+        16794,
+        15538
+      ],
+      "pieces": [
+        "un",
+        "help",
+        "fulness"
+      ]
+    },
+    {
+      "text": "red",
+      "ids": [
+        445
+      ],
+      "pieces": [
+        "red"
+      ]
+    },
+    {
+      "text": " red",
+      "ids": [
+        2266
+      ],
+      "pieces": [
+        "\u00b7red"
+      ]
+    }
+  ],
+  "context_texts": [
+    "the red car",
+    "the blue car",
+    "the red bike"
+  ],
+  "context_ids": [
+    [
+      1169,
+      2266,
+      1097
+    ],
+    [
+      1169,
+      4171,
+      1097
+    ],
+    [
+      1169,
+      2266,
+      7161
+    ]
+  ],
+  "displayed_coordinates": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "static_embedding_max_difference": 0.0,
+  "contextual_hidden_max_difference": 2.5538625717163086,
+  "earlier_hidden_future_change_max_difference": 0.0,
+  "candidates": [
+    {
+      "text": " car",
+      "id": 1097
+    },
+    {
+      "text": " dress",
+      "id": 6576
+    },
+    {
+      "text": " truck",
+      "id": 7779
+    },
+    {
+      "text": " shirt",
+      "id": 10147
+    }
+  ],
+  "predictions": [
+    {
+      "prompt": "She drove the red",
+      "ids": [
+        3347,
+        10357,
+        262,
+        2266
+      ],
+      "candidate_probabilities": [
+        0.04476174839297037,
+        0.00021479767401308205,
+        0.010427958755197806,
+        0.00017466591501750055
+      ],
+      "remaining_mass": 0.9444208292628012,
+      "top_five": [
+        {
+          "text": "\u00b7light",
+          "id": 1657,
+          "probability": 0.11392484450526535
+        },
+        {
+          "text": "-",
+          "id": 12,
+          "probability": 0.06381712732925772
+        },
+        {
+          "text": "\u00b7car",
+          "id": 1097,
+          "probability": 0.04476174839297037
+        },
+        {
+          "text": "\u00b7and",
+          "id": 290,
+          "probability": 0.03583628430825515
+        },
+        {
+          "text": "\u00b7Ford",
+          "id": 8092,
+          "probability": 0.020876424015325988
+        }
+      ]
+    },
+    {
+      "prompt": "She wore the red",
+      "ids": [
+        3347,
+        12408,
+        262,
+        2266
+      ],
+      "candidate_probabilities": [
+        0.00042535959992492136,
+        0.03214940796190827,
+        0.00011152820845026973,
+        0.024048134518781836
+      ],
+      "remaining_mass": 0.9432655697109347,
+      "top_five": [
+        {
+          "text": "-",
+          "id": 12,
+          "probability": 0.044860354706819316
+        },
+        {
+          "text": "\u00b7and",
+          "id": 290,
+          "probability": 0.03727263200948265
+        },
+        {
+          "text": "\u00b7dress",
+          "id": 6576,
+          "probability": 0.03214940796190827
+        },
+        {
+          "text": "\u00b7shirt",
+          "id": 10147,
+          "probability": 0.024048134518781836
+        },
+        {
+          "text": ",",
+          "id": 11,
+          "probability": 0.017082174358470682
+        }
+      ]
+    }
+  ],
+  "software": {
+    "torch": "2.15.0",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.1",
+    "huggingface_hub": "0.35.3",
+    "safetensors": "0.6.2",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "Pillow": "13.0.0"
+  },
+  "source_sha256": "29b8456119cd99e9a270da9a2613b6f244750977c187ccc04e242ed4f89ea08f",
+  "artifacts": {
+    "ch01_pretrained_observations.npz": "dc510d64b09aa1eb006948875dc1b850b464015370d3d2a2ce6b5d540e2397b4",
+    "ch01_pretrained_tokens.png": "bb5a34608c6d59403de1205a030c0cc4c55d2a2ceb5ff3314e3cea86a1b1cf8e",
+    "ch01_pretrained_context.png": "3f2611ac9cd9927c1b73ffcc4f9fc4287ddf59dc29dc4bff1091849ada9ef3bb",
+    "ch01_pretrained_predictions.png": "88e8c73677f37bb5232ba7e79795382da2f4b96bb6e893e14268ca6a2c0bf31c"
+  }
+}

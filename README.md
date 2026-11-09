@@ -43,6 +43,8 @@ python -m pip install -r requirements.txt
 python -m examples.ch01_language.run_examples
 ```
 
+Chapter 1 also includes [reproducible observations of a pretrained language model](examples/ch01_language/PRETRAINED_FIGURES.md): actual token pieces and IDs, fixed lookup rows versus context-dependent hidden vectors, and full-vocabulary next-token probabilities. These optional figures use a pinned DistilGPT2 checkpoint.
+
 [Chapter 2: Recurrence and Encoder-Decoder Models](examples/ch02_recurrence/) follows a scalar recurrent update and an LSTM memory cell, then implements an LSTM encoder-decoder without attention. Its optional training experiment reverses short color sequences and compares teacher-forced token predictions with complete greedy generations. The [chapter guide](examples/ch02_recurrence/README.md) explains state transfer, source lengths, BOS/EOS alignment, padding, and the local reference results. The [14 progressive exercises](examples/ch02_recurrence/EXERCISES.md) have matching [worked solutions and executed notebooks](solutions/ch02_recurrence/README.md).
 
 ```sh
