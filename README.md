@@ -201,6 +201,11 @@ count the stored keys and values for MHA, GQA, and MQA, then compare two
 equivalent ways to read a latent cache. See the [chapter guide](examples/ch10_kv/README.md)
 for the array shapes and expected results.
 
+The optional [Chapter 10 pretrained inspection](examples/ch10_kv/PRETRAINED_FIGURES.md)
+measures actual SmolLM2 and GPT-2 caches. Four figures follow saved vectors,
+shared-history reads, equivalent replay, and exact payload growth, including
+a controlled demonstration of a RoPE-position reset.
+
 ```sh
 python -m pip install -r requirements.txt
 python -m examples.ch10_kv.run_examples --output output/ch10.json

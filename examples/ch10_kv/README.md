@@ -51,6 +51,18 @@ with the same shared rotary keys would use 20. The fixed arrays let
 you compare the two calculations on a CPU without model weights or
 a dataset.
 
+## Inspect real decoder caches
+
+The optional [pretrained inspection](PRETRAINED_FIGURES.md) uses actual
+SmolLM2 and GPT-2 weights. Four measured figures show saved K/V entries,
+different queries reading one shared history, full-versus-cached replay,
+and payload growth. It also demonstrates a positional bug while retaining
+the correct cache slots. Both models replay fixed token IDs without sampling.
+
+This separate complete-decoder inspection uses optional PyTorch dependencies.
+The NumPy examples above continue to work without downloading models, and
+their MLA calculation remains an independent teaching example.
+
 ## Exercises and complete solutions
 
 Follow the [12 progressive exercises](EXERCISES.md): four hand calculations,

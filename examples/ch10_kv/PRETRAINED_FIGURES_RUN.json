@@ -1,0 +1,301 @@
+{
+  "text": "The red car stopped near the bridge.",
+  "selection": "Fixed prompt; prefill 2; block 1; car at index 2; first KV group; first eight features; top-five IDs by a fixed rank rule",
+  "execution": "Frozen CPU float32, eager attention, one thread, deterministic algorithms; fixed IDs replayed without sampling",
+  "models": {
+    "smol": {
+      "model": "HuggingFaceTB/SmolLM2-135M",
+      "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+      "loading": {
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "mismatched_keys": [],
+        "error_msgs": []
+      },
+      "parameters": 134515008,
+      "pieces": [
+        "The",
+        "\u00b7red",
+        "\u00b7car",
+        "\u00b7stopped",
+        "\u00b7near",
+        "\u00b7the",
+        "\u00b7bridge",
+        "."
+      ],
+      "input_ids": [
+        504,
+        2382,
+        1076,
+        8976,
+        2141,
+        260,
+        7395,
+        30
+      ],
+      "layers": 30,
+      "query_heads": 9,
+      "kv_heads": 3,
+      "head_width": 64,
+      "cache_dtype": "float32",
+      "bytes_per_scalar": 4,
+      "stages": [
+        {
+          "length": 2,
+          "bytes": 92160
+        },
+        {
+          "length": 3,
+          "bytes": 138240
+        },
+        {
+          "length": 4,
+          "bytes": 184320
+        },
+        {
+          "length": 5,
+          "bytes": 230400
+        },
+        {
+          "length": 6,
+          "bytes": 276480
+        },
+        {
+          "length": 7,
+          "bytes": 322560
+        },
+        {
+          "length": 8,
+          "bytes": 368640
+        }
+      ],
+      "chunk_schedule": [
+        2,
+        1,
+        2,
+        3
+      ],
+      "single_logit_max_errors_by_position": [
+        0.0,
+        3.528594970703125e-05,
+        5.340576171875e-05,
+        4.0531158447265625e-05,
+        5.91278076171875e-05,
+        6.866455078125e-05,
+        3.5762786865234375e-05,
+        4.100799560546875e-05
+      ],
+      "chunk_logit_max_errors_by_position": [
+        0.0,
+        3.528594970703125e-05,
+        5.340576171875e-05,
+        4.3392181396484375e-05,
+        3.4332275390625e-05,
+        5.817413330078125e-05,
+        4.0531158447265625e-05,
+        3.719329833984375e-05
+      ],
+      "single_cache_max_error": 9.34600830078125e-05,
+      "chunk_cache_max_error": 1.4781951904296875e-05,
+      "old_cache_entries_preserved_exactly": true,
+      "formula_matches_every_payload": true,
+      "all_argmax_predictions_match": true,
+      "all_future_attention_entries_zero": true,
+      "probe": {
+        "position": 2,
+        "block": 1,
+        "query_head_indices": [
+          0,
+          1,
+          2
+        ],
+        "shared_kv_head_index": 0,
+        "first_query_scores": [
+          2.275313546135412,
+          1.5164207629320503,
+          3.045019628542957
+        ],
+        "three_query_probability_rows": [
+          [
+            0.27568575739860535,
+            0.129071906208992,
+            0.5952423214912415
+          ],
+          [
+            0.2495909035205841,
+            0.33086660504341125,
+            0.41954249143600464
+          ],
+          [
+            0.30437031388282776,
+            0.672939658164978,
+            0.022690000012516975
+          ]
+        ],
+        "first_value_coordinate": [
+          -0.02486446686089039,
+          0.013621550053358078,
+          -0.05143899843096733
+        ],
+        "weighted_value_contributions": [
+          -0.006854779552668333,
+          0.0017581594875082374,
+          -0.03061866946518421
+        ],
+        "first_head_output_coordinate": -0.035715289413928986,
+        "probability_reconstruction_max_error": 1.9273968321353863e-07,
+        "head_output_reconstruction_max_error": 4.190390937193478e-08,
+        "wrong_position_max_logit_change": 8.3612699508667,
+        "correct_top_five_ids": [
+          436,
+          28,
+          314,
+          281,
+          351
+        ],
+        "correct_top_five_pieces": [
+          "' was'",
+          "','",
+          "' is'",
+          "' in'",
+          "' with'"
+        ],
+        "correct_top_five_probabilities": [
+          0.09606598456419996,
+          0.053040331615498704,
+          0.05159302588660896,
+          0.024189467928626873,
+          0.02280113925617979
+        ],
+        "wrong_position_same_five_probabilities": [
+          0.07714245006892154,
+          0.030630764489361112,
+          0.0519681155311379,
+          0.011105350439676006,
+          0.008415230421099049
+        ],
+        "top_five_remaining_probability": 0.7523100507488857
+      },
+      "weights_sha256": "80521b40281d6ce74e35c9282c22539e75aa0ac8578892b2a59955ef78d55da1"
+    },
+    "gpt2": {
+      "model": "openai-community/gpt2",
+      "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "loading": {
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "mismatched_keys": [],
+        "error_msgs": []
+      },
+      "parameters": 124439808,
+      "pieces": [
+        "The",
+        "\u00b7red",
+        "\u00b7car",
+        "\u00b7stopped",
+        "\u00b7near",
+        "\u00b7the",
+        "\u00b7bridge",
+        "."
+      ],
+      "input_ids": [
+        464,
+        2266,
+        1097,
+        5025,
+        1474,
+        262,
+        7696,
+        13
+      ],
+      "layers": 12,
+      "query_heads": 12,
+      "kv_heads": 12,
+      "head_width": 64,
+      "cache_dtype": "float32",
+      "bytes_per_scalar": 4,
+      "stages": [
+        {
+          "length": 2,
+          "bytes": 147456
+        },
+        {
+          "length": 3,
+          "bytes": 221184
+        },
+        {
+          "length": 4,
+          "bytes": 294912
+        },
+        {
+          "length": 5,
+          "bytes": 368640
+        },
+        {
+          "length": 6,
+          "bytes": 442368
+        },
+        {
+          "length": 7,
+          "bytes": 516096
+        },
+        {
+          "length": 8,
+          "bytes": 589824
+        }
+      ],
+      "chunk_schedule": [
+        2,
+        1,
+        2,
+        3
+      ],
+      "single_logit_max_errors_by_position": [
+        0.0,
+        6.103515625e-05,
+        0.00017547607421875,
+        0.000244140625,
+        0.00017547607421875,
+        0.00022125244140625,
+        0.000213623046875,
+        0.0003204345703125
+      ],
+      "chunk_logit_max_errors_by_position": [
+        0.0,
+        6.103515625e-05,
+        0.00017547607421875,
+        0.00011444091796875,
+        6.103515625e-05,
+        7.62939453125e-05,
+        6.866455078125e-05,
+        0.0001220703125
+      ],
+      "single_cache_max_error": 2.384185791015625e-05,
+      "chunk_cache_max_error": 1.7642974853515625e-05,
+      "old_cache_entries_preserved_exactly": true,
+      "formula_matches_every_payload": true,
+      "all_argmax_predictions_match": true,
+      "all_future_attention_entries_zero": true,
+      "weights_sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707"
+    }
+  },
+  "software": {
+    "python": "3.12.14",
+    "torch": "2.15.0",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.1",
+    "huggingface_hub": "0.35.3",
+    "safetensors": "0.6.2",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "Pillow": "13.0.0"
+  },
+  "artifacts": {
+    "observations.npz": "0b4cda2e164ad7b1eb39143f0726243d5f6891ae54bc22c8bb551c3bad39380b",
+    "ch10_pretrained_cache.png": "ee2a3dc75f3a3dc88cf3f54c60e48d52cc2a1746584538b777a60f2ac3c00e21",
+    "ch10_pretrained_shared_reads.png": "a39ad4a4818e420053a70ff8c8ebacc157d5055689fa1bb3966fae8b5f1bef53",
+    "ch10_pretrained_replay.png": "9569decb405c6c82ef3d6ab2ec8ac167ff51d4e6cdf0e6c31901ad9268495166",
+    "ch10_pretrained_bytes.png": "a710cd3e784e0a18fe3e3249f643cb4b169e6815f16bfd4cbeec1e6591dd8047"
+  },
+  "source_sha256": "183c865f0522167b1666802aa7254096cc14f86727365907b362fea38dba8bbf"
+}

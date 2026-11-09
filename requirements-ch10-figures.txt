@@ -1,0 +1,2 @@
+# Optional real KV-cache observations; regular chapter examples need only NumPy.
+-r requirements-appendix-figures.txt
