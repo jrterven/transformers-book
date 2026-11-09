@@ -1,0 +1,581 @@
+{
+  "task": "color reversal; locally trained encoder-decoder; no attention",
+  "mode": "frozen weights; eval; CPU float32; no sampling",
+  "checkpoint_sha256": "c486e81dc9990656d633f293144ea25224af76f3416142ea26ac2bbd97107a33",
+  "parameter_tensors_sha256": "209ac3871c318a7716e91afd376282002f10e0289d0ec2792675eb9fd4503201",
+  "selected_update": 600,
+  "configuration": {
+    "seed": 2026,
+    "updates": 750,
+    "batch_size": 32,
+    "embedding_width": 16,
+    "hidden_width": 64,
+    "layers": 1,
+    "dropout": 0.0,
+    "learning_rate": 0.003,
+    "gradient_clip_norm": 1.0,
+    "validation_interval": 50,
+    "split_sizes": [
+      192,
+      48,
+      48
+    ],
+    "source_lengths": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "generation_cap": 7,
+    "checkpoint_selection": "validation token NLL"
+  },
+  "vocabulary": [
+    "<pad>",
+    "<bos>",
+    "<eos>",
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "white",
+    "black"
+  ],
+  "state_width": 64,
+  "state_sources": [
+    {
+      "ids": [
+        3,
+        4,
+        5
+      ],
+      "text": "red green blue",
+      "split": "illustration outside all splits"
+    },
+    {
+      "ids": [
+        6,
+        4,
+        5
+      ],
+      "text": "yellow green blue",
+      "split": "illustration outside all splits"
+    }
+  ],
+  "displayed_coordinates": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "gate_coordinate": 1,
+  "gate_source": [
+    4,
+    5,
+    8,
+    3,
+    3,
+    3
+  ],
+  "gate_example": {
+    "forget": 0.8173426389694214,
+    "write": 0.5870595574378967,
+    "candidate": -0.42138850688934326,
+    "expose": 0.9411787986755371,
+    "old_cell": -0.6159483194351196,
+    "retained": -0.503440797328949,
+    "written": -0.24738015234470367,
+    "cell": -0.7508209347724915,
+    "hidden": -0.5982494354248047,
+    "source_position": 2,
+    "input_token": "blue",
+    "coordinate": 1
+  },
+  "failure": {
+    "test_index": 13,
+    "source": [
+      4,
+      5,
+      8,
+      3,
+      3,
+      3
+    ],
+    "reference": [
+      3,
+      3,
+      3,
+      8,
+      5,
+      4,
+      2
+    ],
+    "teacher_inputs": [
+      1,
+      3,
+      3,
+      3,
+      8,
+      5,
+      4
+    ],
+    "teacher_choices": [
+      3,
+      3,
+      3,
+      8,
+      4,
+      4,
+      2
+    ],
+    "generated": [
+      3,
+      3,
+      3,
+      8,
+      4,
+      5,
+      2
+    ],
+    "generated_inputs": [
+      1,
+      3,
+      3,
+      3,
+      8,
+      4,
+      5
+    ],
+    "first_different_input_step": 6,
+    "reference_token_probabilities": [
+      0.9999934334182311,
+      0.9997727491478349,
+      0.5331681304240273,
+      0.9626244910370576,
+      0.41377397509043407,
+      0.9968253088282296,
+      0.996621747731037
+    ],
+    "generated_reference_probabilities": [
+      0.9999934334182311,
+      0.9997727491478349,
+      0.5331681304240273,
+      0.9626244910370576,
+      0.41377397509043407,
+      6.179553126911988e-05,
+      0.9375761920014295
+    ]
+  },
+  "test_metrics": {
+    "token_nll": 0.09030130505561829,
+    "nonpadding_tokens": 264,
+    "teacher_forced_correct_tokens": 258,
+    "exact_matches": 43,
+    "sequences": 48,
+    "ended_in_eos": 48,
+    "by_length": {
+      "3": {
+        "sequences": 12,
+        "token_nll": 0.002764536067843437,
+        "exact_matches": 12,
+        "ended_in_eos": 12
+      },
+      "4": {
+        "sequences": 12,
+        "token_nll": 0.025261204689741135,
+        "exact_matches": 12,
+        "ended_in_eos": 12
+      },
+      "5": {
+        "sequences": 12,
+        "token_nll": 0.03925865888595581,
+        "exact_matches": 12,
+        "ended_in_eos": 12
+      },
+      "6": {
+        "sequences": 12,
+        "token_nll": 0.23053038120269775,
+        "exact_matches": 7,
+        "ended_in_eos": 12
+      }
+    },
+    "predictions": [
+      [
+        8,
+        7,
+        3,
+        2
+      ],
+      [
+        3,
+        3,
+        7,
+        6,
+        8,
+        2
+      ],
+      [
+        5,
+        5,
+        7,
+        2
+      ],
+      [
+        6,
+        6,
+        7,
+        5,
+        5,
+        2
+      ],
+      [
+        3,
+        3,
+        8,
+        2
+      ],
+      [
+        4,
+        7,
+        7,
+        5,
+        3,
+        2
+      ],
+      [
+        6,
+        5,
+        8,
+        6,
+        8,
+        6,
+        2
+      ],
+      [
+        7,
+        8,
+        3,
+        4,
+        5,
+        2
+      ],
+      [
+        8,
+        7,
+        3,
+        3,
+        6,
+        6,
+        2
+      ],
+      [
+        5,
+        3,
+        6,
+        6,
+        2
+      ],
+      [
+        6,
+        8,
+        6,
+        2
+      ],
+      [
+        3,
+        7,
+        4,
+        6,
+        5,
+        5,
+        2
+      ],
+      [
+        5,
+        7,
+        6,
+        4,
+        8,
+        2
+      ],
+      [
+        3,
+        3,
+        3,
+        8,
+        4,
+        5,
+        2
+      ],
+      [
+        3,
+        7,
+        8,
+        4,
+        3,
+        2
+      ],
+      [
+        3,
+        5,
+        5,
+        5,
+        8,
+        2
+      ],
+      [
+        5,
+        6,
+        4,
+        5,
+        5,
+        2
+      ],
+      [
+        4,
+        4,
+        6,
+        3,
+        3,
+        2
+      ],
+      [
+        4,
+        6,
+        7,
+        6,
+        5,
+        8,
+        2
+      ],
+      [
+        8,
+        3,
+        7,
+        8,
+        4,
+        5,
+        2
+      ],
+      [
+        5,
+        5,
+        8,
+        6,
+        2
+      ],
+      [
+        3,
+        3,
+        7,
+        2
+      ],
+      [
+        3,
+        5,
+        7,
+        7,
+        2
+      ],
+      [
+        8,
+        5,
+        8,
+        3,
+        2
+      ],
+      [
+        8,
+        3,
+        3,
+        7,
+        3,
+        2
+      ],
+      [
+        6,
+        6,
+        8,
+        4,
+        5,
+        4,
+        2
+      ],
+      [
+        8,
+        3,
+        7,
+        2
+      ],
+      [
+        7,
+        7,
+        3,
+        3,
+        2
+      ],
+      [
+        3,
+        7,
+        4,
+        7,
+        2
+      ],
+      [
+        7,
+        3,
+        8,
+        2
+      ],
+      [
+        7,
+        7,
+        7,
+        5,
+        6,
+        4,
+        2
+      ],
+      [
+        5,
+        7,
+        6,
+        2
+      ],
+      [
+        3,
+        3,
+        3,
+        3,
+        2
+      ],
+      [
+        3,
+        8,
+        8,
+        3,
+        4,
+        7,
+        2
+      ],
+      [
+        5,
+        3,
+        6,
+        3,
+        7,
+        2
+      ],
+      [
+        5,
+        6,
+        4,
+        5,
+        4,
+        6,
+        2
+      ],
+      [
+        8,
+        4,
+        5,
+        4,
+        2
+      ],
+      [
+        4,
+        7,
+        8,
+        2
+      ],
+      [
+        8,
+        3,
+        6,
+        5,
+        2
+      ],
+      [
+        5,
+        3,
+        6,
+        5,
+        6,
+        5,
+        2
+      ],
+      [
+        4,
+        6,
+        6,
+        2
+      ],
+      [
+        5,
+        6,
+        4,
+        7,
+        2
+      ],
+      [
+        5,
+        3,
+        8,
+        4,
+        2
+      ],
+      [
+        6,
+        5,
+        5,
+        4,
+        5,
+        2
+      ],
+      [
+        5,
+        4,
+        8,
+        3,
+        2
+      ],
+      [
+        6,
+        7,
+        5,
+        4,
+        4,
+        2
+      ],
+      [
+        3,
+        8,
+        4,
+        2
+      ],
+      [
+        6,
+        6,
+        6,
+        2
+      ]
+    ]
+  },
+  "software": {
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "Pillow": "13.0.0"
+  },
+  "source_sha256": "d1f5266b183859e58adf553aa13a241c11cf73e18875f124baf09c89702e3344",
+  "model_source_sha256": "a7b661e8a06576f031555e7563b322a6cfd0e577e291ed67df14b3ae2771e315",
+  "artifacts": {
+    "ch02_trained_observations.npz": "ecec446e401fc142eedf4a20833dd3ebf717787c53405ce5787516726b5d9dc8",
+    "ch02_trained_states.png": "7a371d88811280d3f8bfb5924a63cd24b2c6a11a77641e2a36bb2b913e450396",
+    "ch02_trained_gates.png": "b814e63f4b431ad0711d26bb9b8feaa80389d225445803f58693a76acbabf4f2",
+    "ch02_trained_predictions.png": "488d003dd3c725f900721ff2ec030c3b6f294b8dff7445570b58a97f778262e8"
+  }
+}

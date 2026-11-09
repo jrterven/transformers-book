@@ -32,6 +32,11 @@ vectors; tests compare it with an independent `torch.nn.LSTMCell` using the
 same parameters. This is the modern LSTM with a forget gate, rather than an
 exact reconstruction of the original 1997 cell.
 
+The optional [trained-model observations](TRAINED_FIGURES.md) expose actual
+hidden/cell state histories, learned gate contributions, and vocabulary
+probabilities under reference prefixes versus freely generated prefixes.
+The guide includes the three figures' exact inputs and reproduction commands.
+
 ## Source and target sequences
 
 The fixed vocabulary is PAD `0`, BOS `1`, EOS `2`, followed by six color IDs
