@@ -107,6 +107,8 @@ The optional [Chapter 5 trained-model inspection](examples/ch05_transformer/TRAI
 
 [Chapter 6: Training and Generation](examples/ch06_training/) trains that architecture on a reproducible sequence-reversal task. It covers shifted targets, padding-aware token loss, validation-selected checkpoints, greedy generation, and incremental decoding with self-attention and cross-attention KV caches. The [chapter guide](examples/ch06_training/README.md) explains the data split, training recipe, metrics, cache conventions, and timing boundaries.
 
+Its [measured training and generation figures](examples/ch06_training/TRAINED_FIGURES.md) follow a real minibatch gradient into Adam's first update, compare a fixed validation example at three training stages, and count actual KV tensor storage during generation. The replay is checked against the saved checkpoint, and cached logits are compared with full-prefix logits at every step.
+
 ```sh
 python -m pip install -r requirements-ch06.txt
 python -m examples.ch06_training.run_experiment --output output/ch06

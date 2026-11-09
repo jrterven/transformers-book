@@ -5,6 +5,12 @@ sequences of colors. The task is deliberately small: it exposes shifted
 targets, token-weighted loss, validation, autoregressive generation, and KV
 caching without downloading a dataset or pretrained weights.
 
+The chapter's [measured model figures](TRAINED_FIGURES.md) expose the first
+Adam update, reference-conditioned probabilities versus free generation at
+three learning stages, and actual KV tensor growth. The optional figure script
+replays training and checks exact agreement with the saved predictor before
+inspecting its cache. Plotting dependencies are separate from the core example.
+
 The [15 exercises](EXERCISES.md) progress from following one weight update to
 investigating leakage, checkpoint selection, and cache correctness. Every
 exercise has [complete written and executable solutions](../../solutions/ch06_training/README.md).

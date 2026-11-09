@@ -1,0 +1,471 @@
+{
+  "checkpoint_sha256": "b9926a02c5e0b96ecac782b1c41baf52aa70f27318b7f760910636ce704ff710",
+  "model_state_sha256": "772a874a0232451d8537d0068f0365c10173e7d528369f0b79352f2477a98f4b",
+  "replay_matches_checkpoint_exactly": true,
+  "configuration": {
+    "source_vocab_size": 9,
+    "target_vocab_size": 9,
+    "d_model": 64,
+    "n_heads": 4,
+    "d_ff": 128,
+    "n_encoder_layers": 2,
+    "n_decoder_layers": 2,
+    "dropout": 0.0,
+    "pad_id": 0,
+    "max_length": 64
+  },
+  "experiment": {
+    "seed": 2026,
+    "data_seed": 2026,
+    "steps": 2000,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "gradient_clip_norm": 1.0,
+    "validation_every": 100,
+    "generation_max_new_tokens": 8,
+    "matrix_initialization": "xavier_uniform",
+    "split_sizes": [
+      512,
+      64,
+      64
+    ],
+    "min_length": 3,
+    "max_length": 6,
+    "split_sha256": {
+      "train": "166bac498d095923a41bf83d43b856c295d0e0afbab1b4e3e12487036640861c",
+      "validation": "f9b73c7d5e723175141caa01c800521e261af1e4d493493f2fa76f5fc5022345",
+      "test": "c220c3aec39da9df967882faa4f68ff0d7c77d009b78dd760107181cd7e31beb"
+    }
+  },
+  "probe_selection": "first length-six validation source, selected before replay or inspecting predictions",
+  "probe_validation_index": 0,
+  "source": "red yellow blue black white red",
+  "reference": "red white black blue yellow red <eos>",
+  "first_update": {
+    "loss": 2.4596805572509766,
+    "evaluated_tokens": 356,
+    "raw_gradient_norm": 6.266655298558762,
+    "clipped_gradient_norm": 0.9999998411847753,
+    "bias_gradient_max_error": 8.413296059828212e-09,
+    "adam_bias_delta_max_error": 3.4712416008015473e-09,
+    "eos": {
+      "mean_probability": 0.08276560281801006,
+      "reference_frequency": 0.1797752808988764,
+      "raw_gradient": -0.09700968116521835,
+      "clipped_gradient": -0.01548029389232397,
+      "bias_delta": 0.0010000020265579224
+    }
+  },
+  "snapshots": [
+    {
+      "step": 0,
+      "state_sha256": "e6b989694c9fff28debe9e7a08b49b9d95ac3031aa60606e22c24cc65ce98478",
+      "reference_conditioned_nll": 2.6005733013153076,
+      "correct_next_tokens": 1,
+      "target_tokens": 7,
+      "teacher_forced_choices": "white black black black black black black",
+      "teacher_forced_choice_ids": [
+        7,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "generated": "white black black black black black black black",
+      "generated_ids": [
+        7,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "step": 100,
+      "state_sha256": "c266b07ecfd74a62011e2725c957d08a17bf5b1a7aaafd9ec3535b122a07b888",
+      "reference_conditioned_nll": 0.7664528489112854,
+      "correct_next_tokens": 5,
+      "target_tokens": 7,
+      "teacher_forced_choices": "red black black blue yellow <eos> <eos>",
+      "teacher_forced_choice_ids": [
+        3,
+        8,
+        8,
+        5,
+        6,
+        2,
+        2
+      ],
+      "generated": "red black white blue yellow <eos>",
+      "generated_ids": [
+        3,
+        8,
+        7,
+        5,
+        6,
+        2
+      ]
+    },
+    {
+      "step": 2000,
+      "state_sha256": "772a874a0232451d8537d0068f0365c10173e7d528369f0b79352f2477a98f4b",
+      "reference_conditioned_nll": 0.0001634254731470719,
+      "correct_next_tokens": 7,
+      "target_tokens": 7,
+      "teacher_forced_choices": "red white black blue yellow red <eos>",
+      "teacher_forced_choice_ids": [
+        3,
+        7,
+        8,
+        5,
+        6,
+        3,
+        2
+      ],
+      "generated": "red white black blue yellow red <eos>",
+      "generated_ids": [
+        3,
+        7,
+        8,
+        5,
+        6,
+        3,
+        2
+      ]
+    }
+  ],
+  "validation_history": [
+    {
+      "step": 0,
+      "validation": {
+        "nll": 2.4939181587912818,
+        "perplexity": 12.10862681871027,
+        "token_accuracy": 0.16477272727272727,
+        "exact_match": 0.0,
+        "termination_rate": 0.15625,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 100,
+      "validation": {
+        "nll": 0.2794629227031361,
+        "perplexity": 1.3224193801500033,
+        "token_accuracy": 0.9090909090909091,
+        "exact_match": 0.625,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 200,
+      "validation": {
+        "nll": 0.21774560754949396,
+        "perplexity": 1.243270748693792,
+        "token_accuracy": 0.9431818181818182,
+        "exact_match": 0.71875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 300,
+      "validation": {
+        "nll": 0.10556584054773505,
+        "perplexity": 1.111339273300563,
+        "token_accuracy": 0.96875,
+        "exact_match": 0.84375,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 400,
+      "validation": {
+        "nll": 0.08677441423589533,
+        "perplexity": 1.0906506167124232,
+        "token_accuracy": 0.9630681818181818,
+        "exact_match": 0.8125,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 500,
+      "validation": {
+        "nll": 0.06355036388744008,
+        "perplexity": 1.0656131528709003,
+        "token_accuracy": 0.9886363636363636,
+        "exact_match": 0.9375,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 600,
+      "validation": {
+        "nll": 0.057949282906272194,
+        "perplexity": 1.0596612514084143,
+        "token_accuracy": 0.9829545454545454,
+        "exact_match": 0.90625,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 700,
+      "validation": {
+        "nll": 0.025758044286207718,
+        "perplexity": 1.0260926494565543,
+        "token_accuracy": 0.9914772727272727,
+        "exact_match": 0.953125,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 800,
+      "validation": {
+        "nll": 0.06902391802180897,
+        "perplexity": 1.0714618360894352,
+        "token_accuracy": 0.9772727272727273,
+        "exact_match": 0.875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 900,
+      "validation": {
+        "nll": 0.0036557069556279616,
+        "perplexity": 1.0036623972023435,
+        "token_accuracy": 0.9971590909090909,
+        "exact_match": 0.984375,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1000,
+      "validation": {
+        "nll": 0.028204132210124622,
+        "perplexity": 1.0286056345334298,
+        "token_accuracy": 0.9886363636363636,
+        "exact_match": 0.9375,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1100,
+      "validation": {
+        "nll": 0.006717785515568473,
+        "perplexity": 1.0067404004490805,
+        "token_accuracy": 0.9971590909090909,
+        "exact_match": 0.984375,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1200,
+      "validation": {
+        "nll": 0.00274911184202541,
+        "perplexity": 1.0027528941151551,
+        "token_accuracy": 1.0,
+        "exact_match": 1.0,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1300,
+      "validation": {
+        "nll": 0.025375528769059616,
+        "perplexity": 1.0257002281545091,
+        "token_accuracy": 0.9943181818181818,
+        "exact_match": 0.96875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1400,
+      "validation": {
+        "nll": 0.0026600809598510914,
+        "perplexity": 1.0026636221144307,
+        "token_accuracy": 1.0,
+        "exact_match": 1.0,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1500,
+      "validation": {
+        "nll": 0.016036574136127125,
+        "perplexity": 1.016165850114587,
+        "token_accuracy": 0.9943181818181818,
+        "exact_match": 0.96875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1600,
+      "validation": {
+        "nll": 0.04523131251335144,
+        "perplexity": 1.0462698472282965,
+        "token_accuracy": 0.9857954545454546,
+        "exact_match": 0.921875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1700,
+      "validation": {
+        "nll": 0.0020328816026449203,
+        "perplexity": 1.0020349493073457,
+        "token_accuracy": 1.0,
+        "exact_match": 1.0,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1800,
+      "validation": {
+        "nll": 0.027067951180718162,
+        "perplexity": 1.0274376159906378,
+        "token_accuracy": 0.9857954545454546,
+        "exact_match": 0.921875,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 1900,
+      "validation": {
+        "nll": 0.0005624723959375511,
+        "perplexity": 1.0005626306131985,
+        "token_accuracy": 1.0,
+        "exact_match": 1.0,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    },
+    {
+      "step": 2000,
+      "validation": {
+        "nll": 0.0004995695145970041,
+        "perplexity": 1.0004996943202291,
+        "token_accuracy": 1.0,
+        "exact_match": 1.0,
+        "termination_rate": 1.0,
+        "tokens": 352,
+        "sequences": 64
+      }
+    }
+  ],
+  "software": {
+    "python": "3.12.14",
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "Pillow": "13.0.0"
+  },
+  "cache": {
+    "consumed": [
+      "<bos>",
+      "red",
+      "white",
+      "black",
+      "blue",
+      "yellow",
+      "red"
+    ],
+    "generated": [
+      "red",
+      "white",
+      "black",
+      "blue",
+      "yellow",
+      "red",
+      "<eos>"
+    ],
+    "self_kv_bytes": [
+      1024,
+      2048,
+      3072,
+      4096,
+      5120,
+      6144,
+      7168
+    ],
+    "cross_kv_bytes": [
+      6144,
+      6144,
+      6144,
+      6144,
+      6144,
+      6144,
+      6144
+    ],
+    "maximum_logit_difference": 1.430511474609375e-06,
+    "logit_differences": [
+      0.0,
+      7.152557373046875e-07,
+      1.430511474609375e-06,
+      7.152557373046875e-07,
+      1.2516975402832031e-06,
+      9.5367431640625e-07,
+      1.1026859283447266e-06
+    ],
+    "old_self_kv_unchanged": true,
+    "static_cross_kv_unchanged": true
+  },
+  "artifacts": {
+    "observations.npz": "853e2d083a53d72e26cdfcfcac6a0558f9092f5dc47868e9da80e6b301cb321e",
+    "ch06_real_update.png": "1b5ca521953c9a6fd19474265c08c764a7ba7b3da7024c37141e567fd8639a2b",
+    "ch06_learning_snapshots.png": "f71190590acf16fb14be2c202b55fa15b6a690f490d799a314fa3bb4d3de2592",
+    "ch06_real_cache.png": "6919851b06c239cfb2221eb297bad34e8b0a71f665226c3a4f2255cbe1f767a4"
+  },
+  "source_sha256": {
+    "examples/ch06_training/trained_figures.py": "7adf9124e2de103e81a2fd0feb98cc5f98f69ed6de866065d210abd27393e2d7",
+    "examples/ch06_training/training.py": "8ffe878b447e29acd76a70570d45ff5d23b445a755198c0b75ad819b99728ac8",
+    "examples/ch06_training/data.py": "b1d544b6273609208cc853c6ff370841b89f91d9d65f8ace6f7001416f0dcbed",
+    "examples/ch06_training/decoding.py": "959cfb69b9448f922063c49dd2528f3a626ed03a9590074b3339cba299ca734d",
+    "examples/ch05_transformer/model.py": "963e3efa9007d76fe62c673184bd1cb6e13abdaf21f758649ce7747a48ad74a0"
+  }
+}
