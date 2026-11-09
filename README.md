@@ -103,6 +103,8 @@ python -m unittest discover -s tests -v
 
 All [15 Chapter 5 exercises](examples/ch05_transformer/EXERCISES.md) have matching [written and executable solutions](solutions/ch05_transformer/README.md). The small model runs on a CPU and does not download pretrained weights or a dataset. Its forward and backward passes expose the architecture and check causal information flow; the randomly initialized outputs do not measure translation quality. The tests for Chapters 5–8 require PyTorch. With only the NumPy requirements installed, they are explicitly reported as skipped.
 
+The optional [Chapter 5 trained-model inspection](examples/ch05_transformer/TRAINED_FIGURES.md) regenerates three measured figures from Chapter 6's color-reversal checkpoint. It reconstructs learned head contributions, residual addition and LayerNorm, and a ReLU FFN, checking each against the native module output. Its plotting dependencies are in `requirements-ch05-figures.txt`.
+
 [Chapter 6: Training and Generation](examples/ch06_training/) trains that architecture on a reproducible sequence-reversal task. It covers shifted targets, padding-aware token loss, validation-selected checkpoints, greedy generation, and incremental decoding with self-attention and cross-attention KV caches. The [chapter guide](examples/ch06_training/README.md) explains the data split, training recipe, metrics, cache conventions, and timing boundaries.
 
 ```sh

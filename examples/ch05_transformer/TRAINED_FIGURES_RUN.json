@@ -1,0 +1,176 @@
+{
+  "checkpoint_sha256": "b9926a02c5e0b96ecac782b1c41baf52aa70f27318b7f760910636ce704ff710",
+  "parameter_sha256": "772a874a0232451d8537d0068f0365c10173e7d528369f0b79352f2477a98f4b",
+  "parameter_dtype": "torch.float32",
+  "selected_update": 2000,
+  "configuration": {
+    "source_vocab_size": 9,
+    "target_vocab_size": 9,
+    "d_model": 64,
+    "n_heads": 4,
+    "d_ff": 128,
+    "n_encoder_layers": 2,
+    "n_decoder_layers": 2,
+    "dropout": 0.0,
+    "pad_id": 0,
+    "max_length": 64
+  },
+  "experiment": {
+    "seed": 2026,
+    "data_seed": 2026,
+    "steps": 2000,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "gradient_clip_norm": 1.0,
+    "validation_every": 100,
+    "generation_max_new_tokens": 8,
+    "matrix_initialization": "xavier_uniform",
+    "split_sizes": [
+      512,
+      64,
+      64
+    ],
+    "min_length": 3,
+    "max_length": 6,
+    "split_sha256": {
+      "train": "166bac498d095923a41bf83d43b856c295d0e0afbab1b4e3e12487036640861c",
+      "validation": "f9b73c7d5e723175141caa01c800521e261af1e4d493493f2fa76f5fc5022345",
+      "test": "c220c3aec39da9df967882faa4f68ff0d7c77d009b78dd760107181cd7e31beb"
+    }
+  },
+  "selected_validation": {
+    "nll": 0.0004995695145970041,
+    "perplexity": 1.0004996943202291,
+    "token_accuracy": 1.0,
+    "exact_match": 1.0,
+    "termination_rate": 1.0,
+    "tokens": 352,
+    "sequences": 64
+  },
+  "mode": "frozen CPU model in eval mode; reference-conditioned observation; no new training",
+  "vocabulary": [
+    "<pad>",
+    "<bos>",
+    "<eos>",
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "white",
+    "black"
+  ],
+  "test_index": 0,
+  "source": [
+    "red",
+    "yellow",
+    "yellow",
+    "blue"
+  ],
+  "decoder_inputs": [
+    "<bos>",
+    "blue",
+    "yellow",
+    "yellow",
+    "red"
+  ],
+  "target": [
+    "blue",
+    "yellow",
+    "yellow",
+    "red",
+    "<eos>"
+  ],
+  "generated": [
+    "blue",
+    "yellow",
+    "yellow",
+    "red",
+    "<eos>"
+  ],
+  "selection": "first length-four test source, before inspecting predictions or maps",
+  "display": {
+    "layer": 1,
+    "attention_heads": [
+      1,
+      2
+    ],
+    "all_projected_heads": 4,
+    "cross_query_position": 2,
+    "encoder_token_position": 2,
+    "model_features": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "expanded_features": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ]
+  },
+  "normalization": {
+    "mean": 0.5041652112267911,
+    "variance": 1.3353482011768838,
+    "epsilon": 1e-05,
+    "residual_first": 2.0052576065063477,
+    "standardized_first": 1.298998159589836,
+    "gamma_first": 1.0925754308700562,
+    "beta_first": 0.004699917044490576,
+    "output_first": 1.4239535331726074,
+    "output_mean": 0.009326265735580819,
+    "output_variance": 0.9565839427301223
+  },
+  "ffn": {
+    "active_expanded_features": 53,
+    "expanded_width": 128,
+    "output_width": 64,
+    "output_first": 0.8463029861450195,
+    "unchanged_other_rows_max_difference": 0.0
+  },
+  "checks": {
+    "max_attention_error": 1.1848689485116637e-07,
+    "max_projected_read_error": 3.3183995230834373e-07,
+    "max_norm_error": 2.765283828587428e-07,
+    "max_ffn_error": 5.553762423282649e-07
+  },
+  "software": {
+    "python": "3.12.14",
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "Pillow": "13.0.0"
+  },
+  "artifacts": {
+    "observations.npz": "801738801680cbc372d0066447a141ff14227d1e78c1f28358675a0c316170a0",
+    "ch05_trained_heads.png": "a1cd288f529c67db3306d61f10f6748bcfa90f9a9bde442e040744c8acc4dad8",
+    "ch05_trained_postnorm.png": "2b3e2a34ea97b9f8dfc07fa62263214384b8b8e9c53ab8f5ce458de10c5e224b",
+    "ch05_trained_ffn.png": "988fa6056277684628c1119b7d89fe9ea4234822ab261721b039500326901cd9"
+  },
+  "source_sha256": {
+    "examples/ch05_transformer/inspect_trained.py": "e290307559efefc54225620f275e9b25a7474f86994863ccb74eed91629db799",
+    "examples/ch05_transformer/model.py": "963e3efa9007d76fe62c673184bd1cb6e13abdaf21f758649ce7747a48ad74a0"
+  }
+}

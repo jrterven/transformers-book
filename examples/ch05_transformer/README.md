@@ -8,6 +8,12 @@ feed-forward networks, residual paths, post-norm layers, and a vocabulary head.
 It follows the block ordering of the 2017 architecture. The worked model is
 randomly initialized and runs on a CPU; it is not a trained translation system.
 
+The chapter also includes three figures from a trained instance of these same
+modules: learned cross-attention heads, residual addition with LayerNorm, and
+a ReLU FFN. The [trained-model figure guide](TRAINED_FIGURES.md) explains how to
+reproduce them from Chapter 6's color-reversal checkpoint. This optional
+inspection is separate from the default, randomly initialized runner below.
+
 The [15 exercises](EXERCISES.md) progress from tracing one prediction to
 testing complete stacks. Every exercise has a [worked solution](../../solutions/ch05_transformer/README.md)
 in the notebook and both PDF editions.
