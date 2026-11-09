@@ -1,0 +1,2 @@
+# Optional real Longformer observations; regular examples need only NumPy.
+-r requirements-appendix-figures.txt

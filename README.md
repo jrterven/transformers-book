@@ -221,6 +221,11 @@ builds local and global masks, ranks and gathers entries before main
 attention, and forms summaries over completed blocks. The [chapter guide](examples/ch11_long_context/README.md)
 explains the causal checks and the example that reads a summary beside recent raw entries. The [twelve exercises](examples/ch11_long_context/EXERCISES.md) have [complete solutions](solutions/ch11_long_context/README.md) in an executed notebook and two PDF editions.
 
+The optional [Chapter 11 pretrained inspection](examples/ch11_long_context/PRETRAINED_FIGURES.md)
+observes real Longformer windows and global relays. Four figures compare
+native probabilities, trace a single-token change across two blocks, and
+measure the effect of retaining and renormalizing fewer attention entries.
+
 ```sh
 python -m pip install -r requirements.txt
 python -m examples.ch11_long_context.run_examples --output output/ch11.json

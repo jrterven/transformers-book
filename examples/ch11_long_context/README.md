@@ -10,6 +10,12 @@ python -m unittest discover -s tests -p test_long_context.py -v
 
 All positions in the code and JSON are zero-based.
 
+The optional [pretrained inspection](PRETRAINED_FIGURES.md) runs a pinned
+Longformer checkpoint on a 648-token report. Four measured figures show
+local and global probability maps, actual relay reads, the propagation of
+a one-token change, and retained-mass versus head-output error. This model
+download is independent of the regular NumPy examples below.
+
 ## Make a pattern of allowed connections
 
 `local_mask` places queries on rows and keys on columns. It first marks
