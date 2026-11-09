@@ -131,6 +131,14 @@ teaching conventions, and optional fixed-example training check. All
 including the distinction between input replacement, attention permissions,
 and loss selection.
 
+The optional [pretrained GPT-2 and BERT inspection](examples/ch07_pretraining/PRETRAINED_FIGURES.md)
+adds six reproducible figures from pinned public checkpoints. It follows token
+and segment inputs, vocabulary probabilities, greedy feedback, and controlled
+context changes through all hidden stages. Independent calculations check the
+native output heads and BERT input embeddings. These observations use learned
+models alongside the small objective examples; they are not a benchmark of
+the two families.
+
 ```sh
 python -m pip install -r requirements-ch05.txt
 python -m examples.ch07_pretraining.run_examples

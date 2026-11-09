@@ -5,6 +5,13 @@ The same text can supply different questions. After reading `the red`, predict
 missing spans, generate those spans in order. This directory turns each question
 into input IDs, label IDs, a loss, and an inspectable information path.
 
+The expanded chapter also follows [six measured figures from pretrained GPT-2
+and BERT](PRETRAINED_FIGURES.md): actual tokenization and input vectors,
+full-vocabulary predictions, greedy feedback, and controlled changes to future
+or right-hand context. The optional inspection has its own pinned dependencies
+in `requirements-ch07-figures.txt`; the small examples below remain independent
+of pretrained weights.
+
 Run from the repository root, using the PyTorch environment from Chapter 5:
 
 ```sh

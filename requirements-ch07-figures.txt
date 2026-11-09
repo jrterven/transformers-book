@@ -1,0 +1,2 @@
+# Optional pinned GPT-2/BERT observations; not needed for the teaching models.
+-r requirements-appendix-figures.txt
