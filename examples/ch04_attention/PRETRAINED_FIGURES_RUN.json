@@ -1,0 +1,140 @@
+{
+  "model": "distilbert/distilgpt2",
+  "revision": "2290a62682d06624634c1f46a6ad5be0f47f38aa",
+  "weights_sha256": "e1ff18884359fe8beb795a5f414feb85a6ce3d929ad019c0d958c039d2b94a1b",
+  "mode": "eval; frozen CPU float32 model; eager attention; no sampling or training",
+  "reconstruction": "independent float64 NumPy attention on observed float32 Q/K/V",
+  "layer": 1,
+  "head": 1,
+  "selection": "first block and first head, chosen before inspection",
+  "layers": 6,
+  "heads": 12,
+  "model_width": 768,
+  "head_width": 64,
+  "scale_divisor": 8.0,
+  "projection": "layer-normalized block input, then affine Q/K/V projections with learned biases",
+  "tokens": [
+    {
+      "text": "the red car",
+      "ids": [
+        1169,
+        2266,
+        1097
+      ],
+      "pieces": [
+        "the",
+        "\u00b7red",
+        "\u00b7car"
+      ]
+    },
+    {
+      "text": "the red bike",
+      "ids": [
+        1169,
+        2266,
+        7161
+      ],
+      "pieces": [
+        "the",
+        "\u00b7red",
+        "\u00b7bike"
+      ]
+    }
+  ],
+  "displayed_coordinates": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "last_query": {
+    "position": 3,
+    "raw_scores": [
+      13.60548382154386,
+      0.583236782585264,
+      -2.3994412519988924
+    ],
+    "scaled_scores": [
+      1.7006854776929825,
+      0.072904597823158,
+      -0.29993015649986154
+    ],
+    "weights": [
+      0.7509667277336121,
+      0.14746347069740295,
+      0.1015697717666626
+    ],
+    "value_first_two": [
+      [
+        -0.1644478291273117,
+        -0.07497940957546234
+      ],
+      [
+        -0.10491695255041122,
+        -0.15681204199790955
+      ],
+      [
+        0.1269029825925827,
+        0.0082060806453228
+      ]
+    ],
+    "contributions_first_two": [
+      [
+        -0.12349484812263345,
+        -0.05630704185628321
+      ],
+      [
+        -0.015471417958078382,
+        -0.023124047960158656
+      ],
+      [
+        0.012889506978437382,
+        0.0008334897382442641
+      ]
+    ],
+    "read_first_two": [
+      -0.12607675790786743,
+      -0.07859759777784348
+    ]
+  },
+  "checks": {
+    "maximum_projection_reconstruction_error": 3.2272000241029275e-06,
+    "maximum_attention_reconstruction_error": 1.6589943241385186e-07,
+    "maximum_read_reconstruction_error": 1.1339902689089243e-07,
+    "maximum_row_sum_error": 1.1920928955078125e-07,
+    "future_weight": 0.0,
+    "prefix_hidden_difference_all_layers": 0.0,
+    "read_max_difference_by_position": [
+      0.0,
+      0.0,
+      0.05088064819574356
+    ],
+    "final_hidden_max_difference_by_position": [
+      0.0,
+      0.0,
+      9.557576179504395
+    ]
+  },
+  "software": {
+    "torch": "2.15.0",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.1",
+    "huggingface_hub": "0.35.3",
+    "safetensors": "0.6.2",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "Pillow": "13.0.0"
+  },
+  "source_sha256": "6dc738b05c2b48061d23d5b1a0647dec532c7cceef075393b3860398f5c74c3b",
+  "attention_core_source_sha256": "5f822dfc53ce8f7059f6c3722474aae0c3adf076e3ae26b67fee680b3448faa5",
+  "artifacts": {
+    "ch04_pretrained_observations.npz": "8d1c4cb71be095d9abbe577746f30cf1105dbecee7d8b537cbf6f01a91d0af4f",
+    "ch04_pretrained_qkv.png": "d4a3807db7c9fa763a05a23f84d2d397220673bc82e549c07506aeabd0adcb58",
+    "ch04_pretrained_read.png": "1e9ec38843a53853089cf20dfb52c7bcae40128ad6cfd6ced7f3cbf46a4a9799",
+    "ch04_pretrained_causality.png": "7cf873562f2e2261a3112e42ac620d1026404c4511b1995b745e594b92ec2bc2"
+  }
+}

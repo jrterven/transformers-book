@@ -75,6 +75,12 @@ python -m examples.ch03_alignment.run_examples --train --steps 750 --output outp
 
 [Chapter 4: Self-Attention](examples/ch04_attention/) then builds self-attention. Its NumPy implementation covers query, key, and value projections; stable softmax; scaled dot-product attention; causal masks; independent batch and head axes; and a manual backward pass. The [chapter guide](examples/ch04_attention/README.md) explains the API, shapes, mask convention, and numerical example.
 
+The [pretrained head figures](examples/ch04_attention/PRETRAINED_FIGURES.md)
+open a real DistilGPT2 head into its projected features, scores, weights, and
+value contributions, then test the causal information rule by changing one
+future input token. Full observations and numerical reconstruction checks
+connect these images to the NumPy lesson.
+
 Run the following commands from this repository's root directory:
 
 ```sh

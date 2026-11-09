@@ -124,3 +124,13 @@ Repeated exports preserve unchanged files. The seven generated files are
 `snippets/ch04_attention/`.
 These excerpts are for LaTeX listings and omit input-validation helpers; use
 the complete example modules to run the code.
+
+## Optional observations of a pretrained head
+
+The [pretrained figure guide](PRETRAINED_FIGURES.md) follows the same operations
+inside a pinned DistilGPT2 checkpoint: actual Q/K/V features, scaled scores,
+causal weights, and weighted-value contributions. A separate pass changes
+only the final token to test that the earlier reads remain unchanged.
+The program checks all 12 heads in the first block against this chapter's
+independent NumPy calculation and saves the complete observations and provenance.
+The regular NumPy example remains independent of this optional model download.
