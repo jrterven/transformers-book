@@ -1,0 +1,167 @@
+{
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "weights_sha256": "80521b40281d6ce74e35c9282c22539e75aa0ac8578892b2a59955ef78d55da1",
+  "parameters": 134515008,
+  "loading": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "configuration": {
+    "hidden_size": 576,
+    "intermediate_size": 1536,
+    "num_hidden_layers": 30,
+    "num_attention_heads": 9,
+    "num_key_value_heads": 3,
+    "rms_norm_eps": 1e-05,
+    "rope_theta": 100000,
+    "max_position_embeddings": 8192,
+    "vocab_size": 49152
+  },
+  "text": "The red car stopped near the bridge.",
+  "input_ids": [
+    504,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30
+  ],
+  "pieces": [
+    "The",
+    "\u00b7red",
+    "\u00b7car",
+    "\u00b7stopped",
+    "\u00b7near",
+    "\u00b7the",
+    "\u00b7bridge",
+    "."
+  ],
+  "probe": {
+    "array_position": 2,
+    "key_position": 1,
+    "query_head": 0,
+    "key_head": 0,
+    "rotary_pair": 0,
+    "pair_features": [
+      0,
+      32
+    ],
+    "displayed_features": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "normalization": {
+    "mean_square": 0.007032051529092204,
+    "denominator": 0.08391693231459432,
+    "input_first_feature": -0.08935546875,
+    "gain_first_feature": 0.0186767578125,
+    "output_first_feature": -0.0198871698230505,
+    "rms_before_gain": 0.9992897273909893,
+    "rms_after_gain": 0.05216981045120412,
+    "reconstruction_max_error": 4.390273133925149e-08
+  },
+  "swiglu": {
+    "first_gate": 0.7074788808822632,
+    "first_up": 0.30750250816345215,
+    "first_activated_gate": 0.47390037775039673,
+    "first_product": 0.1457255482673645,
+    "activated_negative_count": 218,
+    "activated_above_one_count": 10,
+    "first_eight_down_sum": -0.0720632770571683,
+    "full_down_sum": 0.15340072009933525,
+    "native_output_first_feature": 0.15340033173561096,
+    "output_reconstruction_max_error": 1.7329604400373455e-05
+  },
+  "rope": {
+    "head_width": 64,
+    "relative_angle_pair0": -1.0,
+    "pair0_dot": 0.7645643949508667,
+    "all_pairs_dot": 12.131363868713379,
+    "scaled_score": 1.516420493516193,
+    "native_attention_row": [
+      0.2756860852241516,
+      0.12907196581363678,
+      0.595241904258728,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "attention_reconstruction_max_error": 2.709222713948023e-07,
+    "attention_output_reconstruction_max_error": 9.181789368817306e-07,
+    "shared_shift_scores64_max_error": 7.105427357601002e-15,
+    "shared_shift_model_logits_max_error": 4.1961669921875e-05
+  },
+  "residual": {
+    "additions_match_native_exactly": true,
+    "stage_rms": [
+      0.08385732841613906,
+      2.3043260898598876,
+      3.10132819850488,
+      3.2995491396960146,
+      3.8025060924662664,
+      3.9500793473358127,
+      4.279113349803269,
+      4.421233731575411,
+      5.115251315309057,
+      5.8685897714769775,
+      6.038756008281004,
+      6.444967318649278,
+      6.688606726004551,
+      6.494241404645815,
+      7.085392312161945,
+      7.7246123594430935,
+      7.831842916267612,
+      8.51672385222744,
+      8.279331343148586,
+      8.707406650870752,
+      10.023577123728762,
+      11.00650674015058,
+      12.002376565619715,
+      13.298364412401387,
+      14.846418902809562,
+      18.383408027357483,
+      20.925309602909625,
+      22.353289035814917,
+      26.55099166753787,
+      29.25476026269548,
+      36.40934164119494
+    ],
+    "final_norm_rms": 2.0392631930867435,
+    "future_change_earlier_logits_max_error": 0.0
+  },
+  "execution": "Frozen CPU float32 inference; eager attention; one thread; no training or sampling",
+  "selection": "Fixed prompt; block 1; query head 1; positions 2 and 1; pair 0; first eight coordinates",
+  "software": {
+    "python": "3.12.14",
+    "torch": "2.15.0",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.1",
+    "huggingface_hub": "0.35.3",
+    "safetensors": "0.6.2",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "Pillow": "13.0.0"
+  },
+  "artifacts": {
+    "observations.npz": "960f806e83b5474f75dab8de9eee29a4d4f2b23dc7114eac0d4e1bec7a0a495c",
+    "ch08_pretrained_rmsnorm.png": "72c5e995dfa0f8ee653bfd642453e56c9333948b3d6e6828dee46d4d025352d0",
+    "ch08_pretrained_swiglu.png": "45775bb23e544b56e640a6afcfe9f291e0091bdce527d16bb468db816fddab0e",
+    "ch08_pretrained_rope.png": "daf3a1228f03d9bed4f8715b77d66e6571ca390f22d29286473bbd74fe4067d9",
+    "ch08_pretrained_residual.png": "ca3383652e873d36ecf06dcd6d20208d0291fc83e14a2912fb6b4f0e958fbe85"
+  },
+  "source_sha256": "0ef38f8acfb2e926da2f6c11127c092d1fa4caea4a3d95c6d6d6f4450fd07047"
+}

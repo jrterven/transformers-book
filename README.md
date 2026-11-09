@@ -167,6 +167,12 @@ The [14 progressive exercises](examples/ch08_modern/EXERCISES.md) and
 to executable checks, including multiple RoPE frequencies, padding masks,
 position offsets, and a finite-difference gradient comparison.
 
+The optional [Chapter 8 pretrained inspection](examples/ch08_modern/PRETRAINED_FIGURES.md)
+adds four measured SmolLM2 figures. It reconstructs RMSNorm and SwiGLU,
+follows native rotary pairs through masked softmax, and measures residual
+updates through all 30 blocks. The guide distinguishes the checkpoint's
+split-half rotary layout and shared key--value heads from the teaching model.
+
 
 [Chapter 9: Scaling Data, Compute, and Expert Capacity](examples/ch09_scaling/)
 compares dense training allocations under the same estimated compute budget.

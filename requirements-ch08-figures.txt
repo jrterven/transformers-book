@@ -1,0 +1,2 @@
+# Optional pinned SmolLM2 observations; not needed for the teaching decoder.
+-r requirements-appendix-figures.txt

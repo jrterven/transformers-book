@@ -5,6 +5,13 @@ SwiGLU, and rotary self-attention. It uses the token vocabulary and shifted
 labels from Chapter 7. The entire example runs on a CPU with the PyTorch
 requirements used in Chapter 5.
 
+The optional [pretrained-model inspection](PRETRAINED_FIGURES.md) adds four
+measured figures from a pinned SmolLM2 checkpoint. They trace actual RMSNorm,
+SwiGLU, rotary scores and masked attention, and residual updates across a
+30-block model. Independent calculations check native outputs. Its optional
+dependencies are in `requirements-ch08-figures.txt`; the teaching decoder
+below remains independent of pretrained weights.
+
 Run these commands from the repository root.
 
 ```sh
