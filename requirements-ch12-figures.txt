@@ -1,0 +1,4 @@
+# Optional real-model execution inspection; regular examples need only NumPy.
+-r requirements-appendix-figures.txt
+# Pin the runtime whose CPU SDPA operator and allocator events are inspected.
+torch==2.15.0

@@ -8,6 +8,12 @@ python -m examples.ch12_efficient.run_examples --output output/ch12.json
 python -m unittest discover -s tests -p test_efficient.py -v
 ```
 
+The optional [pretrained inspection](PRETRAINED_FIGURES.md) uses actual
+SmolLM2 attention vectors and native eager/CPU-SDPA execution. Four figures
+follow prefill and cached reads, online softmax state, measured operator
+allocations, full-decoder agreement, and component timings. The model
+download and profiling dependencies are separate from the NumPy examples.
+
 ## Carry softmax state across tiles
 
 `online_update` keeps a maximum, denominator, and weighted numerator for

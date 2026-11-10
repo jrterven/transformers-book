@@ -234,6 +234,12 @@ python -m examples.ch11_long_context.run_examples --output output/ch11.json
 [Chapter 12: Efficient Execution](examples/ch12_efficient/) follows an online
 softmax state across score tiles, checks exact attention within floating-point
 tolerance, and distinguishes score workspace from memory traffic and runtime.
+
+The optional [Chapter 12 pretrained inspection](examples/ch12_efficient/PRETRAINED_FIGURES.md)
+uses real SmolLM2 vectors to trace online softmax, then compares native eager
+attention with CPU SDPA. Four figures separate numerical agreement, actual
+operator allocations, and measured first-attention-module runtime.
+
 The [eleven exercises](examples/ch12_efficient/EXERCISES.md) have
 [complete solutions in every edition](solutions/ch12_efficient/README.md),
 with 16 executed code cells and two inspectable diagrams.

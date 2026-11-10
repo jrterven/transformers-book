@@ -1,0 +1,2431 @@
+{
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "license": "Apache-2.0",
+  "loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "loaded_parameters": 134515008,
+  "checkpoint_files": {
+    "model.safetensors": {
+      "sha256": "80521b40281d6ce74e35c9282c22539e75aa0ac8578892b2a59955ef78d55da1",
+      "bytes": 269060552
+    },
+    "config.json": {
+      "sha256": "1d556eab73b69c7f11f64c557a2f9c6f440bd4c6b89bb2584a6b498c92603843",
+      "bytes": 704
+    },
+    "tokenizer.json": {
+      "sha256": "9ca9acddb6525a194ec8ac7a87f24fbba7232a9a15ffa1af0c1224fcd888e47c",
+      "bytes": 2104556
+    },
+    "tokenizer_config.json": {
+      "sha256": "4bb9af56a342753d39374f4016a16574cab299fe088e896f425ce3c433f61424",
+      "bytes": 3658
+    }
+  },
+  "text_before_token_truncation": "The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. The red car stopped near the bridge. The driver checked the map before continuing. ",
+  "input_ids": [
+    504,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382,
+    1076,
+    8976,
+    2141,
+    260,
+    7395,
+    30,
+    378,
+    8443,
+    12775,
+    260,
+    4141,
+    1092,
+    9421,
+    30,
+    378,
+    2382
+  ],
+  "token_pieces": [
+    "The",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred",
+    "Ġcar",
+    "Ġstopped",
+    "Ġnear",
+    "Ġthe",
+    "Ġbridge",
+    ".",
+    "ĠThe",
+    "Ġdriver",
+    "Ġchecked",
+    "Ġthe",
+    "Ġmap",
+    "Ġbefore",
+    "Ġcontinuing",
+    ".",
+    "ĠThe",
+    "Ġred"
+  ],
+  "prefill": 512,
+  "cached_calls": 2,
+  "probe_zero_based": 383,
+  "head_zero_based": 0,
+  "block_zero_based": 0,
+  "key_tile": 64,
+  "native_shapes": {
+    "eager": {
+      "input": [
+        1,
+        512,
+        576
+      ],
+      "mask": [
+        1,
+        1,
+        512,
+        512
+      ],
+      "heads_before_output_projection": [
+        1,
+        512,
+        576
+      ]
+    },
+    "sdpa": {
+      "input": [
+        1,
+        512,
+        576
+      ],
+      "mask": null,
+      "heads_before_output_projection": [
+        1,
+        512,
+        576
+      ]
+    }
+  },
+  "model_layers": 30,
+  "query_heads": 9,
+  "kv_heads": 3,
+  "head_width": 64,
+  "native_probability_max_abs_error": 2.0613667450763984e-07,
+  "native_head_output_max_abs_error": 7.754231610979101e-08,
+  "tiled_vs_float64_materialized_max_abs_error": 9.71445146547012e-17,
+  "online_vs_native_probe_max_abs_error": 2.5455025823295507e-08,
+  "complete_model_max_abs_logit_error": 7.82012939453125e-05,
+  "complete_model_argmax_agreement": true,
+  "complete_final_cache_max_abs_error": 6.29425048828125e-05,
+  "online_state_history": [
+    {
+      "last_key": 63,
+      "allowed_keys_in_tile": 64,
+      "maximum": 2.9852184709824208,
+      "denominator": 16.051009012650468,
+      "numerator_coordinate_zero": 0.23067088960269888,
+      "partial_output_coordinate_zero": 0.01437111457733888
+    },
+    {
+      "last_key": 127,
+      "allowed_keys_in_tile": 64,
+      "maximum": 2.9852184709824208,
+      "denominator": 30.636717333530406,
+      "numerator_coordinate_zero": 0.3101476274204,
+      "partial_output_coordinate_zero": 0.01012339618647584
+    },
+    {
+      "last_key": 191,
+      "allowed_keys_in_tile": 64,
+      "maximum": 3.1527540765729984,
+      "denominator": 49.07256822344483,
+      "numerator_coordinate_zero": 0.3191618488911522,
+      "partial_output_coordinate_zero": 0.006503874984449457
+    },
+    {
+      "last_key": 255,
+      "allowed_keys_in_tile": 64,
+      "maximum": 3.1924733793231317,
+      "denominator": 73.37202789306674,
+      "numerator_coordinate_zero": 0.28702316583269216,
+      "partial_output_coordinate_zero": 0.003911888141499961
+    },
+    {
+      "last_key": 319,
+      "allowed_keys_in_tile": 64,
+      "maximum": 3.6212542770043576,
+      "denominator": 65.68026462979655,
+      "numerator_coordinate_zero": 0.0918664842970966,
+      "partial_output_coordinate_zero": 0.001398692359339557
+    },
+    {
+      "last_key": 383,
+      "allowed_keys_in_tile": 64,
+      "maximum": 4.720302388201232,
+      "denominator": 33.36091365372673,
+      "numerator_coordinate_zero": -0.10201241651265004,
+      "partial_output_coordinate_zero": -0.003057842407180424
+    },
+    {
+      "last_key": 447,
+      "allowed_keys_in_tile": 0,
+      "maximum": 4.720302388201232,
+      "denominator": 33.36091365372673,
+      "numerator_coordinate_zero": -0.10201241651265004,
+      "partial_output_coordinate_zero": -0.003057842407180424
+    },
+    {
+      "last_key": 511,
+      "allowed_keys_in_tile": 0,
+      "maximum": 4.720302388201232,
+      "denominator": 33.36091365372673,
+      "numerator_coordinate_zero": -0.10201241651265004,
+      "partial_output_coordinate_zero": -0.003057842407180424
+    }
+  ],
+  "profiles": {
+    "64": {
+      "eager": {
+        "sdpa_operators": [],
+        "positive_self_cpu_memory_bytes": 2457608,
+        "largest_positive_self_cpu_memory_bytes": 147456,
+        "largest_events": [
+          {
+            "operator": "aten::mm",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                64,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                1,
+                9,
+                64,
+                64
+              ],
+              [
+                1,
+                1,
+                64,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::cat",
+            "bytes": 147456,
+            "input_shapes": [
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                1,
+                9,
+                64,
+                64
+              ],
+              [
+                1,
+                1,
+                64,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::add",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                1,
+                9,
+                64,
+                64
+              ],
+              [
+                1,
+                9,
+                64,
+                64
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::empty",
+            "bytes": 147456,
+            "input_shapes": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::empty",
+            "bytes": 147456,
+            "input_shapes": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::bmm",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                9,
+                64,
+                64
+              ],
+              [
+                9,
+                64,
+                64
+              ]
+            ]
+          }
+        ],
+        "separate_softmax_events": [
+          {
+            "operator": "aten::_softmax",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                1,
+                9,
+                64,
+                64
+              ],
+              [],
+              []
+            ]
+          }
+        ]
+      },
+      "sdpa": {
+        "sdpa_operators": [
+          "aten::_scaled_dot_product_flash_attention_for_cpu",
+          "aten::scaled_dot_product_attention"
+        ],
+        "positive_self_cpu_memory_bytes": 1444352,
+        "largest_positive_self_cpu_memory_bytes": 147456,
+        "largest_events": [
+          {
+            "operator": "aten::mm",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                64,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                1,
+                9,
+                64,
+                64
+              ],
+              [
+                1,
+                1,
+                64,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::cat",
+            "bytes": 147456,
+            "input_shapes": [
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                1,
+                9,
+                64,
+                64
+              ],
+              [
+                1,
+                1,
+                64,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::add",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                1,
+                9,
+                64,
+                64
+              ],
+              [
+                1,
+                9,
+                64,
+                64
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::empty_strided",
+            "bytes": 147456,
+            "input_shapes": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mm",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                64,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::neg",
+            "bytes": 73728,
+            "input_shapes": [
+              [
+                1,
+                9,
+                64,
+                32
+              ]
+            ]
+          }
+        ],
+        "separate_softmax_events": []
+      }
+    },
+    "128": {
+      "eager": {
+        "sdpa_operators": [],
+        "positive_self_cpu_memory_bytes": 6094856,
+        "largest_positive_self_cpu_memory_bytes": 589824,
+        "largest_events": [
+          {
+            "operator": "aten::bmm",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                9,
+                128,
+                64
+              ],
+              [
+                9,
+                64,
+                128
+              ]
+            ]
+          },
+          {
+            "operator": "aten::add",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                1,
+                9,
+                128,
+                128
+              ],
+              [
+                1,
+                1,
+                128,
+                128
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::_softmax",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                1,
+                9,
+                128,
+                128
+              ],
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 589820,
+            "input_shapes": [
+              [
+                1,
+                9,
+                128,
+                128
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mm",
+            "bytes": 294912,
+            "input_shapes": [
+              [
+                128,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 294912,
+            "input_shapes": [
+              [
+                1,
+                9,
+                128,
+                64
+              ],
+              [
+                1,
+                1,
+                128,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::cat",
+            "bytes": 294912,
+            "input_shapes": [
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 294912,
+            "input_shapes": [
+              [
+                1,
+                9,
+                128,
+                64
+              ],
+              [
+                1,
+                1,
+                128,
+                64
+              ]
+            ]
+          }
+        ],
+        "separate_softmax_events": [
+          {
+            "operator": "aten::_softmax",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                1,
+                9,
+                128,
+                128
+              ],
+              [],
+              []
+            ]
+          }
+        ]
+      },
+      "sdpa": {
+        "sdpa_operators": [
+          "aten::_scaled_dot_product_flash_attention_for_cpu",
+          "aten::scaled_dot_product_attention"
+        ],
+        "positive_self_cpu_memory_bytes": 2880256,
+        "largest_positive_self_cpu_memory_bytes": 294912,
+        "largest_events": [
+          {
+            "operator": "aten::mm",
+            "bytes": 294912,
+            "input_shapes": [
+              [
+                128,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 294912,
+            "input_shapes": [
+              [
+                1,
+                9,
+                128,
+                64
+              ],
+              [
+                1,
+                1,
+                128,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::cat",
+            "bytes": 294912,
+            "input_shapes": [
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 294912,
+            "input_shapes": [
+              [
+                1,
+                9,
+                128,
+                64
+              ],
+              [
+                1,
+                1,
+                128,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::add",
+            "bytes": 294912,
+            "input_shapes": [
+              [
+                1,
+                9,
+                128,
+                64
+              ],
+              [
+                1,
+                9,
+                128,
+                64
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::empty_strided",
+            "bytes": 294912,
+            "input_shapes": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mm",
+            "bytes": 294912,
+            "input_shapes": [
+              [
+                128,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::neg",
+            "bytes": 147456,
+            "input_shapes": [
+              [
+                1,
+                9,
+                128,
+                32
+              ]
+            ]
+          }
+        ],
+        "separate_softmax_events": []
+      }
+    },
+    "256": {
+      "eager": {
+        "sdpa_operators": [],
+        "positive_self_cpu_memory_bytes": 16908296,
+        "largest_positive_self_cpu_memory_bytes": 2359296,
+        "largest_events": [
+          {
+            "operator": "aten::bmm",
+            "bytes": 2359296,
+            "input_shapes": [
+              [
+                9,
+                256,
+                64
+              ],
+              [
+                9,
+                64,
+                256
+              ]
+            ]
+          },
+          {
+            "operator": "aten::add",
+            "bytes": 2359296,
+            "input_shapes": [
+              [
+                1,
+                9,
+                256,
+                256
+              ],
+              [
+                1,
+                1,
+                256,
+                256
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::_softmax",
+            "bytes": 2359296,
+            "input_shapes": [
+              [
+                1,
+                9,
+                256,
+                256
+              ],
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 2359292,
+            "input_shapes": [
+              [
+                1,
+                9,
+                256,
+                256
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mm",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                256,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                1,
+                9,
+                256,
+                64
+              ],
+              [
+                1,
+                1,
+                256,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::cat",
+            "bytes": 589824,
+            "input_shapes": [
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                1,
+                9,
+                256,
+                64
+              ],
+              [
+                1,
+                1,
+                256,
+                64
+              ]
+            ]
+          }
+        ],
+        "separate_softmax_events": [
+          {
+            "operator": "aten::_softmax",
+            "bytes": 2359296,
+            "input_shapes": [
+              [
+                1,
+                9,
+                256,
+                256
+              ],
+              [],
+              []
+            ]
+          }
+        ]
+      },
+      "sdpa": {
+        "sdpa_operators": [
+          "aten::_scaled_dot_product_flash_attention_for_cpu",
+          "aten::scaled_dot_product_attention"
+        ],
+        "positive_self_cpu_memory_bytes": 5793280,
+        "largest_positive_self_cpu_memory_bytes": 589824,
+        "largest_events": [
+          {
+            "operator": "aten::mm",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                256,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                1,
+                9,
+                256,
+                64
+              ],
+              [
+                1,
+                1,
+                256,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::cat",
+            "bytes": 589824,
+            "input_shapes": [
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                1,
+                9,
+                256,
+                64
+              ],
+              [
+                1,
+                1,
+                256,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::add",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                1,
+                9,
+                256,
+                64
+              ],
+              [
+                1,
+                9,
+                256,
+                64
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::empty_strided",
+            "bytes": 589824,
+            "input_shapes": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mm",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                256,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::neg",
+            "bytes": 294912,
+            "input_shapes": [
+              [
+                1,
+                9,
+                256,
+                32
+              ]
+            ]
+          }
+        ],
+        "separate_softmax_events": []
+      }
+    },
+    "512": {
+      "eager": {
+        "sdpa_operators": [],
+        "positive_self_cpu_memory_bytes": 52690952,
+        "largest_positive_self_cpu_memory_bytes": 9437184,
+        "largest_events": [
+          {
+            "operator": "aten::bmm",
+            "bytes": 9437184,
+            "input_shapes": [
+              [
+                9,
+                512,
+                64
+              ],
+              [
+                9,
+                64,
+                512
+              ]
+            ]
+          },
+          {
+            "operator": "aten::add",
+            "bytes": 9437184,
+            "input_shapes": [
+              [
+                1,
+                9,
+                512,
+                512
+              ],
+              [
+                1,
+                1,
+                512,
+                512
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::_softmax",
+            "bytes": 9437184,
+            "input_shapes": [
+              [
+                1,
+                9,
+                512,
+                512
+              ],
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 9437180,
+            "input_shapes": [
+              [
+                1,
+                9,
+                512,
+                512
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mm",
+            "bytes": 1179648,
+            "input_shapes": [
+              [
+                512,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 1179648,
+            "input_shapes": [
+              [
+                1,
+                9,
+                512,
+                64
+              ],
+              [
+                1,
+                1,
+                512,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::cat",
+            "bytes": 1179648,
+            "input_shapes": [
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 1179648,
+            "input_shapes": [
+              [
+                1,
+                9,
+                512,
+                64
+              ],
+              [
+                1,
+                1,
+                512,
+                64
+              ]
+            ]
+          }
+        ],
+        "separate_softmax_events": [
+          {
+            "operator": "aten::_softmax",
+            "bytes": 9437184,
+            "input_shapes": [
+              [
+                1,
+                9,
+                512,
+                512
+              ],
+              [],
+              []
+            ]
+          }
+        ]
+      },
+      "sdpa": {
+        "sdpa_operators": [
+          "aten::_scaled_dot_product_flash_attention_for_cpu",
+          "aten::scaled_dot_product_attention"
+        ],
+        "positive_self_cpu_memory_bytes": 11569664,
+        "largest_positive_self_cpu_memory_bytes": 1179648,
+        "largest_events": [
+          {
+            "operator": "aten::mm",
+            "bytes": 1179648,
+            "input_shapes": [
+              [
+                512,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 1179648,
+            "input_shapes": [
+              [
+                1,
+                9,
+                512,
+                64
+              ],
+              [
+                1,
+                1,
+                512,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::cat",
+            "bytes": 1179648,
+            "input_shapes": [
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mul",
+            "bytes": 1179648,
+            "input_shapes": [
+              [
+                1,
+                9,
+                512,
+                64
+              ],
+              [
+                1,
+                1,
+                512,
+                64
+              ]
+            ]
+          },
+          {
+            "operator": "aten::add",
+            "bytes": 1179648,
+            "input_shapes": [
+              [
+                1,
+                9,
+                512,
+                64
+              ],
+              [
+                1,
+                9,
+                512,
+                64
+              ],
+              []
+            ]
+          },
+          {
+            "operator": "aten::empty_strided",
+            "bytes": 1179648,
+            "input_shapes": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              []
+            ]
+          },
+          {
+            "operator": "aten::mm",
+            "bytes": 1179648,
+            "input_shapes": [
+              [
+                512,
+                576
+              ],
+              [
+                576,
+                576
+              ]
+            ]
+          },
+          {
+            "operator": "aten::neg",
+            "bytes": 589824,
+            "input_shapes": [
+              [
+                1,
+                9,
+                512,
+                32
+              ]
+            ]
+          }
+        ],
+        "separate_softmax_events": []
+      }
+    }
+  },
+  "timings_ms": {
+    "64": {
+      "eager": [
+        0.335958,
+        0.263834,
+        0.25425,
+        0.257625,
+        0.246458,
+        0.24925,
+        0.239083,
+        0.26675,
+        0.27175,
+        0.251416,
+        0.252459
+      ],
+      "sdpa": [
+        0.247375,
+        0.241166,
+        0.242416,
+        0.232333,
+        0.244792,
+        0.242917,
+        0.236583,
+        0.226542,
+        0.240083,
+        0.230959,
+        0.255167
+      ]
+    },
+    "128": {
+      "eager": [
+        0.542416,
+        0.509084,
+        0.503833,
+        0.522875,
+        0.50225,
+        0.519125,
+        0.516917,
+        0.537792,
+        0.500541,
+        0.5075,
+        0.510458
+      ],
+      "sdpa": [
+        0.488666,
+        0.490917,
+        0.501792,
+        0.488042,
+        0.516542,
+        0.493958,
+        0.542,
+        0.50125,
+        0.492833,
+        0.486167,
+        0.527833
+      ]
+    },
+    "256": {
+      "eager": [
+        1.66225,
+        1.374833,
+        1.324375,
+        1.383583,
+        1.298209,
+        1.336208,
+        1.303209,
+        1.335542,
+        1.306375,
+        1.4035,
+        1.434084
+      ],
+      "sdpa": [
+        1.432958,
+        1.203584,
+        1.192417,
+        1.202292,
+        1.192208,
+        1.176959,
+        1.219333,
+        1.300333,
+        1.193709,
+        1.162208,
+        1.346541
+      ]
+    },
+    "512": {
+      "eager": [
+        4.978458,
+        4.688042,
+        4.68,
+        4.836208,
+        4.744416,
+        4.560167,
+        4.834375,
+        4.8845,
+        4.58975,
+        4.484042,
+        4.553292
+      ],
+      "sdpa": [
+        3.721333,
+        3.742416,
+        3.907667,
+        3.811833,
+        3.823208,
+        3.6975,
+        3.785,
+        3.565791,
+        3.776917,
+        3.572959,
+        3.697125
+      ]
+    }
+  },
+  "timing_protocol": {
+    "module": "block 1 self-attention including projections, RoPE, and output projection",
+    "prefix_lengths": [
+      64,
+      128,
+      256,
+      512
+    ],
+    "warmups_per_backend_and_length": 3,
+    "samples_per_backend_and_length": 11,
+    "order": "alternating",
+    "timer": "perf_counter_ns; synchronous CPU calls; profiling disabled during timing"
+  },
+  "observed_on": "2026-11-09",
+  "device": "cpu",
+  "processor": "arm",
+  "dtype": "float32",
+  "eval_mode": true,
+  "weights_frozen": true,
+  "threads": 1,
+  "sampling": false,
+  "training": false,
+  "python": "3.12.14",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "software": {
+    "torch": "2.15.0",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.1",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "huggingface_hub": "0.35.3"
+  },
+  "source_sha256": "b02353bb904f188c606ec9ef38a6347132da85357e3fb64637b00f0e5fef14cf",
+  "outputs": {
+    "ch12_pretrained_stage_reads.png": {
+      "sha256": "fa96fbb1b359b1137fea50429295e9460c6a54d59dd71cf6823f189924026fb7",
+      "bytes": 514961
+    },
+    "ch12_pretrained_online_state.png": {
+      "sha256": "ca702ca7220dd0faa9520c4d13e5c63ddade773c6960759c70571dd5145a9681",
+      "bytes": 174925
+    },
+    "ch12_pretrained_allocations.png": {
+      "sha256": "ec795383ebf1c483ebecf150028243ed7622f1c48477c96b18a40f8f7fd19bb9",
+      "bytes": 111759
+    },
+    "ch12_pretrained_equivalence_timing.png": {
+      "sha256": "1c073a2502f61caea442bad583782f88fd968b344c7ce0b2cfd8d8bb5e552a35",
+      "bytes": 208322
+    },
+    "observations.npz": {
+      "sha256": "366c91e514768d020316330290719dffc7a5065485ef7e7f9aa014b8f94e9307",
+      "bytes": 231770734
+    }
+  }
+}
