@@ -265,8 +265,13 @@ python -m examples.ch13_state_spaces.run_examples --output output/ch13.json
 ```
 
 [Chapter 14: Selective State Spaces](examples/ch14_selective_ssm/) follows
-input-dependent retain, write, and read operations, then compares recurrent,
-dense, and chunked SSD. The [ten exercises](examples/ch14_selective_ssm/EXERCISES.md)
+input-dependent retain, write, and read operations, derives a learnable gate
+and ordered scans, then compares recurrent, dense, and chunked SSD with both
+scalar inputs and matrix-valued head states. The optional
+[published-model inspection](examples/ch14_selective_ssm/PRETRAINED_FIGURES.md)
+adds six measured figures from Mamba and Mamba-2, with native control arrays,
+the authors' SSD reference, cache payloads, and a causal intervention.
+The [ten exercises](examples/ch14_selective_ssm/EXERCISES.md)
 have [complete solutions in every edition](solutions/ch14_selective_ssm/README.md),
 including 21 executed code cells, two plots, and a controlled memory-task design.
 

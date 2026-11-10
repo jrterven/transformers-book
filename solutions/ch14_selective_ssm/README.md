@@ -51,6 +51,6 @@ python scripts/export_snippets.py --chapter ch14 --check
 python -m examples.ch14_selective_ssm.run_examples --output output/ch14.json
 ```
 
-All 12 tests passed; all five exported listings match the canonical code.
+All 16 tests passed; all six exported listings match the canonical code.
 The helpers use precomputed coefficients for simplified SSM cores. They do
 not implement a full Mamba block, a trained control network, or a GPU scan.

@@ -1,0 +1,4 @@
+# Optional published-model inspection; the teaching examples stay NumPy-only.
+-r requirements-appendix-figures.txt
+torch==2.15.0
+einops==0.8.2

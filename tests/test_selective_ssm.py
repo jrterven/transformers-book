@@ -13,6 +13,8 @@ from examples.ch14_selective_ssm.model import (
     ssd_chunked,
     ssd_dense,
     ssd_recurrent,
+    ssd_head_chunked,
+    ssd_head_recurrent,
     zoh_coefficients,
 )
 from examples.ch14_selective_ssm.run_examples import (
@@ -20,6 +22,7 @@ from examples.ch14_selective_ssm.run_examples import (
     ssd_example,
     ssd_inputs,
     warm_ssd_example,
+    head_example,
 )
 
 
@@ -153,6 +156,66 @@ class SSDTests(unittest.TestCase):
             ssd_dense(u, a[:-1], b, c)
         with self.assertRaisesRegex(ValueError, "chunk size"):
             ssd_chunked(u, a, b, c, 0)
+
+
+class SSDHeadTests(unittest.TestCase):
+    def test_outer_product_write_and_read_with_rectangular_state(self):
+        report = head_example()
+        np.testing.assert_array_equal(report["outputs"], [[2, -1], [1, 1.5], [4, 1], [4.25, 1.375]])
+        np.testing.assert_array_equal(report["final_state"], [[2.25, .875], [2, .5]])
+        u = np.array([[2, -1, 3], [0, 2, 1], [1, 0, -2]], dtype=float)
+        b = np.array([[1, 2], [-1, 1], [2, 0]], dtype=float)
+        c = np.array([[1, 0], [0, 1], [1, -1]], dtype=float)
+        initial = np.array([[2, 0, 1], [0, 1, -1]], dtype=float)
+        y, states = ssd_head_recurrent(u, [0.5, 0.25, 0], b, c, initial)
+        np.testing.assert_array_equal(states[0], [[3, -1, 3.5], [4, -1.5, 5.5]])
+        np.testing.assert_array_equal(states[1], [[0.75, -2.25, -0.125], [1, 1.625, 2.375]])
+        np.testing.assert_array_equal(states[2], [[2, 0, -4], [0, 0, 0]])
+        np.testing.assert_array_equal(y, [[3, -1, 3.5], [1, 1.625, 2.375], [2, 0, -4]])
+        np.testing.assert_array_equal(initial, [[2, 0, 1], [0, 1, -1]])
+
+    def test_all_features_against_independent_dense_products(self):
+        rng = np.random.default_rng(1402)
+        u = rng.normal(size=(11, 4))
+        b, c = rng.normal(size=(2, 11, 3))
+        a = np.array([.1, .9, .7, 0, .4, 1, .2, .6, .8, .3, .9])
+        initial = rng.normal(size=(3, 4))
+        matrix = np.array([[c[t] @ b[s] * math.prod(a[s+1:t+1]) if s <= t else 0
+                            for s in range(11)] for t in range(11)])
+        expected = matrix @ u + np.array([math.prod(a[:t+1]) * (c[t] @ initial)
+                                          for t in range(11)])
+        recurrent, states = ssd_head_recurrent(u, a, b, c, initial)
+        np.testing.assert_allclose(recurrent, expected, atol=1e-14, rtol=0)
+        for size in (1, 2, 4, 7, 11, 16):
+            with self.subTest(chunk=size):
+                chunked, final = ssd_head_chunked(u, a, b, c, size, initial)
+                np.testing.assert_allclose(chunked, expected, atol=1e-14, rtol=0)
+                np.testing.assert_allclose(final, states[-1], atol=1e-14, rtol=0)
+
+    def test_saved_head_state_continues_stream_and_future_changes_are_causal(self):
+        rng = np.random.default_rng(1403)
+        u = rng.normal(size=(7, 3))
+        b, c = rng.normal(size=(2, 7, 2))
+        a = np.full(7, .8)
+        y, state = ssd_head_chunked(u, a, b, c, 3)
+        first, boundary = ssd_head_chunked(u[:4], a[:4], b[:4], c[:4], 3)
+        second, final = ssd_head_chunked(u[4:], a[4:], b[4:], c[4:], 2, boundary)
+        np.testing.assert_allclose(np.vstack([first, second]), y, atol=1e-14, rtol=0)
+        np.testing.assert_allclose(final, state, atol=1e-14, rtol=0)
+        changed = u.copy()
+        changed[4:] += 20
+        after, _ = ssd_head_chunked(changed, a, b, c, 3)
+        np.testing.assert_array_equal(after[:4], y[:4])
+        self.assertGreater(np.max(np.abs(after[4:] - y[4:])), 1)
+
+    def test_head_checks_axis_shapes_and_chunk_size(self):
+        u = np.ones((4, 3)); b = c = np.ones((4, 2)); a = np.full(4, .5)
+        with self.assertRaisesRegex(ValueError, "state, feature"):
+            ssd_head_chunked(u, a, b, c, 2, np.zeros((3, 2)))
+        with self.assertRaisesRegex(ValueError, "match u"):
+            ssd_head_recurrent(u, a, b[:3], c[:3])
+        with self.assertRaisesRegex(ValueError, "chunk size"):
+            ssd_head_chunked(u, a, b, c, 0)
 
 
 if __name__ == "__main__":

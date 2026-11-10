@@ -2,6 +2,13 @@
 
 Run from the repository root with NumPy.
 
+The expanded chapter derives gate learning, input-dependent memory times,
+the complete Mamba control pipeline, ordered affine scans, matrix-state SSD
+heads, and state passing across chunks. Six optional
+[published-model figures](PRETRAINED_FIGURES.md) inspect real Mamba and
+Mamba-2 checkpoints, including native control arrays, independently checked
+state updates, persistent cache bytes, and a complete-model causal test.
+
 ```sh
 python -m pip install -r requirements.txt
 python -m examples.ch14_selective_ssm.run_examples --output output/ch14.json
@@ -41,6 +48,15 @@ product of retain factors. The last row of the local decay matrix
 accumulates that chunk's writes into the outgoing state. The function
 returns the output sequence and the final state. The last chunk can be
 shorter than the chosen chunk size.
+
+`ssd_head_recurrent` and `ssd_head_chunked` extend the same calculation to
+`u[T, P]` and a matrix state of shape `[N, P]`, with `b[T, N]` and
+`c[T, N]`. Each recurrent write is `np.outer(b[t], u[t])`.
+The chunked helper multiplies the local sequence matrix by all `P` feature
+columns and reads the incoming matrix state with the same prefix decays.
+The demo adds a two-feature example whose output rows are
+`(2, -1), (1, 1.5), (4, 1), (4.25, 1.375)`; it checks a short final chunk
+and the final state `[[2.25, 0.875], [2, 0.5]]`.
 
 The fixed four-position fixture follows the book. A second fixture
 uses unequal retain factors, a nonzero initial state, and a shorter

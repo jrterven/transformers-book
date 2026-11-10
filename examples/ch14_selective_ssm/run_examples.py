@@ -12,6 +12,8 @@ from .model import (
     ssd_chunked,
     ssd_dense,
     ssd_recurrent,
+    ssd_head_chunked,
+    ssd_head_recurrent,
     zoh_coefficients,
 )
 
@@ -88,6 +90,22 @@ def warm_ssd_example():
     }
 
 
+def head_example():
+    first_feature, a, b, c = ssd_inputs()
+    u = np.column_stack([first_feature, [-1, 2, 0, 1]])
+    recurrent, states = ssd_head_recurrent(u, a, b, c)
+    chunked, last = ssd_head_chunked(u, a, b, c, chunk_size=3)
+    _, matrix = ssd_dense(first_feature, a, b, c)
+    np.testing.assert_allclose(chunked, matrix @ u, atol=1e-14, rtol=0)
+    np.testing.assert_allclose(recurrent, chunked, atol=1e-14, rtol=0)
+    np.testing.assert_allclose(last, states[-1], atol=1e-14, rtol=0)
+    return {
+        "inputs": u.tolist(), "outputs": recurrent.tolist(),
+        "state_shape": list(last.shape), "final_state": last.tolist(),
+        "chunk_lengths": [3, 1], "dense_max_error": float(np.max(np.abs(chunked - matrix @ u))),
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, help="save the JSON output to this path")
@@ -96,6 +114,7 @@ def main():
         "selective": selective_example(),
         "ssd": ssd_example(),
         "ssd_with_initial_state": warm_ssd_example(),
+        "two_feature_head": head_example(),
     }
     output = json.dumps(result, indent=2, allow_nan=False)
     print(output)

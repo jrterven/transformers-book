@@ -103,7 +103,7 @@ CHAPTERS = {
         "sources": ("examples/ch14_selective_ssm/model.py",),
         "destination": "snippets/ch14_selective_ssm",
         "expected": {"zoh_coefficients", "selective_scan", "compose_diagonal",
-                     "ssd_dense", "ssd_chunked"},
+                     "ssd_dense", "ssd_chunked", "ssd_head_chunked"},
     },
     "ch15": {
         "sources": ("examples/ch15_hybrids/model.py",),

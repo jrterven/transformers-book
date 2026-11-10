@@ -144,3 +144,52 @@ def ssd_chunked(u, a, b, c, chunk_size, x0=None):
             state = prefix[-1] * state + last_write
     return outputs, state
 # end-snippet:ssd_chunked
+
+
+def _head_inputs(u, a, b, c, x0):
+    u = _real_array(u, "u", 2)
+    b = _real_array(b, "b", 2)
+    c = _real_array(c, "c", 2)
+    if b.shape != c.shape or len(u) != len(b):
+        raise ValueError("b and c must share shape [time, state] and match u")
+    a = _ssd_retentions(a, len(u))
+    shape = (b.shape[1], u.shape[1])
+    state = np.zeros(shape) if x0 is None else _real_array(x0, "x0", 2)
+    if state.shape != shape:
+        raise ValueError("x0 must have shape [state, feature]")
+    return u, a, b, c, state
+
+
+def ssd_head_recurrent(u, a, b, c, x0=None):
+    """Run a width-P SSD head with state [N, P], saving its trajectory."""
+    u, a, b, c, state = _head_inputs(u, a, b, c, x0)
+    outputs = np.empty_like(u)
+    states = np.empty((len(u), *state.shape))
+    with np.errstate(over="raise", invalid="raise"):
+        for t in range(len(u)):
+            state = a[t] * state + np.outer(b[t], u[t])
+            states[t] = state
+            outputs[t] = c[t] @ state
+    return outputs, states
+
+
+# snippet:ssd_head_chunked
+def ssd_head_chunked(u, a, b, c, chunk_size, x0=None):
+    """Evaluate a width-P SSD head; carry one [N, P] boundary state."""
+    u, a, b, c, state = _head_inputs(u, a, b, c, x0)
+    chunk_size = index(chunk_size)
+    if chunk_size < 1:
+        raise ValueError("chunk size must be positive")
+    outputs = np.empty_like(u)
+    with np.errstate(over="raise", invalid="raise"):
+        for start in range(0, len(u), chunk_size):
+            rows = slice(start, start + chunk_size)
+            ub, bb, cb = u[rows], b[rows], c[rows]
+            decay = causal_decay(a[rows])
+            prefix = np.cumprod(a[rows])
+            within = (decay * (cb @ bb.T)) @ ub
+            outputs[rows] = within + prefix[:, None] * (cb @ state)
+            last_write = bb.T @ (decay[-1, :, None] * ub)
+            state = prefix[-1] * state + last_write
+    return outputs, state
+# end-snippet:ssd_head_chunked
