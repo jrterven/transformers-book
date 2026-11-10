@@ -1,0 +1,5 @@
+# Optional published S4 / HyenaDNA observations; the lesson stays NumPy-only.
+-r requirements-appendix-figures.txt
+torch==2.15.0
+scipy==1.17.1
+einops==0.8.2

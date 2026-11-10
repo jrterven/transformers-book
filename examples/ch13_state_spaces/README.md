@@ -2,6 +2,14 @@
 
 Run from the repository root with NumPy.
 
+The expanded lesson develops retention half-lives, saved-state chunking,
+continuous dynamics, zero-order hold and bilinear discretization, HiPPO
+projection, diagonal-plus-low-rank S4, complex modes, and FFT padding.
+The optional [published-model figures](PRETRAINED_FIGURES.md) inspect a
+trained SaShiMi S4 layer and the complete tiny HyenaDNA model. They add
+six reproducible figures with learned filters, poles, carried states,
+gates, and a controlled causal perturbation.
+
 ```sh
 python -m pip install -r requirements.txt
 python -m examples.ch13_state_spaces.run_examples --output output/ch13.json

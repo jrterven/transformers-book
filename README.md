@@ -251,7 +251,12 @@ python -m examples.ch12_efficient.run_examples --output output/ch12.json
 [Chapter 13: Structured State Spaces and Long Convolutions](examples/ch13_state_spaces/)
 compares recurrent, direct-convolution, and FFT evaluations of the same linear
 system. It traces saved history, circular wraparound, and gates placed before
-or after a filter. The [eleven exercises](examples/ch13_state_spaces/EXERCISES.md)
+or after a filter. The expanded chapter also derives discretization and
+explains HiPPO, structured S4 dynamics, and implicit Hyena filters. Its optional
+[published-model inspection](examples/ch13_state_spaces/PRETRAINED_FIGURES.md)
+produces six measured figures from a trained SaShiMi S4 layer and tiny
+HyenaDNA, with independent numerical reconstruction and a causal perturbation.
+The [eleven exercises](examples/ch13_state_spaces/EXERCISES.md)
 have [complete solutions in every edition](solutions/ch13_state_spaces/README.md),
 with 17 executed code cells and two diagnostic plots.
 
