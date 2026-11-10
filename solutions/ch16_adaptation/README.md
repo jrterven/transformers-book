@@ -46,7 +46,11 @@ python -m examples.ch16_adaptation.run_examples --output output/ch16.json
 python scripts/export_snippets.py --chapter ch16 --check
 ```
 
-The ten chapter tests pass, and all five manuscript listings match their
+The 13 chapter tests pass, and all seven manuscript listings match their
 canonical sources. The notebook adds independent checks for both batch
 reductions, the first two scalar LoRA gradients, frozen gradient paths,
 affine basis probes and same-shaped query/value adapters.
+
+The optional [actual pretrained-model experiment](../../examples/ch16_adaptation/PRETRAINED_FIGURES.md)
+is separate from these exercise solutions. Its real training checkpoints and
+figures do not change the twelve exercise statements or their solutions.

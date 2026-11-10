@@ -1,0 +1,3004 @@
+{
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "weights_sha256": "80521b40281d6ce74e35c9282c22539e75aa0ac8578892b2a59955ef78d55da1",
+  "runtime_source_sha256": "31bf660a663259134324bc65da4e155951dc89c5ca46471d2325a9938e859e26",
+  "base_parameters": 134515008,
+  "base_parameter_digest": "bc45c469f1ef0240c77dd468e99c1bf711f05d72fce224930f66ec3a5aaf0f8e",
+  "classifier_parameters": 1154,
+  "adapter_parameters": 230400,
+  "adapter_rank": 4,
+  "adapter_alpha": 8,
+  "target_modules": [
+    "model.layers.0.self_attn.q_proj",
+    "model.layers.0.self_attn.v_proj",
+    "model.layers.1.self_attn.q_proj",
+    "model.layers.1.self_attn.v_proj",
+    "model.layers.2.self_attn.q_proj",
+    "model.layers.2.self_attn.v_proj",
+    "model.layers.3.self_attn.q_proj",
+    "model.layers.3.self_attn.v_proj",
+    "model.layers.4.self_attn.q_proj",
+    "model.layers.4.self_attn.v_proj",
+    "model.layers.5.self_attn.q_proj",
+    "model.layers.5.self_attn.v_proj",
+    "model.layers.6.self_attn.q_proj",
+    "model.layers.6.self_attn.v_proj",
+    "model.layers.7.self_attn.q_proj",
+    "model.layers.7.self_attn.v_proj",
+    "model.layers.8.self_attn.q_proj",
+    "model.layers.8.self_attn.v_proj",
+    "model.layers.9.self_attn.q_proj",
+    "model.layers.9.self_attn.v_proj",
+    "model.layers.10.self_attn.q_proj",
+    "model.layers.10.self_attn.v_proj",
+    "model.layers.11.self_attn.q_proj",
+    "model.layers.11.self_attn.v_proj",
+    "model.layers.12.self_attn.q_proj",
+    "model.layers.12.self_attn.v_proj",
+    "model.layers.13.self_attn.q_proj",
+    "model.layers.13.self_attn.v_proj",
+    "model.layers.14.self_attn.q_proj",
+    "model.layers.14.self_attn.v_proj",
+    "model.layers.15.self_attn.q_proj",
+    "model.layers.15.self_attn.v_proj",
+    "model.layers.16.self_attn.q_proj",
+    "model.layers.16.self_attn.v_proj",
+    "model.layers.17.self_attn.q_proj",
+    "model.layers.17.self_attn.v_proj",
+    "model.layers.18.self_attn.q_proj",
+    "model.layers.18.self_attn.v_proj",
+    "model.layers.19.self_attn.q_proj",
+    "model.layers.19.self_attn.v_proj",
+    "model.layers.20.self_attn.q_proj",
+    "model.layers.20.self_attn.v_proj",
+    "model.layers.21.self_attn.q_proj",
+    "model.layers.21.self_attn.v_proj",
+    "model.layers.22.self_attn.q_proj",
+    "model.layers.22.self_attn.v_proj",
+    "model.layers.23.self_attn.q_proj",
+    "model.layers.23.self_attn.v_proj",
+    "model.layers.24.self_attn.q_proj",
+    "model.layers.24.self_attn.v_proj",
+    "model.layers.25.self_attn.q_proj",
+    "model.layers.25.self_attn.v_proj",
+    "model.layers.26.self_attn.q_proj",
+    "model.layers.26.self_attn.v_proj",
+    "model.layers.27.self_attn.q_proj",
+    "model.layers.27.self_attn.v_proj",
+    "model.layers.28.self_attn.q_proj",
+    "model.layers.28.self_attn.v_proj",
+    "model.layers.29.self_attn.q_proj",
+    "model.layers.29.self_attn.v_proj"
+  ],
+  "seed": 16,
+  "threads": 4,
+  "device": "cpu",
+  "dtype": "float32",
+  "backend": "native CPU SDPA",
+  "dropout_mode": "eval throughout, autograd enabled during updates",
+  "train": [
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-0",
+      "account": 0,
+      "request": "Please show the saved address for account 000.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please show the saved address for account 000.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-0",
+      "account": 1,
+      "request": "Please show the saved address for account 001.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please show the saved address for account 001.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-0",
+      "account": 2,
+      "request": "Please show the saved address for account 002.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please show the saved address for account 002.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-0",
+      "account": 3,
+      "request": "Please show the saved address for account 003.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please show the saved address for account 003.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-0",
+      "account": 4,
+      "request": "Please show the saved address for account 004.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please show the saved address for account 004.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-0",
+      "account": 5,
+      "request": "Please show the saved address for account 005.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please show the saved address for account 005.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-0",
+      "account": 6,
+      "request": "Please show the saved address for account 006.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please show the saved address for account 006.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-0",
+      "account": 7,
+      "request": "Please show the saved address for account 007.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please show the saved address for account 007.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-1",
+      "account": 0,
+      "request": "Find the current mailing address for account 000.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Find the current mailing address for account 000.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-1",
+      "account": 1,
+      "request": "Find the current mailing address for account 001.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Find the current mailing address for account 001.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-1",
+      "account": 2,
+      "request": "Find the current mailing address for account 002.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Find the current mailing address for account 002.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-1",
+      "account": 3,
+      "request": "Find the current mailing address for account 003.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Find the current mailing address for account 003.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-1",
+      "account": 4,
+      "request": "Find the current mailing address for account 004.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Find the current mailing address for account 004.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-1",
+      "account": 5,
+      "request": "Find the current mailing address for account 005.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Find the current mailing address for account 005.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-1",
+      "account": 6,
+      "request": "Find the current mailing address for account 006.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Find the current mailing address for account 006.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-1",
+      "account": 7,
+      "request": "Find the current mailing address for account 007.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Find the current mailing address for account 007.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-2",
+      "account": 0,
+      "request": "What address is on file for account 000?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: What address is on file for account 000?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-2",
+      "account": 1,
+      "request": "What address is on file for account 001?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: What address is on file for account 001?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-2",
+      "account": 2,
+      "request": "What address is on file for account 002?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: What address is on file for account 002?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-2",
+      "account": 3,
+      "request": "What address is on file for account 003?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: What address is on file for account 003?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-2",
+      "account": 4,
+      "request": "What address is on file for account 004?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: What address is on file for account 004?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-2",
+      "account": 5,
+      "request": "What address is on file for account 005?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: What address is on file for account 005?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-2",
+      "account": 6,
+      "request": "What address is on file for account 006?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: What address is on file for account 006?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-2",
+      "account": 7,
+      "request": "What address is on file for account 007?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: What address is on file for account 007?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-3",
+      "account": 0,
+      "request": "I need to read the address registered to account 000.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: I need to read the address registered to account 000.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-3",
+      "account": 1,
+      "request": "I need to read the address registered to account 001.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: I need to read the address registered to account 001.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-3",
+      "account": 2,
+      "request": "I need to read the address registered to account 002.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: I need to read the address registered to account 002.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-3",
+      "account": 3,
+      "request": "I need to read the address registered to account 003.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: I need to read the address registered to account 003.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-3",
+      "account": 4,
+      "request": "I need to read the address registered to account 004.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: I need to read the address registered to account 004.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-3",
+      "account": 5,
+      "request": "I need to read the address registered to account 005.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: I need to read the address registered to account 005.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-3",
+      "account": 6,
+      "request": "I need to read the address registered to account 006.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: I need to read the address registered to account 006.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-3",
+      "account": 7,
+      "request": "I need to read the address registered to account 007.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: I need to read the address registered to account 007.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-4",
+      "account": 0,
+      "request": "Look up the delivery address for account 000.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Look up the delivery address for account 000.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-4",
+      "account": 1,
+      "request": "Look up the delivery address for account 001.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Look up the delivery address for account 001.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-4",
+      "account": 2,
+      "request": "Look up the delivery address for account 002.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Look up the delivery address for account 002.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-4",
+      "account": 3,
+      "request": "Look up the delivery address for account 003.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Look up the delivery address for account 003.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-4",
+      "account": 4,
+      "request": "Look up the delivery address for account 004.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Look up the delivery address for account 004.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-4",
+      "account": 5,
+      "request": "Look up the delivery address for account 005.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Look up the delivery address for account 005.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-4",
+      "account": 6,
+      "request": "Look up the delivery address for account 006.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Look up the delivery address for account 006.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-4",
+      "account": 7,
+      "request": "Look up the delivery address for account 007.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Look up the delivery address for account 007.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-5",
+      "account": 0,
+      "request": "Tell me which address is stored for account 000.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Tell me which address is stored for account 000.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-5",
+      "account": 1,
+      "request": "Tell me which address is stored for account 001.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Tell me which address is stored for account 001.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-5",
+      "account": 2,
+      "request": "Tell me which address is stored for account 002.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Tell me which address is stored for account 002.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-5",
+      "account": 3,
+      "request": "Tell me which address is stored for account 003.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Tell me which address is stored for account 003.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-5",
+      "account": 4,
+      "request": "Tell me which address is stored for account 004.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Tell me which address is stored for account 004.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-5",
+      "account": 5,
+      "request": "Tell me which address is stored for account 005.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Tell me which address is stored for account 005.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-5",
+      "account": 6,
+      "request": "Tell me which address is stored for account 006.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Tell me which address is stored for account 006.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 0,
+      "family": "train-0-5",
+      "account": 7,
+      "request": "Tell me which address is stored for account 007.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Tell me which address is stored for account 007.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-0",
+      "account": 0,
+      "request": "Please replace the address for account 000 with 17 Cedar Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please replace the address for account 000 with 17 Cedar Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-0",
+      "account": 1,
+      "request": "Please replace the address for account 001 with 17 Cedar Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please replace the address for account 001 with 17 Cedar Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-0",
+      "account": 2,
+      "request": "Please replace the address for account 002 with 17 Cedar Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please replace the address for account 002 with 17 Cedar Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-0",
+      "account": 3,
+      "request": "Please replace the address for account 003 with 17 Cedar Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please replace the address for account 003 with 17 Cedar Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-0",
+      "account": 4,
+      "request": "Please replace the address for account 004 with 17 Cedar Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please replace the address for account 004 with 17 Cedar Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-0",
+      "account": 5,
+      "request": "Please replace the address for account 005 with 17 Cedar Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please replace the address for account 005 with 17 Cedar Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-0",
+      "account": 6,
+      "request": "Please replace the address for account 006 with 17 Cedar Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please replace the address for account 006 with 17 Cedar Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-0",
+      "account": 7,
+      "request": "Please replace the address for account 007 with 17 Cedar Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Please replace the address for account 007 with 17 Cedar Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-1",
+      "account": 0,
+      "request": "Change the mailing address of account 000 to 28 Willow Lane.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Change the mailing address of account 000 to 28 Willow Lane.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-1",
+      "account": 1,
+      "request": "Change the mailing address of account 001 to 28 Willow Lane.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Change the mailing address of account 001 to 28 Willow Lane.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-1",
+      "account": 2,
+      "request": "Change the mailing address of account 002 to 28 Willow Lane.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Change the mailing address of account 002 to 28 Willow Lane.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-1",
+      "account": 3,
+      "request": "Change the mailing address of account 003 to 28 Willow Lane.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Change the mailing address of account 003 to 28 Willow Lane.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-1",
+      "account": 4,
+      "request": "Change the mailing address of account 004 to 28 Willow Lane.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Change the mailing address of account 004 to 28 Willow Lane.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-1",
+      "account": 5,
+      "request": "Change the mailing address of account 005 to 28 Willow Lane.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Change the mailing address of account 005 to 28 Willow Lane.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-1",
+      "account": 6,
+      "request": "Change the mailing address of account 006 to 28 Willow Lane.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Change the mailing address of account 006 to 28 Willow Lane.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-1",
+      "account": 7,
+      "request": "Change the mailing address of account 007 to 28 Willow Lane.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Change the mailing address of account 007 to 28 Willow Lane.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-2",
+      "account": 0,
+      "request": "account 000 moved. Save 39 Oak Street as the new address.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 000 moved. Save 39 Oak Street as the new address.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-2",
+      "account": 1,
+      "request": "account 001 moved. Save 39 Oak Street as the new address.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 001 moved. Save 39 Oak Street as the new address.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-2",
+      "account": 2,
+      "request": "account 002 moved. Save 39 Oak Street as the new address.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 002 moved. Save 39 Oak Street as the new address.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-2",
+      "account": 3,
+      "request": "account 003 moved. Save 39 Oak Street as the new address.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 003 moved. Save 39 Oak Street as the new address.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-2",
+      "account": 4,
+      "request": "account 004 moved. Save 39 Oak Street as the new address.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 004 moved. Save 39 Oak Street as the new address.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-2",
+      "account": 5,
+      "request": "account 005 moved. Save 39 Oak Street as the new address.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 005 moved. Save 39 Oak Street as the new address.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-2",
+      "account": 6,
+      "request": "account 006 moved. Save 39 Oak Street as the new address.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 006 moved. Save 39 Oak Street as the new address.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-2",
+      "account": 7,
+      "request": "account 007 moved. Save 39 Oak Street as the new address.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 007 moved. Save 39 Oak Street as the new address.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-3",
+      "account": 0,
+      "request": "Update the registered address for account 000 to 41 Pine Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Update the registered address for account 000 to 41 Pine Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-3",
+      "account": 1,
+      "request": "Update the registered address for account 001 to 41 Pine Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Update the registered address for account 001 to 41 Pine Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-3",
+      "account": 2,
+      "request": "Update the registered address for account 002 to 41 Pine Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Update the registered address for account 002 to 41 Pine Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-3",
+      "account": 3,
+      "request": "Update the registered address for account 003 to 41 Pine Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Update the registered address for account 003 to 41 Pine Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-3",
+      "account": 4,
+      "request": "Update the registered address for account 004 to 41 Pine Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Update the registered address for account 004 to 41 Pine Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-3",
+      "account": 5,
+      "request": "Update the registered address for account 005 to 41 Pine Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Update the registered address for account 005 to 41 Pine Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-3",
+      "account": 6,
+      "request": "Update the registered address for account 006 to 41 Pine Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Update the registered address for account 006 to 41 Pine Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-3",
+      "account": 7,
+      "request": "Update the registered address for account 007 to 41 Pine Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Update the registered address for account 007 to 41 Pine Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-4",
+      "account": 0,
+      "request": "The new address for account 000 is 52 Maple Road; store it.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: The new address for account 000 is 52 Maple Road; store it.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-4",
+      "account": 1,
+      "request": "The new address for account 001 is 52 Maple Road; store it.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: The new address for account 001 is 52 Maple Road; store it.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-4",
+      "account": 2,
+      "request": "The new address for account 002 is 52 Maple Road; store it.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: The new address for account 002 is 52 Maple Road; store it.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-4",
+      "account": 3,
+      "request": "The new address for account 003 is 52 Maple Road; store it.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: The new address for account 003 is 52 Maple Road; store it.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-4",
+      "account": 4,
+      "request": "The new address for account 004 is 52 Maple Road; store it.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: The new address for account 004 is 52 Maple Road; store it.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-4",
+      "account": 5,
+      "request": "The new address for account 005 is 52 Maple Road; store it.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: The new address for account 005 is 52 Maple Road; store it.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-4",
+      "account": 6,
+      "request": "The new address for account 006 is 52 Maple Road; store it.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: The new address for account 006 is 52 Maple Road; store it.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-4",
+      "account": 7,
+      "request": "The new address for account 007 is 52 Maple Road; store it.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: The new address for account 007 is 52 Maple Road; store it.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-5",
+      "account": 0,
+      "request": "Write 63 Birch Lane over the old address for account 000.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Write 63 Birch Lane over the old address for account 000.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-5",
+      "account": 1,
+      "request": "Write 63 Birch Lane over the old address for account 001.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Write 63 Birch Lane over the old address for account 001.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-5",
+      "account": 2,
+      "request": "Write 63 Birch Lane over the old address for account 002.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Write 63 Birch Lane over the old address for account 002.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-5",
+      "account": 3,
+      "request": "Write 63 Birch Lane over the old address for account 003.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Write 63 Birch Lane over the old address for account 003.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-5",
+      "account": 4,
+      "request": "Write 63 Birch Lane over the old address for account 004.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Write 63 Birch Lane over the old address for account 004.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-5",
+      "account": 5,
+      "request": "Write 63 Birch Lane over the old address for account 005.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Write 63 Birch Lane over the old address for account 005.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-5",
+      "account": 6,
+      "request": "Write 63 Birch Lane over the old address for account 006.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Write 63 Birch Lane over the old address for account 006.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "family": "train-1-5",
+      "account": 7,
+      "request": "Write 63 Birch Lane over the old address for account 007.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Write 63 Birch Lane over the old address for account 007.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    }
+  ],
+  "held": [
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-0",
+      "account": 100,
+      "request": "Could you retrieve the address associated with account 100?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Could you retrieve the address associated with account 100?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-0",
+      "account": 101,
+      "request": "Could you retrieve the address associated with account 101?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Could you retrieve the address associated with account 101?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-0",
+      "account": 102,
+      "request": "Could you retrieve the address associated with account 102?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Could you retrieve the address associated with account 102?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-0",
+      "account": 103,
+      "request": "Could you retrieve the address associated with account 103?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Could you retrieve the address associated with account 103?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-1",
+      "account": 100,
+      "request": "Where should a parcel for account 100 be delivered according to the record?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Where should a parcel for account 100 be delivered according to the record?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-1",
+      "account": 101,
+      "request": "Where should a parcel for account 101 be delivered according to the record?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Where should a parcel for account 101 be delivered according to the record?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-1",
+      "account": 102,
+      "request": "Where should a parcel for account 102 be delivered according to the record?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Where should a parcel for account 102 be delivered according to the record?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-1",
+      "account": 103,
+      "request": "Where should a parcel for account 103 be delivered according to the record?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Where should a parcel for account 103 be delivered according to the record?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-2",
+      "account": 100,
+      "request": "Read back the stored location for account 100.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Read back the stored location for account 100.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-2",
+      "account": 101,
+      "request": "Read back the stored location for account 101.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Read back the stored location for account 101.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-2",
+      "account": 102,
+      "request": "Read back the stored location for account 102.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Read back the stored location for account 102.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-2",
+      "account": 103,
+      "request": "Read back the stored location for account 103.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Read back the stored location for account 103.\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-3",
+      "account": 100,
+      "request": "Which mailing location do you have for account 100?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Which mailing location do you have for account 100?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-3",
+      "account": 101,
+      "request": "Which mailing location do you have for account 101?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Which mailing location do you have for account 101?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-3",
+      "account": 102,
+      "request": "Which mailing location do you have for account 102?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Which mailing location do you have for account 102?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 0,
+      "family": "held-0-3",
+      "account": 103,
+      "request": "Which mailing location do you have for account 103?",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Which mailing location do you have for account 103?\nIntent:",
+      "response": " LOOKUP",
+      "rejected": " The intent is LOOKUP."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-0",
+      "account": 100,
+      "request": "account 100 no longer lives at the old location. Record 74 Ash Lane instead.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 100 no longer lives at the old location. Record 74 Ash Lane instead.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-0",
+      "account": 101,
+      "request": "account 101 no longer lives at the old location. Record 74 Ash Lane instead.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 101 no longer lives at the old location. Record 74 Ash Lane instead.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-0",
+      "account": 102,
+      "request": "account 102 no longer lives at the old location. Record 74 Ash Lane instead.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 102 no longer lives at the old location. Record 74 Ash Lane instead.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-0",
+      "account": 103,
+      "request": "account 103 no longer lives at the old location. Record 74 Ash Lane instead.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: account 103 no longer lives at the old location. Record 74 Ash Lane instead.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-1",
+      "account": 100,
+      "request": "Set the delivery location for account 100 to 85 Elm Street.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Set the delivery location for account 100 to 85 Elm Street.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-1",
+      "account": 101,
+      "request": "Set the delivery location for account 101 to 85 Elm Street.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Set the delivery location for account 101 to 85 Elm Street.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-1",
+      "account": 102,
+      "request": "Set the delivery location for account 102 to 85 Elm Street.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Set the delivery location for account 102 to 85 Elm Street.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-1",
+      "account": 103,
+      "request": "Set the delivery location for account 103 to 85 Elm Street.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Set the delivery location for account 103 to 85 Elm Street.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-2",
+      "account": 100,
+      "request": "Correct the address entry for account 100: it should be 96 Beech Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Correct the address entry for account 100: it should be 96 Beech Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-2",
+      "account": 101,
+      "request": "Correct the address entry for account 101: it should be 96 Beech Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Correct the address entry for account 101: it should be 96 Beech Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-2",
+      "account": 102,
+      "request": "Correct the address entry for account 102: it should be 96 Beech Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Correct the address entry for account 102: it should be 96 Beech Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-2",
+      "account": 103,
+      "request": "Correct the address entry for account 103: it should be 96 Beech Road.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Correct the address entry for account 103: it should be 96 Beech Road.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-3",
+      "account": 100,
+      "request": "Overwrite the mailing location of account 100 with 107 Fir Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Overwrite the mailing location of account 100 with 107 Fir Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-3",
+      "account": 101,
+      "request": "Overwrite the mailing location of account 101 with 107 Fir Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Overwrite the mailing location of account 101 with 107 Fir Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-3",
+      "account": 102,
+      "request": "Overwrite the mailing location of account 102 with 107 Fir Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Overwrite the mailing location of account 102 with 107 Fir Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    },
+    {
+      "split": "held",
+      "label": 1,
+      "family": "held-1-3",
+      "account": 103,
+      "request": "Overwrite the mailing location of account 103 with 107 Fir Avenue.",
+      "prompt": "Classify the request as LOOKUP or UPDATE. Return the label only.\nRequest: Overwrite the mailing location of account 103 with 107 Fir Avenue.\nIntent:",
+      "response": " UPDATE",
+      "rejected": " The intent is UPDATE."
+    }
+  ],
+  "preference_train_indices": [
+    0,
+    1,
+    2,
+    3,
+    8,
+    9,
+    10,
+    11,
+    16,
+    17,
+    18,
+    19,
+    24,
+    25,
+    26,
+    27,
+    32,
+    33,
+    34,
+    35,
+    40,
+    41,
+    42,
+    43,
+    48,
+    49,
+    50,
+    51,
+    56,
+    57,
+    58,
+    59,
+    64,
+    65,
+    66,
+    67,
+    72,
+    73,
+    74,
+    75,
+    80,
+    81,
+    82,
+    83,
+    88,
+    89,
+    90,
+    91
+  ],
+  "sft_steps": 64,
+  "sft_learning_rate": 0.002,
+  "sft_batch_size": 8,
+  "dpo_steps": 16,
+  "dpo_learning_rate": 0.0002,
+  "dpo_batch_size": 4,
+  "dpo_beta": 0.1,
+  "gradient_clip_norm": 1.0,
+  "optimizer": "AdamW, weight_decay=0",
+  "head_steps": 100,
+  "head_learning_rate": 0.01,
+  "head_weight_decay": 0.001,
+  "head_optimizer": "AdamW",
+  "head_normalization": "Training-coordinate mean and population standard deviation, floored at 1e-4",
+  "head_fixed_normalization_scalars": 1152,
+  "head_accuracy": 0.84375,
+  "head_train_accuracy": 1.0,
+  "stages": {
+    "base": {
+      "token_nll": 2.495173215866089,
+      "candidate_label_accuracy": 0.625,
+      "correct_logp": [
+        -7.276111125946045,
+        -7.299652576446533,
+        -7.278632164001465,
+        -7.3016839027404785,
+        -8.763598442077637,
+        -8.767746925354004,
+        -8.613853454589844,
+        -8.683568000793457,
+        -7.173106670379639,
+        -7.302803039550781,
+        -7.268997669219971,
+        -7.292757034301758,
+        -8.308924674987793,
+        -8.33320140838623,
+        -8.301727294921875,
+        -8.316905975341797,
+        -10.018609046936035,
+        -10.047537803649902,
+        -10.01331901550293,
+        -10.009588241577148,
+        -9.155050277709961,
+        -9.11790943145752,
+        -9.057313919067383,
+        -9.031966209411621,
+        -9.781805038452148,
+        -9.798254013061523,
+        -9.705172538757324,
+        -9.704337120056152,
+        -9.445221900939941,
+        -9.465860366821289,
+        -9.407882690429688,
+        -9.416319847106934
+      ],
+      "other_label_logp": [
+        -8.465385437011719,
+        -8.525524139404297,
+        -8.429947853088379,
+        -8.452214241027832,
+        -9.015218734741211,
+        -9.037422180175781,
+        -8.948617935180664,
+        -8.982157707214355,
+        -8.846494674682617,
+        -8.933707237243652,
+        -8.861065864562988,
+        -8.889543533325195,
+        -9.21804141998291,
+        -9.23958969116211,
+        -9.17093276977539,
+        -9.17378044128418,
+        -8.808074951171875,
+        -8.89439582824707,
+        -8.800024032592773,
+        -8.846177101135254,
+        -8.490169525146484,
+        -8.483575820922852,
+        -8.414060592651367,
+        -8.41427230834961,
+        -9.997589111328125,
+        -9.980293273925781,
+        -9.914216041564941,
+        -9.941129684448242,
+        -8.92000961303711,
+        -8.996500015258789,
+        -8.912290573120117,
+        -8.94097900390625
+      ],
+      "selected_counts": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "generated": [
+        {
+          "text": " LOOKUP\n\nRequest: Could",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            16222
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Could",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            16222
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Could",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            16222
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Could",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            16222
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Where",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            7655
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Where",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            7655
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Where",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            7655
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Where",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            7655
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Read",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            4164
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Read",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            4164
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Read",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            4164
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Read",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            4164
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Which",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            10366
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Which",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            10366
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Which",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            10366
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Which",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            10366
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: account",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            2051
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: account",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            2051
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: account",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            2051
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: account",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            2051
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Set",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            5427
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Set",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            5427
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Set",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            5427
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Set",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            5427
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " Return the label only.\n\nThe",
+          "token_ids": [
+            13632,
+            260,
+            4368,
+            805,
+            30,
+            198,
+            198,
+            504
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " Return the label only.\n\nThe",
+          "token_ids": [
+            13632,
+            260,
+            4368,
+            805,
+            30,
+            198,
+            198,
+            504
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " Return the label only.\n\nThe",
+          "token_ids": [
+            13632,
+            260,
+            4368,
+            805,
+            30,
+            198,
+            198,
+            504
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " Return the label only.\n\nThe",
+          "token_ids": [
+            13632,
+            260,
+            4368,
+            805,
+            30,
+            198,
+            198,
+            504
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Over",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            3636
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Over",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            3636
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Over",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            3636
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        },
+        {
+          "text": " LOOKUP\n\nRequest: Over",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            198,
+            198,
+            13519,
+            42,
+            3636
+          ],
+          "exact_label": false,
+          "stopped_on_eos": false
+        }
+      ]
+    },
+    "sft": {
+      "token_nll": 0.5312085151672363,
+      "candidate_label_accuracy": 0.875,
+      "correct_logp": [
+        -0.00032339649624191225,
+        -0.0003179136838298291,
+        -0.0003212509909644723,
+        -0.00032220451976172626,
+        -14.855961799621582,
+        -14.799093246459961,
+        -14.933548927307129,
+        -14.893845558166504,
+        -0.000364157953299582,
+        -0.00038692232919856906,
+        -0.00037607652484439313,
+        -0.0003668986901175231,
+        -0.0012115247081965208,
+        -0.0012643978698179126,
+        -0.0012507106876000762,
+        -0.0013124067336320877,
+        -0.0002959660778287798,
+        -0.0003424482711125165,
+        -0.00028893473790958524,
+        -0.0002908410970121622,
+        -0.0003519940364640206,
+        -0.00034138624323531985,
+        -0.00034984853118658066,
+        -0.0003457962302491069,
+        -0.0002829761360771954,
+        -0.0002886967558879405,
+        -0.000293702440103516,
+        -0.0002963243459817022,
+        -0.00033506768522784114,
+        -0.00033399483072571456,
+        -0.0003207651025149971,
+        -0.000326843757648021
+      ],
+      "other_label_logp": [
+        -13.235333442687988,
+        -13.162440299987793,
+        -12.969009399414062,
+        -12.944437026977539,
+        -0.00041455309838056564,
+        -0.0004176523652859032,
+        -0.00040549621917307377,
+        -0.00041848531691357493,
+        -11.191788673400879,
+        -11.084185600280762,
+        -11.145875930786133,
+        -11.282669067382812,
+        -10.22193717956543,
+        -10.035710334777832,
+        -10.003889083862305,
+        -9.842700958251953,
+        -14.943382263183594,
+        -14.700891494750977,
+        -14.938804626464844,
+        -14.939600944519043,
+        -16.159440994262695,
+        -16.133541107177734,
+        -16.243207931518555,
+        -16.217548370361328,
+        -15.993856430053711,
+        -16.00587272644043,
+        -15.98209285736084,
+        -16.021465301513672,
+        -15.634237289428711,
+        -15.600778579711914,
+        -15.629619598388672,
+        -15.654940605163574
+      ],
+      "selected_counts": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "generated": [
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": false,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": false,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": false,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": false,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        }
+      ]
+    },
+    "dpo": {
+      "token_nll": 0.6562042236328125,
+      "candidate_label_accuracy": 0.875,
+      "correct_logp": [
+        -0.0005745257367379963,
+        -0.0005742879584431648,
+        -0.0005864448612555861,
+        -0.0005847768625244498,
+        -18.34754180908203,
+        -18.312397003173828,
+        -18.42085075378418,
+        -18.37568473815918,
+        -0.0019470942206680775,
+        -0.0023006589617580175,
+        -0.0018772897310554981,
+        -0.0017214880790561438,
+        -0.002009238814935088,
+        -0.0020481664687395096,
+        -0.002608912531286478,
+        -0.003116102423518896,
+        -0.0005003577098250389,
+        -0.00064977997681126,
+        -0.0004958286299370229,
+        -0.0004914202727377415,
+        -0.00186118483543396,
+        -0.0018153681885451078,
+        -0.0020047975704073906,
+        -0.0019341211300343275,
+        -0.0006946779321879148,
+        -0.0007591280736960471,
+        -0.0007218414102680981,
+        -0.0006959897582419217,
+        -0.001512449118308723,
+        -0.0015333989867940545,
+        -0.0013694694498553872,
+        -0.0014055439969524741
+      ],
+      "other_label_logp": [
+        -11.374582290649414,
+        -11.127401351928711,
+        -10.831284523010254,
+        -10.814154624938965,
+        -0.0006244090618565679,
+        -0.0006546718650497496,
+        -0.0006163059151731431,
+        -0.0005784158129245043,
+        -7.815065383911133,
+        -7.4798078536987305,
+        -7.931914806365967,
+        -8.171575546264648,
+        -7.515793800354004,
+        -7.444266319274902,
+        -6.828467845916748,
+        -6.464854717254639,
+        -17.93740463256836,
+        -17.846712112426758,
+        -17.96242904663086,
+        -17.952526092529297,
+        -18.86802101135254,
+        -18.92561149597168,
+        -19.01095962524414,
+        -18.9971981048584,
+        -18.84427833557129,
+        -18.85028076171875,
+        -18.833171844482422,
+        -18.822185516357422,
+        -18.385488510131836,
+        -18.399856567382812,
+        -18.40020751953125,
+        -18.44938087463379
+      ],
+      "selected_counts": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "generated": [
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": false,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": false,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": false,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": false,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " LOOKUP",
+          "token_ids": [
+            16887,
+            13663,
+            11957,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        },
+        {
+          "text": " UPDATE",
+          "token_ids": [
+            514,
+            32188,
+            0
+          ],
+          "exact_label": true,
+          "stopped_on_eos": true
+        }
+      ],
+      "mean_reference_adjusted_gap": 57.268611907958984,
+      "mean_held_pair_loss": 0.003529479494318366
+    }
+  },
+  "checks": {
+    "ignored_direct_logit_gradient_max": 0.0,
+    "earlier_prompt_embedding_gradient_max": 4.286674499511719,
+    "zero_adapter_initial_logit_difference": 0.0,
+    "update_numerical_rank_at_relative_1e-10": 4,
+    "reference_scores_unchanged": true,
+    "base_parameters_unchanged_after_both_training_stages": true,
+    "sft_reload_next_token_probability_error": 0.0,
+    "dpo_reload_max_logit_error": 0.0,
+    "whole_model_merged_max_logit_error": 0.0001373291015625,
+    "merged_argmax_all_positions_agree": true
+  },
+  "mask_token_pieces": [
+    "Request",
+    ":",
+    "\u0120Please",
+    "\u0120change",
+    "\u0120my",
+    "\u0120address",
+    ".",
+    "\u010a",
+    "Int",
+    "ent",
+    ":",
+    "\u0120U",
+    "PDATE",
+    "<|endoftext|>"
+  ],
+  "label_token_ids": {
+    "LOOKUP": [
+      16887,
+      13663,
+      11957
+    ],
+    "UPDATE": [
+      514,
+      32188
+    ]
+  },
+  "pad_id": 1,
+  "eos_id": 0,
+  "mask_example": {
+    "prompt": "Request: Please change my address.\nIntent:",
+    "response": " UPDATE"
+  },
+  "probe_held_index": 0,
+  "checkpoints": {
+    "classifier.safetensors": {
+      "sha256": "b1805540e2cb7154ca4e7fb72fc9c8168063b8ed1d8468d65473c627ccefd9ad",
+      "bytes": 9504
+    },
+    "dpo-adapter.safetensors": {
+      "sha256": "fa238ecfc2dc2768d4b8ec9f9669173854ec0eab815e13381530583a99f1125d",
+      "bytes": 933544
+    },
+    "sft-adapter.safetensors": {
+      "sha256": "689616b3aa5b00c6ead17b8edd15bfadcca36612beed42c49c01e903aef83676",
+      "bytes": 933544
+    }
+  },
+  "versions": {
+    "torch": "2.15.0",
+    "transformers": "4.57.1",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "safetensors": "0.6.2",
+    "huggingface_hub": "0.35.3"
+  },
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "test_used_for_selection": false,
+  "scope": "Illustrative fictional intent and authored-format task, one seed; no broad alignment or benchmark claim.",
+  "displayed_next_token_ids": [
+    16887,
+    514,
+    8432,
+    13632,
+    450,
+    32351,
+    14210,
+    6426,
+    0
+  ],
+  "figures": {
+    "ch16_pretrained_dpo.png": "615cc907feaed6013f30fe32b3be609ad9ca4944616e4defb22358ef8578ce9f",
+    "ch16_pretrained_head.png": "a8f6b8c896a681a2abb11b0ae060821b879909c6ce0706c725844dbdd357ba66",
+    "ch16_pretrained_lora.png": "b856bc8f62f62018d90accc6dea3913940e6f4e2e8a91e5eca6b2bffc2792021",
+    "ch16_pretrained_mask_gradients.png": "7383fea438c40796da70ffb5af43288cc0141acd26f5678463c8d9bf6b44baab",
+    "ch16_pretrained_sft.png": "bd7c0c7a585daacdd97f89600e236ee225453c897cff9729abd24f0eee8290e0",
+    "ch16_pretrained_token_probabilities.png": "f76d95132506c09a3766f5e7c5da74c0c424137f4e3ae0f865f782061acd8437"
+  },
+  "displayed_next_token_pieces": [
+    "\u0120LO",
+    "\u0120U",
+    "\u0120Look",
+    "\u0120Return",
+    "\u0120L",
+    "\u0120Query",
+    "\u0120Lo",
+    "LO",
+    "<|endoftext|>"
+  ]
+}

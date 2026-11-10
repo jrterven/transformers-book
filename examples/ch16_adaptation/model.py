@@ -146,6 +146,49 @@ class LoRALinear(nn.Module):
 # end-snippet:lora_linear
 
 
+# snippet:attach_lora
+def attach_lora(model, targets, rank, alpha):
+    """Freeze the model and add adapters at explicit Linear module paths."""
+    targets, rank = tuple(targets), index(rank)
+    if not targets or len(set(targets)) != len(targets):
+        raise ValueError("targets must be nonempty unique module paths")
+    bases = [model.get_submodule(name) for name in targets]
+    if any(not isinstance(base, nn.Linear) for base in bases):
+        raise TypeError("each target must be a Linear module")
+    if (not math.isfinite(alpha) or alpha <= 0 or rank < 1
+            or any(rank > min(base.in_features, base.out_features) for base in bases)):
+        raise ValueError("rank must fit every target and alpha must be positive")
+    model.requires_grad_(False)
+    adapters = {}
+    for name, base in zip(targets, bases):
+        adapters[name] = LoRALinear(base, rank, alpha)
+        model.set_submodule(name, adapters[name])
+    return adapters
+# end-snippet:attach_lora
+
+
+# snippet:merge_lora
+@torch.no_grad()
+def merge_lora(model, targets):
+    """Replace selected adapters with frozen merged Linear layers for inference."""
+    targets = tuple(targets)
+    if not targets or len(set(targets)) != len(targets):
+        raise ValueError("targets must be nonempty unique module paths")
+    layers = [model.get_submodule(name) for name in targets]
+    if any(not isinstance(layer, LoRALinear) for layer in layers):
+        raise TypeError("each merge target must be a LoRALinear module")
+    for name, layer in zip(targets, layers):
+        base = layer.base
+        merged = nn.Linear(base.in_features, base.out_features,
+                           bias=base.bias is not None,
+                           dtype=base.weight.dtype, device=base.weight.device)
+        merged.weight.copy_(layer.merged_weight())
+        if base.bias is not None:
+            merged.bias.copy_(base.bias)
+        model.set_submodule(name, merged.requires_grad_(False))
+# end-snippet:merge_lora
+
+
 # snippet:dpo_loss
 def dpo_loss(policy_chosen, policy_rejected, reference_chosen, reference_rejected, beta):
     """Compare policy preference margins relative to a frozen reference."""

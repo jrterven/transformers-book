@@ -297,6 +297,9 @@ compares a frozen feature extractor with full fine-tuning, aligns response
 targets, and checks low-rank adaptation and the DPO objective. The
 [chapter guide](examples/ch16_adaptation/README.md) explains the trainable
 parameters, the response mask, and the adapter checkpoint roundtrip.
+The optional [pretrained-model experiment](examples/ch16_adaptation/PRETRAINED_FIGURES.md)
+actually trains a frozen-feature head, SFT/LoRA adapters, and DPO adapters on
+fictional requests, producing six measured figures and reload/merge checks.
 The [twelve exercises](examples/ch16_adaptation/EXERCISES.md) have complete
 [worked solutions](solutions/ch16_adaptation/README.md) in an executed
 notebook and both PDF editions, including batch averaging, frozen gradient

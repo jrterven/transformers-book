@@ -76,3 +76,28 @@ LoRA's rank constrains the update, not the full merged matrix. Random `a`
 and zero `b` initially preserve the base output while letting `b` receive
 a gradient. Both factors initialized to zero would stall ordinary gradient
 descent. The wrapper has no adapter dropout or nonlinear bottleneck.
+
+## Attach, merge, and verify adapters in a model
+
+`attach_lora(model, targets, rank, alpha)` freezes the model and wraps only
+the explicitly named linear projections. Target validation happens before
+freezing or changing the model. `merge_lora` replaces the named wrappers with
+frozen native linear layers, preserving each base bias. This is an inference
+transformation: an optimizer referencing the old factors cannot update the
+merged layers. The 13 tests include a multilayer nonlinear model, initial
+output preservation, bias preservation, and whole-model merge equivalence.
+
+## Actual pretrained-model adaptation
+
+The [real-model guide](PRETRAINED_FIGURES.md) describes a reproducible CPU run
+with published SmolLM2-135M weights: a frozen-feature classifier, actual
+rank-four LoRA SFT, and actual DPO on authored format preferences. Six figures
+show measured probabilities, gradients, learned updates, optimization traces,
+and preference changes. Training and held-out wording/account groups are
+disjoint. These small synthetic-task outcomes are not general benchmarks.
+
+```sh
+python -m pip install -r requirements-ch16-figures.txt
+python -m examples.ch16_adaptation.pretrained_figures --train \
+  --cache-dir output/model-cache --output-dir output/ch16-pretrained
+```

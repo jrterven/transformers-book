@@ -14,6 +14,8 @@ if torch is not None:
 
     from examples.ch16_adaptation.model import (
         LoRALinear,
+        attach_lora,
+        merge_lora,
         TinyClassifier,
         completion_logprob,
         dpo_loss,
@@ -144,6 +146,49 @@ class AdaptationTests(unittest.TestCase):
             self.assertIsNone(p.grad)
             torch.testing.assert_close(p, old, atol=0, rtol=0)
         torch.testing.assert_close(layer(x), F.linear(x, layer.merged_weight(), base.bias))
+
+    def test_explicit_adapter_targets_freeze_other_parameters_and_merge(self):
+        torch.manual_seed(16)
+        model = nn.Sequential(nn.Linear(3, 4, dtype=torch.float64), nn.Tanh(),
+                              nn.Linear(4, 2, dtype=torch.float64))
+        x = torch.tensor([[1., 2., -1.], [0., .5, 3.]], dtype=torch.float64)
+        before = model(x).detach().clone()
+        adapters = attach_lora(model, ('0', '2'), rank=2, alpha=4)
+        torch.testing.assert_close(model(x), before, rtol=0, atol=0)
+        self.assertEqual(sum(p.numel() for p in model.parameters() if p.requires_grad), 26)
+        self.assertFalse(adapters['0'].base.weight.requires_grad)
+        with torch.no_grad():
+            adapters['0'].b.fill_(.2)
+            adapters['2'].b.fill_(-.3)
+        adapted = model(x).detach().clone()
+        self.assertGreater(float((adapted-before).abs().max()), 1e-6)
+        biases = [adapters[n].base.bias.detach().clone() for n in ('0','2')]
+        merge_lora(model, ('0','2'))
+        torch.testing.assert_close(model(x), adapted, rtol=0, atol=1e-14)
+        self.assertFalse(any(p.requires_grad for p in model.parameters()))
+        for name, bias in zip(('0','2'), biases):
+            self.assertIsInstance(model.get_submodule(name), nn.Linear)
+            torch.testing.assert_close(model.get_submodule(name).bias, bias, rtol=0, atol=0)
+
+    def test_adapter_target_validation_precedes_model_freezing(self):
+        model = nn.Sequential(nn.Linear(3,4), nn.ReLU())
+        for targets, rank, error in [(('0','0'),1,ValueError), (('0','1'),1,TypeError),
+                                     (('0',),4,ValueError)]:
+            with self.assertRaises(error):
+                attach_lora(model, targets, rank, 2)
+            self.assertTrue(all(p.requires_grad for p in model.parameters()))
+            self.assertIsInstance(model[0], nn.Linear)
+        with self.assertRaises(TypeError):
+            merge_lora(model, ('0',))
+
+    def test_demonstration_splits_hold_out_wording_and_account_groups(self):
+        from examples.ch16_adaptation.real_data import examples
+        train, held = examples('train'), examples('held')
+        self.assertEqual((len(train),len(held)),(96,32))
+        self.assertEqual(sum(row['label'] for row in train),48)
+        self.assertEqual(sum(row['label'] for row in held),16)
+        for key in ('family','account','prompt'):
+            self.assertFalse({r[key] for r in train} & {r[key] for r in held})
 
     def test_dpo_value_and_gradients_keep_reference_fixed(self):
         policy = torch.tensor([-3.0, -4.0], dtype=torch.float64, requires_grad=True)

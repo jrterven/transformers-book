@@ -1,0 +1,4 @@
+# Optional actual pretrained-model adaptation and figure reproduction.
+-r requirements-appendix-figures.txt
+torch==2.15.0
+matplotlib==3.11.2

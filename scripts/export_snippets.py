@@ -115,7 +115,7 @@ CHAPTERS = {
         "sources": ("examples/ch16_adaptation/model.py",),
         "destination": "snippets/ch16_adaptation",
         "expected": {"train_classifier", "response_labels", "completion_logprob",
-                     "lora_linear", "dpo_loss"},
+                     "lora_linear", "attach_lora", "merge_lora", "dpo_loss"},
     },
     "ch17": {
         "sources": ("examples/ch17_evaluation/model.py",),
