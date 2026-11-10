@@ -47,6 +47,32 @@ Model parameters, output traces, and temporary workspaces are separate.
 The fixed projections and gates let you inspect the history
 calculation without training a model.
 
+## Evaluate delta chunks
+
+`delta_sequence` evaluates the supplied queries, keys, values, and gates in
+time order. `delta_chunked` solves the small unit-diagonal error system inside
+each chunk and passes a `[value width, key width]` state between chunks.
+Both return the output rows and final state and accept a nonzero initial state.
+Queries/keys have shape `[time, key width]`, values `[time, value width]`,
+and gate arrays `[time]`. These helpers preserve supplied vectors, including
+nonunit keys. The source-retention product excludes the decay before that write.
+
+The example gives reads `(2, 5, 2.26)` and final state `[[3.64, 2.26]]`
+for three overlapping writes. The 14 tests include independent affine updates,
+rectangular states, resets, sign-changing carry, short final chunks, causality,
+and continuation. The general NumPy solver is a teaching reference, rather than
+an optimized triangular/WY kernel. With fixed chunk size and head dimensions,
+the number of chunks grows linearly with stream length.
+
+## Observe a released hybrid
+
+The optional [pretrained-model inspection](PRETRAINED_FIGURES.md) runs the
+published Qwen3.5-0.8B-Base language pathway on a CPU, with frozen weights.
+It produces six figures from captured gates, delta writes, GDN coefficients,
+native attention weights, chunk contributions, actual caches, and vocabulary
+logits. The pinned run record includes numerical comparisons with the native
+sequential and chunked cores and an independent NumPy recurrence.
+
 ## Exercises and complete solutions
 
 The [ten exercises](EXERCISES.md) progress from hand calculations to numerical

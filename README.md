@@ -280,8 +280,11 @@ python -m examples.ch14_selective_ssm.run_examples --output output/ch14.json
 ```
 
 [Chapter 15: Delta Rules and Hybrid Stacks](examples/ch15_hybrids/) traces
-prediction-error writes, interfering key directions, and separate per-layer
-states and caches. Its [ten exercises](examples/ch15_hybrids/EXERCISES.md) have
+prediction-error writes, interfering key directions, triangular chunk systems,
+and separate per-layer states and caches. Its optional
+[published-model inspection](examples/ch15_hybrids/PRETRAINED_FIGURES.md)
+reproduces six measured figures from the Qwen3.5-0.8B-Base language pathway.
+Its [ten exercises](examples/ch15_hybrids/EXERCISES.md) have
 [complete solutions in all editions](solutions/ch15_hybrids/README.md), with
 21 executed notebook cells and two plots.
 

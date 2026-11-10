@@ -1,8 +1,11 @@
 """NumPy teaching examples for delta updates and per-layer history."""
 
+from operator import index
+
 import numpy as np
 
 from examples.ch04_attention.attention import scaled_dot_product_attention
+from examples.ch14_selective_ssm.model import causal_decay
 
 
 def _real_array(array, name, ndim, allow_empty=False):
@@ -46,6 +49,68 @@ def delta_step(state, query, key, value, alpha, beta):
         output = updated @ query
     return output, updated
 # end-snippet:delta_step
+
+
+def _delta_sequence_inputs(query, key, value, alpha, beta, state):
+    query = _real_array(query, "queries", 2)
+    key = _real_array(key, "keys", 2)
+    value = _real_array(value, "values", 2)
+    alpha = _real_array(alpha, "alpha", 1)
+    beta = _real_array(beta, "beta", 1)
+    if (query.shape != key.shape or len(value) != len(key)
+            or alpha.shape != (len(key),) or beta.shape != (len(key),)):
+        raise ValueError("all sequence arrays must have the same time axis")
+    if np.any((alpha < 0) | (alpha > 1)) or np.any((beta < 0) | (beta > 2)):
+        raise ValueError("alpha must lie in [0,1] and beta in [0,2]")
+    if state is None:
+        state = np.zeros((value.shape[1], key.shape[1]))
+    state = _real_array(state, "initial state", 2)
+    if state.shape != (value.shape[1], key.shape[1]):
+        raise ValueError("state shape must be [value width, key width]")
+    return query, key, value, alpha, beta, state
+
+
+# snippet:delta_sequence
+def delta_sequence(query, key, value, alpha, beta, state=None):
+    """Evaluate a sequence; return its outputs and final [value, key] state."""
+    query, key, value, alpha, beta, state = _delta_sequence_inputs(
+        query, key, value, alpha, beta, state
+    )
+    outputs = np.empty_like(value)
+    for t in range(len(key)):
+        outputs[t], state = delta_step(
+            state, query[t], key[t], value[t], alpha[t], beta[t]
+        )
+    return outputs, state
+# end-snippet:delta_sequence
+
+
+# snippet:delta_chunked
+def delta_chunked(query, key, value, alpha, beta, chunk_size, state=None):
+    """Solve local error dependencies and pass only the final matrix state."""
+    query, key, value, alpha, beta, state = _delta_sequence_inputs(
+        query, key, value, alpha, beta, state
+    )
+    chunk_size = index(chunk_size)
+    if chunk_size < 1:
+        raise ValueError("chunk size must be positive")
+    outputs = np.empty_like(value)
+    with np.errstate(over="raise", invalid="raise"):
+        for start in range(0, len(key), chunk_size):
+            rows = slice(start, start + chunk_size)
+            q, k, v, a, b = (x[rows] for x in (query, key, value, alpha, beta))
+            decay = causal_decay(a)
+            prefix = np.cumprod(a)
+            dependencies = decay * (k @ k.T) * b[None, :]
+            system = np.eye(len(k)) + np.tril(dependencies, k=-1)
+            residual = v - prefix[:, None] * (k @ state.T)
+            errors = np.linalg.solve(system, residual)
+            reads = decay * (q @ k.T) * b[None, :]
+            outputs[rows] = prefix[:, None] * (q @ state.T) + reads @ errors
+            writes = (errors * (decay[-1] * b)[:, None]).T @ k
+            state = prefix[-1] * state + writes
+    return outputs, state
+# end-snippet:delta_chunked
 
 
 def _attention_inputs(query, key, value, cache):

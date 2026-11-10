@@ -1,0 +1,2572 @@
+{
+  "model": "Qwen/Qwen3.5-0.8B-Base",
+  "revision": "dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68",
+  "weights_sha256": "c2b1e5a17d9c1e27685d92ed9b382911ebb99955ecd89052d1721241adfbab6c",
+  "runtime_source_sha256": "cf085792cb59e5bdf9b88a3d20bd353892289d054662a9c2b662221b97caefba",
+  "parameters": 852985920,
+  "text_parameters": 752393024,
+  "loading": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "layer_types": [
+    "linear_attention",
+    "linear_attention",
+    "linear_attention",
+    "full_attention",
+    "linear_attention",
+    "linear_attention",
+    "linear_attention",
+    "full_attention",
+    "linear_attention",
+    "linear_attention",
+    "linear_attention",
+    "full_attention",
+    "linear_attention",
+    "linear_attention",
+    "linear_attention",
+    "full_attention",
+    "linear_attention",
+    "linear_attention",
+    "linear_attention",
+    "full_attention",
+    "linear_attention",
+    "linear_attention",
+    "linear_attention",
+    "full_attention"
+  ],
+  "history": [
+    {
+      "length": 32,
+      "layers": [
+        {
+          "layer": 1,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 2,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 3,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 4,
+          "state": 0,
+          "conv": 0,
+          "kv": 131072,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              32,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              32,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 5,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 6,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 7,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 8,
+          "state": 0,
+          "conv": 0,
+          "kv": 131072,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              32,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              32,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 9,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 10,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 11,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 12,
+          "state": 0,
+          "conv": 0,
+          "kv": 131072,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              32,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              32,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 13,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 14,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 15,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 16,
+          "state": 0,
+          "conv": 0,
+          "kv": 131072,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              32,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              32,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 17,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 18,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 19,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 20,
+          "state": 0,
+          "conv": 0,
+          "kv": 131072,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              32,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              32,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 21,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 22,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 23,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 24,
+          "state": 0,
+          "conv": 0,
+          "kv": 131072,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              32,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              32,
+              256
+            ]
+          }
+        }
+      ],
+      "state": 18874368,
+      "conv": 1769472,
+      "kv": 786432
+    },
+    {
+      "length": 64,
+      "layers": [
+        {
+          "layer": 1,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 2,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 3,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 4,
+          "state": 0,
+          "conv": 0,
+          "kv": 262144,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              64,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              64,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 5,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 6,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 7,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 8,
+          "state": 0,
+          "conv": 0,
+          "kv": 262144,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              64,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              64,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 9,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 10,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 11,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 12,
+          "state": 0,
+          "conv": 0,
+          "kv": 262144,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              64,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              64,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 13,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 14,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 15,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 16,
+          "state": 0,
+          "conv": 0,
+          "kv": 262144,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              64,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              64,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 17,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 18,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 19,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 20,
+          "state": 0,
+          "conv": 0,
+          "kv": 262144,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              64,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              64,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 21,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 22,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 23,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 24,
+          "state": 0,
+          "conv": 0,
+          "kv": 262144,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              64,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              64,
+              256
+            ]
+          }
+        }
+      ],
+      "state": 18874368,
+      "conv": 1769472,
+      "kv": 1572864
+    },
+    {
+      "length": 128,
+      "layers": [
+        {
+          "layer": 1,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 2,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 3,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 4,
+          "state": 0,
+          "conv": 0,
+          "kv": 524288,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              128,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              128,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 5,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 6,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 7,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 8,
+          "state": 0,
+          "conv": 0,
+          "kv": 524288,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              128,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              128,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 9,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 10,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 11,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 12,
+          "state": 0,
+          "conv": 0,
+          "kv": 524288,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              128,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              128,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 13,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 14,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 15,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 16,
+          "state": 0,
+          "conv": 0,
+          "kv": 524288,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              128,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              128,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 17,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 18,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 19,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 20,
+          "state": 0,
+          "conv": 0,
+          "kv": 524288,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              128,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              128,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 21,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 22,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 23,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 24,
+          "state": 0,
+          "conv": 0,
+          "kv": 524288,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              128,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              128,
+              256
+            ]
+          }
+        }
+      ],
+      "state": 18874368,
+      "conv": 1769472,
+      "kv": 3145728
+    },
+    {
+      "length": 129,
+      "layers": [
+        {
+          "layer": 1,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 2,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 3,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 4,
+          "state": 0,
+          "conv": 0,
+          "kv": 528384,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              129,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              129,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 5,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 6,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 7,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 8,
+          "state": 0,
+          "conv": 0,
+          "kv": 528384,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              129,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              129,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 9,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 10,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 11,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 12,
+          "state": 0,
+          "conv": 0,
+          "kv": 528384,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              129,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              129,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 13,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 14,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 15,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 16,
+          "state": 0,
+          "conv": 0,
+          "kv": 528384,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              129,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              129,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 17,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 18,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 19,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 20,
+          "state": 0,
+          "conv": 0,
+          "kv": 528384,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              129,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              129,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 21,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 22,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 23,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 24,
+          "state": 0,
+          "conv": 0,
+          "kv": 528384,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              129,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              129,
+              256
+            ]
+          }
+        }
+      ],
+      "state": 18874368,
+      "conv": 1769472,
+      "kv": 3170304
+    },
+    {
+      "length": 130,
+      "layers": [
+        {
+          "layer": 1,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 2,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 3,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 4,
+          "state": 0,
+          "conv": 0,
+          "kv": 532480,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              130,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              130,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 5,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 6,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 7,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 8,
+          "state": 0,
+          "conv": 0,
+          "kv": 532480,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              130,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              130,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 9,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 10,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 11,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 12,
+          "state": 0,
+          "conv": 0,
+          "kv": 532480,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              130,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              130,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 13,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 14,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 15,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 16,
+          "state": 0,
+          "conv": 0,
+          "kv": 532480,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              130,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              130,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 17,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 18,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 19,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 20,
+          "state": 0,
+          "conv": 0,
+          "kv": 532480,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              130,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              130,
+              256
+            ]
+          }
+        },
+        {
+          "layer": 21,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 22,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 23,
+          "state": 1048576,
+          "conv": 98304,
+          "kv": 0,
+          "shapes": {
+            "recurrent_states": [
+              1,
+              16,
+              128,
+              128
+            ],
+            "conv_states": [
+              1,
+              6144,
+              4
+            ]
+          }
+        },
+        {
+          "layer": 24,
+          "state": 0,
+          "conv": 0,
+          "kv": 532480,
+          "shapes": {
+            "keys": [
+              1,
+              2,
+              130,
+              256
+            ],
+            "values": [
+              1,
+              2,
+              130,
+              256
+            ]
+          }
+        }
+      ],
+      "state": 18874368,
+      "conv": 1769472,
+      "kv": 3194880
+    }
+  ],
+  "checks": {
+    "cached_vs_full_logits": 3.814697265625e-05,
+    "cached_argmax_agreement": true,
+    "earlier_prefix_change": 0.0,
+    "affected_suffix_change": 17.389415740966797,
+    "native_recurrent_vs_chunked_core": 7.450580596923828e-08,
+    "native_recurrent_vs_chunked_final_state": 2.86102294921875e-06,
+    "numpy_vs_native_core": 1.7739081280276903e-08,
+    "numpy_vs_native_final_state": 1.7487805796349842e-07,
+    "attention_read_reconstruction": 0.0
+  },
+  "prefill_tokens": 128,
+  "decode_tokens": 2,
+  "mutation_zero_based": 63,
+  "write_zero_based": 47,
+  "head_zero_based": 1,
+  "teaching_chunk": 32,
+  "independent_chunk": 31,
+  "native_chunk": 64,
+  "replacement_id": 6105,
+  "original_piece": "\u0120The",
+  "replacement_piece": "\u0120blue",
+  "input_ids": [
+    760,
+    28350,
+    11136,
+    303,
+    11751,
+    13,
+    561,
+    8831,
+    557,
+    71049,
+    13,
+    561,
+    28350,
+    7481,
+    310,
+    21047,
+    13,
+    561,
+    5404,
+    9770,
+    279,
+    2336,
+    13,
+    561,
+    28350,
+    11136,
+    303,
+    11751,
+    13,
+    561,
+    8831,
+    557,
+    71049,
+    13,
+    561,
+    28350,
+    7481,
+    310,
+    21047,
+    13,
+    561,
+    5404,
+    9770,
+    279,
+    2336,
+    13,
+    561,
+    28350,
+    11136,
+    303,
+    11751,
+    13,
+    561,
+    8831,
+    557,
+    71049,
+    13,
+    561,
+    28350,
+    7481,
+    310,
+    21047,
+    13,
+    561,
+    5404,
+    9770,
+    279,
+    2336,
+    13,
+    561,
+    28350,
+    11136,
+    303,
+    11751,
+    13,
+    561,
+    8831,
+    557,
+    71049,
+    13,
+    561,
+    28350,
+    7481,
+    310,
+    21047,
+    13,
+    561,
+    5404,
+    9770,
+    279,
+    2336,
+    13,
+    561,
+    28350,
+    11136,
+    303,
+    11751,
+    13,
+    561,
+    8831,
+    557,
+    71049,
+    13,
+    561,
+    28350,
+    7481,
+    310,
+    21047,
+    13,
+    561,
+    5404,
+    9770,
+    279,
+    2336,
+    13,
+    561,
+    28350,
+    11136,
+    303,
+    11751,
+    13,
+    561,
+    8831,
+    557,
+    71049,
+    13,
+    561,
+    28350,
+    7481,
+    310
+  ],
+  "input_recipe": "The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. The parcel arrived in Paris. The weather was cloudy. The parcel moved to Rome. The driver checked the map. ",
+  "device": "cpu",
+  "dtype": "float32",
+  "independent_dtype": "float64",
+  "threads": 4,
+  "training": false,
+  "sampling": false,
+  "timing_benchmark": false,
+  "vision_inputs": false,
+  "versions": {
+    "torch": "2.15.0",
+    "transformers": "5.13.0",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "huggingface_hub": "1.33.0",
+    "safetensors": "0.8.0"
+  },
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "figures": {
+    "ch15_pretrained_causality.png": "8cc407b04c18e13e4a0b5d971aa9f6845aeacdb212be2dd6f1031ecf6447ddd7",
+    "ch15_pretrained_chunks.png": "f93c27f92ad36a5abfe245d372700f5635b6514c45e23fb5417a33e34b4726c9",
+    "ch15_pretrained_controls.png": "8a28b6143dbae852fc6dde2ab5a55401b42a0b1bdcb6618dc3a77a2c4fd64085",
+    "ch15_pretrained_delta_write.png": "04cc56b71eb4f59c85a246abfd85b20725fb27566e7d7a4ff0241515567e9abb",
+    "ch15_pretrained_history.png": "3d87b63ccee538365864d8dfe68a3b505dc312671ee4ef78dc7a1e8923f9a2d9",
+    "ch15_pretrained_reads.png": "96b8b3eedf68f07d095ac8da94ca196def9082c0821587af4b8091827d5a280a"
+  }
+}

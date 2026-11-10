@@ -6,7 +6,8 @@ from pathlib import Path
 
 import numpy as np
 
-from .model import delta_step, history_counts, initial_stores, stack_step
+from .model import (delta_chunked, delta_sequence, delta_step, history_counts,
+                    initial_stores, stack_step)
 
 
 HYBRID = ("delta", "attention", "delta")
@@ -49,6 +50,19 @@ def toy_tokens():
     ])
 
 
+def chunk_example():
+    keys = np.array([[1., 0.], [0.6, 0.8], [0., 1.]])
+    values = np.array([[2.], [5.], [1.]])
+    alpha = np.array([1., 0.5, 1.])
+    beta = np.array([1., 1., 0.5])
+    sequential, state = delta_sequence(keys, keys, values, alpha, beta)
+    chunked, boundary = delta_chunked(keys, keys, values, alpha, beta, 2)
+    np.testing.assert_allclose(sequential, chunked, rtol=0, atol=1e-14)
+    np.testing.assert_allclose(state, boundary, rtol=0, atol=1e-14)
+    return {"outputs": sequential.tolist(), "final_state": state.tolist(),
+            "chunked_outputs": chunked.tolist(), "chunk_size": 2}
+
+
 def schedule_example(tokens, schedule):
     schedule = tuple(schedule)
     stores = initial_stores(schedule)
@@ -77,6 +91,7 @@ def main():
     result = {
         "delta_update": delta_example(),
         "unit_key_negative_carry": negative_carry_example(),
+        "chunked_delta": chunk_example(),
         "schedules": {
             "all_delta": schedule_example(tokens, ("delta",) * 3),
             "hybrid": schedule_example(tokens, HYBRID),

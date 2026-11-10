@@ -51,6 +51,10 @@ python scripts/export_snippets.py --chapter ch15 --check
 python -m examples.ch15_hybrids.run_examples --output output/ch15.json
 ```
 
-All nine tests pass and the four exported listings match their canonical
+All 14 tests pass and the six exported listings match their canonical
 functions. The NumPy helpers isolate mixer updates and storage; they do not
 reproduce complete Jamba or Olmo Hybrid models or optimized inference kernels.
+
+The optional [pretrained inspection](../../examples/ch15_hybrids/PRETRAINED_FIGURES.md)
+is separate from these exercise solutions. It evaluates the published small
+Qwen3.5 hybrid with text inputs and preserves all ten exercise statements.

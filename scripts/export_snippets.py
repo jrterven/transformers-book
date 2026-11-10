@@ -108,7 +108,8 @@ CHAPTERS = {
     "ch15": {
         "sources": ("examples/ch15_hybrids/model.py",),
         "destination": "snippets/ch15_hybrids",
-        "expected": {"delta_step", "attention_token", "stack_step", "history_counts"},
+        "expected": {"delta_step", "delta_sequence", "delta_chunked",
+                     "attention_token", "stack_step", "history_counts"},
     },
     "ch16": {
         "sources": ("examples/ch16_adaptation/model.py",),

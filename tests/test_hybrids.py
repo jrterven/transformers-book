@@ -7,6 +7,8 @@ import numpy as np
 from examples.ch04_attention.attention import scaled_dot_product_attention
 from examples.ch15_hybrids.model import (
     attention_token,
+    delta_chunked,
+    delta_sequence,
     delta_step,
     history_counts,
     initial_stores,
@@ -128,6 +130,69 @@ class StackTests(unittest.TestCase):
             stack_step([1, 1], HYBRID, stores[:2])
         with self.assertRaisesRegex(ValueError, "match length"):
             attention_token([1, 0], [1, 0], [1, 0], (np.zeros((2, 2)), np.zeros((1, 2))))
+
+
+class ChunkTests(unittest.TestCase):
+    def test_hand_calculated_overlapping_writes_and_short_final_chunk(self):
+        k = np.array([[1., 0.], [0.6, 0.8], [0., 1.]])
+        v = np.array([[2.], [5.], [1.]])
+        for chunk_size in (1, 2, 3, 5):
+            y, state = delta_chunked(k, k, v, [1, .5, 1], [1, 1, .5], chunk_size)
+            np.testing.assert_allclose(y[:, 0], [2, 5, 2.26], rtol=0, atol=1e-14)
+            np.testing.assert_allclose(state, [[3.64, 2.26]], rtol=0, atol=1e-14)
+
+    def test_rectangular_state_against_independent_affine_matrix_update(self):
+        rng = np.random.default_rng(1501)
+        k = rng.normal(size=(11, 3))
+        k /= np.linalg.norm(k, axis=-1, keepdims=True)
+        q, v = rng.normal(size=(11, 3)), rng.normal(size=(11, 5))
+        a, b = rng.uniform(.1, 1, 11), rng.uniform(0, 2, 11)
+        a[4], b[6] = 0, 0
+        incoming = rng.normal(size=(5, 3))
+        state, expected = incoming.copy(), []
+        for t in range(len(k)):
+            transition = a[t] * (np.eye(3) - b[t] * np.outer(k[t], k[t]))
+            state = state @ transition + b[t] * np.outer(v[t], k[t])
+            expected.append(state @ q[t])
+        for chunk_size in (1, 2, 4, 11, 20):
+            y, last = delta_chunked(q, k, v, a, b, chunk_size, incoming)
+            np.testing.assert_allclose(y, expected, rtol=0, atol=1e-12)
+            np.testing.assert_allclose(last, state, rtol=0, atol=1e-12)
+        y, last = delta_sequence(q, k, v, a, b, incoming)
+        np.testing.assert_allclose(y, expected, rtol=0, atol=1e-12)
+        np.testing.assert_allclose(last, state, rtol=0, atol=1e-12)
+
+    def test_continuation_and_future_change(self):
+        rng = np.random.default_rng(1502)
+        q, k = rng.normal(size=(2, 9, 2))
+        k /= np.linalg.norm(k, axis=-1, keepdims=True)
+        v = rng.normal(size=(9, 3))
+        a, b = np.full(9, .8), np.full(9, 1.5)
+        y, final = delta_chunked(q, k, v, a, b, 4)
+        first, boundary = delta_chunked(q[:5], k[:5], v[:5], a[:5], b[:5], 3)
+        last, resumed = delta_chunked(q[5:], k[5:], v[5:], a[5:], b[5:], 2, boundary)
+        np.testing.assert_allclose(np.concatenate([first, last]), y, atol=1e-13, rtol=0)
+        np.testing.assert_allclose(resumed, final, atol=1e-13, rtol=0)
+        changed = v.copy()
+        changed[6] += 10
+        mutated, _ = delta_chunked(q, k, changed, a, b, 4)
+        np.testing.assert_array_equal(mutated[:6], y[:6])
+        self.assertGreater(np.max(np.abs(mutated[6:] - y[6:])), .01)
+
+    def test_nonunit_keys_do_not_silently_change_the_update(self):
+        q = k = np.array([[2., 0.], [0., .5]])
+        y, state = delta_chunked(q, k, [[4.], [1.]], [1., 1.], [.5, 1.], 2, [[1., 2.]])
+        np.testing.assert_array_equal(y, [[6.], [1.]])
+        np.testing.assert_array_equal(state, [[3., 2.]])
+
+    def test_sequence_axis_and_chunk_validation(self):
+        q = k = v = np.ones((3, 2))
+        with self.assertRaisesRegex(ValueError, 'time axis'):
+            delta_chunked(q, k[:2], v, np.ones(3), np.ones(3), 2)
+        with self.assertRaisesRegex(ValueError, 'chunk size'):
+            delta_chunked(q, k, v, np.ones(3), np.ones(3), 0)
+        with self.assertRaisesRegex(ValueError, 'state shape'):
+            delta_sequence(q, k, v, np.ones(3), np.ones(3), np.ones((2, 3)))
 
 
 if __name__ == "__main__":

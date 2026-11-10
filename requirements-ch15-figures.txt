@@ -1,0 +1,7 @@
+# Optional CPU reproduction of the published Chapter 15 hybrid observations.
+-r requirements.txt
+torch==2.15.0
+transformers==5.13.0
+huggingface-hub==1.33.0
+safetensors==0.8.0
+matplotlib==3.11.2
