@@ -1,0 +1,176 @@
+{
+  "criteria": "Complete and supported means that the response gives all facts requested by the question and cites supplied passages that support the answer. Appropriate abstention requires an explicit statement that the evidence is insufficient on a question whose answer is absent from the archive.",
+  "full_budget": {
+    "renew_literal": {
+      "status": "complete_supported",
+      "answer": "You can renew a current vehicle permit by taking your campus card, current permit number, and proof of vehicle registration to the Mobility Desk in Alder Hall [P01].",
+      "packed_ids": [
+        "P01",
+        "P03",
+        "P02",
+        "P04",
+        "P15",
+        "P05"
+      ],
+      "notes": "P01 gives the Mobility Desk in Alder Hall and the stated documents."
+    },
+    "renew_paraphrase": {
+      "status": "different_fact",
+      "answer": "You can extend your parking authorization through June 30 [P02].",
+      "packed_ids": [
+        "P02",
+        "P03",
+        "P01",
+        "P04",
+        "P11"
+      ],
+      "notes": "P02 supports the June 30 date. The question asks for the renewal location."
+    },
+    "replace_sticker": {
+      "status": "false_abstention",
+      "answer": "Insufficient evidence",
+      "packed_ids": [
+        "P03",
+        "P14",
+        "P04",
+        "P02",
+        "P01",
+        "P11"
+      ],
+      "notes": "P03 in the prompt states the Records Counter in Elm Hall."
+    },
+    "visitor_pass": {
+      "status": "identifier_only",
+      "answer": "[04]",
+      "packed_ids": [
+        "P04",
+        "P02",
+        "P03",
+        "P06",
+        "P15",
+        "P09"
+      ],
+      "notes": "The response contains [04] alone. P04 gives the kiosk on Oak Avenue."
+    },
+    "scanner_two_facts": {
+      "status": "unsupported",
+      "answer": "You can reserve the archive scanner at the Archives Studio in Fern Hall [P05] and collect the key from the Recreation Desk in Rowan Hall [P14].",
+      "packed_ids": [
+        "P06",
+        "P05",
+        "P09",
+        "P14",
+        "P11",
+        "P12"
+      ],
+      "notes": "P05 gives a reservation portal. P06 names the Media Desk in Fern Hall. P14 concerns returning a locker key."
+    },
+    "return_book": {
+      "status": "complete_supported",
+      "answer": "You can drop off a borrowed book after the library closes by using the outdoor return slot on Pine Walk [P07].",
+      "packed_ids": [
+        "P07",
+        "P08",
+        "P13",
+        "P14",
+        "P04",
+        "P02"
+      ],
+      "notes": "P07 states the outdoor return slot on Pine Walk when the library is closed."
+    },
+    "toner_two_facts": {
+      "status": "copied_format_example",
+      "answer": "The community music rehearsal takes place in Room 7 of Spruce Hall [P90].",
+      "packed_ids": [
+        "P09",
+        "P07",
+        "P10",
+        "P14",
+        "P11",
+        "P03"
+      ],
+      "notes": "P90 is the unrelated demonstration in the chat. P09 and P10 give the toner location and hours."
+    },
+    "pickup_parcel": {
+      "status": "complete_supported",
+      "answer": "After 6 p.m., campus mail puts parcels in the lockers beside the North Gate [P13].",
+      "packed_ids": [
+        "P13",
+        "P16",
+        "P04",
+        "P15",
+        "P02",
+        "P11"
+      ],
+      "notes": "P13 places after-hours parcels in the lockers beside the North Gate."
+    },
+    "greenhouse_sunday": {
+      "status": "appropriate_abstention",
+      "answer": "Insufficient evidence",
+      "packed_ids": [
+        "P12",
+        "P15",
+        "P10",
+        "P08",
+        "P07",
+        "P16"
+      ],
+      "notes": "P12 states Wednesday and Saturday tour times. The archive gives no Sunday opening time."
+    },
+    "permit_fee": {
+      "status": "appropriate_abstention",
+      "answer": "Insufficient evidence",
+      "packed_ids": [
+        "P01",
+        "P14",
+        "P03",
+        "P02",
+        "P15",
+        "P11"
+      ],
+      "notes": "The archive gives a renewal procedure and related notices. It gives no price."
+    }
+  },
+  "renewal_controls": {
+    "lexical_top_one": {
+      "status": "different_fact",
+      "answer": "You can extend your parking authorization through June 30 [P02].",
+      "packed_ids": [
+        "P02"
+      ],
+      "notes": "The only candidate P02 supports the stated date. P01 was outside the shortlist."
+    },
+    "tight_input": {
+      "status": "different_fact",
+      "answer": "You can extend your parking authorization through June 30 [P02].",
+      "packed_ids": [
+        "P02"
+      ],
+      "notes": "P01 was a candidate and exceeded the input cap. The only packed passage P02 supports the date."
+    },
+    "plain_evidence_only": {
+      "status": "identifier_only",
+      "answer": "[Passage ID: P01]",
+      "packed_ids": [
+        "P01"
+      ],
+      "notes": "The response names P01 without stating the location."
+    },
+    "evidence_only": {
+      "status": "complete_supported",
+      "answer": "You can extend your parking authorization by taking your campus card, current permit number, and proof of vehicle registration to the Mobility Desk in Alder Hall [P01].",
+      "packed_ids": [
+        "P01"
+      ],
+      "notes": "P01 supports the Mobility Desk in Alder Hall and the stated documents."
+    },
+    "location_edited": {
+      "status": "incomplete",
+      "answer": "You can extend your parking authorization by using the procedure for vehicle permit renewals [P01].",
+      "packed_ids": [
+        "P01"
+      ],
+      "notes": "The edited P01 states Juniper Hall. The answer refers to the procedure and gives no place."
+    }
+  }
+}

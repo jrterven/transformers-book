@@ -363,7 +363,11 @@ python -m examples.ch19_generation.run_examples --train-step
 
 [Chapter 20: Search, Retrieval, and Grounded Assistants](examples/ch20_retrieval/)
 ranks a local passage collection with BM25 and dense scores, reranks a
-candidate set, and checks what survives the context budget. The
+candidate set, and checks what survives the context budget. A measured run
+follows Qwen3 retrieval and reranking into Qwen3.5 answers and citations.
+[Measured RAG demonstrations and figures](examples/ch20_retrieval/PRETRAINED_FIGURES.md).
+
+The
 [chapter guide](examples/ch20_retrieval/README.md) explains the distinction
 between literal evidence, annotated recall, and answer support. The [12 exercises](examples/ch20_retrieval/EXERCISES.md)
 and [complete solutions](solutions/ch20_retrieval/README.md) add worked

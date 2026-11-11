@@ -1,0 +1,32 @@
+{
+  "passages": {
+    "P01": "Vehicle permit renewals. Use this procedure if your existing vehicle permit is about to expire. Bring your campus card, your current permit number, and proof of vehicle registration. The same instructions apply to all active student and employee permits. For in-person renewals, take these documents to the Mobility Desk in Alder Hall.",
+    "P02": "Parking authorization dates. You can extend a parking authorization through June 30. The campus directory lists service locations.",
+    "P03": "Replace a missing parking authorization sticker at the Records Counter in Elm Hall. That counter handles replacement stickers.",
+    "P04": "Visitors can pay for a same-day parking pass at the kiosk on Oak Avenue. This visitor pass expires at midnight.",
+    "P05": "The Archives Studio has a public flatbed scanner. Reserve a scanning session through the Library Services Portal at least one day ahead.",
+    "P06": "Collect the key for a reserved scanning session at the Media Desk in Fern Hall. Bring the reservation number.",
+    "P07": "Library book returns. Use the outdoor return slot on Pine Walk when the library building is closed.",
+    "P08": "The indoor library return counter is open weekdays from 9 a.m. to 5 p.m. The indoor counter is inside the main library entrance.",
+    "P09": "The campus collection point for empty toner cartridges is the Reuse Room in Birch Hall. Staff collect used cartridges for recycling.",
+    "P10": "Reuse Room schedule. The room opens on Tuesdays from 1 p.m. to 4 p.m. The Reuse Room is closed on Sundays.",
+    "P11": "The Printer Service Counter on the first floor of Maple Hall gives out new cartridges. Keep the box to exchange a defective cartridge.",
+    "P12": "Greenhouse tours run on Wednesdays at 10 a.m. and Saturdays at noon. Weekday volunteers meet at Elm Gate.",
+    "P13": "After 6 p.m., campus mail puts parcels in the lockers beside the North Gate. Bring your pickup code.",
+    "P14": "Return a university locker key to the Recreation Desk in Rowan Hall before the end of the term.",
+    "P15": "The bicycle cage opens at 7 a.m. A campus card unlocks the entrance on Willow Lane.",
+    "P16": "The campus shuttle leaves Cedar Circle every twenty minutes on weekdays. A route map is posted at the visitor kiosk."
+  },
+  "questions": [
+    {"id": "renew_literal", "text": "Where do I renew a current vehicle permit?", "evidence": ["P01"], "facts": ["Mobility Desk in Alder Hall"]},
+    {"id": "renew_paraphrase", "text": "Where can I extend my parking authorization?", "evidence": ["P01"], "facts": ["Mobility Desk in Alder Hall"]},
+    {"id": "replace_sticker", "text": "Where do I get a duplicate of a lost parking sticker?", "evidence": ["P03"], "facts": ["Records Counter in Elm Hall"]},
+    {"id": "visitor_pass", "text": "Where can visitors pay for a parking pass for today?", "evidence": ["P04"], "facts": ["kiosk on Oak Avenue"]},
+    {"id": "scanner_two_facts", "text": "How do I reserve the archive scanner, and where do I collect the key?", "evidence": ["P05", "P06"], "facts": ["reserve through the Library Services Portal at least one day ahead", "collect the key at the Media Desk in Fern Hall"]},
+    {"id": "return_book", "text": "Where can I drop off a borrowed book after the library closes?", "evidence": ["P07"], "facts": ["outdoor return slot on Pine Walk"]},
+    {"id": "toner_two_facts", "text": "Where do I drop off spent toner and when is that room open?", "evidence": ["P09", "P10"], "facts": ["Reuse Room in Birch Hall", "Tuesdays from 1 p.m. to 4 p.m."]},
+    {"id": "pickup_parcel", "text": "Where can I pick up an after-hours campus parcel?", "evidence": ["P13"], "facts": ["lockers beside the North Gate"]},
+    {"id": "greenhouse_sunday", "text": "What time does the greenhouse open on Sunday?", "evidence": [], "facts": []},
+    {"id": "permit_fee", "text": "How much does it cost to renew a campus vehicle permit?", "evidence": [], "facts": []}
+  ]
+}

@@ -59,3 +59,12 @@ Audit source authority, effective intervals and exact versions alongside the
 claim. A later upload need not govern a current question. Track evidence at
 retrieval and packing separately, and report false abstentions on answerable
 questions separately from unsupported answers on unanswerable questions.
+
+## Run the released models
+
+The measured example searches a fictional archive of 16 campus notices.
+It records lexical and Qwen3 embedding scores, rank fusion, Qwen3
+reranking, and the exact Qwen3.5 answers. The renewal probe follows the
+same question through a lexical miss, a tight prompt budget, and an
+input containing just the annotated evidence.
+[Reproduce the runs and figures](PRETRAINED_FIGURES.md).
