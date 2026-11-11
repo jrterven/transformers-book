@@ -1,0 +1,38 @@
+{
+  "facts": [
+    {"id": "delay", "label": "20-minute delay", "sentence": 1},
+    {"id": "cause", "label": "Fog caused the delay", "sentence": 5},
+    {"id": "boarding", "label": "South gate at 8:40 a.m.", "sentence": 6},
+    {"id": "sailings", "label": "All sailings went ahead", "sentence": 7}
+  ],
+  "outputs": [
+    {
+      "source": "full",
+      "cap": 18,
+      "sentences_available": 7,
+      "text": "The Lakeside ferry was delayed for 20 minutes. A crew shut the north gate for",
+      "conveyed": ["delay"]
+    },
+    {
+      "source": "full",
+      "cap": 72,
+      "sentences_available": 7,
+      "text": "The Lakeside ferry was delayed for 20 minutes on Tuesday. A crew shut the north gate for a routine ramp inspection. The operator said thick fog caused the delay.",
+      "conveyed": ["delay", "cause"]
+    },
+    {
+      "source": "lead",
+      "cap": 18,
+      "sentences_available": 4,
+      "text": "The Lakeside ferry was delayed for 20 minutes on Tuesday. A crew shut the north",
+      "conveyed": ["delay"]
+    },
+    {
+      "source": "lead",
+      "cap": 72,
+      "sentences_available": 4,
+      "text": "The Lakeside ferry was delayed for 20 minutes on Tuesday. A crew shut the north gate for a routine ramp inspection. Riders at the terminal waited under the covered walkway.",
+      "conveyed": ["delay"]
+    }
+  ]
+}

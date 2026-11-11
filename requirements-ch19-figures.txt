@@ -1,0 +1,7 @@
+# Optional pretrained translation, summarization, and figure reproduction.
+-r requirements-appendix-figures.txt
+torch==2.15.0
+sentencepiece==0.2.1
+sacremoses==0.1.1
+sacrebleu==2.5.1
+matplotlib==3.11.2

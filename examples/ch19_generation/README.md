@@ -67,3 +67,10 @@ The helper is one component, not a complete BLEU implementation. The ROUGE-L
 helper uses one candidate-reference pair, beta=1, and zero scores for empty
 inputs. Neither reference metric establishes whether a causal claim is
 supported by the source. The notebook makes these distinctions explicit.
+
+## Run the released models
+
+Follow OPUS-MT from English to Spanish, compare the scores of two decoding
+paths, and vary the source and output lengths for BART on a ferry notice.
+The saved record contains each output and its token scores.
+[Reproduce the runs and figures](PRETRAINED_FIGURES.md).

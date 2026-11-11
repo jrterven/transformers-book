@@ -343,7 +343,12 @@ python -m examples.ch18_understanding.run_examples --output output/ch18.json
 
 [Chapter 19: Translation and Summarization](examples/ch19_generation/)
 builds shifted text pairs, compares greedy and beam decoding, and computes
-clipped precision and subsequence overlap. The
+clipped precision and subsequence overlap. The chapter also follows an actual
+OPUS-MT translation token by token and tests how BART summaries respond to
+the available source text and output limits.
+[Pretrained demonstrations and figures](examples/ch19_generation/PRETRAINED_FIGURES.md).
+
+The
 [chapter guide](examples/ch19_generation/README.md) explains the completion
 flag and the optional encoder-decoder training step. The [12 exercises](examples/ch19_generation/EXERCISES.md)
 and [complete worked solutions](solutions/ch19_generation/README.md) add an
