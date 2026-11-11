@@ -329,8 +329,9 @@ python -m examples.ch17_evaluation.run_examples --output output/ch17.json
 [Chapter 18: Language Understanding](examples/ch18_understanding/) pools
 token features for a sentence classifier, aligns labels to first subwords,
 and checks exact entity spans. The
-[chapter guide](examples/ch18_understanding/README.md) explains the masks,
-word indices, and BIO decoding policy.
+[measured examples](examples/ch18_understanding/PRETRAINED_FIGURES.md)
+include trained probes on BERT, a released sentence-pair model, and a paired
+casing test with DistilBERT for named entity recognition.
 The [twelve exercises](examples/ch18_understanding/EXERCISES.md) have complete
 [worked solutions](solutions/ch18_understanding/README.md) in an executed
 notebook and both PDF editions, including micro aggregation and class-prevalence effects.

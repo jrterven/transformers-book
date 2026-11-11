@@ -8,6 +8,10 @@ python -m examples.ch18_understanding.run_examples --output output/ch18.json
 python -m unittest discover -s tests -p test_understanding.py -v
 ```
 
+The [measured experiments](PRETRAINED_FIGURES.md) use actual encoder
+representations, trained sentence heads, and logits from two released task
+checkpoints. The recorded outputs reproduce all six figures offline.
+
 ## Pool token features for a sentence prediction
 
 `sentence_logits` accepts contextual features `[time, width]` or
