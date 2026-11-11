@@ -8,6 +8,12 @@ python -m examples.ch17_evaluation.run_examples --output output/ch17.json
 python -m unittest discover -s tests -p test_evaluation.py -v
 ```
 
+The [measured examples](PRETRAINED_FIGURES.md) compare candidate choices,
+generated text, probabilities, and paired outcomes on the SmolLM2 run from
+Chapter 16. They also measure 200 new prompts in which the evidence position,
+context length, or requested code changes. The recorded outputs are enough
+to redraw all five figures without downloading weights.
+
 ## Split groups before scoring rows
 
 `split_by_group` shuffles the distinct source IDs with a fixed seed,

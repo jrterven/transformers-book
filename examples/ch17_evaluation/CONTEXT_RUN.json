@@ -1,0 +1,5827 @@
+{
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "weights_sha256": "80521b40281d6ce74e35c9282c22539e75aa0ac8578892b2a59955ef78d55da1",
+  "runtime_source_sha256": "31bf660a663259134324bc65da4e155951dc89c5ca46471d2325a9938e859e26",
+  "seed": 17,
+  "device": "cpu",
+  "threads": 4,
+  "dtype": "float32",
+  "attention_backend": "sdpa",
+  "header": "Read the delivery register. Each account has one code.\n\nExample:\nAccount 517: red\nAccount 631: blue\nCode for account 631: blue\n\nRegister",
+  "colors": [
+    "red",
+    "blue"
+  ],
+  "configured_context_tokens": 8192,
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "versions": {
+    "numpy": "2.5.4",
+    "torch": "2.15.0",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.1",
+    "safetensors": "0.6.2"
+  },
+  "observations": [
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "d5cb0185c8952b6bf08d3ad912287ba4d17877949c4bc52e23cbdef6e43a3695",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.89736557006836,
+        23.99799346923828
+      ],
+      "candidate_mass": 0.8424018279902725,
+      "p_blue": 0.5251357680265575,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "cbc385020a4c37504de0d29c7dcc5763da6b3526b766b388945705f87a231af5",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.720897674560547,
+        23.92389678955078
+      ],
+      "candidate_mass": 0.8352062163959266,
+      "p_blue": 0.5505762164891828,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "5010856a81d7a495b80c9353fb7915bc083cab459ce0fa882c50a51171dca5e7",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.726343154907227,
+        24.801090240478516
+      ],
+      "candidate_mass": 0.8729472021852407,
+      "p_blue": 0.5186780758043521,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "b589dc526b7f8be759f6463346fe5b88456a1d0a3663d893e2bd3b30a79b6e41",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.779830932617188,
+        24.95106315612793
+      ],
+      "candidate_mass": 0.8717739736909632,
+      "p_blue": 0.5427037656089371,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "83bc6f6925096ed2a884330faeff9a2bb6c614b788e9fadb8670eae2d4032592",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.43219757080078,
+        24.82475471496582
+      ],
+      "candidate_mass": 0.8809099382368355,
+      "p_blue": 0.5968981278364663,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "f0d73968ac5f731bea2dd63eb0f42adcd238920f9e1479bd04125f5ad354c936",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.04092025756836,
+        25.095638275146484
+      ],
+      "candidate_mass": 0.8883924170183043,
+      "p_blue": 0.7416798583625489,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "d34b20cd4c75439508552a466ee45a7dd62acae2d1b000d0921267b39db674bd",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.61409568786621,
+        24.679943084716797
+      ],
+      "candidate_mass": 0.8677156273992366,
+      "p_blue": 0.5164559037407379,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "6b0ae2c68fc61e3659fddff3d4f0cbce9437c64c9d3e5fc0927e9965974d7cd9",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.59925651550293,
+        24.776161193847656
+      ],
+      "candidate_mass": 0.8665923351289344,
+      "p_blue": 0.5441111902613872,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "7328a29ca09f59425bce82a01f1b1da59b0fac3c6e001acea3ff403722e64b34",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.490665435791016,
+        21.981836318969727
+      ],
+      "candidate_mass": 0.8057916090944772,
+      "p_blue": 0.3754680479673201,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "35f1270facd26cf9f5a8b4e5981c8823fee321d10151fcf4d0d9fb9b9681c20d",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.60678482055664,
+        22.20941925048828
+      ],
+      "candidate_mass": 0.8037901012219308,
+      "p_blue": 0.40194545422205474,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "aa63ccb4a94dd96f4e204fb45c8bf8a72f775c697d7b1982b72631f96db38544",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.23807716369629,
+        23.86246681213379
+      ],
+      "candidate_mass": 0.8632881555338641,
+      "p_blue": 0.40718606164235965,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "9ad027c85745c7ad01b65b5eac52e6d4390caaad96c9d4f827b67dadad70626b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.17423439025879,
+        23.868268966674805
+      ],
+      "candidate_mass": 0.8615664337394051,
+      "p_blue": 0.42409983744615054,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "ed47acc7a3da2330a6d4e35b4eddc808a0a29ca689528190a4fde997b60b28de",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.95557403564453,
+        22.703903198242188
+      ],
+      "candidate_mass": 0.8270207626525632,
+      "p_blue": 0.4374122918974476,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "3eda23e3d1c46eb5976201b0af44263c7e1b6a5ffe1e40fd1fd3605a67297faf",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.75110626220703,
+        23.009288787841797
+      ],
+      "candidate_mass": 0.8303601492985104,
+      "p_blue": 0.5641894639793802,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "a4eae227194bc4822d5f86bd39ab517b354da6a604720e43774333ead2ff5416",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.578617095947266,
+        23.20673370361328
+      ],
+      "candidate_mass": 0.8488999569869541,
+      "p_blue": 0.4080860060921804,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "96e754fab341a722ce82989406cb3cbc964921fb213814aaeaca79e569cb411d",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.555809020996094,
+        23.317768096923828
+      ],
+      "candidate_mass": 0.8480259008541757,
+      "p_blue": 0.44076919052859925,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 64,
+      "placement": "absent",
+      "record_index": 32,
+      "gold": null,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": null,
+      "evidence_end": null,
+      "distance": null,
+      "input_ids_sha256": "7019da326556add77ef05fc3504d1c0157bb13ee9e11eb6a17a914eb2073c31e",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.884654998779297,
+        22.474472045898438
+      ],
+      "candidate_mass": 0.7839929557685211,
+      "p_blue": 0.3988682532942875,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": null
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "1f212b754aad74af3c5fe1418a2bc02131cf32a81831006db3aa6cce26fb8087",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.354997634887695,
+        21.100181579589844
+      ],
+      "candidate_mass": 0.7374950753022094,
+      "p_blue": 0.43663846090588965,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "47a3fd92720f3919efaaf5d986542bc848756b84da41c7669adbebe379f2d0c1",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.303813934326172,
+        21.310047149658203
+      ],
+      "candidate_mass": 0.7334904271216798,
+      "p_blue": 0.5015582987876327,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "a58bdc5de8ee92ee4b0f90bd54f31408167e1eb0c895c26db89ae469aab36846",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.634729385375977,
+        21.348770141601562
+      ],
+      "candidate_mass": 0.7393127162136651,
+      "p_blue": 0.428993397621337,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "e19389219cb4a08c6b2a6fb79436104717797b92c2cafd83a109377a68fb87a3",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.634429931640625,
+        21.354843139648438
+      ],
+      "candidate_mass": 0.739170543722216,
+      "p_blue": 0.4305550824187524,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "52e4759085b9adcd556f7d0be5c4d8de0a558235ef4dbcc2dd8a1e9d1d9b1ab5",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.712791442871094,
+        21.492008209228516
+      ],
+      "candidate_mass": 0.7607282429536343,
+      "p_blue": 0.4450273150917695,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "556285cd08964b77718b48b048c39a48f741a2ce3dec1b761d512988ad05abb1",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.53555679321289,
+        21.56789207458496
+      ],
+      "candidate_mass": 0.7529927448282479,
+      "p_blue": 0.5080831160663677,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "187fb904fb9c06dd2a46560aff59fb9f3d73acc5fce8abb42f9c12b4a604d350",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.11666488647461,
+        21.70697593688965
+      ],
+      "candidate_mass": 0.7813646899641551,
+      "p_blue": 0.39898670755073473,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 1,
+      "key": 9000,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "4002d59d6943ec1ebc05209fc0543c4b0a754913548e0eb752b1daf876bb9f6d",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.130218505859375,
+        21.777132034301758
+      ],
+      "candidate_mass": 0.7827633152049618,
+      "p_blue": 0.41263416040617484,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "2dfa1ec979c06474554e092ffa6d71761087187cc8676ed1267ff12a54a50739",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.587020874023438,
+        23.475040435791016
+      ],
+      "candidate_mass": 0.8453585206572624,
+      "p_blue": 0.47203410780456917,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "c99d63e6e444644d541278692c8435018936a1a158af123459c703604c6a7acd",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.55863380432129,
+        23.532882690429688
+      ],
+      "candidate_mass": 0.8390560027217746,
+      "p_blue": 0.49356257725507746,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "1dfb89b6443623f45e8a965ea8ef7839f3ef82c4b2289688b69451dda4732a4a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.705286026000977,
+        24.496295928955078
+      ],
+      "candidate_mass": 0.8765725478071533,
+      "p_blue": 0.4479418161219141,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "8814604b052c8a08475f4ecd5f506e38e42f301e95a7fb6d68c3e0c7fe9e7e74",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.606609344482422,
+        24.420574188232422
+      ],
+      "candidate_mass": 0.8738429602279201,
+      "p_blue": 0.4536248838578532,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "845469c3700d43d4cd74ccbe8651251acb547fb7dda4be7ab10a58be6b239f17",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.972793579101562,
+        23.570995330810547
+      ],
+      "candidate_mass": 0.8686736464820638,
+      "p_blue": 0.40088036818834694,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "6fec9ad4e2707f78e10eaba24db8ff1ed6d5d1aa3f049d99dd38451a043a1749",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.795473098754883,
+        23.880287170410156
+      ],
+      "candidate_mass": 0.8714063022900109,
+      "p_blue": 0.5211908165542891,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "ec9df3b57d185d31d5cbcc0f1a9059265f7e78aa4c11295b31f43e0207ea2aa2",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.414405822753906,
+        24.19770050048828
+      ],
+      "candidate_mass": 0.874590347605303,
+      "p_blue": 0.4460346939356626,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "c78df3e1bc873c78c9a8c1fceaffc28be8d327c0f24821e603ebef335b414778",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.23820686340332,
+        24.006664276123047
+      ],
+      "candidate_mass": 0.87071734639076,
+      "p_blue": 0.4423715878111049,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "744ccc4bdfa92e89e9f17b4926af1dd1a5ed4d7a0e40fe3c0b63920fa797f86a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.08753776550293,
+        21.7141056060791
+      ],
+      "candidate_mass": 0.800105692207902,
+      "p_blue": 0.40771195190904047,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "508a91f4004ad99cc6db19ea25c6359d7927c38279992e8f4a5fd5b80d34619e",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.308788299560547,
+        22.00075912475586
+      ],
+      "candidate_mass": 0.8061968934096526,
+      "p_blue": 0.4235958676907845,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "313bd720e2e0099cd7e66199f7392804dce76718c24fc7598ff979aaf9fc9c37",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.343124389648438,
+        23.08652114868164
+      ],
+      "candidate_mass": 0.8431663926432273,
+      "p_blue": 0.43619888936906975,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "59679eaf9365a39c86913d9691516d08fed05ca20e66e8b0e6518ded58af4440",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.3309268951416,
+        23.09008026123047
+      ],
+      "candidate_mass": 0.8424934967976577,
+      "p_blue": 0.44007772167424547,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "72bd9b6ef6e972a4b169b7fa73a7cbff2a1434e8682c706da4469afcc11dc024",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.558624267578125,
+        22.063745498657227
+      ],
+      "candidate_mass": 0.8182970498309976,
+      "p_blue": 0.3787449297240115,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "3f77c4a7c407492a7aaa21e40016b3884cde1ce76dbed0c3562e89f9dcb0ea6d",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.38771629333496,
+        22.373092651367188
+      ],
+      "candidate_mass": 0.8190122214015474,
+      "p_blue": 0.4963441546583105,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "625d78d1b276c1331464c2a662c88b1a4f232ff5eac924974cb6e27353a70b46",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.141963958740234,
+        22.656185150146484
+      ],
+      "candidate_mass": 0.8401226546272198,
+      "p_blue": 0.38088847541249726,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "23251ecafa8c88bf3aa5ab08b7b03f3059e0604a56af0985c52ba9929f38e427",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.011470794677734,
+        22.620197296142578
+      ],
+      "candidate_mass": 0.8379009818627806,
+      "p_blue": 0.4034107694840124,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 64,
+      "placement": "absent",
+      "record_index": 32,
+      "gold": null,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": null,
+      "evidence_end": null,
+      "distance": null,
+      "input_ids_sha256": "afac8f81997b4526c1bbfd5ca9d7ef8885a1f1b17d42592fd44353f46e8d62d8",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.503780364990234,
+        22.245141983032227
+      ],
+      "candidate_mass": 0.7887008902691723,
+      "p_blue": 0.4356984534804297,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": null
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "8a57c2716d04e227ec0d8ff00e6e850ae447724bfe11682875ad292103d5b8c6",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.22400665283203,
+        21.132137298583984
+      ],
+      "candidate_mass": 0.7513565167873616,
+      "p_blue": 0.47704880146913414,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "a8a1d2386807ad852ee93cc4425e0bc591b21902a877637122d55d0c28f2c24a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.296794891357422,
+        21.299888610839844
+      ],
+      "candidate_mass": 0.7538256207256817,
+      "p_blue": 0.5007734292537248,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "1daf6c5d59c994346a433a4f2d4df7768b92e7bd49678296ccac2c0e167c2382",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.797618865966797,
+        21.74945068359375
+      ],
+      "candidate_mass": 0.7565353591139783,
+      "p_blue": 0.48796028216987497,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "90e5f3d3b691226c96ced259d49ce71edf1493c1872de1452b9359e542c2ed3d",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.77874755859375,
+        21.74197006225586
+      ],
+      "candidate_mass": 0.7561856405079002,
+      "p_blue": 0.490806662122493,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "686ad14248846513c61426116eaef8f7adba7407483e77112409c479e4f7c7de",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.27753448486328,
+        20.955345153808594
+      ],
+      "candidate_mass": 0.7569580951704319,
+      "p_blue": 0.4201422839545157,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "b6d2753ec6126ae475e8997b263c8c245a82948caf31bd10e13fa8c8c4abf589",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.181381225585938,
+        21.131620407104492
+      ],
+      "candidate_mass": 0.7626194081857394,
+      "p_blue": 0.4875623617172234,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "b2834ae918a37ed3b4d4157f36426b32ff9c1aad08c4ff56c75782c1d7174279",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.84247398376465,
+        21.622886657714844
+      ],
+      "candidate_mass": 0.7839126628517104,
+      "p_blue": 0.4453226973457881,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 2,
+      "key": 9001,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "2c72e41cf6ad542a39e314319c8b9be0ddcf2960ce2af61c89ac641c81e44b44",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.821786880493164,
+        21.62103271484375
+      ],
+      "candidate_mass": 0.7829488027513648,
+      "p_blue": 0.4499793412148841,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "47a3ca62942b4add94df3e45dfe9104a2fc8a8cdfb1a9e00787be6f7b371417b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.354507446289062,
+        23.281147003173828
+      ],
+      "candidate_mass": 0.8291042748332504,
+      "p_blue": 0.48166810996166953,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "50dc3f48f52c5c7346f74149a15dd681c37b2a2893642602ec2b5790e04ff315",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.147689819335938,
+        23.286144256591797
+      ],
+      "candidate_mass": 0.823224005260977,
+      "p_blue": 0.534558420928575,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "4210a176af3909c692cd79bc9c0434547ba50735fe49801692d3ab114e444a75",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.324359893798828,
+        24.186845779418945
+      ],
+      "candidate_mass": 0.8690825252459553,
+      "p_blue": 0.4656755443631376,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "d24af996d1f997b15af9de87627cbc282b874daaae0d2d1eae5b34c04e2bc310",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.313594818115234,
+        24.330265045166016
+      ],
+      "candidate_mass": 0.8657488738820307,
+      "p_blue": 0.5041674602529346,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "90e399d8f9be745c744d90b8594912505177f6fc64f4655f2cd19472e0341d84",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.79572868347168,
+        23.85582733154297
+      ],
+      "candidate_mass": 0.8670507173570668,
+      "p_blue": 0.5150201414182579,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "6ad5d98e2fd0e2d9997387ec99df772f5064eaf4cbfcec001a3219960f5c5dee",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.35282325744629,
+        24.176773071289062
+      ],
+      "candidate_mass": 0.8673264241014307,
+      "p_blue": 0.6950741321154965,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "977418099be9a467e5a690ce5033209cfbd6af2802cecff856ebe0201c262b2e",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.320655822753906,
+        24.247955322265625
+      ],
+      "candidate_mass": 0.8668305105400946,
+      "p_blue": 0.4818328758266382,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "f506dd5073963e81649708253cd41bfa13c44f4138804cba4c4ff2fb07de644e",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.32904052734375,
+        24.283443450927734
+      ],
+      "candidate_mass": 0.8647607335845198,
+      "p_blue": 0.48860270549753443,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "47a330547587147085a88acf07f6de293cbe0c67b47dca90e98ad55664867197",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.268516540527344,
+        21.747779846191406
+      ],
+      "candidate_mass": 0.7943423219695431,
+      "p_blue": 0.3726799860539964,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "602947a92218c0bab09566af95494a3bb2c1a76cb60d34261e9690f63f886b6a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.38852310180664,
+        21.997055053710938
+      ],
+      "candidate_mass": 0.7995748839568817,
+      "p_blue": 0.40336394801999126,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "e8a920b4a87c70ff129763706a9d837de06bf81308b690d6bdd5de23e483d155",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.427627563476562,
+        23.230300903320312
+      ],
+      "candidate_mass": 0.8491391606258397,
+      "p_blue": 0.4508277863741553,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "b2fdc436d17261539e36a962b9253253481737d684c1019a01799bc6575395c0",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.46185302734375,
+        23.265541076660156
+      ],
+      "candidate_mass": 0.8487399725535243,
+      "p_blue": 0.45107902278360784,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "3bef9e993fd0eb5336e31af0bb6b549b4568f08f90bd5e1a21b7d4e4443f12d1",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.810001373291016,
+        22.5050048828125
+      ],
+      "candidate_mass": 0.8299217324668569,
+      "p_blue": 0.42433650624570884,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "5c23586480597b5328fa35339bafb5c7295237ec3cc1b4b633ce5443131a99b8",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.417211532592773,
+        22.795074462890625
+      ],
+      "candidate_mass": 0.8227652739590874,
+      "p_blue": 0.5933575644798909,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "7743313a7a15a713a7ac63bd974614abd8f0ec6fa8cededdec03ab5d867daa3f",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.074230194091797,
+        22.626523971557617
+      ],
+      "candidate_mass": 0.8373061203536416,
+      "p_blue": 0.3899062703952064,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "bb34ebef53f7be7c65a0f5e6a4aa15fb1cf7635c8c201b75c4efd4fbc50e8ad5",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.06106948852539,
+        22.77105712890625
+      ],
+      "candidate_mass": 0.8365212670339313,
+      "p_blue": 0.428000841231772,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 64,
+      "placement": "absent",
+      "record_index": 32,
+      "gold": null,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": null,
+      "evidence_end": null,
+      "distance": null,
+      "input_ids_sha256": "2605e830c935a4fa147e683067da297fb738d0d69045d77ffb07a6c828e274e1",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.595928192138672,
+        22.362628936767578
+      ],
+      "candidate_mass": 0.789608350547455,
+      "p_blue": 0.44193829871767376,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": null
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "5ed66795e20fd488c7aebf7714a89c8f4de9a92163f892118d01e6156e808f1b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.060792922973633,
+        21.157608032226562
+      ],
+      "candidate_mass": 0.7358644064259289,
+      "p_blue": 0.5241848895162486,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "a44e971f774d098723f7c738191e14a71fad2375d08ec105482e37feafa50a2a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.03301239013672,
+        21.315326690673828
+      ],
+      "candidate_mass": 0.7371808858010583,
+      "p_blue": 0.5701135139896928,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "fc992b1c9a1ffd9fa87bb41baa5620a44044058650ad84b65eab31f94f44dc0c",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.507474899291992,
+        21.571250915527344
+      ],
+      "candidate_mass": 0.7430351020735223,
+      "p_blue": 0.5159386020620944,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "f82e5d0a3a8e0517cc4e68367233595b9e26e018df71b5e9ad9b35cb0155ae49",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.5071964263916,
+        21.579132080078125
+      ],
+      "candidate_mass": 0.7430454642039981,
+      "p_blue": 0.5179761622622074,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "ef71a9606f2e155b792485f3944cc847900bcc335367672eae615eaf8ac78a56",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.447603225708008,
+        21.418601989746094
+      ],
+      "candidate_mass": 0.7733868805542734,
+      "p_blue": 0.49275019913591916,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "b977ef85f896278a1b57c3aa05898ed3884b9bd15d3f0c1d12d4d84ee763955e",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.17792510986328,
+        21.608455657958984
+      ],
+      "candidate_mass": 0.7640900134172303,
+      "p_blue": 0.6060003512992258,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "cc950d5f8f0f81cb6627db7b0a160a4965129f22e41c9e104e3d6a9c9e744e15",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.840343475341797,
+        21.932109832763672
+      ],
+      "candidate_mass": 0.7842984905648325,
+      "p_blue": 0.5229255035179572,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 3,
+      "key": 9002,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "3fa5f9adb179420df4d122eb876ef6d3764f3c5097315448c5270778b5468fdc",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.816627502441406,
+        21.92003631591797
+      ],
+      "candidate_mass": 0.7833535056267564,
+      "p_blue": 0.5258291906851391,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "98cb18e64a513e76ae4c071bba19521d814bf5fa9cc5253137f8b30d90ecd681",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.752700805664062,
+        24.049110412597656
+      ],
+      "candidate_mass": 0.868394691811355,
+      "p_blue": 0.5735645816747987,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "f5ad506008a33aca0a39a544749c033aaa44e5ff91ddcd7b982d1489a6109b0c",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.54541778564453,
+        24.005537033081055
+      ],
+      "candidate_mass": 0.8646431552940296,
+      "p_blue": 0.6130424645646128,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "7686e70e2eceb6103a5e7b78478daeae625b415c2567eaa9890a48039e1417cf",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.363807678222656,
+        25.04603385925293
+      ],
+      "candidate_mass": 0.9014751656709012,
+      "p_blue": 0.6642353766941104,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "97ac89f7b6d1824db86026c7bcdfe0c680b8e4e037ed84736493ba8b76b85875",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.39930534362793,
+        24.83007049560547
+      ],
+      "candidate_mass": 0.8960842736844428,
+      "p_blue": 0.606056364849789,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "1d04c8bcf63b90b422201a766d2ed9bafdb2cfffff0f327786d86455c8dd4404",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.713520050048828,
+        23.675678253173828
+      ],
+      "candidate_mass": 0.878033671748519,
+      "p_blue": 0.4905406795678021,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "369c6a0eed47cfce4a0d0afc800698dd6eec840d28fbc865e8f2d371a07e9379",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.59415054321289,
+        23.75395965576172
+      ],
+      "candidate_mass": 0.8806487722555687,
+      "p_blue": 0.5398674664531334,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "3867266be2c0664d420a14bb1ffadcde7da47f992ce3d65a953e973c672e2036",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.452163696289062,
+        24.97821807861328
+      ],
+      "candidate_mass": 0.9019084464769437,
+      "p_blue": 0.6285623900923576,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "eff08e87c17736e3a447f3bb787d0c167e908f8412c62a04b34145be3a84c28d",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.466510772705078,
+        24.826669692993164
+      ],
+      "candidate_mass": 0.8976080761813734,
+      "p_blue": 0.5890789036345956,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "a33cd6033b98df6fdc4303d9bf06b58c2c3402401060802dc7f0f4a81e8c357f",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.594135284423828,
+        22.737144470214844
+      ],
+      "candidate_mass": 0.8552035621226022,
+      "p_blue": 0.5356914880877818,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "124e93635b4bf66076baa08924c50ef9be6c9e4a07a4bbed800229d62e97d94b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.580699920654297,
+        22.878379821777344
+      ],
+      "candidate_mass": 0.8545595868856468,
+      "p_blue": 0.5738752516370652,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "ff57839930f491fbeca565c6e9378bdbd4ceca216d575dfb871b2969fb01a99d",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.008403778076172,
+        24.089187622070312
+      ],
+      "candidate_mass": 0.8897035469581425,
+      "p_blue": 0.5201849848751752,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "9e448ebac095e320260ba6bfea08edaa33d859172b36adaa7d6c003dcf80d40a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.996482849121094,
+        24.0894775390625
+      ],
+      "candidate_mass": 0.8890066144182562,
+      "p_blue": 0.5232319323948081,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "93c9014e559cb457178825dd253e98268d7baa5ff8b011ebe25f80d43489c4e4",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.704620361328125,
+        22.42978858947754
+      ],
+      "candidate_mass": 0.8423939272687624,
+      "p_blue": 0.431721288808266,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "8ef6e75fa73baab48d9ee605ff14d59f6e518f77f51ad1662e2098bf9ed68e76",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.45954704284668,
+        22.59148597717285
+      ],
+      "candidate_mass": 0.8444549154728012,
+      "p_blue": 0.5329369672007332,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "52ba17111994005e1644309e2c1ab7aa620be1f1b6310a244ad84b0344b58e25",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.892105102539062,
+        23.2747745513916
+      ],
+      "candidate_mass": 0.8666570192614511,
+      "p_blue": 0.5945167798574547,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "4fb620cc64debc584648b8c9a5f999cbfd87fb9dd79b785808290c418dec7eb3",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.88279151916504,
+        23.159543991088867
+      ],
+      "candidate_mass": 0.8630792448049392,
+      "p_blue": 0.5687498700061128,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 64,
+      "placement": "absent",
+      "record_index": 32,
+      "gold": null,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": null,
+      "evidence_end": null,
+      "distance": null,
+      "input_ids_sha256": "aeaddec5ea68746590f114b6c34846a1af35ff9680d459bf43a00e734ad3f405",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.778949737548828,
+        22.805343627929688
+      ],
+      "candidate_mass": 0.8252201405973054,
+      "p_blue": 0.5065980895599719,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": null
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "0094afe079bd4a9e0e820c1c1f0e8448c6b2dde959e998dbf3fcad039f195867",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.970918655395508,
+        21.89828109741211
+      ],
+      "candidate_mass": 0.7875044886776661,
+      "p_blue": 0.48184859069700214,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "b6d3d52a6155aedd34a2c8614f7be7201fdf225c62d7f3457aacdf4dc1a254d8",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.897872924804688,
+        22.08175277709961
+      ],
+      "candidate_mass": 0.7808237014688075,
+      "p_blue": 0.545840872268656,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "86c2c5da19efb5433ebcad9d9b331d8725ee4cbd71654cc20c857b377a7b6d0d",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.195783615112305,
+        22.115385055541992
+      ],
+      "candidate_mass": 0.7953090011891574,
+      "p_blue": 0.4799111799996373,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "4196c91167a642f46b179a80f02248ccd7e5f316f638837012534aedd8716027",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.198837280273438,
+        22.122844696044922
+      ],
+      "candidate_mass": 0.7953611204443413,
+      "p_blue": 0.4810109913226877,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "9a2c1e39c20230864ad78adc92622dcc275115972ae1ca631d41924b1b84ed5b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.6041259765625,
+        21.272048950195312
+      ],
+      "candidate_mass": 0.7771430385177701,
+      "p_blue": 0.417735336635474,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "98be2ac11bb491dc6a7879ada3db5a57701b7eb39938c90b5b51464272a7ed49",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.58872413635254,
+        21.467308044433594
+      ],
+      "candidate_mass": 0.7878031418565528,
+      "p_blue": 0.46968321171209815,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "ed6b87be0393b1079766e67eef741ad181bbaf2e6e6ef23e41e2a7bb0670ce0f",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.98452377319336,
+        21.933712005615234
+      ],
+      "candidate_mass": 0.808670505586841,
+      "p_blue": 0.4872997904757835,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 4,
+      "key": 9003,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "4130722d31e4e7af0add5bb2e7be8f798d0ebe3675c575c42c201bc48d9ff848",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.024852752685547,
+        21.94190216064453
+      ],
+      "candidate_mass": 0.8086622650461301,
+      "p_blue": 0.4792742347821137,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "e792273f609b78a92bff6d7319d483f805793f115ea700c397ba9572bc4486ab",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.583301544189453,
+        23.33159637451172
+      ],
+      "candidate_mass": 0.8390983818795665,
+      "p_blue": 0.4374038433338721,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "7988159046d88e18aebed964518db4df42344d67a4196816e1775836bc8b7a1b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.584997177124023,
+        23.468551635742188
+      ],
+      "candidate_mass": 0.8416365292168465,
+      "p_blue": 0.4709214649197202,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "03331871323c9ae7603c83083e8a241d678cf6bb723111490cb3d716ba51541a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.23736000061035,
+        23.81049919128418
+      ],
+      "candidate_mass": 0.8681872458408921,
+      "p_blue": 0.3948761899202633,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "cc6603fc8111f4ececf2c853bef00e505f9fbb6f845ec71932d55002cd1c7df2",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.203502655029297,
+        23.830318450927734
+      ],
+      "candidate_mass": 0.8678190097866436,
+      "p_blue": 0.4077718302532514,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "0eab95594ed6ab3b10d5e1f7d6ca52c06a027d6334051438b039c228b3a4d0d5",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.028348922729492,
+        23.207225799560547
+      ],
+      "candidate_mass": 0.8559879637830565,
+      "p_blue": 0.30552530403910777,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "cd5f6ebb8935c4b7f86a18f4c3e07eceb1b3420455c2e752d59150ef34395716",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.897506713867188,
+        23.76186752319336
+      ],
+      "candidate_mass": 0.8602284619071926,
+      "p_blue": 0.4661420962026736,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "a84da561e54e0a12bc09b70866661a5e08c68bbc21bc81f5b5a882ac7a9c7a31",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.219913482666016,
+        23.765892028808594
+      ],
+      "candidate_mass": 0.8695938068340123,
+      "p_blue": 0.38840505587696883,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "f7c062b6022fd09a165a15ad92d485dbf8cafa66d9a24d46dedfb9c354d51068",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.202289581298828,
+        23.84357261657715
+      ],
+      "candidate_mass": 0.8697544112087725,
+      "p_blue": 0.41127018804552057,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "d788a0a6a465e09b777e5fdcd54b9d43aa9ebd0919582d9c3e7a7fdba3191430",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.784015655517578,
+        22.246686935424805
+      ],
+      "candidate_mass": 0.8344595306655664,
+      "p_blue": 0.36880920856183685,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "4cd60362eaec744b665f0260502a3e755026dd3dc417fca6c5e169b2d479685a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.83029556274414,
+        22.354793548583984
+      ],
+      "candidate_mass": 0.8385004647816433,
+      "p_blue": 0.3833148201286752,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "d756eae810fa1f6bd5492ac1732168021e838480025081454221805fe79699f1",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.885852813720703,
+        23.509693145751953
+      ],
+      "candidate_mass": 0.879938340088626,
+      "p_blue": 0.4070534713503096,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "238c5518a950011cbe628ac473229096006c3995145499ad70fb76c8a3700625",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.897483825683594,
+        23.542762756347656
+      ],
+      "candidate_mass": 0.8786417453311217,
+      "p_blue": 0.4122380441598241,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "b5aa7501a2271d453a29b8bed0d1236af5fd27545b030e467ec04c9d9faec138",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.20713996887207,
+        22.432804107666016
+      ],
+      "candidate_mass": 0.8464275709788347,
+      "p_blue": 0.31554191962139083,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "41a85da397d51384eb2fca0acd20c60f5ef2112f87ec4866b0388d87dc6bded8",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.091915130615234,
+        22.77454376220703
+      ],
+      "candidate_mass": 0.8479523367252144,
+      "p_blue": 0.42131649875016436,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "dd052b8df802b0cf43013df19548311326e7fd344f461ff0a821f99d3351ae77",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.55225372314453,
+        22.97480010986328
+      ],
+      "candidate_mass": 0.8650040631583198,
+      "p_blue": 0.3595187274454085,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "c581487f69ed1249ad0af046e2846f4e331ef40809a1865d7a1342724f8e990c",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.527856826782227,
+        23.044902801513672
+      ],
+      "candidate_mass": 0.8646537345980996,
+      "p_blue": 0.38155481823164017,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 64,
+      "placement": "absent",
+      "record_index": 32,
+      "gold": null,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": null,
+      "evidence_end": null,
+      "distance": null,
+      "input_ids_sha256": "7852dcea1b39aec79f63e924fada8d61f5e4f40798252320afcd8b505b0dc456",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.631629943847656,
+        22.214405059814453
+      ],
+      "candidate_mass": 0.8047685437921683,
+      "p_blue": 0.3971810013443259,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": null
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "30cf2144b7b814de88545e5a22e25645bf54f0bcc4bc771b2097045e111a5e9a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.844158172607422,
+        21.560794830322266
+      ],
+      "candidate_mass": 0.7676662399143843,
+      "p_blue": 0.4296294014953639,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "7e41cd215c12c5bad56ade91145acf84f9987b0b78521b59bad9bcf2091a9290",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.81334686279297,
+        21.625259399414062
+      ],
+      "candidate_mass": 0.7691441312571237,
+      "p_blue": 0.4531162694592176,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "fd91527eb43f80d5ed8b41edff150e10d85b467c0b814f923b0f4ddeb90d35c6",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.49154281616211,
+        22.230968475341797
+      ],
+      "candidate_mass": 0.7846611199258169,
+      "p_blue": 0.4352225277467736,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "9ef1de3290693c8f50e4eb905ce4e1d3a2209e70ed9f7bcccf81206d005de749",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.493520736694336,
+        22.243473052978516
+      ],
+      "candidate_mass": 0.7844669005372493,
+      "p_blue": 0.43781176256134585,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "2867b1c14ce096fcbfa311ecb284cd7427f26cd60a4fe075d0f9ab27734bf643",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.90201187133789,
+        21.427200317382812
+      ],
+      "candidate_mass": 0.7768432112409644,
+      "p_blue": 0.38347804741068675,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "89b08bc82f2fda18a93ace734ffade3bf196df450d0324606166955641b2a446",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.750978469848633,
+        21.61704444885254
+      ],
+      "candidate_mass": 0.7806257167093567,
+      "p_blue": 0.46656645828487614,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "b4f2db2bdfd6ac83d462ff2691f268bcc769795b330079e8788a92dbd06b07f1",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.444372177124023,
+        22.09504508972168
+      ],
+      "candidate_mass": 0.8090712462271828,
+      "p_blue": 0.4135456101401688,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 5,
+      "key": 9004,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "8d927d3655d50c4bb8bbd869852b5a61506afde622acb03e073f01a14d3e1f21",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.496440887451172,
+        22.178325653076172
+      ],
+      "candidate_mass": 0.8088213054958953,
+      "p_blue": 0.42113514822492437,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "719e76e7cea1913d981226579cf5e824f34b672ca5664920515e5688e6970921",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.209156036376953,
+        23.143207550048828
+      ],
+      "candidate_mass": 0.8294935510270306,
+      "p_blue": 0.48351885130659805,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "a51a35d6c325faecfee19dc27b376a27135528da55b87e7b86e59959783d19d2",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.10914421081543,
+        23.20244598388672
+      ],
+      "candidate_mass": 0.8297589136451458,
+      "p_blue": 0.5233085368904394,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "a90298fbd72ad101ff90dd23637f7b5e8213c5d45605197a898efb7d13009162",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.778610229492188,
+        23.73571014404297
+      ],
+      "candidate_mass": 0.8601156500982536,
+      "p_blue": 0.48927662321129217,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "857c5bd5ed1883f2b70f9e0a47a2e2e9cde9df3415c842623503e7dc1f74b06f",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.751083374023438,
+        23.71526527404785
+      ],
+      "candidate_mass": 0.8582086296353836,
+      "p_blue": 0.4910464322237185,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "6e3ebd8c8215e2f2fb2a97b11df0d3f025333137c56d782ee210d5154f081a76",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.466094970703125,
+        23.33997917175293
+      ],
+      "candidate_mass": 0.8544273959550343,
+      "p_blue": 0.4685127734093694,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "f1029ff125c7a2ea9d624f7702b5a28a12829c4269f15a17ae74838e0d716782",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.333412170410156,
+        23.5515079498291
+      ],
+      "candidate_mass": 0.8610309255991911,
+      "p_blue": 0.5543088451545999,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "4cf0a550ef55d58111ec239ad371c27d1b49053183f16b3aaf10a70e553faab7",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.79403305053711,
+        23.72380828857422
+      ],
+      "candidate_mass": 0.8629438211455913,
+      "p_blue": 0.48245102084095465,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "eeb823c083fba3dd080701ac17993a724464ea7c410f8d33f7b72109138b7e3e",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.803699493408203,
+        23.76837158203125
+      ],
+      "candidate_mass": 0.8624522061988869,
+      "p_blue": 0.4911689406119618,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "b993cf88955e5f90c4125989818c12830f5de4754b872621f960e32a1d3314c3",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.114116668701172,
+        21.76922035217285
+      ],
+      "candidate_mass": 0.8068891307038194,
+      "p_blue": 0.41462059570020204,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "ade798aaf352522f7d46670f68ee1c713e600f4a4a39fd10d372850e8070e948",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.130882263183594,
+        21.890438079833984
+      ],
+      "candidate_mass": 0.8060990758612838,
+      "p_blue": 0.44017689163388946,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "338f8408c75b27c989faa7b6097c74b92287fe020ab512520c6faea5ffe6d25f",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.372873306274414,
+        23.08199691772461
+      ],
+      "candidate_mass": 0.853062836243015,
+      "p_blue": 0.4277893261917903,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "e7fc4f54f8e88092565f6184f23fdd1bfbb41dddf0d2d8b59ceb516942e3a717",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.379093170166016,
+        23.14000129699707
+      ],
+      "candidate_mass": 0.8525261268159687,
+      "p_blue": 0.44051015643570735,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "908fde0552a9d8c2128dc77e8c17783feb2b2be09e43320af747fef35b556230",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.778667449951172,
+        22.619422912597656
+      ],
+      "candidate_mass": 0.8375706340710294,
+      "p_blue": 0.46027278315451603,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "5e9b877d653dbbcb657177e778f1306a05ee3c85277a79451eace663c803cfe6",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.604284286499023,
+        22.787372589111328
+      ],
+      "candidate_mass": 0.8397302254271495,
+      "p_blue": 0.545644641089016,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "baed42666d9b903d8e950f7427c432acfbf89b8ed6ef95b129aa3f699af4d923",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.997554779052734,
+        22.870405197143555
+      ],
+      "candidate_mass": 0.8498409769236123,
+      "p_blue": 0.46825536101096743,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "77cac4cd2ae3c39ba0781b30288f94877421625c095067c76493b77fecf3db2a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.135555267333984,
+        23.08037567138672
+      ],
+      "candidate_mass": 0.8531624307054164,
+      "p_blue": 0.48620860015945994,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 64,
+      "placement": "absent",
+      "record_index": 32,
+      "gold": null,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": null,
+      "evidence_end": null,
+      "distance": null,
+      "input_ids_sha256": "12fa4c9b9177d739a3c2a400417d24e4cf2b4d3d5a0119193a85d38736b583e7",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.556446075439453,
+        22.325763702392578
+      ],
+      "candidate_mass": 0.8032647140161522,
+      "p_blue": 0.44258379507545004,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": null
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "e47251712f7edd4fbe76d6eec84d7553f3e225e8331aa741d408b04988bc9ed4",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.573436737060547,
+        21.37784194946289
+      ],
+      "candidate_mass": 0.7630976346462666,
+      "p_blue": 0.45125660341860685,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "cab6cfc976423797052a1430620f518ce01e5829b1bac85094f1c587ee00ce18",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.543914794921875,
+        21.527751922607422
+      ],
+      "candidate_mass": 0.7613570691020259,
+      "p_blue": 0.49595936988499656,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "21da6f3598c105916f9884b57ddd7b515ab4c67be56f03aa91bb60675ac3b16e",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.01663589477539,
+        21.733795166015625
+      ],
+      "candidate_mass": 0.7708537722447419,
+      "p_blue": 0.4297574715905601,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "5c134ec2b7f38b2cef34c44352eff53a6df012d4bbef2f701d05431108d5416f",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.038427352905273,
+        21.773910522460938
+      ],
+      "candidate_mass": 0.7708953183714542,
+      "p_blue": 0.43425369718313916,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "0d383a077c0275a67a4b6b5f9009b095b3cb9332c7f101d102f75df40f9144db",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.696243286132812,
+        21.351154327392578
+      ],
+      "candidate_mass": 0.774535858669215,
+      "p_blue": 0.414573840209277,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "e6611f19b493071a758e33ec46c68a032e2a1ce60491128c301e87898af71a18",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.59566879272461,
+        21.454153060913086
+      ],
+      "candidate_mass": 0.7773043380885454,
+      "p_blue": 0.4646799926546811,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "ee8e056808661104d1bf96095d27687acbd0e5cc9e751bb60ed7c9ab2e08ff75",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.97417449951172,
+        21.640504837036133
+      ],
+      "candidate_mass": 0.7979550548426393,
+      "p_blue": 0.41734800656212145,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 6,
+      "key": 9005,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "bb7c57325bc723bdffc756583fe6de3096e81df10a7b300c978d13c9402a831f",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.96971321105957,
+        21.631507873535156
+      ],
+      "candidate_mass": 0.7987269968612283,
+      "p_blue": 0.4162454877980175,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "2eca92cca2eb24e93d0802510a2b68f58fc1be3b5bb23630cd3877336d821da0",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.773822784423828,
+        24.134445190429688
+      ],
+      "candidate_mass": 0.8441300277125432,
+      "p_blue": 0.5891910926472633,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "6576bf4725f171e40c5c12126fbb90b976c1231776c4a9eca1c4efdaf0e5f60a",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.639266967773438,
+        24.101490020751953
+      ],
+      "candidate_mass": 0.8516694382836977,
+      "p_blue": 0.6135414134194194,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "bc0a910c6d747ca6d085158f12daa0c954c8546c6d28ea27f7859e66dedccb61",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.620670318603516,
+        25.26324462890625
+      ],
+      "candidate_mass": 0.8875840669399842,
+      "p_blue": 0.6553351549092534,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "bdfbaf7c60d196029edfcdd9e5d25771491e086678d5c2fca94aada98dcb512b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.543256759643555,
+        25.19452667236328
+      ],
+      "candidate_mass": 0.8871672347872905,
+      "p_blue": 0.6572965775158744,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "916e35834d2406a3228a1cf600bb2623e11d0ee1e8e8810c6a07a6a0dbee6e17",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.714679718017578,
+        24.020748138427734
+      ],
+      "candidate_mass": 0.8670518571198325,
+      "p_blue": 0.5759253182160287,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "8a17dcb4e6c170c63ba63b2f9c0463f772e5bd77827bf32c9fbc914cc043b45b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.215160369873047,
+        24.5615234375
+      ],
+      "candidate_mass": 0.881295499689035,
+      "p_blue": 0.7935343981864713,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "9a903184426f1b78e4279e68418bfefa19c01a3234b33ddd967fc250c6745694",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.343950271606445,
+        25.001169204711914
+      ],
+      "candidate_mass": 0.8827731940505683,
+      "p_blue": 0.6586353839303338,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "e6e16efe57617d7b72a9a734630a4e58a344526cc240418e96c402a359866764",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.29073715209961,
+        24.991426467895508
+      ],
+      "candidate_mass": 0.8841734235912937,
+      "p_blue": 0.6683405846315955,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "9786b6e2eb91fb868a3e61d125b01066013d0a06303a1ae5846ef0816f50c605",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.856346130371094,
+        22.679277420043945
+      ],
+      "candidate_mass": 0.8309604718842292,
+      "p_blue": 0.4558481212104631,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "9fa6031a3ff73faa1e080a10bf421f62e4a691798f96bd07c375301a53eac461",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.851261138916016,
+        22.787723541259766
+      ],
+      "candidate_mass": 0.8350094209438408,
+      "p_blue": 0.48412094224104496,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "b45721ba151fcf2c292bb4e022f2caf3a44fdd8c5c5d7020013c21b1cfc8944c",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.829133987426758,
+        23.8282527923584
+      ],
+      "candidate_mass": 0.8624117791597685,
+      "p_blue": 0.4997797012471654,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "01db6faa7990812eba966cb6bc2fe69876137893b139f321b77f266170374592",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.802030563354492,
+        23.810449600219727
+      ],
+      "candidate_mass": 0.8636864981451587,
+      "p_blue": 0.5021047467842538,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "e5405243bfb4138f3efaa875a0a67bbcc30309d35e44b178aabca232e64f29d3",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.74048614501953,
+        22.720500946044922
+      ],
+      "candidate_mass": 0.8288882986585244,
+      "p_blue": 0.49500386654662076,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "8e26ac6f4131b97d6cea224a3c43f2e42ca02ef442b209f3a84cdd7a04356ca0",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.449787139892578,
+        23.03534698486328
+      ],
+      "candidate_mass": 0.8290688611906029,
+      "p_blue": 0.6423457206981942,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "2ab6b8a53fba429eaaec56b1befc90e295fb9031030c5d4d957d59cf14f2473b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.14114761352539,
+        23.18077850341797
+      ],
+      "candidate_mass": 0.847574251093294,
+      "p_blue": 0.509906425914902,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": false
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "21bb7bc1f36e1f86a415d349b8e3a5af19baae6cc2dda4037acc9e4478ef4fad",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.085983276367188,
+        23.0482234954834
+      ],
+      "candidate_mass": 0.8503870679565815,
+      "p_blue": 0.4905611762428071,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 64,
+      "placement": "absent",
+      "record_index": 32,
+      "gold": null,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": null,
+      "evidence_end": null,
+      "distance": null,
+      "input_ids_sha256": "18619d6500a3fd010cf27cdadb284e0159273e8d4c40aa96756b437ffafaed6b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.10796356201172,
+        23.007780075073242
+      ],
+      "candidate_mass": 0.8170852845385315,
+      "p_blue": 0.4749750554847647,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": null
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "68f110ae142c9c2e35392ddd59cb76df12e09b51c681315add9e7c829601b462",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.56060028076172,
+        21.426353454589844
+      ],
+      "candidate_mass": 0.7570667179503567,
+      "p_blue": 0.46648860745990484,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "13695bda33894c6450051547b0dca39379d68b227bb8329712ee07ce78c9e184",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.51327896118164,
+        21.561649322509766
+      ],
+      "candidate_mass": 0.7597294254189184,
+      "p_blue": 0.5120902331389481,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "93019791414b408568b1d2f15bc8c13424cb532250a43b357de6ef095d540470",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.401416778564453,
+        22.172842025756836
+      ],
+      "candidate_mass": 0.7901493170060837,
+      "p_blue": 0.44310381484689704,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "db63fb32b6aa852827c1bccea271a031248e3a1c08f335826d085470084840f7",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.42145538330078,
+        22.195810317993164
+      ],
+      "candidate_mass": 0.7907456590136157,
+      "p_blue": 0.4438268728161177,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "9235a25cc5df3535dae4d31bfdde7dc6e7961056d6fff01cb4c3d58fb05230d8",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.332481384277344,
+        21.219993591308594
+      ],
+      "candidate_mass": 0.7595296312992265,
+      "p_blue": 0.47190766771484793,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "2ff95372b8591421d416f1d38d1c2e4fdb34d5fc6b53f3911e4cce7981657222",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.093965530395508,
+        21.33545684814453
+      ],
+      "candidate_mass": 0.7473901173601115,
+      "p_blue": 0.5600811282902026,
+      "choice": 1,
+      "greedy_token": 4461,
+      "greedy_text": " blue",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "f034f48b15cf736d49e9a8a37a847f8b70a47dac6c1ac2bd02ffe90232354cdc",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.93445587158203,
+        21.794921875
+      ],
+      "candidate_mass": 0.7912006367542288,
+      "p_blue": 0.4651729885874291,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 7,
+      "key": 9006,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "575675d1888bcbcf448e4d0c219ad4e6d2c38472a0f0d864192484653cc3b29e",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.932861328125,
+        21.816593170166016
+      ],
+      "candidate_mass": 0.7922013305714586,
+      "p_blue": 0.4709656610147427,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "300659186b9bad71fabb2ff6ee35566b07fd963352222805e838806930ff28d7",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.317913055419922,
+        22.761463165283203
+      ],
+      "candidate_mass": 0.8205993874303765,
+      "p_blue": 0.3643692838849302,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 16,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 126,
+      "input_ids_sha256": "e2cb89df6fc39cf1031e0d24050b57328030fef07cb0f5b1b8702b876057adaa",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.074769973754883,
+        22.72728729248047
+      ],
+      "candidate_mass": 0.8111537353544951,
+      "p_blue": 0.4139929971261117,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "5716fe60b158069176cb7f22e1d398eb03ca39ecaa976a33cee2046d36b09fde",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.252532958984375,
+        23.4407958984375
+      ],
+      "candidate_mass": 0.8622132738474633,
+      "p_blue": 0.30752046220049756,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 16,
+      "placement": "middle",
+      "record_index": 8,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 116,
+      "evidence_end": 125,
+      "distance": 63,
+      "input_ids_sha256": "000096b67458bf37f295ac09e516fa7aae7cbeb8e1dfd82127e5a7c7f914263f",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.142932891845703,
+        23.31698226928711
+      ],
+      "candidate_mass": 0.8584896544900431,
+      "p_blue": 0.3045019699057426,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "a4e22d547760f7b8ae7c2193eabd23b691ce6802455c3b9c805a32bf938d0eb9",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.548076629638672,
+        22.373016357421875
+      ],
+      "candidate_mass": 0.8444167466290138,
+      "p_blue": 0.2359415345686233,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 16,
+      "placement": "late",
+      "record_index": 14,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 170,
+      "evidence_end": 179,
+      "distance": 9,
+      "input_ids_sha256": "e54ae3c9e4d91b8e81311fe19df9b9fb3e3a4706514140610a27bbfcf6c74170",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.66461181640625,
+        23.604644775390625
+      ],
+      "candidate_mass": 0.8627335380185858,
+      "p_blue": 0.48501273071942735,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 0,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "4307f00c8c5682b996dfd305279cec37e9aa0a5e80ff706801894d729ff74659",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.19695281982422,
+        23.35989761352539
+      ],
+      "candidate_mass": 0.8637652172577547,
+      "p_blue": 0.3021553538237895,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 16,
+      "placement": "fixed suffix",
+      "record_index": 7,
+      "gold": 1,
+      "context_tokens": 144,
+      "input_tokens": 198,
+      "question_start": 188,
+      "evidence_start": 107,
+      "evidence_end": 116,
+      "distance": 72,
+      "input_ids_sha256": "0eae51890c6a23c0c4b2511ae98f487be8414c0e43a2aa8c6070c02961e2ba62",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.953699111938477,
+        23.0411434173584
+      ],
+      "candidate_mass": 0.8567970881017427,
+      "p_blue": 0.2864771479047215,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "f8417a173173f6b13cb6fe229b0ca20dd833bef2668b9bd0742140ce60cf4bb7",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.75357437133789,
+        21.991910934448242
+      ],
+      "candidate_mass": 0.8193930603698127,
+      "p_blue": 0.3182852250571666,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 64,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 558,
+      "input_ids_sha256": "c8db16b05ad2ed270ab1e2c1fd25f3a7d89a70e2accb49e63e3f29f8c44ddb2b",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.840408325195312,
+        22.219532012939453
+      ],
+      "candidate_mass": 0.8213011377115971,
+      "p_blue": 0.34958217413014675,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "d4bde9601a9eae75108e9dc32ed4194dcbe65af44eb05d7bdb0a19f7af253b7c",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.11796760559082,
+        23.573423385620117
+      ],
+      "candidate_mass": 0.8711317177093396,
+      "p_blue": 0.36713111550764815,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 64,
+      "placement": "middle",
+      "record_index": 32,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 332,
+      "evidence_end": 341,
+      "distance": 279,
+      "input_ids_sha256": "a9077a7417c4ef64d137d1d06edbc17ef32e67f92cc37fc6ed1e3284f3ae8f86",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        24.13367462158203,
+        23.605558395385742
+      ],
+      "candidate_mass": 0.8710674948566683,
+      "p_blue": 0.3709563554285558,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "ef3ce57292f6208dcd0a0f349e05e0f3fba8ee4397c86ec62afbb4e1b6bb1f41",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.529436111450195,
+        21.652324676513672
+      ],
+      "candidate_mass": 0.822263508959949,
+      "p_blue": 0.29377671795772226,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 64,
+      "placement": "late",
+      "record_index": 62,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 602,
+      "evidence_end": 611,
+      "distance": 9,
+      "input_ids_sha256": "d6e7ee952720480f7f4cb0eed7a9472db0bd9c3a07a00bc161d2c083a292760f",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.564895629882812,
+        22.30821990966797
+      ],
+      "candidate_mass": 0.8267790969621472,
+      "p_blue": 0.4361810646721938,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 0,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "afb8fe8f2279b2f0b8b15158ba1b77c3e1482b96a27dafcf1609cc1c86bc5408",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.28388214111328,
+        22.557628631591797
+      ],
+      "candidate_mass": 0.8543471202016397,
+      "p_blue": 0.32601740678050956,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 64,
+      "placement": "fixed suffix",
+      "record_index": 55,
+      "gold": 1,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": 539,
+      "evidence_end": 548,
+      "distance": 72,
+      "input_ids_sha256": "ea0be7b1049c7a94dbb62f18751b5e85d9fdba6691d32a2f4772c6ab0c6d0396",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        23.285966873168945,
+        22.569507598876953
+      ],
+      "candidate_mass": 0.8551423908147326,
+      "p_blue": 0.32817315086037,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 64,
+      "placement": "absent",
+      "record_index": 32,
+      "gold": null,
+      "context_tokens": 576,
+      "input_tokens": 630,
+      "question_start": 620,
+      "evidence_start": null,
+      "evidence_end": null,
+      "distance": null,
+      "input_ids_sha256": "44a46a711747b22b522195f48b0696f8b8c2cce6223dc7bc323fce82c36200d1",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.83584213256836,
+        22.258743286132812
+      ],
+      "candidate_mass": 0.8006892506804582,
+      "p_blue": 0.35960042190805314,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": null
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "4cf3e02f37809277219d80c30d7bf9dd4736ed25f41be6e92e6999980d6825ab",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.87586212158203,
+        21.475055694580078
+      ],
+      "candidate_mass": 0.7508188627837098,
+      "p_blue": 0.40111860256363946,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 256,
+      "placement": "early",
+      "record_index": 1,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 53,
+      "evidence_end": 62,
+      "distance": 2286,
+      "input_ids_sha256": "c4ecbd2f6ec0d968087e8fa2aa4338182b4f0f1737bdfd6bdb6e722c4bb956fa",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.819915771484375,
+        21.736309051513672
+      ],
+      "candidate_mass": 0.7445009652507376,
+      "p_blue": 0.4791104868769045,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "ffe911bfe273dc772e99c7ca5730a9b346c8e8c19e156d50eb3e9d630670c581",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.612895965576172,
+        22.32447052001953
+      ],
+      "candidate_mass": 0.7791674016507057,
+      "p_blue": 0.4283893876895405,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 256,
+      "placement": "middle",
+      "record_index": 128,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 1196,
+      "evidence_end": 1205,
+      "distance": 1143,
+      "input_ids_sha256": "de768fdd0830e48e567b8cff2effe2145df420c6497cbb2bd57923c3a4931312",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.62172508239746,
+        22.347919464111328
+      ],
+      "candidate_mass": 0.7792748223049083,
+      "p_blue": 0.43197306090769905,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "370b79c7f5a33f9d41e0a675c539675fd85306a4f9edad39565d0fe2d7eb2829",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.496665954589844,
+        20.93815803527832
+      ],
+      "candidate_mass": 0.7467091559132699,
+      "p_blue": 0.36389276863914344,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 256,
+      "placement": "late",
+      "record_index": 254,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2330,
+      "evidence_end": 2339,
+      "distance": 9,
+      "input_ids_sha256": "f1aea7c0559486972aa51cf7e03d1863f9da02b980330d921328e7c0ee277e37",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        21.526025772094727,
+        21.32370376586914
+      ],
+      "candidate_mass": 0.756728427458373,
+      "p_blue": 0.44959133442060667,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 0,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "8c31338bd75b70253eb9d0cc1b1304c9fa0d68fb8f5d05b62c1532853eb48868",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.2757625579834,
+        21.65584373474121
+      ],
+      "candidate_mass": 0.7871018634861164,
+      "p_blue": 0.3497999140375062,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": true
+    },
+    {
+      "report": 8,
+      "key": 9007,
+      "records": 256,
+      "placement": "fixed suffix",
+      "record_index": 247,
+      "gold": 1,
+      "context_tokens": 2304,
+      "input_tokens": 2358,
+      "question_start": 2348,
+      "evidence_start": 2267,
+      "evidence_end": 2276,
+      "distance": 72,
+      "input_ids_sha256": "8ab4e9c4908b4f3be399283bf377e27088812da7c4ed7cfcf0382289b4ddc3f9",
+      "candidate_ids": [
+        2382,
+        4461
+      ],
+      "candidate_logits": [
+        22.24893569946289,
+        21.634187698364258
+      ],
+      "candidate_mass": 0.7860515975584874,
+      "p_blue": 0.350976876960655,
+      "choice": 0,
+      "greedy_token": 2382,
+      "greedy_text": " red",
+      "greedy_correct": false
+    }
+  ]
+}

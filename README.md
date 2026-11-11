@@ -312,9 +312,10 @@ python -m examples.ch16_adaptation.run_examples --output output/ch16.json
 
 [Chapter 17: Designing Reproducible Evaluations](examples/ch17_evaluation/)
 splits related examples by group, computes binary metrics and reliability
-bins, and compares paired predictions. The
-[chapter guide](examples/ch17_evaluation/README.md) explains the resampling
-unit and the scope of the resulting interval.
+bins, and compares paired predictions. The chapter's
+[measured SmolLM2 evaluations](examples/ch17_evaluation/PRETRAINED_FIGURES.md)
+use the Chapter 16 outputs and 200 new prompts to show how an answer rule,
+the choice of resampling unit, and the location of evidence affect the result.
 The [twelve exercises](examples/ch17_evaluation/EXERCISES.md) have complete
 [worked solutions](solutions/ch17_evaluation/README.md) in an executed
 notebook and both PDF editions, including error-cost decisions and explicit
