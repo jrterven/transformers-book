@@ -60,3 +60,69 @@ two predictions does not make the second prediction computationally free.
 Measure appearance, adherence, temporal behavior and variety separately.
 
 See the [11 exercises](EXERCISES.md) and [complete solutions](../../solutions/ch25_visual_generation/README.md).
+
+## Follow the pretrained runs
+
+The [DDPM figure guide](DIFFUSION_FIGURES.md) covers the earlier pixel-space
+checkpoint and the forward and reverse trajectories. The newer demonstrations
+use the same toy railway scene. The image run changes one color word while
+holding the starting latent fixed. The paired Wan runs hold the text and
+sampling settings fixed while adding the red FLUX.2 still as the first-frame
+condition.
+
+- [Wan2.2 from text](media/wan-text.mp4)
+- [Wan2.2 from text and an image](media/wan-image.mp4)
+- [LingBot-Video from a structured caption](media/lingbot-text.mp4)
+- [First-frame condition generated with FLUX.2](media/train-red-2501.png)
+- [Recorded image run](media/image-run.json) and [recorded video runs](media/video-run.json)
+
+Run the following commands from the repository root in a separate Python 3.12
+environment on an Apple Silicon Mac with Metal. The scripts download public
+weights at fixed revisions and verify their checksums. The video examples
+also require FFmpeg with libx264. For a repeated offline run, add `--offline`
+after the weights are cached.
+
+```sh
+python -m pip install -r requirements-ch25-media.txt
+python -m examples.ch25_visual_generation.generate_images --output-dir output/ch25-image
+```
+
+The FLUX.2 Klein 4B run uses a distilled 4-bit MLX checkpoint. It saves four
+images, five decoded states from one run, and a JSON record of the scheduler
+levels and latent hashes.
+
+The video sampler uses stable-diffusion.cpp at
+[b9d7176](https://github.com/leejet/stable-diffusion.cpp/tree/b9d7176bf88fe465576e0aafbe47ba253ffcfc2c)
+with its pinned ggml submodule. Apply the included patch to export the final
+latent before decoding. The decoder comes from the pinned
+[vga-mlx-video revision](https://github.com/VeryGoodAI/vga-mlx-video/tree/42514d9d47ef6c608889dbc48e6089e607a93cf1)
+and uses the same downloaded VAE weights at float16 precision.
+The sample command is intended for a scratch directory with sufficient disk
+space and Xcode's Metal toolchain.
+
+```sh
+CH25_RUN_DIR="$PWD/output/ch25-runtime"
+mkdir -p "$CH25_RUN_DIR"
+git clone https://github.com/leejet/stable-diffusion.cpp "$CH25_RUN_DIR/sdcpp"
+git -C "$CH25_RUN_DIR/sdcpp" checkout b9d7176bf88fe465576e0aafbe47ba253ffcfc2c
+git -C "$CH25_RUN_DIR/sdcpp" submodule update --init ggml
+git -C "$CH25_RUN_DIR/sdcpp" apply "$PWD/examples/ch25_visual_generation/export_video_latent.patch"
+cmake -S "$CH25_RUN_DIR/sdcpp" -B "$CH25_RUN_DIR/build" \
+    -DCMAKE_BUILD_TYPE=Release -DSD_METAL=ON -DSD_WEBP=OFF -DSD_WEBM=OFF
+cmake --build "$CH25_RUN_DIR/build" --target sd-cli --parallel 8
+git clone https://github.com/VeryGoodAI/vga-mlx-video "$CH25_RUN_DIR/vga-mlx-video"
+git -C "$CH25_RUN_DIR/vga-mlx-video" checkout 42514d9d47ef6c608889dbc48e6089e607a93cf1
+python -m examples.ch25_visual_generation.generate_videos \
+    --sd-cli "$CH25_RUN_DIR/build/bin/sd-cli" --decoder-source "$CH25_RUN_DIR/vga-mlx-video" \
+    --image-dir output/ch25-image --output-dir output/ch25-video
+python -m examples.ch25_visual_generation.make_generation_figures \
+    --image-dir output/ch25-image --wan-dir output/ch25-video --lingbot-dir output/ch25-video \
+    --output-dir output/ch25-figures
+```
+
+The logs and JSON record preserve the sampler settings, prompt text,
+checkpoint revisions, and checksums. The two Wan rows use frames at
+0, 1, 2, and 3 seconds. The shorter LingBot strip uses half-second intervals.
+The figure builder also records a simple horizontal centroid of red pixels,
+which can include red background features or carriages. Frame sequences and
+MP4s may differ across hardware and software.

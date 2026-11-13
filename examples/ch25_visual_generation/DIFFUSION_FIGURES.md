@@ -1,4 +1,4 @@
-# Reproduce the Appendix F image figures
+# Reproduce the Chapter 25 DDPM figures
 
 These figures use Google's public, Apache-2.0-labelled DDPM checkpoint, loaded
 through the open-source Diffusers library. The script pins the checkpoint
@@ -9,8 +9,8 @@ From the repository root, in an isolated Python environment:
 
 ```bash
 python -m pip install -r requirements-diffusion-figures.txt
-python -m examples.ch25_visual_generation.open_model_figures --output output/appendix-f --device auto
-python -m examples.ch25_visual_generation.score_figure --output output/appendix-f
+python -m examples.ch25_visual_generation.open_model_figures --output output/ch25-ddpm --device auto
+python -m examples.ch25_visual_generation.score_figure --output output/ch25-ddpm
 ```
 
 The default is `google/ddpm-cat-256` at revision
@@ -50,5 +50,3 @@ Model cards:
 - <https://huggingface.co/google/ddpm-cat-256>
 - <https://huggingface.co/google/ddpm-cifar10-32>
 
-The script is part of the public companion; manuscript prose stays in the
-private LaTeX repository.

@@ -1,0 +1,40 @@
+--- a/src/pipeline/video.cpp
++++ b/src/pipeline/video.cpp
+@@ -4,6 +4,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <cstdlib>
++#include <fstream>
+ #include <optional>
+ #include <utility>
+ 
+@@ -2266,6 +2267,29 @@
+ 
+         if (latents.ref_image_num > 0) {
+             final_latent = sd::ops::slice(final_latent, 2, latents.ref_image_num, final_latent.shape()[2]);
++        }
++
++        if (const char* path = std::getenv("SD_CHAPTER25_LATENT")) {
++            std::ofstream out(path, std::ios::binary);
++            const auto& shape = final_latent.shape();
++            if (shape.size() != 4 && shape.size() != 5) {
++                LOG_ERROR("expected a five-dimensional clip latent");
++                return false;
++            }
++            out.write(reinterpret_cast<const char*>(shape.data()), shape.size() * sizeof(int64_t));
++            if (shape.size() == 4) {
++                const int64_t batch = 1;
++                out.write(reinterpret_cast<const char*>(&batch), sizeof(batch));
++            }
++            out.write(reinterpret_cast<const char*>(final_latent.data()),
++                      static_cast<std::streamsize>(final_latent.numel() * sizeof(float)));
++            out.close();
++            if (!out) {
++                LOG_ERROR("could not write final clip latent");
++                return false;
++            }
++            LOG_INFO("wrote final clip latent for external decode");
++            return false;
+         }
+ 
+         if (sd->get_cancel_flag() == SD_CANCEL_ALL) {

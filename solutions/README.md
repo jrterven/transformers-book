@@ -421,13 +421,12 @@ hybrid budgets, window boundaries, zero/missing values, storage units,
 controlled histories, composed retrieval and forecast availability.
 Three plots support the explanations. See the [solution guide](ch31_perspective/README.md).
 
-## Optional practice for Appendices A-F
+## Optional practice for the appendices
 
 The book appendices are worked introductions without end-of-appendix exercises.
-The earlier practice sets are retained here as optional companion material,
-separate from the manuscript. Each has eight questions, complete written answers,
-and an executed notebook. All six notebooks run offline on CPU using the canonical
-chapter helpers. For new observations of pretrained models, see
+Each optional practice set has eight questions, complete written answers, and
+an executed notebook. The notebooks run offline on CPU using the canonical
+chapter helpers. For observations of pretrained models, see
 [attention, loss gradients, and learned filters](../examples/appendix_models/).
 
 | Appendix | Exercises | Written answers | Executable answers |
@@ -437,7 +436,12 @@ chapter helpers. For new observations of pretrained models, see
 | C. Stable numerical computation | [8 exercises](appendix_c_numerics/EXERCISES.md) | [PDF](appendix_c_numerics/written-solutions.pdf) | [Notebook](appendix_c_numerics/python-solutions.ipynb) / [PDF](appendix_c_numerics/python-solutions.pdf) |
 | D. Complexity and memory accounting | [8 exercises](appendix_d_memory/EXERCISES.md) | [PDF](appendix_d_memory/written-solutions.pdf) | [Notebook](appendix_d_memory/python-solutions.ipynb) / [PDF](appendix_d_memory/python-solutions.pdf) |
 | E. Convolution and parallel scans | [8 exercises](appendix_e_scans/EXERCISES.md) | [PDF](appendix_e_scans/written-solutions.pdf) | [Notebook](appendix_e_scans/python-solutions.ipynb) / [PDF](appendix_e_scans/python-solutions.pdf) |
-| F. Diffusion foundations | [8 exercises](appendix_f_diffusion/EXERCISES.md) | [PDF](appendix_f_diffusion/written-solutions.pdf) | [Notebook](appendix_f_diffusion/python-solutions.ipynb) / [PDF](appendix_f_diffusion/python-solutions.pdf) |
+
+The diffusion foundations now appear in Chapter 25. The
+[former Appendix F practice set](appendix_f_diffusion/EXERCISES.md),
+[written answers](appendix_f_diffusion/written-solutions.pdf), and
+[executed notebook](appendix_f_diffusion/python-solutions.ipynb) remain
+available as supplemental practice.
 
 Rebuild an appendix's two PDFs from its executed notebook with
 `python scripts/build_appendix_pdfs.py solutions/appendix_a_shapes`
