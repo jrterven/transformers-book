@@ -411,7 +411,8 @@ python -m examples.ch22_detection.run_examples --output output/ch22.json
 computes a contrastive similarity matrix, scores retrieval with multiple
 relevant items, and projects cross-attention outputs to a language width.
 The [chapter guide](examples/ch23_multimodal/README.md) explains the two
-retrieval directions and the visual bridge. The [11 exercises](examples/ch23_multimodal/EXERCISES.md)
+retrieval directions and the visual bridge. It also reproduces the image-text
+rankings and visual questions with SigLIP 2 and Qwen. The [11 exercises](examples/ch23_multimodal/EXERCISES.md)
 and [complete solutions](solutions/ch23_multimodal/README.md) add probability
 heatmaps, recall curves and a paired spatial test.
 

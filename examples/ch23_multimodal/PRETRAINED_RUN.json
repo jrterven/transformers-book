@@ -1,0 +1,1377 @@
+{
+  "settings": {
+    "device": "cpu",
+    "seed": 23,
+    "threads": 8,
+    "packages": {
+      "numpy": "2.5.4",
+      "torch": "2.15.0",
+      "torchvision": "0.29.2",
+      "transformers": "5.13.0",
+      "huggingface-hub": "1.33.0",
+      "pillow": "13.0.0"
+    }
+  },
+  "photos": {
+    "coffee": {
+      "filename": "coffee.png",
+      "sha256": "cc02f8ca188b167c775a7101b5d767d1e71792cf762c33d6fa15a4599b5a8de7",
+      "size_wh": [
+        600,
+        400
+      ],
+      "rgb_sha256": "0ce2b51640b9c95f19617f03eabf40c3f0368589cc1ee1190b70966165ac184f",
+      "mirror_rgb_sha256": "25891be734b6308e2bca7815d8d5cf6df513c9f707bae23b8254eff75dac9f17"
+    },
+    "chelsea": {
+      "filename": "chelsea.png",
+      "sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+      "size_wh": [
+        451,
+        300
+      ],
+      "rgb_sha256": "416b729128bfb2c3d1eb69bf9b1734a796293abc17939267b2dc94f8a5784031",
+      "mirror_rgb_sha256": "c54b27fbe388e2bee7688c1b1bf2fedfb0c5d81291529565eaf98d90fdb2d5a2"
+    },
+    "astronaut": {
+      "filename": "astronaut.png",
+      "sha256": "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+      "size_wh": [
+        512,
+        512
+      ],
+      "rgb_sha256": "a8c429c18afa7b0fd5673e598d73a21225d94c864a71bbb3885126fdecb41071",
+      "mirror_rgb_sha256": "1a9b8804c78cc018a0361f4a82e8bb6bba2eb94a4f30fdfac506a6aa2620f66f"
+    },
+    "camera": {
+      "filename": "camera.png",
+      "sha256": "b0793d2adda0fa6ae899c03989482bff9a42d3d5690fc7e3648f2795d730c23a",
+      "size_wh": [
+        512,
+        512
+      ],
+      "rgb_sha256": "13e2b4aa92cb1649b4aac5a4d48b38a8ea3a18b86e8abdf5a4871abf24c9d038",
+      "mirror_rgb_sha256": "348b468f5638f30d9af8419df91b227d6be81fa6fc678b089f338f9f9bcb1fd5"
+    },
+    "rocket": {
+      "filename": "rocket.jpg",
+      "sha256": "c2dd0de7c538df8d111e479619b129464d0269d0ae5fd18ca91d33a7fdfea95c",
+      "size_wh": [
+        640,
+        427
+      ],
+      "rgb_sha256": "3d4435cc745752b7f9724df88c6e18817de3ce7e3d2d71c55f85f7831e68f197",
+      "mirror_rgb_sha256": "374cb68d33e706093f37639ea52ec7a2ec6b689302fade64b41c58d3672d41fb"
+    }
+  },
+  "image_order": [
+    "coffee",
+    "chelsea",
+    "astronaut",
+    "camera",
+    "rocket"
+  ],
+  "captions": [
+    {
+      "id": "espresso",
+      "text": "A cup of espresso on a red saucer.",
+      "relevant": [
+        "coffee"
+      ]
+    },
+    {
+      "id": "cat",
+      "text": "A striped cat with green eyes.",
+      "relevant": [
+        "chelsea"
+      ]
+    },
+    {
+      "id": "astronaut",
+      "text": "An astronaut in an orange spacesuit.",
+      "relevant": [
+        "astronaut"
+      ]
+    },
+    {
+      "id": "tripod",
+      "text": "A person using a tripod outdoors.",
+      "relevant": [
+        "camera"
+      ]
+    },
+    {
+      "id": "rocket",
+      "text": "A tall rocket on a launch pad at night.",
+      "relevant": [
+        "rocket"
+      ]
+    },
+    {
+      "id": "cup_spoon",
+      "text": "A cup and spoon on a wooden table.",
+      "relevant": [
+        "coffee"
+      ]
+    },
+    {
+      "id": "spaceflight",
+      "text": "A scene connected to spaceflight.",
+      "relevant": [
+        "astronaut",
+        "rocket"
+      ]
+    },
+    {
+      "id": "sailboat",
+      "text": "A sailboat on a lake.",
+      "relevant": []
+    }
+  ],
+  "relevance": [
+    [
+      true,
+      false,
+      false,
+      false,
+      false,
+      true,
+      false,
+      false
+    ],
+    [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      true,
+      false,
+      false,
+      false,
+      true,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      true,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      true,
+      false,
+      true,
+      false
+    ]
+  ],
+  "siglip": {
+    "model": {
+      "repo": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+      "weights": "model.safetensors",
+      "sha256": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "parameters": 375187970,
+      "dtype": "float32"
+    },
+    "inputs": {
+      "input_ids": [
+        8,
+        64
+      ],
+      "pixel_values": [
+        5,
+        3,
+        224,
+        224
+      ]
+    },
+    "width": 768,
+    "logit_scale": 112.66889953613281,
+    "logit_bias": -16.771724700927734,
+    "logits": [
+      [
+        2.7732315063476562,
+        -17.877546310424805,
+        -14.559263229370117,
+        -21.01095199584961,
+        -21.82831573486328,
+        -1.9179887771606445,
+        -15.802324295043945,
+        -18.01714324951172
+      ],
+      [
+        -16.637977600097656,
+        0.18028831481933594,
+        -13.922379493713379,
+        -18.631729125976562,
+        -21.111452102661133,
+        -19.002094268798828,
+        -12.929130554199219,
+        -17.689668655395508
+      ],
+      [
+        -21.555809020996094,
+        -20.786819458007812,
+        -2.181483268737793,
+        -15.4119234085083,
+        -14.708036422729492,
+        -19.21967887878418,
+        -4.193357467651367,
+        -19.481685638427734
+      ],
+      [
+        -20.601970672607422,
+        -16.880191802978516,
+        -13.962625503540039,
+        0.3700733184814453,
+        -16.873741149902344,
+        -21.239704132080078,
+        -8.136689186096191,
+        -16.723384857177734
+      ],
+      [
+        -22.658315658569336,
+        -21.630708694458008,
+        -11.894898414611816,
+        -12.96088981628418,
+        2.9113388061523438,
+        -15.890412330627441,
+        -1.6003360748291016,
+        -14.567272186279297
+      ]
+    ],
+    "pair_sigmoids": [
+      [
+        0.9412120580673218,
+        1.7213940495253155e-08,
+        4.7532657276860846e-07,
+        7.499969534308093e-10,
+        3.3119434972306294e-10,
+        0.12808601558208466,
+        1.3713165003537142e-07,
+        1.49711123498264e-08
+      ],
+      [
+        5.9459068779688096e-08,
+        0.5449504256248474,
+        8.986426678347925e-07,
+        8.0973494576142e-09,
+        6.782859829357335e-10,
+        5.591075158406511e-09,
+        2.4263247269118438e-06,
+        2.0771818043385792e-08
+      ],
+      [
+        4.3494172152769295e-10,
+        9.38423783125586e-10,
+        0.1014256626367569,
+        2.0262200450815726e-07,
+        4.096196164482535e-07,
+        4.4977936930479245e-09,
+        0.014871031045913696,
+        3.4610783128385947e-09
+      ],
+      [
+        1.128958038165706e-09,
+        4.666871333824929e-08,
+        8.631939749648154e-07,
+        0.5914766788482666,
+        4.697072597537044e-08,
+        5.966418470393364e-10,
+        0.00029251875821501017,
+        5.459164853505172e-08
+      ],
+      [
+        1.4441707552048655e-10,
+        4.035548561986957e-10,
+        6.8250883487053216e-06,
+        2.3504774162574904e-06,
+        0.9484041333198547,
+        1.2556874651181715e-07,
+        0.16793465614318848,
+        4.7153491777862655e-07
+      ]
+    ],
+    "relation_probe": [
+      {
+        "id": "spoon",
+        "photo": "coffee",
+        "captions_left_right": [
+          "The bowl of the spoon is to the left of the cup.",
+          "The bowl of the spoon is to the right of the cup."
+        ],
+        "cosines_original_mirror": [
+          [
+            0.11102690806840847,
+            0.1098921884798974
+          ],
+          [
+            0.10145673880689389,
+            0.10031990899395703
+          ]
+        ],
+        "winner_original_mirror": [
+          "left",
+          "left"
+        ],
+        "expected_original_mirror": [
+          "right",
+          "left"
+        ]
+      },
+      {
+        "id": "flag",
+        "photo": "astronaut",
+        "captions_left_right": [
+          "The U.S. flag is on the left side of the image.",
+          "The U.S. flag is on the right side of the image."
+        ],
+        "cosines_original_mirror": [
+          [
+            0.07907416879038844,
+            0.07993292377292618
+          ],
+          [
+            0.07820775514841563,
+            0.07924271593536823
+          ]
+        ],
+        "winner_original_mirror": [
+          "right",
+          "right"
+        ],
+        "expected_original_mirror": [
+          "left",
+          "right"
+        ]
+      }
+    ],
+    "cosines": [
+      [
+        0.17347259729118997,
+        -0.00981478402338587,
+        0.019636849525485396,
+        -0.03762556081824273,
+        -0.044880109729564195,
+        0.1318352617530611,
+        0.008603962056750411,
+        -0.01105379367731743
+      ],
+      [
+        0.0011870872411099283,
+        0.15045856691654252,
+        0.02528953090159275,
+        -0.016508593139159405,
+        -0.03851758017780188,
+        -0.019795798230642148,
+        0.034105141321728205,
+        -0.008147265180295338
+      ],
+      [
+        -0.04246144587142286,
+        -0.03563621462936737,
+        0.12949649603297134,
+        0.01206902353630393,
+        0.018316401325208443,
+        -0.02172699214967508,
+        0.11164009635172276,
+        -0.02405243893891683
+      ],
+      [
+        -0.033995584150578614,
+        -0.0009627208595853668,
+        0.02493234499733222,
+        0.1521432518663588,
+        -0.0009054697635680969,
+        -0.039655826234807005,
+        0.07664078581177387,
+        0.00042905656954798037
+      ],
+      [
+        -0.0522468603692508,
+        -0.043126222636315596,
+        0.04328458672577161,
+        0.03382331729958588,
+        0.17469830488223895,
+        0.007822140047824938,
+        0.13465464056103585,
+        0.01956578668912526
+      ]
+    ],
+    "ranked": {
+      "image_to_text": [
+        [
+          0,
+          5,
+          2,
+          6,
+          1,
+          7,
+          3,
+          4
+        ],
+        [
+          1,
+          6,
+          2,
+          0,
+          7,
+          3,
+          5,
+          4
+        ],
+        [
+          2,
+          6,
+          4,
+          3,
+          5,
+          7,
+          1,
+          0
+        ],
+        [
+          3,
+          6,
+          2,
+          7,
+          4,
+          1,
+          0,
+          5
+        ],
+        [
+          4,
+          6,
+          2,
+          3,
+          7,
+          5,
+          1,
+          0
+        ]
+      ],
+      "text_to_image": [
+        [
+          0,
+          1,
+          3,
+          2,
+          4
+        ],
+        [
+          1,
+          3,
+          0,
+          2,
+          4
+        ],
+        [
+          2,
+          4,
+          1,
+          3,
+          0
+        ],
+        [
+          3,
+          4,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          0,
+          4,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          4,
+          3,
+          1,
+          0,
+          2
+        ]
+      ]
+    },
+    "metrics": {
+      "1": {
+        "image_to_text": {
+          "per_query": [
+            0.5,
+            1.0,
+            0.5,
+            1.0,
+            0.5
+          ],
+          "defined_queries": 5,
+          "mean": 0.7,
+          "hits": 5
+        },
+        "text_to_image": {
+          "per_query": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.5,
+            null
+          ],
+          "defined_queries": 7,
+          "mean": 0.9285714285714286,
+          "hits": 7
+        }
+      },
+      "2": {
+        "image_to_text": {
+          "per_query": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "defined_queries": 5,
+          "mean": 1.0,
+          "hits": 5
+        },
+        "text_to_image": {
+          "per_query": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            null
+          ],
+          "defined_queries": 7,
+          "mean": 1.0,
+          "hits": 7
+        }
+      },
+      "3": {
+        "image_to_text": {
+          "per_query": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "defined_queries": 5,
+          "mean": 1.0,
+          "hits": 5
+        },
+        "text_to_image": {
+          "per_query": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            null
+          ],
+          "defined_queries": 7,
+          "mean": 1.0,
+          "hits": 7
+        }
+      }
+    }
+  },
+  "embedding": {
+    "model": {
+      "repo": "Qwen/Qwen3-VL-Embedding-2B",
+      "revision": "9f2f7e710d6d81056aa5c0a4f04764fec6bb7bda",
+      "weights": "model.safetensors",
+      "sha256": "c73fa9caeddeb3ff831d46c085a7a5708343248ca777e90f2d486964464509c1",
+      "parameters": 2127532032,
+      "dtype": "bfloat16"
+    },
+    "width": 2048,
+    "system_instruction": "Represent the user's input.",
+    "image_last_position": [
+      249,
+      147,
+      277,
+      277,
+      281
+    ],
+    "text_last_position": [
+      29,
+      26,
+      27,
+      26,
+      29,
+      28,
+      26,
+      26
+    ],
+    "pooled_token_ids": [
+      151643,
+      151643,
+      151643,
+      151643,
+      151643,
+      151643,
+      151643,
+      151643,
+      151643,
+      151643,
+      151643,
+      151643,
+      151643
+    ],
+    "relation_probe": [
+      {
+        "id": "spoon",
+        "photo": "coffee",
+        "captions_left_right": [
+          "The bowl of the spoon is to the left of the cup.",
+          "The bowl of the spoon is to the right of the cup."
+        ],
+        "cosines_original_mirror": [
+          [
+            0.38912874451952817,
+            0.38841217796506683
+          ],
+          [
+            0.3862325161862197,
+            0.38608642380099406
+          ]
+        ],
+        "winner_original_mirror": [
+          "left",
+          "left"
+        ],
+        "expected_original_mirror": [
+          "right",
+          "left"
+        ]
+      },
+      {
+        "id": "flag",
+        "photo": "astronaut",
+        "captions_left_right": [
+          "The U.S. flag is on the left side of the image.",
+          "The U.S. flag is on the right side of the image."
+        ],
+        "cosines_original_mirror": [
+          [
+            0.15078178269444184,
+            0.19112972148344995
+          ],
+          [
+            0.1574547612071915,
+            0.19854327899798438
+          ]
+        ],
+        "winner_original_mirror": [
+          "right",
+          "right"
+        ],
+        "expected_original_mirror": [
+          "left",
+          "right"
+        ]
+      }
+    ],
+    "cosines": [
+      [
+        0.6951950738651923,
+        0.07265758343986106,
+        0.13344462625945921,
+        0.052699780048294856,
+        0.07251040635570809,
+        0.5969385601454763,
+        0.12066112941168683,
+        0.14694349976723947
+      ],
+      [
+        0.09426819674012167,
+        0.3846566184171113,
+        0.06828476895482137,
+        -0.03721086125417688,
+        -0.08227049383964029,
+        0.06668932931554748,
+        -0.0004615512595209004,
+        -0.03175627886736739
+      ],
+      [
+        0.10863926575881175,
+        0.011728353730385374,
+        0.5594605508970771,
+        0.11107440346744853,
+        0.23299551493262602,
+        0.043568566098538854,
+        0.40614363925923347,
+        0.1229289017299864
+      ],
+      [
+        0.09222982723120277,
+        0.06508179589477095,
+        0.16200720836889887,
+        0.50500124639764,
+        0.32499623209631395,
+        0.08801307401426782,
+        0.27454185104893203,
+        0.12388467818250604
+      ],
+      [
+        0.12043249114931491,
+        0.03826885509545543,
+        0.23277127264957645,
+        0.18255877424026132,
+        0.6358172337440069,
+        0.06577084097585897,
+        0.3221733092627499,
+        0.14430453857261075
+      ]
+    ],
+    "ranked": {
+      "image_to_text": [
+        [
+          0,
+          5,
+          7,
+          2,
+          6,
+          1,
+          4,
+          3
+        ],
+        [
+          1,
+          0,
+          2,
+          5,
+          6,
+          7,
+          3,
+          4
+        ],
+        [
+          2,
+          6,
+          4,
+          7,
+          3,
+          0,
+          5,
+          1
+        ],
+        [
+          3,
+          4,
+          6,
+          2,
+          7,
+          0,
+          5,
+          1
+        ],
+        [
+          4,
+          6,
+          2,
+          3,
+          7,
+          0,
+          5,
+          1
+        ]
+      ],
+      "text_to_image": [
+        [
+          0,
+          4,
+          2,
+          1,
+          3
+        ],
+        [
+          1,
+          0,
+          3,
+          4,
+          2
+        ],
+        [
+          2,
+          4,
+          3,
+          0,
+          1
+        ],
+        [
+          3,
+          4,
+          2,
+          0,
+          1
+        ],
+        [
+          4,
+          3,
+          2,
+          0,
+          1
+        ],
+        [
+          0,
+          3,
+          1,
+          4,
+          2
+        ],
+        [
+          2,
+          4,
+          3,
+          0,
+          1
+        ],
+        [
+          0,
+          4,
+          3,
+          2,
+          1
+        ]
+      ]
+    },
+    "metrics": {
+      "1": {
+        "image_to_text": {
+          "per_query": [
+            0.5,
+            1.0,
+            0.5,
+            1.0,
+            0.5
+          ],
+          "defined_queries": 5,
+          "mean": 0.7,
+          "hits": 5
+        },
+        "text_to_image": {
+          "per_query": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.5,
+            null
+          ],
+          "defined_queries": 7,
+          "mean": 0.9285714285714286,
+          "hits": 7
+        }
+      },
+      "2": {
+        "image_to_text": {
+          "per_query": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "defined_queries": 5,
+          "mean": 1.0,
+          "hits": 5
+        },
+        "text_to_image": {
+          "per_query": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            null
+          ],
+          "defined_queries": 7,
+          "mean": 1.0,
+          "hits": 7
+        }
+      },
+      "3": {
+        "image_to_text": {
+          "per_query": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "defined_queries": 5,
+          "mean": 1.0,
+          "hits": 5
+        },
+        "text_to_image": {
+          "per_query": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            null
+          ],
+          "defined_queries": 7,
+          "mean": 1.0,
+          "hits": 7
+        }
+      }
+    }
+  },
+  "visual": {
+    "model": {
+      "repo": "Qwen/Qwen3.5-0.8B",
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "weights": "model.safetensors-00001-of-00001.safetensors",
+      "sha256": "04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696",
+      "parameters": 852985920,
+      "dtype": "float32"
+    },
+    "thinking": false,
+    "decode": "greedy",
+    "max_new_tokens": 12,
+    "direction_tokens": {
+      "left": [
+        2047
+      ],
+      "right": [
+        1245
+      ]
+    },
+    "pairs": [
+      {
+        "id": "spoon",
+        "photo": "coffee",
+        "question": "On which side of the cup is the bowl of the spoon, left or right? Answer with one word.",
+        "expected": [
+          "right",
+          "left"
+        ],
+        "original": {
+          "answer": "right",
+          "normalized": "right",
+          "ids": [
+            1245,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 264,
+          "image_tokens": 228,
+          "left_right_logits": [
+            19.993377685546875,
+            21.809030532836914
+          ],
+          "right_share_of_two": 0.8600437045097351,
+          "right_token_full_vocab_probability": 0.8350279331207275,
+          "trace": {
+            "image_grid_thw": [
+              1,
+              24,
+              38
+            ],
+            "pixels": [
+              912,
+              1536
+            ],
+            "encoded_patches": [
+              912,
+              768
+            ],
+            "merged_tokens": [
+              228,
+              1024
+            ],
+            "patch_size": 16,
+            "spatial_merge_size": 2,
+            "temporal_patch_size": 2,
+            "vocabulary": 248320
+          }
+        },
+        "mirror": {
+          "answer": "left",
+          "normalized": "left",
+          "ids": [
+            2047,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 264,
+          "image_tokens": 228,
+          "left_right_logits": [
+            21.544286727905273,
+            20.732147216796875
+          ],
+          "right_share_of_two": 0.3074347972869873,
+          "right_token_full_vocab_probability": 0.3038554787635803
+        },
+        "question_only": {
+          "answer": "right",
+          "normalized": "right",
+          "ids": [
+            1245,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 34,
+          "image_tokens": 0,
+          "left_right_logits": [
+            17.89968490600586,
+            18.06772232055664
+          ],
+          "right_share_of_two": 0.5419108271598816,
+          "right_token_full_vocab_probability": 0.2919488251209259
+        }
+      },
+      {
+        "id": "flag",
+        "photo": "astronaut",
+        "question": "On which side of the image is the U.S. flag, left or right? Answer with one word.",
+        "expected": [
+          "left",
+          "right"
+        ],
+        "original": {
+          "answer": "left",
+          "normalized": "left",
+          "ids": [
+            2047,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 292,
+          "image_tokens": 256,
+          "left_right_logits": [
+            23.5772762298584,
+            19.718076705932617
+          ],
+          "right_share_of_two": 0.02064947970211506,
+          "right_token_full_vocab_probability": 0.020345456898212433
+        },
+        "mirror": {
+          "answer": "right",
+          "normalized": "right",
+          "ids": [
+            1245,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 292,
+          "image_tokens": 256,
+          "left_right_logits": [
+            18.773820877075195,
+            23.24993133544922
+          ],
+          "right_share_of_two": 0.9887503981590271,
+          "right_token_full_vocab_probability": 0.9709606766700745
+        },
+        "question_only": {
+          "answer": "right",
+          "normalized": "right",
+          "ids": [
+            1246,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 34,
+          "image_tokens": 0,
+          "left_right_logits": [
+            17.365234375,
+            17.298768997192383
+          ],
+          "right_share_of_two": 0.48338979482650757,
+          "right_token_full_vocab_probability": 0.025894086807966232
+        }
+      },
+      {
+        "id": "helmet",
+        "photo": "astronaut",
+        "question": "On which side of the image is the helmet, left or right? Answer with one word.",
+        "expected": [
+          "right",
+          "left"
+        ],
+        "original": {
+          "answer": "right",
+          "normalized": "right",
+          "ids": [
+            1245,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 289,
+          "image_tokens": 256,
+          "left_right_logits": [
+            21.17584800720215,
+            22.01258087158203
+          ],
+          "right_share_of_two": 0.6977766156196594,
+          "right_token_full_vocab_probability": 0.6847386956214905
+        },
+        "mirror": {
+          "answer": "left",
+          "normalized": "left",
+          "ids": [
+            2047,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 289,
+          "image_tokens": 256,
+          "left_right_logits": [
+            22.26110076904297,
+            20.52933120727539
+          ],
+          "right_share_of_two": 0.15036137402057648,
+          "right_token_full_vocab_probability": 0.14963077008724213
+        },
+        "question_only": {
+          "answer": "right",
+          "normalized": "right",
+          "ids": [
+            1246,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 31,
+          "image_tokens": 0,
+          "left_right_logits": [
+            17.237060546875,
+            17.211580276489258
+          ],
+          "right_share_of_two": 0.4936302602291107,
+          "right_token_full_vocab_probability": 0.016399266198277473
+        }
+      },
+      {
+        "id": "handle",
+        "photo": "coffee",
+        "question": "Is the cup handle on the left or the right side of the cup? Answer with one word.",
+        "expected": [
+          "left",
+          "right"
+        ],
+        "original": {
+          "answer": "left",
+          "normalized": "left",
+          "ids": [
+            2047,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 262,
+          "image_tokens": 228,
+          "left_right_logits": [
+            22.994327545166016,
+            21.691524505615234
+          ],
+          "right_share_of_two": 0.21369366347789764,
+          "right_token_full_vocab_probability": 0.20528167486190796
+        },
+        "mirror": {
+          "answer": "right",
+          "normalized": "right",
+          "ids": [
+            1245,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 262,
+          "image_tokens": 228,
+          "left_right_logits": [
+            21.315505981445312,
+            23.82679557800293
+          ],
+          "right_share_of_two": 0.9249294400215149,
+          "right_token_full_vocab_probability": 0.8801511526107788
+        },
+        "question_only": {
+          "answer": "right",
+          "normalized": "right",
+          "ids": [
+            1246,
+            248046,
+            198,
+            248044
+          ],
+          "input_tokens": 32,
+          "image_tokens": 0,
+          "left_right_logits": [
+            18.081077575683594,
+            17.707618713378906
+          ],
+          "right_share_of_two": 0.40770551562309265,
+          "right_token_full_vocab_probability": 0.04576427862048149
+        }
+      }
+    ],
+    "metrics": {
+      "visual": {
+        "correct_views": 8,
+        "views": 8,
+        "both_correct": 4,
+        "pairs": 4,
+        "different_answers": 4
+      },
+      "text_only": {
+        "correct_views": 4,
+        "views": 8,
+        "both_correct": 0,
+        "pairs": 4,
+        "different_answers": 0
+      }
+    },
+    "attributes": [
+      {
+        "id": "saucer",
+        "photo": "coffee",
+        "question": "What color is the saucer? Answer with one word.",
+        "accepted": [
+          "red"
+        ],
+        "answer": "red",
+        "normalized": "red",
+        "ids": [
+          2438,
+          248046,
+          198,
+          248044
+        ],
+        "input_tokens": 254,
+        "image_tokens": 228
+      },
+      {
+        "id": "drink",
+        "photo": "coffee",
+        "question": "What drink is in the cup? Answer with one word.",
+        "accepted": [
+          "espresso",
+          "coffee"
+        ],
+        "answer": "coffee",
+        "normalized": "coffee",
+        "ids": [
+          10482,
+          248046,
+          198,
+          248044
+        ],
+        "input_tokens": 254,
+        "image_tokens": 228
+      },
+      {
+        "id": "suit",
+        "photo": "astronaut",
+        "question": "What color is the spacesuit? Answer with one word.",
+        "accepted": [
+          "orange"
+        ],
+        "answer": "orange",
+        "normalized": "orange",
+        "ids": [
+          18016,
+          248046,
+          198,
+          248044
+        ],
+        "input_tokens": 282,
+        "image_tokens": 256
+      },
+      {
+        "id": "cat_present",
+        "photo": "chelsea",
+        "question": "Is there a cat in the photo? Answer yes or no.",
+        "accepted": [
+          "yes"
+        ],
+        "answer": "Yes",
+        "normalized": "yes",
+        "ids": [
+          9175,
+          248046,
+          198,
+          248044
+        ],
+        "input_tokens": 153,
+        "image_tokens": 126
+      },
+      {
+        "id": "cat_absent",
+        "photo": "coffee",
+        "question": "Is there a cat in the photo? Answer yes or no.",
+        "accepted": [
+          "no"
+        ],
+        "answer": "No",
+        "normalized": "no",
+        "ids": [
+          2665,
+          248046,
+          198,
+          248044
+        ],
+        "input_tokens": 255,
+        "image_tokens": 228
+      }
+    ]
+  }
+}
