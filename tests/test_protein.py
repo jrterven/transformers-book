@@ -6,10 +6,13 @@ import numpy as np
 
 from examples.ch29_protein.model import (
     AMINO_ACIDS,
+    ca_lddt,
     contact_map,
+    cosine_matrix,
     dipeptide_frequencies,
     mean_pool_residues,
     residue_composition,
+    superpose_coordinates,
 )
 from examples.ch29_protein.run_examples import contact_example, pooling_example, sequence_example
 
@@ -41,6 +44,12 @@ class SequenceTests(unittest.TestCase):
 
 
 class PoolingTests(unittest.TestCase):
+    def test_cosine_normalizes_before_comparing(self):
+        vectors = [[1, 2], [2, 1], [-1, -2], [2, 4]]
+        matrix = cosine_matrix(vectors)
+        np.testing.assert_allclose(matrix[0], [1, 0.8, -1, 1])
+        np.testing.assert_allclose(matrix, matrix.T)
+
     def test_masked_pooling_fixture_and_nonfinite_excluded_rows(self):
         self.assertEqual(pooling_example()["pooled"], [1, 1])
         embeddings = np.array([[np.nan, np.inf], [2, 0], [0, 4]], dtype=np.float32)
@@ -59,6 +68,21 @@ class PoolingTests(unittest.TestCase):
 
 
 class GeometryTests(unittest.TestCase):
+    def test_superposition_removes_rigid_motion_and_preserves_handedness(self):
+        measured = np.array([[0, 0, 0], [2, 0, 0], [0, 3, 0], [0, 0, 4]], dtype=float)
+        rotation = np.array([[0, 1, 0], [-1, 0, 0], [0, 0, 1]])
+        mobile = measured @ rotation + [5, -2, 1]
+        np.testing.assert_allclose(superpose_coordinates(mobile, measured), measured, atol=1e-12)
+        reflection = measured * [-1, 1, 1]
+        self.assertGreater(np.linalg.norm(superpose_coordinates(reflection, measured) - measured), 1)
+
+    def test_ca_lddt_uses_reference_neighbors_and_all_four_thresholds(self):
+        measured = [[0, 0, 0], [6, 0, 0], [0, 6, 0], [0, 0, 30]]
+        predicted = [[0, 0, 0], [7.2, 0, 0], [0, 6.4, 0], [0, 0, 30]]
+        global_score, local = ca_lddt(predicted, measured)
+        self.assertAlmostEqual(global_score, (0.5 + 1 + 0.5) / 3)
+        np.testing.assert_allclose(local, [0.75, 0.5, 0.75, np.nan])
+
     def test_worked_contacts_include_equal_distance_and_exclude_adjacent_rows(self):
         result = contact_example()
         self.assertEqual(result["unique_pairs_one_based"], [[1, 3], [2, 4]])

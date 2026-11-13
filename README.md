@@ -495,10 +495,10 @@ python -m examples.ch28_tabular.run_examples --output output/ch28.json
 ```
 
 [Chapter 29: Scientific Sequences and Biological Structure](examples/ch29_protein/)
-counts residues and ordered pairs, pools supplied residue vectors, and
-builds a contact map from four coordinates. The
-[chapter guide](examples/ch29_protein/README.md) explains the alphabet,
-mask, and distance convention.
+counts residues and ordered pairs, extracts contextual vectors with
+ESMC-300M, and compares ESMFold2-Fast structures with experimental
+references. The [chapter guide](examples/ch29_protein/README.md) includes
+the protein records, evaluation rules, and figure commands.
 
 The [11 exercises](examples/ch29_protein/EXERCISES.md) and
 [complete solutions](solutions/ch29_protein/README.md) distinguish sequence

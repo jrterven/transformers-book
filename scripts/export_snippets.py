@@ -191,7 +191,7 @@ CHAPTERS = {
         "sources": ("examples/ch29_protein/model.py",),
         "destination": "snippets/ch29_protein",
         "expected": {"residue_composition", "dipeptide_frequencies",
-                     "mean_pool_residues", "contact_map"},
+                     "mean_pool_residues", "contact_map", "superpose_coordinates"},
     },
     "ch30": {
         "sources": ("examples/ch30_decisions/model.py",),

@@ -1,4 +1,4 @@
-"""Offline NumPy teaching examples for protein sequences and geometry."""
+"""NumPy examples for protein sequences and geometry."""
 
 import math
 from operator import index
@@ -60,6 +60,18 @@ def mean_pool_residues(embeddings, residue_mask):
 # end-snippet:mean_pool_residues
 
 
+def cosine_matrix(vectors):
+    """Compare all pairs of nonzero vectors in a single representation space."""
+    vectors = np.asarray(vectors, dtype=np.float64)
+    if vectors.ndim != 2 or not np.isfinite(vectors).all():
+        raise ValueError("provide a finite matrix with one vector per example")
+    norms = np.linalg.norm(vectors, axis=1, keepdims=True)
+    if np.any(norms == 0):
+        raise ValueError("cosine similarity needs nonzero vectors")
+    unit = vectors / norms
+    return np.clip(unit @ unit.T, -1, 1)
+
+
 def _contact_inputs(coordinates, threshold, min_sequence_separation):
     coordinates = np.asarray(coordinates)
     if (coordinates.ndim != 2 or coordinates.shape[1] != 3
@@ -99,3 +111,49 @@ def contact_map(coordinates, threshold, min_sequence_separation=1):
     separation = np.abs(indices[:, None] - indices[None, :])
     return within & (separation >= min_sequence_separation)
 # end-snippet:contact_map
+
+
+def _matched_coordinates(mobile, reference):
+    mobile, _, _ = _contact_inputs(mobile, 0, 1)
+    reference, _, _ = _contact_inputs(reference, 0, 1)
+    if mobile.shape != reference.shape or len(mobile) < 3:
+        raise ValueError("provide at least three matched coordinate pairs")
+    return mobile, reference
+
+
+# snippet:superpose_coordinates
+def superpose_coordinates(mobile, reference):
+    """Rotate and translate matched row vectors with the Kabsch method."""
+    mobile, reference = _matched_coordinates(mobile, reference)
+    moving = mobile - mobile.mean(axis=0)
+    center = reference.mean(axis=0)
+    target = reference - center
+    left, _, right_t = np.linalg.svd(moving.T @ target)
+    # The last axis absorbs a possible reflection from the SVD.
+    handedness = np.linalg.det(left @ right_t)
+    rotation = left @ np.diag([1, 1, np.sign(handedness)]) @ right_t
+    return moving @ rotation + center
+# end-snippet:superpose_coordinates
+
+
+def distance_matrix(coordinates):
+    """Return Euclidean distances for coordinates in angstroms."""
+    coordinates, _, _ = _contact_inputs(coordinates, 0, 1)
+    return np.linalg.norm(coordinates[:, None, :] - coordinates[None, :, :], axis=-1)
+
+
+def ca_lddt(mobile, reference):
+    """Return global pair-weighted and per-residue C-alpha lDDT on matched rows."""
+    mobile, reference = _matched_coordinates(mobile, reference)
+    measured = distance_matrix(reference)
+    eligible = (measured < 15) & ~np.eye(len(measured), dtype=bool)
+    if not eligible.any():
+        raise ValueError("no matched C-alpha neighbors within 15 angstroms")
+    error = np.abs(distance_matrix(mobile) - measured)
+    fraction = (error[..., None] < np.array([0.5, 1, 2, 4])).mean(axis=-1)
+    count = eligible.sum(axis=1)
+    local = np.divide(
+        (eligible * fraction).sum(axis=1), count,
+        out=np.full(len(count), np.nan), where=count > 0,
+    )
+    return float(fraction[eligible].mean()), local
