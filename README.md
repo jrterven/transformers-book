@@ -381,6 +381,8 @@ python -m examples.ch20_retrieval.run_examples --output output/ch20.json
 [Chapter 21: Image and Video Understanding](examples/ch21_vision/) extracts
 image patches, fits linear probes on frozen features, and compares joint
 and divided video attention counts. The
+[measured visual demonstrations](examples/ch21_vision/PRETRAINED_FIGURES.md)
+trace DINOv3 patch vectors and test V-JEPA 2 on reversed video clips. The
 [chapter guide](examples/ch21_vision/README.md) follows the patch order
 and the held-out synthetic images. The [12 exercises](examples/ch21_vision/EXERCISES.md)
 and [complete solutions](solutions/ch21_vision/README.md) trace pixels into

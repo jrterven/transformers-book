@@ -8,6 +8,11 @@ python -m examples.ch21_vision.run_examples --output output/ch21.json
 python -m unittest discover -s tests -p test_vision.py -v
 ```
 
+The [measured visual demonstrations](PRETRAINED_FIGURES.md) follow a patch
+through DINOv3 and compare V-JEPA 2 action scores for original and reversed
+clips. The guide includes media credits, pinned checkpoints, and the commands
+to regenerate the four figures.
+
 ## Turn pixels into patch tokens
 
 `patchify` expects one channels-last image `[height, width, channels]`.
