@@ -479,9 +479,11 @@ python -m examples.ch27_time_series.run_examples --output output/ch27.json
 ```
 
 [Chapter 28: Learning from Tables](examples/ch28_tabular/) fits an
-encoding on training rows, weights labeled context rows, and checks
-binary probability predictions. The [chapter guide](examples/ch28_tabular/README.md)
-explains the missing and unknown indicators and the Brier score.
+encoding on training rows and works through binary probability scoring
+and regression intervals. The [chapter guide](examples/ch28_tabular/README.md)
+includes frozen TabICLv2 and Mitra-v2 demos on UCI Raisin classification
+and recipe-disjoint concrete-strength regression. It includes the
+exact splits, saved predictions, and commands to redraw the figures.
 
 The [11 exercises](examples/ch28_tabular/EXERCISES.md) and
 [complete solutions](solutions/ch28_tabular/README.md) explain missing and

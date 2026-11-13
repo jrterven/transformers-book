@@ -10,6 +10,7 @@ from examples.ch28_tabular.model import (
     context_probability,
     encode_rows,
     fit_row_encoder,
+    histogram_summary,
 )
 from examples.ch28_tabular.run_examples import (
     TRAIN_CATEGORIES,
@@ -17,6 +18,7 @@ from examples.ch28_tabular.run_examples import (
     probability_example,
     row_example,
 )
+from examples.ch28_tabular.tabular_data import load_tables, recipe_groups
 
 
 class EncodingTests(unittest.TestCase):
@@ -105,6 +107,32 @@ class ProbabilityTests(unittest.TestCase):
             context_probability([0, 1], [1])
         with self.assertRaisesRegex(ValueError, "one real similarity"):
             context_probability([1j, 0], [0, 1])
+
+
+class PretrainedDemoMathTests(unittest.TestCase):
+    def test_recipe_groups_ignore_age_but_keep_ingredient_changes(self):
+        rows = np.array([
+            [525, 0, 0, 189, 0, 1125, 613, 3],
+            [525, 0, 0, 189, 0, 1125, 613, 28],
+            [525, 0, 0, 190, 0, 1125, 613, 3],
+        ])
+        groups = recipe_groups(rows)
+        self.assertEqual(groups[0], groups[1])
+        self.assertNotEqual(groups[0], groups[2])
+        tables = load_tables()
+        self.assertEqual(tables["raisin"].x.shape, (900, 7))
+        self.assertEqual(tables["concrete"].x.shape, (1005, 8))
+        self.assertEqual(len(set(tables["concrete"].groups)), 427)
+
+    def test_histogram_quantiles_interpolate_and_can_skip_empty_bins(self):
+        mean, quantiles = histogram_summary(
+            [10, 30, 50, 70], [[0.25, 0.5, 0.25], [0.25, 0, 0.75]],
+            [0.1, 0.25, 0.5, 0.9],
+        )
+        np.testing.assert_allclose(mean, [40, 50])
+        np.testing.assert_allclose(
+            quantiles, [[18, 30, 40, 62], [18, 30, 50 + 20/3, 50 + 52/3]]
+        )
 
 
 if __name__ == "__main__":

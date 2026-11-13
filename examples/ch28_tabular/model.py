@@ -115,3 +115,35 @@ def brier_score(labels, probabilities):
         raise ValueError("probabilities must be finite and between zero and one")
     return float(np.mean((probabilities.astype(np.float64, copy=False) - labels) ** 2))
 # end-snippet:brier_score
+
+
+def histogram_summary(edges, mass, levels):
+    """Return means and quantiles assuming uniform density inside each bin."""
+    edges = np.asarray(edges, dtype=np.float64)
+    mass = np.asarray(mass, dtype=np.float64)
+    levels = np.asarray(levels, dtype=np.float64)
+    if (edges.ndim != 1 or mass.ndim != 2 or mass.shape[1] == 0
+            or len(edges) != mass.shape[1] + 1 or not np.isfinite(edges).all()
+            or np.any(np.diff(edges) <= 0)):
+        raise ValueError("provide ordered finite edges for each probability bin")
+    if (not np.isfinite(mass).all() or np.any(mass < 0)
+            or not np.allclose(mass.sum(axis=1), 1)):
+        raise ValueError("each row of bin masses must be a probability distribution")
+    if levels.ndim != 1 or not np.all((0 < levels) & (levels < 1)):
+        raise ValueError("provide quantile levels strictly between zero and one")
+
+    mass = mass / mass.sum(axis=1, keepdims=True)
+    centers = (edges[:-1] + edges[1:]) / 2
+    means = mass @ centers
+    cumulative = np.column_stack((np.zeros(len(mass)), np.cumsum(mass, axis=1)))
+    cumulative /= cumulative[:, -1:]
+    quantiles = np.empty((len(mass), len(levels)))
+    row = np.arange(len(mass))
+    for j, level in enumerate(levels):
+        bin_index = np.sum(cumulative[:, 1:] < level, axis=1)
+        below = cumulative[row, bin_index]
+        above = cumulative[row, bin_index + 1]
+        fraction = (level - below) / (above - below)
+        left, right = edges[bin_index], edges[bin_index + 1]
+        quantiles[:, j] = left + fraction * (right - left)
+    return means, quantiles

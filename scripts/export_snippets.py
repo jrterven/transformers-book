@@ -182,9 +182,10 @@ CHAPTERS = {
                      "forecast_metrics", "demand_windows"},
     },
     "ch28": {
-        "sources": ("examples/ch28_tabular/model.py",),
+        "sources": ("examples/ch28_tabular/model.py", "examples/ch28_tabular/tabular_data.py"),
         "destination": "snippets/ch28_tabular",
-        "expected": {"fit_row_encoder", "encode_rows", "context_probability", "brier_score"},
+        "expected": {"fit_row_encoder", "encode_rows", "context_probability", "brier_score",
+                     "recipe_groups"},
     },
     "ch29": {
         "sources": ("examples/ch29_protein/model.py",),

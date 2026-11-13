@@ -1,0 +1,14 @@
+autogluon.tabular==1.6.3
+einops==0.8.2
+einx==0.4.3
+huggingface-hub==2.4.0
+loguru==0.7.3
+matplotlib==3.11.2
+numpy==2.5.0
+omegaconf==2.3.0
+pandas==2.3.3
+safetensors==0.8.0
+scikit-learn==1.9.1
+scipy==1.18.1
+tabicl==2.2.0
+torch==2.15.0
