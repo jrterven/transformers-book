@@ -1,9 +1,11 @@
 """Check Chapter 27 windows, seasonal fits, and horizon metrics."""
 
+from datetime import datetime, timedelta, timezone
 import unittest
 
 import numpy as np
 
+from examples.ch27_time_series.demand_data import AREAS, SNAPSHOT, load_snapshot
 from examples.ch27_time_series.model import (
     fit_seasonal_drift,
     forecast_metrics,
@@ -12,6 +14,7 @@ from examples.ch27_time_series.model import (
     seasonal_naive,
 )
 from examples.ch27_time_series.run_examples import interval_example, rolling_example, series_example
+from examples.ch27_time_series.run_pretrained import build_replay, score_quantiles
 
 
 class WindowTests(unittest.TestCase):
@@ -112,6 +115,45 @@ class MetricTests(unittest.TestCase):
             forecast_metrics([[1]], [[1]], [[2]], [[1]])
         with self.assertRaisesRegex(ValueError, "same nonempty"):
             forecast_metrics(*(np.empty((0, 3)) for _ in range(4)))
+
+
+class DemandReplayTests(unittest.TestCase):
+    def test_issue_cutoff_and_calibration_targets_respect_reporting_lag(self):
+        hours, demand = load_snapshot(SNAPSHOT)
+        replay = build_replay(hours, demand["NYIS"], AREAS["NYIS"])
+        first_issue = datetime(2026, 10, 30, tzinfo=timezone.utc)
+        self.assertEqual(replay["test_issues"][0], first_issue)
+        self.assertEqual(replay["history"].shape, (14, 672))
+        self.assertEqual(replay["actual"].shape, (14, 24))
+        idx = hours.index(first_issue)
+        changed = demand["NYIS"].copy()
+        changed[idx:] += 100_000
+        perturbed = build_replay(hours, changed, AREAS["NYIS"])
+        np.testing.assert_array_equal(replay["history"][0], demand["NYIS"][idx - 672:idx])
+        np.testing.assert_array_equal(perturbed["history"][0], replay["history"][0])
+        np.testing.assert_array_equal(replay["actual"][0], demand["NYIS"][idx + 1:idx + 25])
+        np.testing.assert_array_equal(perturbed["actual"][0], replay["actual"][0] + 100_000)
+        last_arrival = replay["calibration_issues"][-1] + timedelta(hours=25)
+        self.assertLess(last_arrival, first_issue)
+
+    def test_calendar_aligns_to_hour_start_across_fall_clock_change(self):
+        hours, demand = load_snapshot(SNAPSHOT)
+        replay = build_replay(hours, demand["NYIS"], AREAS["NYIS"])
+        change_day = datetime(2026, 11, 1, tzinfo=timezone.utc)
+        calendar = replay["calendar"][replay["test_issues"].index(change_day)]
+        self.assertEqual(calendar.shape, (3, 697))
+        for ending_hour in (6, 7):
+            np.testing.assert_allclose(calendar[:, 672 + ending_hour],
+                                       [np.sin(np.pi / 12), np.cos(np.pi / 12), 1])
+        np.testing.assert_allclose(calendar[:, 672 + 8], [0.5, np.sqrt(3) / 2, 1])
+
+    def test_scoring_skips_gap_and_charges_for_interval_miss(self):
+        output = np.array([[[0, 1, 2], [11, 12, 13], [8, 4, 6]]])
+        scored = score_quantiles(output, (0.1, 0.5, 0.9), np.array([[14, 4]]))
+        self.assertEqual(scored["raw_crossing_slots"], 1)
+        self.assertEqual(scored["median_mw"], [[12, 6]])
+        self.assertEqual(scored["metrics"]["interval_score_by_hour_mw"], [12, 4])
+        self.assertEqual(scored["metrics"]["coverage_by_hour"], [0, 1])
 
 
 if __name__ == "__main__":

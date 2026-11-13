@@ -465,8 +465,9 @@ python -m examples.ch26_code_models.run_examples --output output/ch26.json
 [Chapter 27: Time-Series Forecasting](examples/ch27_time_series/) builds
 windows in time order, compares seasonal forecasts with and without
 fitted drift, and measures interval coverage by horizon. The
-[chapter guide](examples/ch27_time_series/README.md) explains which
-observations the forecaster can use at each origin.
+[chapter guide](examples/ch27_time_series/README.md) also reproduces
+TimesFM 3 and Timestral forecasts of hourly electricity demand in New York
+and Texas, with aligned seasonal baselines and a local-calendar comparison.
 
 The [11 exercises](examples/ch27_time_series/EXERCISES.md) and
 [complete solutions](solutions/ch27_time_series/README.md) distinguish

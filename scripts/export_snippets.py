@@ -176,10 +176,10 @@ CHAPTERS = {
                      "serialize_fim"},
     },
     "ch27": {
-        "sources": ("examples/ch27_time_series/model.py",),
+        "sources": ("examples/ch27_time_series/model.py", "examples/ch27_time_series/run_pretrained.py"),
         "destination": "snippets/ch27_time_series",
         "expected": {"rolling_windows", "seasonal_naive", "seasonal_drift",
-                     "forecast_metrics"},
+                     "forecast_metrics", "demand_windows"},
     },
     "ch28": {
         "sources": ("examples/ch28_tabular/model.py",),

@@ -1,0 +1,8 @@
+# Reproduce the CPU model runs with Python 3.12.
+numpy==2.5.0
+torch==2.15.0
+huggingface-hub==2.4.0
+safetensors==0.8.0
+matplotlib==3.11.2
+timesfm @ https://codeload.github.com/google-research/timesfm/tar.gz/918df02c9d366b2145bc5876135fa2131d3ed2a6
+timestral @ https://codeload.github.com/mistralai/timestral/tar.gz/a534bdbd244d64f3d9d743f46c7bf6fc330ed4ff
