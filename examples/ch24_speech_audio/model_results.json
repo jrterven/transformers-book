@@ -1,0 +1,2056 @@
+{
+  "audio": {
+    "sample_rate": 16000,
+    "reference": "Por ello, cuando se inventó, el lápiz ganó muchos amigos.",
+    "sources": {
+      "speech": {
+        "file": "15635660839838523367.wav",
+        "sha256": "6a75033f9ae116d6644c91253ea2eb539ef3e14490f36f1a631978abb243a15e"
+      },
+      "rain": {
+        "file": "1-21189-A-10.wav",
+        "sha256": "5f15ab2d8f6ef9932909b1b75c8ac254cbea46c93b4b2f0f3542abdf09b9abc0"
+      },
+      "dog": {
+        "file": "1-100032-A-0.wav",
+        "sha256": "f40a849a2375c8c63312a73dd2dd6c74007301fcc21b4be2ece29a642831e3d8"
+      }
+    },
+    "speech_gain": 0.4455382670257587,
+    "clips": {
+      "speech": {
+        "samples": 90240,
+        "seconds": 5.64,
+        "sha256": "4e1db6cddd98ea144acae7896c75a5a3f7d8d69d500177f20e18c67c5ed158b8",
+        "rms": 0.04291177232828199
+      },
+      "speech-rain-0db": {
+        "samples": 90240,
+        "seconds": 5.64,
+        "sha256": "c097e98df51ab1f1f4f88d3ff07bf8b4ccc14407a104fb8a36769a5a75ae469a",
+        "rms": 0.060613279841835746,
+        "component_snr_db": 0.0
+      },
+      "speech-rain-minus10db": {
+        "samples": 90240,
+        "seconds": 5.64,
+        "sha256": "5623e7f64f26f2463aa7d1b54818850b6f7edbe0d6ee4c63fd65639385d5765f",
+        "rms": 0.14222365702488274,
+        "component_snr_db": -10.000000000000002
+      },
+      "speech-dog": {
+        "samples": 90240,
+        "seconds": 5.64,
+        "sha256": "6b37089ea2c5c4e1b38865fb72b2028596384963b2f484ebfa48c51dc68a21ef",
+        "rms": 0.052565005279118504,
+        "component_snr_db": 3.000000000000002
+      },
+      "rain": {
+        "samples": 80000,
+        "seconds": 5.0,
+        "sha256": "de4acd480bf22ed33a408195afbed8bbbfac45a36c33ba38f33d498f67a1bb16",
+        "rms": 0.12327878422056494
+      },
+      "dog": {
+        "samples": 80000,
+        "seconds": 5.0,
+        "sha256": "d4db526bdeea590cf6612b1c9d9f2c0db7ca0f229ca4600e6465d8d5ba0f4f23",
+        "rms": 0.03774343546030375
+      }
+    }
+  },
+  "runtime": {
+    "torch": "2.9.1",
+    "torchaudio": "2.9.1",
+    "transformers": "5.13.0",
+    "timm": "1.0.27",
+    "numpy": "2.3.5"
+  },
+  "device": "cpu",
+  "inference_dtype": "float32",
+  "threads": 4,
+  "models": {
+    "parakeet": {
+      "repository": "nvidia/parakeet-tdt-0.6b-v3",
+      "revision": "541d1f99c6b0c3cd0b11a95167540bb8edefd82b",
+      "weights_sha256": "3a2026366188c8c68598edbbff92f8d11590a08e0ae2e6775544e7b07d6a5e11",
+      "window_samples": 400,
+      "hop_samples": 160,
+      "fft_size": 512,
+      "mel_bins": 128,
+      "encoder_subsampling": 8,
+      "encoder_hidden_size": 1024,
+      "encoder_step_seconds": 0.08,
+      "duration_choices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "blank_id": 8192,
+      "clips": {
+        "speech": {
+          "text": "Por ello, cuando se inventó el lápiz, ganó muchos amigos.",
+          "input_shape": [
+            1,
+            565,
+            128
+          ],
+          "feature_frames": 564,
+          "token_times": [
+            {
+              "token": "Por",
+              "start": 0.96,
+              "end": 1.28
+            },
+            {
+              "token": " el",
+              "start": 1.28,
+              "end": 1.52
+            },
+            {
+              "token": "lo",
+              "start": 1.52,
+              "end": 1.68
+            },
+            {
+              "token": ",",
+              "start": 1.68,
+              "end": 1.68
+            },
+            {
+              "token": " cuando",
+              "start": 1.92,
+              "end": 2.24
+            },
+            {
+              "token": " se",
+              "start": 2.24,
+              "end": 2.4
+            },
+            {
+              "token": " inv",
+              "start": 2.4,
+              "end": 2.56
+            },
+            {
+              "token": "ent",
+              "start": 2.56,
+              "end": 2.64
+            },
+            {
+              "token": "ó",
+              "start": 2.64,
+              "end": 2.8000000000000003
+            },
+            {
+              "token": " el",
+              "start": 2.8000000000000003,
+              "end": 2.96
+            },
+            {
+              "token": " lá",
+              "start": 2.96,
+              "end": 3.12
+            },
+            {
+              "token": "p",
+              "start": 3.12,
+              "end": 3.2800000000000002
+            },
+            {
+              "token": "iz",
+              "start": 3.2800000000000002,
+              "end": 3.44
+            },
+            {
+              "token": ",",
+              "start": 3.44,
+              "end": 3.44
+            },
+            {
+              "token": " gan",
+              "start": 3.52,
+              "end": 3.68
+            },
+            {
+              "token": "ó",
+              "start": 3.68,
+              "end": 3.84
+            },
+            {
+              "token": " much",
+              "start": 3.84,
+              "end": 4.0
+            },
+            {
+              "token": "os",
+              "start": 4.0,
+              "end": 4.16
+            },
+            {
+              "token": " am",
+              "start": 4.16,
+              "end": 4.32
+            },
+            {
+              "token": "ig",
+              "start": 4.32,
+              "end": 4.48
+            },
+            {
+              "token": "os",
+              "start": 4.48,
+              "end": 4.72
+            },
+            {
+              "token": ".",
+              "start": 4.72,
+              "end": 4.72
+            }
+          ],
+          "token_ids": [
+            8192,
+            8192,
+            8192,
+            8192,
+            3066,
+            460,
+            630,
+            7877,
+            4737,
+            347,
+            1740,
+            340,
+            7948,
+            460,
+            7344,
+            7878,
+            581,
+            7877,
+            2420,
+            7948,
+            4457,
+            308,
+            692,
+            378,
+            308,
+            8192,
+            8192,
+            7883,
+            8192
+          ],
+          "step_advances": [
+            0,
+            4,
+            4,
+            4,
+            4,
+            3,
+            2,
+            3,
+            4,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3,
+            4,
+            4,
+            2,
+            2
+          ],
+          "reference_words": [
+            "por",
+            "ello",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "hypothesis_words": [
+            "por",
+            "ello",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "errors": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 0,
+            "reference_words": 10,
+            "wer": 0.0
+          }
+        },
+        "speech-rain-0db": {
+          "text": "Por eso, cuando se inventó el lápiz, ganó muchos años.",
+          "input_shape": [
+            1,
+            565,
+            128
+          ],
+          "feature_frames": 564,
+          "token_times": [
+            {
+              "token": "Por",
+              "start": 0.96,
+              "end": 1.28
+            },
+            {
+              "token": " eso",
+              "start": 1.28,
+              "end": 1.52
+            },
+            {
+              "token": ",",
+              "start": 1.52,
+              "end": 1.52
+            },
+            {
+              "token": " cuando",
+              "start": 1.92,
+              "end": 2.24
+            },
+            {
+              "token": " se",
+              "start": 2.24,
+              "end": 2.4
+            },
+            {
+              "token": " inv",
+              "start": 2.4,
+              "end": 2.56
+            },
+            {
+              "token": "ent",
+              "start": 2.56,
+              "end": 2.64
+            },
+            {
+              "token": "ó",
+              "start": 2.64,
+              "end": 2.8000000000000003
+            },
+            {
+              "token": " el",
+              "start": 2.8000000000000003,
+              "end": 2.96
+            },
+            {
+              "token": " lá",
+              "start": 2.96,
+              "end": 3.12
+            },
+            {
+              "token": "p",
+              "start": 3.12,
+              "end": 3.2800000000000002
+            },
+            {
+              "token": "iz",
+              "start": 3.2800000000000002,
+              "end": 3.36
+            },
+            {
+              "token": ",",
+              "start": 3.36,
+              "end": 3.36
+            },
+            {
+              "token": " gan",
+              "start": 3.52,
+              "end": 3.68
+            },
+            {
+              "token": "ó",
+              "start": 3.68,
+              "end": 3.84
+            },
+            {
+              "token": " much",
+              "start": 3.84,
+              "end": 3.92
+            },
+            {
+              "token": "os",
+              "start": 3.92,
+              "end": 4.08
+            },
+            {
+              "token": " a",
+              "start": 4.08,
+              "end": 4.24
+            },
+            {
+              "token": "ños",
+              "start": 4.24,
+              "end": 4.4
+            },
+            {
+              "token": ".",
+              "start": 4.4,
+              "end": 4.4
+            }
+          ],
+          "token_ids": [
+            8192,
+            8192,
+            8192,
+            8192,
+            3066,
+            4023,
+            8192,
+            7877,
+            4737,
+            347,
+            1740,
+            340,
+            7948,
+            460,
+            7344,
+            7878,
+            581,
+            7877,
+            2420,
+            7948,
+            4457,
+            308,
+            279,
+            5278,
+            8192,
+            8192,
+            7883,
+            8192,
+            8192
+          ],
+          "step_advances": [
+            0,
+            4,
+            4,
+            4,
+            4,
+            3,
+            2,
+            3,
+            4,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            3,
+            4,
+            4,
+            4,
+            1
+          ],
+          "reference_words": [
+            "por",
+            "ello",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "hypothesis_words": [
+            "por",
+            "eso",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "años"
+          ],
+          "errors": {
+            "substitutions": 2,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 2,
+            "reference_words": 10,
+            "wer": 0.2
+          }
+        },
+        "speech-rain-minus10db": {
+          "text": "Por eso, cuando incrementó el lápiz, ganó muchas años.",
+          "input_shape": [
+            1,
+            565,
+            128
+          ],
+          "feature_frames": 564,
+          "token_times": [
+            {
+              "token": "Por",
+              "start": 0.96,
+              "end": 1.12
+            },
+            {
+              "token": " eso",
+              "start": 1.44,
+              "end": 1.68
+            },
+            {
+              "token": ",",
+              "start": 1.68,
+              "end": 1.68
+            },
+            {
+              "token": " cuando",
+              "start": 1.92,
+              "end": 2.16
+            },
+            {
+              "token": " inc",
+              "start": 2.16,
+              "end": 2.32
+            },
+            {
+              "token": "re",
+              "start": 2.4,
+              "end": 2.56
+            },
+            {
+              "token": "ment",
+              "start": 2.56,
+              "end": 2.72
+            },
+            {
+              "token": "ó",
+              "start": 2.72,
+              "end": 2.8000000000000003
+            },
+            {
+              "token": " el",
+              "start": 2.8000000000000003,
+              "end": 2.88
+            },
+            {
+              "token": " lá",
+              "start": 2.96,
+              "end": 3.04
+            },
+            {
+              "token": "p",
+              "start": 3.04,
+              "end": 3.12
+            },
+            {
+              "token": "iz",
+              "start": 3.2,
+              "end": 3.2800000000000002
+            },
+            {
+              "token": ",",
+              "start": 3.2800000000000002,
+              "end": 3.2800000000000002
+            },
+            {
+              "token": " gan",
+              "start": 3.44,
+              "end": 3.52
+            },
+            {
+              "token": "ó",
+              "start": 3.6,
+              "end": 3.68
+            },
+            {
+              "token": " much",
+              "start": 3.7600000000000002,
+              "end": 3.84
+            },
+            {
+              "token": "as",
+              "start": 3.92,
+              "end": 4.0
+            },
+            {
+              "token": " a",
+              "start": 4.16,
+              "end": 4.32
+            },
+            {
+              "token": "ños",
+              "start": 4.32,
+              "end": 4.48
+            },
+            {
+              "token": ".",
+              "start": 4.48,
+              "end": 4.48
+            }
+          ],
+          "token_ids": [
+            8192,
+            8192,
+            8192,
+            8192,
+            3066,
+            8192,
+            4023,
+            7877,
+            4737,
+            1662,
+            8192,
+            306,
+            1135,
+            7948,
+            460,
+            8192,
+            7344,
+            7878,
+            8192,
+            581,
+            7877,
+            2420,
+            8192,
+            7948,
+            8192,
+            4457,
+            8192,
+            297,
+            8192,
+            8192,
+            279,
+            5278,
+            8192,
+            7883,
+            8192,
+            8192
+          ],
+          "step_advances": [
+            0,
+            4,
+            4,
+            4,
+            2,
+            4,
+            3,
+            3,
+            3,
+            2,
+            1,
+            2,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "reference_words": [
+            "por",
+            "ello",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "hypothesis_words": [
+            "por",
+            "eso",
+            "cuando",
+            "incrementó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchas",
+            "años"
+          ],
+          "errors": {
+            "substitutions": 4,
+            "deletions": 1,
+            "insertions": 0,
+            "edits": 5,
+            "reference_words": 10,
+            "wer": 0.5
+          }
+        },
+        "rain": {
+          "text": "",
+          "input_shape": [
+            1,
+            501,
+            128
+          ],
+          "feature_frames": 500,
+          "token_times": [],
+          "token_ids": [
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192
+          ],
+          "step_advances": [
+            0,
+            1,
+            1,
+            1,
+            1,
+            4,
+            1,
+            1,
+            1,
+            1,
+            4,
+            4,
+            4,
+            1,
+            1,
+            4,
+            4,
+            4,
+            4,
+            1,
+            1,
+            1,
+            1,
+            4,
+            4,
+            4,
+            4,
+            1
+          ],
+          "reference_words": [],
+          "hypothesis_words": [],
+          "errors": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 0,
+            "reference_words": 0,
+            "wer": null
+          }
+        },
+        "dog": {
+          "text": "",
+          "input_shape": [
+            1,
+            501,
+            128
+          ],
+          "feature_frames": 500,
+          "token_times": [],
+          "token_ids": [
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192
+          ],
+          "step_advances": [
+            0,
+            1,
+            1,
+            1,
+            1,
+            4,
+            4,
+            4,
+            4,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            4,
+            4,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            1
+          ],
+          "reference_words": [],
+          "hypothesis_words": [],
+          "errors": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 0,
+            "reference_words": 0,
+            "wer": null
+          }
+        },
+        "speech-dog": {
+          "text": "Por ello, cuando se inventó el lápiz, ganó muchos amigos.",
+          "input_shape": [
+            1,
+            565,
+            128
+          ],
+          "feature_frames": 564,
+          "token_times": [
+            {
+              "token": "Por",
+              "start": 0.96,
+              "end": 1.28
+            },
+            {
+              "token": " el",
+              "start": 1.28,
+              "end": 1.52
+            },
+            {
+              "token": "lo",
+              "start": 1.52,
+              "end": 1.68
+            },
+            {
+              "token": ",",
+              "start": 1.68,
+              "end": 1.68
+            },
+            {
+              "token": " cuando",
+              "start": 1.92,
+              "end": 2.24
+            },
+            {
+              "token": " se",
+              "start": 2.24,
+              "end": 2.4
+            },
+            {
+              "token": " inv",
+              "start": 2.4,
+              "end": 2.56
+            },
+            {
+              "token": "ent",
+              "start": 2.56,
+              "end": 2.64
+            },
+            {
+              "token": "ó",
+              "start": 2.64,
+              "end": 2.8000000000000003
+            },
+            {
+              "token": " el",
+              "start": 2.8000000000000003,
+              "end": 2.96
+            },
+            {
+              "token": " lá",
+              "start": 2.96,
+              "end": 3.12
+            },
+            {
+              "token": "p",
+              "start": 3.12,
+              "end": 3.2800000000000002
+            },
+            {
+              "token": "iz",
+              "start": 3.2800000000000002,
+              "end": 3.44
+            },
+            {
+              "token": ",",
+              "start": 3.44,
+              "end": 3.44
+            },
+            {
+              "token": " gan",
+              "start": 3.52,
+              "end": 3.68
+            },
+            {
+              "token": "ó",
+              "start": 3.68,
+              "end": 3.84
+            },
+            {
+              "token": " much",
+              "start": 3.84,
+              "end": 4.0
+            },
+            {
+              "token": "os",
+              "start": 4.0,
+              "end": 4.16
+            },
+            {
+              "token": " am",
+              "start": 4.16,
+              "end": 4.32
+            },
+            {
+              "token": "ig",
+              "start": 4.32,
+              "end": 4.48
+            },
+            {
+              "token": "os",
+              "start": 4.48,
+              "end": 4.72
+            },
+            {
+              "token": ".",
+              "start": 4.72,
+              "end": 4.72
+            }
+          ],
+          "token_ids": [
+            8192,
+            8192,
+            8192,
+            8192,
+            3066,
+            460,
+            630,
+            7877,
+            4737,
+            347,
+            1740,
+            340,
+            7948,
+            460,
+            7344,
+            7878,
+            581,
+            7877,
+            2420,
+            7948,
+            4457,
+            308,
+            692,
+            378,
+            308,
+            8192,
+            8192,
+            7883,
+            8192
+          ],
+          "step_advances": [
+            0,
+            4,
+            4,
+            4,
+            4,
+            3,
+            2,
+            3,
+            4,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3,
+            4,
+            4,
+            2,
+            2
+          ],
+          "reference_words": [
+            "por",
+            "ello",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "hypothesis_words": [
+            "por",
+            "ello",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "errors": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 0,
+            "reference_words": 10,
+            "wer": 0.0
+          }
+        },
+        "silence": {
+          "text": "",
+          "input_shape": [
+            1,
+            501,
+            128
+          ],
+          "feature_frames": 500,
+          "token_times": [],
+          "token_ids": [
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192,
+            8192
+          ],
+          "step_advances": [
+            0,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            3
+          ],
+          "reference_words": [],
+          "hypothesis_words": [],
+          "errors": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 0,
+            "reference_words": 0,
+            "wer": null
+          }
+        }
+      }
+    },
+    "qwen": {
+      "repository": "Qwen/Qwen3-ASR-0.6B-hf",
+      "revision": "7f1569a48a89f3e3f4dc3a5c9d28bddd903bc76c",
+      "weights_sha256": "d3f212dd20abecd315d830bc54ae3865e56ebfc3276484e57b771288ba27fd35",
+      "clips": {
+        "speech": {
+          "text": "Por eso, cuando inventó el lápiz ganó muchos amigos.",
+          "language": "Spanish",
+          "raw_text": "language Spanish<asr_text>Por eso, cuando inventó el lápiz ganó muchos amigos.<|im_end|>",
+          "feature_shape": [
+            1,
+            128,
+            600
+          ],
+          "generated_ids": [
+            11528,
+            15154,
+            151704,
+            28097,
+            43741,
+            11,
+            26346,
+            17023,
+            1794,
+            655,
+            53638,
+            79,
+            449,
+            24851,
+            1794,
+            57206,
+            56557,
+            13,
+            151645
+          ],
+          "reference_words": [
+            "por",
+            "ello",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "hypothesis_words": [
+            "por",
+            "eso",
+            "cuando",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "errors": {
+            "substitutions": 1,
+            "deletions": 1,
+            "insertions": 0,
+            "edits": 2,
+            "reference_words": 10,
+            "wer": 0.2
+          }
+        },
+        "speech-rain-0db": {
+          "text": "Por eso cuando se montó el lápiz ganó muchos amigos.",
+          "language": "Spanish",
+          "raw_text": "language Spanish<asr_text>Por eso cuando se montó el lápiz ganó muchos amigos.<|im_end|>",
+          "feature_shape": [
+            1,
+            128,
+            600
+          ],
+          "generated_ids": [
+            11528,
+            15154,
+            151704,
+            28097,
+            43741,
+            26346,
+            511,
+            20007,
+            1794,
+            655,
+            53638,
+            79,
+            449,
+            24851,
+            1794,
+            57206,
+            56557,
+            13,
+            151645
+          ],
+          "reference_words": [
+            "por",
+            "ello",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "hypothesis_words": [
+            "por",
+            "eso",
+            "cuando",
+            "se",
+            "montó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "errors": {
+            "substitutions": 2,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 2,
+            "reference_words": 10,
+            "wer": 0.2
+          }
+        },
+        "speech-rain-minus10db": {
+          "text": "Koridor, pandemi, dan labi yang memiliki hama.",
+          "language": "Indonesian",
+          "raw_text": "language Indonesian<asr_text>Koridor, pandemi, dan labi yang memiliki hama.<|im_end|>",
+          "feature_shape": [
+            1,
+            128,
+            600
+          ],
+          "generated_ids": [
+            11528,
+            58829,
+            151704,
+            42,
+            269,
+            28756,
+            11,
+            12217,
+            21780,
+            11,
+            9101,
+            10072,
+            72,
+            10371,
+            71136,
+            305,
+            3029,
+            13,
+            151645
+          ],
+          "reference_words": [
+            "por",
+            "ello",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "hypothesis_words": [
+            "koridor",
+            "pandemi",
+            "dan",
+            "labi",
+            "yang",
+            "memiliki",
+            "hama"
+          ],
+          "errors": {
+            "substitutions": 7,
+            "deletions": 3,
+            "insertions": 0,
+            "edits": 10,
+            "reference_words": 10,
+            "wer": 1.0
+          }
+        },
+        "rain": {
+          "text": "",
+          "language": null,
+          "raw_text": "language None<asr_text><|im_end|>",
+          "feature_shape": [
+            1,
+            128,
+            500
+          ],
+          "generated_ids": [
+            11528,
+            2240,
+            151704,
+            151645
+          ],
+          "reference_words": [],
+          "hypothesis_words": [],
+          "errors": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 0,
+            "reference_words": 0,
+            "wer": null
+          }
+        },
+        "dog": {
+          "text": "",
+          "language": null,
+          "raw_text": "language None<asr_text><|im_end|>",
+          "feature_shape": [
+            1,
+            128,
+            500
+          ],
+          "generated_ids": [
+            11528,
+            2240,
+            151704,
+            151645
+          ],
+          "reference_words": [],
+          "hypothesis_words": [],
+          "errors": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 0,
+            "reference_words": 0,
+            "wer": null
+          }
+        },
+        "speech-dog": {
+          "text": "Por eso, cuando se inventó el lápiz ganó muchos amigos.",
+          "language": "Spanish",
+          "raw_text": "language Spanish<asr_text>Por eso, cuando se inventó el lápiz ganó muchos amigos.<|im_end|>",
+          "feature_shape": [
+            1,
+            128,
+            600
+          ],
+          "generated_ids": [
+            11528,
+            15154,
+            151704,
+            28097,
+            43741,
+            11,
+            26346,
+            511,
+            17023,
+            1794,
+            655,
+            53638,
+            79,
+            449,
+            24851,
+            1794,
+            57206,
+            56557,
+            13,
+            151645
+          ],
+          "reference_words": [
+            "por",
+            "ello",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "hypothesis_words": [
+            "por",
+            "eso",
+            "cuando",
+            "se",
+            "inventó",
+            "el",
+            "lápiz",
+            "ganó",
+            "muchos",
+            "amigos"
+          ],
+          "errors": {
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 1,
+            "reference_words": 10,
+            "wer": 0.1
+          }
+        },
+        "silence": {
+          "text": "",
+          "language": null,
+          "raw_text": "language None<asr_text><|im_end|>",
+          "feature_shape": [
+            1,
+            128,
+            500
+          ],
+          "generated_ids": [
+            11528,
+            2240,
+            151704,
+            151645
+          ],
+          "reference_words": [],
+          "hypothesis_words": [],
+          "errors": {
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0,
+            "edits": 0,
+            "reference_words": 0,
+            "wer": null
+          }
+        }
+      }
+    },
+    "melati": {
+      "repository": "Scicom-intl/Melati-AudioSet-EAT-Large",
+      "revision": "82762af3cdcfae80bbc964074184c0ffe962f90b",
+      "weights_sha256": "7dd9b4089a84729b353bd6562e1982c3d7ee5cc6c758d7fb419d26dda9c2801e",
+      "num_labels": 527,
+      "patch_size": 16,
+      "patch_stride": 16,
+      "clips": {
+        "speech": {
+          "frames_before_padding": 562,
+          "input_shape": [
+            1,
+            1,
+            1024,
+            128
+          ],
+          "top_five": [
+            {
+              "id": 0,
+              "label": "Speech",
+              "logit": 2.2102508544921875,
+              "sigmoid": 0.9011662602424622
+            },
+            {
+              "id": 491,
+              "label": "Clicking",
+              "logit": -0.8285027146339417,
+              "sigmoid": 0.30396175384521484
+            },
+            {
+              "id": 500,
+              "label": "Silence",
+              "logit": -1.723509430885315,
+              "sigmoid": 0.15141968429088593
+            },
+            {
+              "id": 506,
+              "label": "Inside, small room",
+              "logit": -2.2189884185791016,
+              "sigmoid": 0.09805823117494583
+            },
+            {
+              "id": 1,
+              "label": "Male speech, man speaking",
+              "logit": -2.4387245178222656,
+              "sigmoid": 0.0802670270204544
+            }
+          ],
+          "selected": {
+            "Speech": {
+              "id": 0,
+              "label": "Speech",
+              "logit": 2.2102508544921875,
+              "sigmoid": 0.9011662602424622
+            },
+            "Dog": {
+              "id": 74,
+              "label": "Dog",
+              "logit": -7.497620105743408,
+              "sigmoid": 0.000554095022380352
+            },
+            "Bark": {
+              "id": 75,
+              "label": "Bark",
+              "logit": -8.517666816711426,
+              "sigmoid": 0.00019986534607596695
+            },
+            "Rain": {
+              "id": 289,
+              "label": "Rain",
+              "logit": -7.616091728210449,
+              "sigmoid": 0.0004922203370369971
+            },
+            "Silence": {
+              "id": 500,
+              "label": "Silence",
+              "logit": -1.723509430885315,
+              "sigmoid": 0.15141968429088593
+            }
+          }
+        },
+        "speech-rain-0db": {
+          "frames_before_padding": 562,
+          "input_shape": [
+            1,
+            1,
+            1024,
+            128
+          ],
+          "top_five": [
+            {
+              "id": 291,
+              "label": "Rain on surface",
+              "logit": 1.3115936517715454,
+              "sigmoid": 0.7877797484397888
+            },
+            {
+              "id": 289,
+              "label": "Rain",
+              "logit": 1.0414602756500244,
+              "sigmoid": 0.7391316890716553
+            },
+            {
+              "id": 290,
+              "label": "Raindrop",
+              "logit": 0.1235918402671814,
+              "sigmoid": 0.5308586955070496
+            },
+            {
+              "id": 0,
+              "label": "Speech",
+              "logit": -0.03910747170448303,
+              "sigmoid": 0.4902243912220001
+            },
+            {
+              "id": 292,
+              "label": "Stream",
+              "logit": -3.9573311805725098,
+              "sigmoid": 0.018755564466118813
+            }
+          ],
+          "selected": {
+            "Speech": {
+              "id": 0,
+              "label": "Speech",
+              "logit": -0.03910747170448303,
+              "sigmoid": 0.4902243912220001
+            },
+            "Dog": {
+              "id": 74,
+              "label": "Dog",
+              "logit": -8.223474502563477,
+              "sigmoid": 0.0002682093472685665
+            },
+            "Bark": {
+              "id": 75,
+              "label": "Bark",
+              "logit": -10.1068696975708,
+              "sigmoid": 4.079665450262837e-05
+            },
+            "Rain": {
+              "id": 289,
+              "label": "Rain",
+              "logit": 1.0414602756500244,
+              "sigmoid": 0.7391316890716553
+            },
+            "Silence": {
+              "id": 500,
+              "label": "Silence",
+              "logit": -8.32530689239502,
+              "sigmoid": 0.00024224785738624632
+            }
+          }
+        },
+        "speech-rain-minus10db": {
+          "frames_before_padding": 562,
+          "input_shape": [
+            1,
+            1,
+            1024,
+            128
+          ],
+          "top_five": [
+            {
+              "id": 291,
+              "label": "Rain on surface",
+              "logit": 1.6577811241149902,
+              "sigmoid": 0.8399399518966675
+            },
+            {
+              "id": 289,
+              "label": "Rain",
+              "logit": 1.3431282043457031,
+              "sigmoid": 0.7930039167404175
+            },
+            {
+              "id": 290,
+              "label": "Raindrop",
+              "logit": 0.14832264184951782,
+              "sigmoid": 0.5370128154754639
+            },
+            {
+              "id": 0,
+              "label": "Speech",
+              "logit": -0.5359998941421509,
+              "sigmoid": 0.3691185712814331
+            },
+            {
+              "id": 293,
+              "label": "Waterfall",
+              "logit": -4.035698890686035,
+              "sigmoid": 0.017366401851177216
+            }
+          ],
+          "selected": {
+            "Speech": {
+              "id": 0,
+              "label": "Speech",
+              "logit": -0.5359998941421509,
+              "sigmoid": 0.3691185712814331
+            },
+            "Dog": {
+              "id": 74,
+              "label": "Dog",
+              "logit": -8.316372871398926,
+              "sigmoid": 0.0002444212732370943
+            },
+            "Bark": {
+              "id": 75,
+              "label": "Bark",
+              "logit": -10.115653038024902,
+              "sigmoid": 4.0439907024847344e-05
+            },
+            "Rain": {
+              "id": 289,
+              "label": "Rain",
+              "logit": 1.3431282043457031,
+              "sigmoid": 0.7930039167404175
+            },
+            "Silence": {
+              "id": 500,
+              "label": "Silence",
+              "logit": -8.75981616973877,
+              "sigmoid": 0.00015688884013798088
+            }
+          }
+        },
+        "rain": {
+          "frames_before_padding": 498,
+          "input_shape": [
+            1,
+            1,
+            1024,
+            128
+          ],
+          "top_five": [
+            {
+              "id": 291,
+              "label": "Rain on surface",
+              "logit": 1.994126796722412,
+              "sigmoid": 0.8801790475845337
+            },
+            {
+              "id": 289,
+              "label": "Rain",
+              "logit": 1.7969639301300049,
+              "sigmoid": 0.8577789664268494
+            },
+            {
+              "id": 290,
+              "label": "Raindrop",
+              "logit": 0.5170539021492004,
+              "sigmoid": 0.6264586448669434
+            },
+            {
+              "id": 286,
+              "label": "Thunderstorm",
+              "logit": -3.899080514907837,
+              "sigmoid": 0.019858194515109062
+            },
+            {
+              "id": 287,
+              "label": "Thunder",
+              "logit": -4.277602195739746,
+              "sigmoid": 0.013685988262295723
+            }
+          ],
+          "selected": {
+            "Speech": {
+              "id": 0,
+              "label": "Speech",
+              "logit": -4.633724212646484,
+              "sigmoid": 0.009624958038330078
+            },
+            "Dog": {
+              "id": 74,
+              "label": "Dog",
+              "logit": -8.468255996704102,
+              "sigmoid": 0.00020998678519390523
+            },
+            "Bark": {
+              "id": 75,
+              "label": "Bark",
+              "logit": -10.272575378417969,
+              "sigmoid": 3.4567037801025435e-05
+            },
+            "Rain": {
+              "id": 289,
+              "label": "Rain",
+              "logit": 1.7969639301300049,
+              "sigmoid": 0.8577789664268494
+            },
+            "Silence": {
+              "id": 500,
+              "label": "Silence",
+              "logit": -8.708430290222168,
+              "sigmoid": 0.00016516006144229323
+            }
+          }
+        },
+        "dog": {
+          "frames_before_padding": 498,
+          "input_shape": [
+            1,
+            1,
+            1024,
+            128
+          ],
+          "top_five": [
+            {
+              "id": 74,
+              "label": "Dog",
+              "logit": -0.2608301043510437,
+              "sigmoid": 0.43515968322753906
+            },
+            {
+              "id": 73,
+              "label": "Domestic animals, pets",
+              "logit": -0.561234712600708,
+              "sigmoid": 0.3632618486881256
+            },
+            {
+              "id": 72,
+              "label": "Animal",
+              "logit": -0.5892927646636963,
+              "sigmoid": 0.35679715871810913
+            },
+            {
+              "id": 75,
+              "label": "Bark",
+              "logit": -0.9001176953315735,
+              "sigmoid": 0.28902631998062134
+            },
+            {
+              "id": 78,
+              "label": "Bow-wow",
+              "logit": -1.0946125984191895,
+              "sigmoid": 0.25075069069862366
+            }
+          ],
+          "selected": {
+            "Speech": {
+              "id": 0,
+              "label": "Speech",
+              "logit": -3.591499090194702,
+              "sigmoid": 0.026817964389920235
+            },
+            "Dog": {
+              "id": 74,
+              "label": "Dog",
+              "logit": -0.2608301043510437,
+              "sigmoid": 0.43515968322753906
+            },
+            "Bark": {
+              "id": 75,
+              "label": "Bark",
+              "logit": -0.9001176953315735,
+              "sigmoid": 0.28902631998062134
+            },
+            "Rain": {
+              "id": 289,
+              "label": "Rain",
+              "logit": -7.8070149421691895,
+              "sigmoid": 0.0004067053087055683
+            },
+            "Silence": {
+              "id": 500,
+              "label": "Silence",
+              "logit": -2.4222843647003174,
+              "sigmoid": 0.08148911595344543
+            }
+          }
+        },
+        "speech-dog": {
+          "frames_before_padding": 562,
+          "input_shape": [
+            1,
+            1,
+            1024,
+            128
+          ],
+          "top_five": [
+            {
+              "id": 0,
+              "label": "Speech",
+              "logit": 2.275092840194702,
+              "sigmoid": 0.9067931175231934
+            },
+            {
+              "id": 74,
+              "label": "Dog",
+              "logit": 0.40658557415008545,
+              "sigmoid": 0.6002689003944397
+            },
+            {
+              "id": 75,
+              "label": "Bark",
+              "logit": 0.13829940557479858,
+              "sigmoid": 0.5345198512077332
+            },
+            {
+              "id": 72,
+              "label": "Animal",
+              "logit": 0.1225409209728241,
+              "sigmoid": 0.530596911907196
+            },
+            {
+              "id": 73,
+              "label": "Domestic animals, pets",
+              "logit": -0.13747146725654602,
+              "sigmoid": 0.465686172246933
+            }
+          ],
+          "selected": {
+            "Speech": {
+              "id": 0,
+              "label": "Speech",
+              "logit": 2.275092840194702,
+              "sigmoid": 0.9067931175231934
+            },
+            "Dog": {
+              "id": 74,
+              "label": "Dog",
+              "logit": 0.40658557415008545,
+              "sigmoid": 0.6002689003944397
+            },
+            "Bark": {
+              "id": 75,
+              "label": "Bark",
+              "logit": 0.13829940557479858,
+              "sigmoid": 0.5345198512077332
+            },
+            "Rain": {
+              "id": 289,
+              "label": "Rain",
+              "logit": -8.802658081054688,
+              "sigmoid": 0.00015031035582069308
+            },
+            "Silence": {
+              "id": 500,
+              "label": "Silence",
+              "logit": -3.665339231491089,
+              "sigmoid": 0.024956706911325455
+            }
+          }
+        },
+        "silence": {
+          "frames_before_padding": 498,
+          "input_shape": [
+            1,
+            1,
+            1024,
+            128
+          ],
+          "top_five": [
+            {
+              "id": 500,
+              "label": "Silence",
+              "logit": -0.9152213335037231,
+              "sigmoid": 0.28593260049819946
+            },
+            {
+              "id": 137,
+              "label": "Music",
+              "logit": -1.6337568759918213,
+              "sigmoid": 0.16331635415554047
+            },
+            {
+              "id": 300,
+              "label": "Vehicle",
+              "logit": -2.449554443359375,
+              "sigmoid": 0.07947113364934921
+            },
+            {
+              "id": 0,
+              "label": "Speech",
+              "logit": -2.8375022411346436,
+              "sigmoid": 0.055330947041511536
+            },
+            {
+              "id": 307,
+              "label": "Car",
+              "logit": -3.7183284759521484,
+              "sigmoid": 0.02369922213256359
+            }
+          ],
+          "selected": {
+            "Speech": {
+              "id": 0,
+              "label": "Speech",
+              "logit": -2.8375022411346436,
+              "sigmoid": 0.055330947041511536
+            },
+            "Dog": {
+              "id": 74,
+              "label": "Dog",
+              "logit": -6.474659442901611,
+              "sigmoid": 0.00153964979108423
+            },
+            "Bark": {
+              "id": 75,
+              "label": "Bark",
+              "logit": -7.5276007652282715,
+              "sigmoid": 0.0005377382622100413
+            },
+            "Rain": {
+              "id": 289,
+              "label": "Rain",
+              "logit": -5.7344818115234375,
+              "sigmoid": 0.003222141182050109
+            },
+            "Silence": {
+              "id": 500,
+              "label": "Silence",
+              "logit": -0.9152213335037231,
+              "sigmoid": 0.28593260049819946
+            }
+          }
+        }
+      }
+    }
+  }
+}

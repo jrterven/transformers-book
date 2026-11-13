@@ -1,0 +1,60 @@
+{
+  "sample_rate": 16000,
+  "reference": "Por ello, cuando se inventó, el lápiz ganó muchos amigos.",
+  "sources": {
+    "speech": {
+      "file": "15635660839838523367.wav",
+      "sha256": "6a75033f9ae116d6644c91253ea2eb539ef3e14490f36f1a631978abb243a15e"
+    },
+    "rain": {
+      "file": "1-21189-A-10.wav",
+      "sha256": "5f15ab2d8f6ef9932909b1b75c8ac254cbea46c93b4b2f0f3542abdf09b9abc0"
+    },
+    "dog": {
+      "file": "1-100032-A-0.wav",
+      "sha256": "f40a849a2375c8c63312a73dd2dd6c74007301fcc21b4be2ece29a642831e3d8"
+    }
+  },
+  "speech_gain": 0.4455382670257587,
+  "clips": {
+    "speech": {
+      "samples": 90240,
+      "seconds": 5.64,
+      "sha256": "4e1db6cddd98ea144acae7896c75a5a3f7d8d69d500177f20e18c67c5ed158b8",
+      "rms": 0.04291177232828199
+    },
+    "speech-rain-0db": {
+      "samples": 90240,
+      "seconds": 5.64,
+      "sha256": "c097e98df51ab1f1f4f88d3ff07bf8b4ccc14407a104fb8a36769a5a75ae469a",
+      "rms": 0.060613279841835746,
+      "component_snr_db": 0.0
+    },
+    "speech-rain-minus10db": {
+      "samples": 90240,
+      "seconds": 5.64,
+      "sha256": "5623e7f64f26f2463aa7d1b54818850b6f7edbe0d6ee4c63fd65639385d5765f",
+      "rms": 0.14222365702488274,
+      "component_snr_db": -10.000000000000002
+    },
+    "speech-dog": {
+      "samples": 90240,
+      "seconds": 5.64,
+      "sha256": "6b37089ea2c5c4e1b38865fb72b2028596384963b2f484ebfa48c51dc68a21ef",
+      "rms": 0.052565005279118504,
+      "component_snr_db": 3.000000000000002
+    },
+    "rain": {
+      "samples": 80000,
+      "seconds": 5.0,
+      "sha256": "de4acd480bf22ed33a408195afbed8bbbfac45a36c33ba38f33d498f67a1bb16",
+      "rms": 0.12327878422056494
+    },
+    "dog": {
+      "samples": 80000,
+      "seconds": 5.0,
+      "sha256": "d4db526bdeea590cf6612b1c9d9f2c0db7ca0f229ca4600e6465d8d5ba0f4f23",
+      "rms": 0.03774343546030375
+    }
+  }
+}
