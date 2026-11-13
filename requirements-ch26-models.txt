@@ -1,0 +1,7 @@
+# Python 3.12 on Apple silicon for local inference. Matplotlib also rebuilds the figures from JSON.
+huggingface-hub==2.4.0
+matplotlib==3.11.2
+mlx==0.32.4
+mlx-lm==0.32.2
+tokenizers==0.23.3
+transformers==5.23.0

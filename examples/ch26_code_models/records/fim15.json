@@ -1,0 +1,260 @@
+{
+  "model": "fim15",
+  "checkpoint": {
+    "repo": "mlx-community/Qwen2.5-Coder-1.5B-4bit",
+    "revision": "a18a8bf7bf0563001cb807abff12a98d4a1ae43c",
+    "weights": {
+      "model.safetensors": "87869d23c53d1274641597bb96ab01471f2027c710b9fd09ca9b538a1da43ac1"
+    }
+  },
+  "config_sha256": {
+    "added_tokens.json": "58b54bbe36fc752f79a24a271ef66a0a0830054b4dfad94bde757d851968060b",
+    "config.json": "0708e236aa7b7db3c01bf8a46200e1a92d57f20fa668a7c430154bd6a21cdba5",
+    "model.safetensors.index.json": "6b98634d5044f0e2ad45228a374f8445904e571f1082392d08a6ce54f5d517ca",
+    "special_tokens_map.json": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+    "tokenizer.json": "a8506e7111b80c6d8635951a02eab0f4e1a8e4e5772da83846579e97b16f61bf",
+    "tokenizer_config.json": "dced901d401aa828f313a2baec70d0ce164653285812237b5285c7efd5b9e760",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "runtime": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "transformers": "5.23.0",
+    "tokenizers": "0.23.3"
+  },
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "results": {
+    "marker_ids": {
+      "<|fim_prefix|>": [
+        151659
+      ],
+      "<|fim_suffix|>": [
+        151661
+      ],
+      "<|fim_middle|>": [
+        151660
+      ]
+    },
+    "completions": [
+      {
+        "raw": "return a[0] <= b[0] <= a[1] or b[0] <= a[0] <= b[1]",
+        "prompt_tokens": 55,
+        "prompt": "<|fim_prefix|>def overlaps(a, b):\n    \"\"\"Return whether the two integer intervals overlap.\"\"\"\n    <|fim_suffix|>\n\nassert overlaps((0, 2), (2, 5)) is False\nassert overlaps((0, 3), (2, 5)) is True\n<|fim_middle|>",
+        "seed": 2600,
+        "temperature": 0,
+        "top_p": 1,
+        "max_tokens": 64,
+        "generated_tokens_including_stop": 31,
+        "finish": "stop",
+        "condition": "half_open",
+        "prefix": "def overlaps(a, b):\n    \"\"\"Return whether the two integer intervals overlap.\"\"\"\n    ",
+        "suffix": "\n\nassert overlaps((0, 2), (2, 5)) is False\nassert overlaps((0, 3), (2, 5)) is True\n",
+        "candidate": "def overlaps(a, b):\n    \"\"\"Return whether the two integer intervals overlap.\"\"\"\n    return a[0] <= b[0] <= a[1] or b[0] <= a[0] <= b[1]",
+        "evaluation": {
+          "status": "tested",
+          "passed": false,
+          "checks": [
+            {
+              "case": "interior",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "gap",
+              "expected": false,
+              "observed": false,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "touching",
+              "expected": false,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": false
+            },
+            {
+              "case": "equal endpoints inside",
+              "expected": false,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": false
+            },
+            {
+              "case": "one shared",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "both equal endpoints",
+              "expected": false,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": false
+            }
+          ],
+          "visible_suffix_checks": [
+            {
+              "case": "touching assertion",
+              "expected": false,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": false
+            },
+            {
+              "case": "one shared assertion",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            }
+          ]
+        }
+      },
+      {
+        "raw": "return a[0] <= b[0] <= a[1] or b[0] <= a[0] <= b[1]",
+        "prompt_tokens": 55,
+        "prompt": "<|fim_prefix|>def overlaps(a, b):\n    \"\"\"Return whether the two integer intervals overlap.\"\"\"\n    <|fim_suffix|>\n\nassert overlaps((0, 2), (2, 5)) is True\nassert overlaps((0, 3), (2, 5)) is True\n<|fim_middle|>",
+        "seed": 2600,
+        "temperature": 0,
+        "top_p": 1,
+        "max_tokens": 64,
+        "generated_tokens_including_stop": 31,
+        "finish": "stop",
+        "condition": "closed",
+        "prefix": "def overlaps(a, b):\n    \"\"\"Return whether the two integer intervals overlap.\"\"\"\n    ",
+        "suffix": "\n\nassert overlaps((0, 2), (2, 5)) is True\nassert overlaps((0, 3), (2, 5)) is True\n",
+        "candidate": "def overlaps(a, b):\n    \"\"\"Return whether the two integer intervals overlap.\"\"\"\n    return a[0] <= b[0] <= a[1] or b[0] <= a[0] <= b[1]",
+        "evaluation": {
+          "status": "tested",
+          "passed": true,
+          "checks": [
+            {
+              "case": "interior",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "gap",
+              "expected": false,
+              "observed": false,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "touching",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "equal endpoints inside",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "one shared",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "both equal endpoints",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            }
+          ],
+          "visible_suffix_checks": [
+            {
+              "case": "touching assertion",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "one shared assertion",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            }
+          ]
+        }
+      }
+    ],
+    "operator_traces": {
+      "no_suffix": {
+        "prompt": "<|fim_prefix|>def overlaps(a, b):\n    \"\"\"Return whether the two integer intervals overlap.\"\"\"\n    return max(a[0], b[0])<|fim_suffix|><|fim_middle|>",
+        "prompt_tokens": 30,
+        "probabilities": {
+          "<": {
+            "token_id": 366,
+            "probability": 0.057304564428268645
+          },
+          "<=": {
+            "token_id": 2651,
+            "probability": 0.9248488132162048
+          }
+        }
+      },
+      "half_open": {
+        "prompt": "<|fim_prefix|>def overlaps(a, b):\n    \"\"\"Return whether the two integer intervals overlap.\"\"\"\n    return max(a[0], b[0])<|fim_suffix|>\n\nassert overlaps((0, 2), (2, 5)) is False\nassert overlaps((0, 3), (2, 5)) is True\n<|fim_middle|>",
+        "prompt_tokens": 65,
+        "probabilities": {
+          "<": {
+            "token_id": 366,
+            "probability": 0.11219689052034373
+          },
+          "<=": {
+            "token_id": 2651,
+            "probability": 0.8824969025845955
+          }
+        }
+      },
+      "closed": {
+        "prompt": "<|fim_prefix|>def overlaps(a, b):\n    \"\"\"Return whether the two integer intervals overlap.\"\"\"\n    return max(a[0], b[0])<|fim_suffix|>\n\nassert overlaps((0, 2), (2, 5)) is True\nassert overlaps((0, 3), (2, 5)) is True\n<|fim_middle|>",
+        "prompt_tokens": 65,
+        "probabilities": {
+          "<": {
+            "token_id": 366,
+            "probability": 0.1213137638466268
+          },
+          "<=": {
+            "token_id": 2651,
+            "probability": 0.8688150562628432
+          }
+        }
+      }
+    }
+  }
+}

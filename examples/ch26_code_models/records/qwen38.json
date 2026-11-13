@@ -1,0 +1,3032 @@
+{
+  "model": "qwen38",
+  "checkpoint": {
+    "repo": "mlx-community/Qwen3.8-27B-4bit",
+    "revision": "b935172e4bb5dcd0543774a34748fb92422e3027",
+    "weights": {
+      "model-00001-of-00003.safetensors": "6cc1508e96fb5d0865dfd5753a79f4ec60651bf3e2a82844a7e8ae9c60528c0d",
+      "model-00002-of-00003.safetensors": "83f2a20ca8058f486a3634a27faf99587f4cd3c156a83dee34fb99e6ac178670",
+      "model-00003-of-00003.safetensors": "31b8c91ef899f79efaaa69e3d2c096f6e2ebeb2ff20e29222abbd9ebc79e560a"
+    }
+  },
+  "config_sha256": {
+    "chat_template.jinja": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041",
+    "config.json": "14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85",
+    "generation_config.json": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e",
+    "model.safetensors.index.json": "13b840162b4cb35c66fef7df072f7dbb4717908204364f5e5d9f9655a2758fa8",
+    "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+    "processor_config.json": "222e060084f093738ca7af4c89ef09d844e415876021325fdf7d5c6821b119d4",
+    "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+    "tokenizer_config.json": "792fa3f0cb88b111e54ef3134c873531008c4df471d108da17903426e308aa7b",
+    "video_preprocessor_config.json": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+    "vocab.json": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+  },
+  "runtime": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "transformers": "5.23.0",
+    "tokenizers": "0.23.3"
+  },
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "results": {
+    "generation": {
+      "case_count": 54,
+      "samples": [
+        {
+          "raw": "```python\ndef peak_bookings(bookings):\n    if not bookings:\n        return 0\n    events = []\n    for start, end in bookings:\n        events.append((start, 1))\n        events.append((end, -1))\n    events.sort(key=lambda x: (x[0], x[1]))\n    max_active = 0\n    current = 0\n    for _, delta in events:\n        current += delta\n        if current > max_active:\n            max_active = current\n    return max_active\n```",
+          "prompt_tokens": 123,
+          "prompt": "<|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "seed": 2601,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 120,
+          "finish": "stop",
+          "candidate": "def peak_bookings(bookings):\n    if not bookings:\n        return 0\n    events = []\n    for start, end in bookings:\n        events.append((start, 1))\n        events.append((end, -1))\n    events.sort(key=lambda x: (x[0], x[1]))\n    max_active = 0\n    current = 0\n    for _, delta in events:\n        current += delta\n        if current > max_active:\n            max_active = current\n    return max_active\n",
+          "evaluation": {
+            "status": "tested",
+            "passed": true,
+            "checks": [
+              {
+                "case": "no bookings",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "three active",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "touching",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "empty inside",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "unsorted duplicates",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "wide time span",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 1",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 2",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 3",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 4",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 5",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 6",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 7",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 8",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 9",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 10",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 11",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 12",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 13",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 14",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 15",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 16",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 17",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 18",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 19",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 20",
+                "expected": 6,
+                "observed": 6,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 21",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 22",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 23",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 24",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 25",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 26",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 27",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 28",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 29",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 30",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 31",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 32",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 33",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 34",
+                "expected": 7,
+                "observed": 7,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 35",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 36",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 37",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 38",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 39",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 40",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 41",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 42",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 43",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 44",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 45",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 46",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 47",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 48",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              }
+            ]
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "```python\ndef peak_bookings(bookings):\n    if not bookings:\n        return 0\n    \n    events = []\n    for start, end in bookings:\n        events.append((start, 1))   # +1 at start\n        events.append((end, -1))     # -1 at end\n    \n    # Sort events: by time, and for same time, process ends before starts?\n    # Wait: a booking is active from start inclusive to end exclusive.\n    # So at time t, if a booking ends at t, it is NOT active at t.\n    # If a booking starts at t, it IS active at t.\n    # So at the same time t, we should process the -1 (end) events before the +1 (start) events?\n    # No wait: if one booking ends at 5 and another starts at 5, at time 5 the first is not active, the second is active.\n    # So the net change at time 5 is -1 + 1 = 0. But we need to track the peak.\n    # Actually, we need to be careful: if we process starts before ends at the same time, we might count both as active.\n    # Let's think: at time t, bookings with start <= t < end are active.\n    # So a booking [start, end) is active at t iff start <= t and t < end, i.e., t >= start and t < end.\n    # At time t = end, it's not active. At time t = start, it is active.\n    # So if we have an end at time t and a start at time t, the end one is not active at t, the start one is.\n    # So we should process the end (-1) before the start (+1) at the same time? \n    # Actually, it doesn't matter for the sum at exactly time t if we think of it as: the count just before t includes the ending booking, and the count at t (after processing) should exclude the ending one and include the starting one.\n    # Let's sort by time, and for same time, process -1 before +1. That way, when we reach time t, we first subtract the endings, then add the starts. The peak after processing all events at time t gives the count active at time t.\n    \n    events.sort(key=lambda x: (x[0], -x[1]))\n    # Wait: if we want -1 to come before +1 at same time, we can sort by (time, -delta) so that -1 (which is smaller) ... no.\n    # Let's sort by time ascending, and for same time, we want -1 before +1. Since -1 < +1, sorting by (time, delta) would put -1 before +1. Yes!\n    \n    events.sort(key=lambda x: (x[0], x[1]))\n    \n    current = 0\n    peak = 0\n    for _, delta in events:\n        current += delta\n        if current > peak:\n            peak = current\n    \n    return peak\n```",
+          "prompt_tokens": 123,
+          "prompt": "<|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "seed": 2602,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 679,
+          "finish": "stop",
+          "candidate": "def peak_bookings(bookings):\n    if not bookings:\n        return 0\n    \n    events = []\n    for start, end in bookings:\n        events.append((start, 1))   # +1 at start\n        events.append((end, -1))     # -1 at end\n    \n    # Sort events: by time, and for same time, process ends before starts?\n    # Wait: a booking is active from start inclusive to end exclusive.\n    # So at time t, if a booking ends at t, it is NOT active at t.\n    # If a booking starts at t, it IS active at t.\n    # So at the same time t, we should process the -1 (end) events before the +1 (start) events?\n    # No wait: if one booking ends at 5 and another starts at 5, at time 5 the first is not active, the second is active.\n    # So the net change at time 5 is -1 + 1 = 0. But we need to track the peak.\n    # Actually, we need to be careful: if we process starts before ends at the same time, we might count both as active.\n    # Let's think: at time t, bookings with start <= t < end are active.\n    # So a booking [start, end) is active at t iff start <= t and t < end, i.e., t >= start and t < end.\n    # At time t = end, it's not active. At time t = start, it is active.\n    # So if we have an end at time t and a start at time t, the end one is not active at t, the start one is.\n    # So we should process the end (-1) before the start (+1) at the same time? \n    # Actually, it doesn't matter for the sum at exactly time t if we think of it as: the count just before t includes the ending booking, and the count at t (after processing) should exclude the ending one and include the starting one.\n    # Let's sort by time, and for same time, process -1 before +1. That way, when we reach time t, we first subtract the endings, then add the starts. The peak after processing all events at time t gives the count active at time t.\n    \n    events.sort(key=lambda x: (x[0], -x[1]))\n    # Wait: if we want -1 to come before +1 at same time, we can sort by (time, -delta) so that -1 (which is smaller) ... no.\n    # Let's sort by time ascending, and for same time, we want -1 before +1. Since -1 < +1, sorting by (time, delta) would put -1 before +1. Yes!\n    \n    events.sort(key=lambda x: (x[0], x[1]))\n    \n    current = 0\n    peak = 0\n    for _, delta in events:\n        current += delta\n        if current > peak:\n            peak = current\n    \n    return peak\n",
+          "evaluation": {
+            "status": "tested",
+            "passed": true,
+            "checks": [
+              {
+                "case": "no bookings",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "three active",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "touching",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "empty inside",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "unsorted duplicates",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "wide time span",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 1",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 2",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 3",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 4",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 5",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 6",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 7",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 8",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 9",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 10",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 11",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 12",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 13",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 14",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 15",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 16",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 17",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 18",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 19",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 20",
+                "expected": 6,
+                "observed": 6,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 21",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 22",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 23",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 24",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 25",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 26",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 27",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 28",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 29",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 30",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 31",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 32",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 33",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 34",
+                "expected": 7,
+                "observed": 7,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 35",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 36",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 37",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 38",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 39",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 40",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 41",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 42",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 43",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 44",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 45",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 46",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 47",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 48",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              }
+            ]
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "```python\ndef peak_bookings(bookings):\n    if not bookings:\n        return 0\n    \n    # Collect all events: (time, type) where type is +1 for start, -1 for end\n    # Since active from start inclusive to end exclusive:\n    # At time t, a booking [s, e) is active if s <= t < e\n    # So at time s, it becomes active (+1)\n    # At time e, it becomes inactive (-1)\n    #\n    # To find the maximum, we can sort events by time.\n    # For events at the same time, we need to be careful about ordering:\n    # If a booking ends at time t and another starts at time t, the one ending at t is NOT active at t (since end is exclusive), and the one starting at t IS active at t.\n    # So at the same time, we should process ends (-1) before starts (+1) to correctly compute the count at that time.\n    # Wait, let's think again. We want the maximum number active at any integer time.\n    # At time t, bookings with s <= t < e are active.\n    # \n    # Let's use the sweep line approach:\n    # Create events: for each booking (s, e), add (s, +1) and (e, -1).\n    # Sort events by time. For events at the same time, process -1 before +1? \n    # Actually, we need to think about what the count is \"at\" time t.\n    # \n    # If we sweep through times in order, the count changes at each event time.\n    # The count at time t after processing all events at time t gives us the number of bookings active at time t.\n    # But wait: if a booking ends at t, it's not active at t. If a booking starts at t, it is active at t.\n    # So at time t, we first remove those ending at t, then add those starting at t. The resulting count is the number active at time t.\n    #\n    # Actually, let's reconsider. The standard approach:\n    # Sort all start and end times. Use a sweep line.\n    # For the maximum, we track the current count.\n    #\n    # Let's create a list of (time, delta) where delta is +1 for start, -1 for end.\n    # Sort by time. For same time, we should process -1 (ends) before +1 (starts) so that the count after processing all events at that time correctly reflects the state at that time.\n    #\n    # Actually, let's just compute: after sorting, iterate and keep a running sum. The peak is the maximum running sum.\n    #\n    # But we need to be careful: when multiple events happen at the same time, the order matters for the intermediate values, but what we care about is the value AFTER all events at that time are processed (or the max during processing?).\n    #\n    # Let's think: if at time t, we have k ends and m starts. Before processing time t, the count is C. After processing all events at time t, the count is C - k + m. The maximum count \"at time t\" should be C - k + m (since ends at t are not active at t, starts at t are active at t).\n    #\n    # But what if within the same time t, we have some starts and ends? The count fluctuates. But since ends at t mean the booking is NOT active at t, and starts at t mean IS active at t, the correct count at time t is after removing ends and adding starts.\n    #\n    # However, for finding the maximum over all times, we need to consider that between event times, the count is constant. And at event times, the count transitions. The maximum could be right after a start is added, or right before an end is removed? No, because ends are exclusive.\n    #\n    # Let me use a different approach: sort all start times and all end times separately. Then use two pointers.\n    #\n    # Actually, the cleanest approach: create events, sort by (time, type) where type is 0 for end and 1 for start (so ends come before starts at same time). Then sweep and track max.\n    \n    events = []\n    for s, e in bookings:\n        events.append((s, 1))  # start: +1\n        events.append((e, -1))  # end: -1\n    \n    # Sort by time, and for same time, process ends (-1) before starts (+1)\n    # So sort by (",
+          "prompt_tokens": 123,
+          "prompt": "<|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "seed": 2603,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 1024,
+          "finish": "length",
+          "candidate": null,
+          "evaluation": {
+            "status": "limit",
+            "passed": false,
+            "checks": []
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "```python\ndef peak_bookings(bookings):\n    if not bookings:\n        return 0\n    events = []\n    for start, end in bookings:\n        events.append((start, 1))\n        events.append((end, -1))\n    # Sort by time; for same time, process -1 (end) before +1 (start)\n    # Because end is exclusive, at time t, a booking ending at t is not active,\n    # and a booking starting at t is active. So we should decrement before incrementing.\n    events.sort(key=lambda x: (x[0], x[1]))\n    max_active = 0\n    current = 0\n    for _, delta in events:\n        current += delta\n        if current > max_active:\n            max_active = current\n    return max_active\n```",
+          "prompt_tokens": 123,
+          "prompt": "<|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "seed": 2604,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 184,
+          "finish": "stop",
+          "candidate": "def peak_bookings(bookings):\n    if not bookings:\n        return 0\n    events = []\n    for start, end in bookings:\n        events.append((start, 1))\n        events.append((end, -1))\n    # Sort by time; for same time, process -1 (end) before +1 (start)\n    # Because end is exclusive, at time t, a booking ending at t is not active,\n    # and a booking starting at t is active. So we should decrement before incrementing.\n    events.sort(key=lambda x: (x[0], x[1]))\n    max_active = 0\n    current = 0\n    for _, delta in events:\n        current += delta\n        if current > max_active:\n            max_active = current\n    return max_active\n",
+          "evaluation": {
+            "status": "tested",
+            "passed": true,
+            "checks": [
+              {
+                "case": "no bookings",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "three active",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "touching",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "empty inside",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "unsorted duplicates",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "wide time span",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 1",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 2",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 3",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 4",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 5",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 6",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 7",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 8",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 9",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 10",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 11",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 12",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 13",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 14",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 15",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 16",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 17",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 18",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 19",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 20",
+                "expected": 6,
+                "observed": 6,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 21",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 22",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 23",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 24",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 25",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 26",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 27",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 28",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 29",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 30",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 31",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 32",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 33",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 34",
+                "expected": 7,
+                "observed": 7,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 35",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 36",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 37",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 38",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 39",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 40",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 41",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 42",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 43",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 44",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 45",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 46",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 47",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 48",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              }
+            ]
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "```python\ndef peak_bookings(bookings):\n    if not bookings:\n        return 0\n    events = []\n    for start, end in bookings:\n        events.append((start, 1))\n        events.append((end, -1))\n    # Sort by time; for same time, ends (-1) should come before starts (1) so that\n    # we count a booking as ending before another starts at the same point.\n    events.sort(key=lambda x: (x[0], x[1]))\n    current = 0\n    peak = 0\n    for _, delta in events:\n        current += delta\n        if current > peak:\n            peak = current\n    return peak\n```",
+          "prompt_tokens": 123,
+          "prompt": "<|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "seed": 2605,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 157,
+          "finish": "stop",
+          "candidate": "def peak_bookings(bookings):\n    if not bookings:\n        return 0\n    events = []\n    for start, end in bookings:\n        events.append((start, 1))\n        events.append((end, -1))\n    # Sort by time; for same time, ends (-1) should come before starts (1) so that\n    # we count a booking as ending before another starts at the same point.\n    events.sort(key=lambda x: (x[0], x[1]))\n    current = 0\n    peak = 0\n    for _, delta in events:\n        current += delta\n        if current > peak:\n            peak = current\n    return peak\n",
+          "evaluation": {
+            "status": "tested",
+            "passed": true,
+            "checks": [
+              {
+                "case": "no bookings",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "three active",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "touching",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "empty inside",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "unsorted duplicates",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "wide time span",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 1",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 2",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 3",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 4",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 5",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 6",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 7",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 8",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 9",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 10",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 11",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 12",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 13",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 14",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 15",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 16",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 17",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 18",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 19",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 20",
+                "expected": 6,
+                "observed": 6,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 21",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 22",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 23",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 24",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 25",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 26",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 27",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 28",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 29",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 30",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 31",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 32",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 33",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 34",
+                "expected": 7,
+                "observed": 7,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 35",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 36",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 37",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 38",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 39",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 40",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 41",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 42",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 43",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 44",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 45",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 46",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 47",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 48",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              }
+            ]
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "```python\ndef peak_bookings(bookings):\n    if not bookings:\n        return 0\n    \n    # Use sweep line approach with events\n    # Each booking (start, end) contributes:\n    #   +1 at time start\n    #   -1 at time end\n    # But we need to handle the fact that at the same time,\n    # endings should be processed before beginnings? \n    # Wait: active from start inclusive to end exclusive.\n    # So at time t, a booking is active if start <= t < end.\n    # \n    # We want to find the maximum number of active bookings at any integer time.\n    # \n    # Approach: collect all event points (start times with +1, end times with -1),\n    # sort them, and sweep through. But we need to be careful about ordering when\n    # multiple events happen at the same time.\n    # \n    # At a given time t, bookings that start at t are active, and bookings that end at t are NOT active.\n    # So if we process events at the same time, we should process endings (-1) before beginnings (+1)\n    # to correctly compute the count at that exact time.\n    # \n    # Actually, let's think again. The number of active bookings at time t is:\n    #   count of bookings where start <= t < end\n    # \n    # If we sweep through sorted event times, at each distinct time t, we first apply all -1 events (endings at t),\n    # then apply all +1 events (beginnings at t), and then the current sum is the number of active bookings at time t.\n    # Wait, no. Let's think about what happens just before and at time t.\n    # \n    # Actually, a cleaner way: \n    # - At time t, the number of active bookings = (number of starts at or before t) - (number of ends at or before t)\n    # But that's not quite right either, because ends at t mean the booking is NOT active at t.\n    # \n    # Let me reconsider. A booking (s, e) is active at time t iff s <= t < e.\n    # So active count at t = #{(s,e) : s <= t < e} = #{(s,e) : s <= t} - #{(s,e) : e <= t}\n    # \n    # So if I collect all start times and all end times, I can sort them and for each candidate time t (which should be one of the start or end times), compute this difference.\n    # \n    # But the peak could occur at a time that is a start time. Let's just consider all unique event times (all starts and ends), sort them, and for each, compute the active count.\n    # \n    # To do this efficiently without scaling with distance:\n    # 1. Collect all starts and ends.\n    # 2. Sort all unique event times.\n    # 3. Use a sweep: sort events as (time, delta) where delta is +1 for start, -1 for end. But we need to handle ordering at same time.\n    # \n    # Actually, since active count at t = starts_so_far - ends_so_far, where \"so far\" means <= t for starts, and <= t for ends.\n    # \n    # So: \n    #   sort all start times\n    #   sort all end times\n    #   for each candidate t in sorted(set(all_starts + all_ends)):\n    #       active = bisect_right(starts, t) - bisect_right(ends, t)\n    #       track max\n    # \n    # This is O(n log n) where n is the number of bookings. This satisfies the constraint.\n    # \n    # But wait, we need bisect which is a built-in module. The problem says \"use built-ins only\" and \"without imports\". \n    # bisect is a standard library module, not a built-in function. So we can't use bisect without importing it.\n    # \n    # Alternative: use the sweep line with events, sorting events by time, and for events at the same time, process -1 before +1.\n    # \n    # Let's create a list of (time, delta) where delta is +1 for start, -1 for end.\n    # Sort by time, and for same time, -1 before +1 (so that endings are processed first).\n    # Then sweep through, maintaining a running sum, and track the maximum.\n    # \n    # Why process -1 before +1 at the same time? Because at time t, a booking ending at t",
+          "prompt_tokens": 123,
+          "prompt": "<|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "seed": 2606,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 1024,
+          "finish": "length",
+          "candidate": null,
+          "evaluation": {
+            "status": "limit",
+            "passed": false,
+            "checks": []
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "def peak_bookings(bookings):\n    if not bookings:\n        return 0\n    \n    events = []\n    for start, end in bookings:\n        events.append((start, 1))\n        events.append((end, -1))\n    \n    events.sort(key=lambda x: (x[0], x[1]))\n    \n    current = 0\n    max_active = 0\n    for _, delta in events:\n        current += delta\n        if current > max_active:\n            max_active = current\n    \n    return max_active",
+          "prompt_tokens": 123,
+          "prompt": "<|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "seed": 2607,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 117,
+          "finish": "stop",
+          "candidate": "def peak_bookings(bookings):\n    if not bookings:\n        return 0\n    \n    events = []\n    for start, end in bookings:\n        events.append((start, 1))\n        events.append((end, -1))\n    \n    events.sort(key=lambda x: (x[0], x[1]))\n    \n    current = 0\n    max_active = 0\n    for _, delta in events:\n        current += delta\n        if current > max_active:\n            max_active = current\n    \n    return max_active\n",
+          "evaluation": {
+            "status": "tested",
+            "passed": true,
+            "checks": [
+              {
+                "case": "no bookings",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "three active",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "touching",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "empty inside",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "unsorted duplicates",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "wide time span",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 1",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 2",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 3",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 4",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 5",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 6",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 7",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 8",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 9",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 10",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 11",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 12",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 13",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 14",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 15",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 16",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 17",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 18",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 19",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 20",
+                "expected": 6,
+                "observed": 6,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 21",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 22",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 23",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 24",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 25",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 26",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 27",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 28",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 29",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 30",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 31",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 32",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 33",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 34",
+                "expected": 7,
+                "observed": 7,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 35",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 36",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 37",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 38",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 39",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 40",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 41",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 42",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 43",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 44",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 45",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 46",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 47",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 48",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              }
+            ]
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "```python\ndef peak_bookings(bookings):\n    \"\"\"\n    Return the largest number of bookings active at any one integer time.\n    Each booking is a pair (start, end) with integer endpoints and start <= end.\n    It is active from start inclusive to end exclusive.\n    Return 0 if no booking is active.\n    Duplicate bookings count separately.\n    Do not change the input list.\n    Endpoints can be far apart, so runtime must not scale with their distance.\n    \"\"\"\n    if not bookings:\n        return 0\n    \n    # Collect all events: (time, delta) where delta is +1 for start, -1 for end\n    # Since we need the maximum number of overlapping intervals,\n    # we use the sweep line approach with events sorted by time.\n    # For same time, starts should come before ends to properly count\n    # intervals that touch (end of one at t, start of another at t) as not overlapping.\n    # Actually, since the interval is [start, end), if one ends at t and another starts at t,\n    # they don't overlap at time t (the first is not active at t, the second is).\n    # So we want to process ends before starts at the same time? No wait:\n    # At time t, an interval [a, b) is active if a <= t < b.\n    # If interval1 = [1, 3) and interval2 = [3, 5), at time 3: interval1 is NOT active (3 < 3 is false), interval2 IS active (3 <= 3 < 5 is true).\n    # So at time 3, the count transitions: interval1's end event at 3 removes it, interval2's start event at 3 adds it.\n    # To get the correct peak, when processing events at the same time, we should process -1 (end) before +1 (start) so that the count reflects the state at that exact time.\n    # Actually, let's think more carefully. The peak is the maximum number of intervals covering any point t.\n    # We can sort all events by time, and for the same time, process ends (-1) before starts (+1).\n    # Then sweep through, maintaining current count, and track max.\n    \n    events = []\n    for start, end in bookings:\n        if start < end:  # Only if there's actually a positive duration; if start == end, it's never active\n            events.append((start, 1))\n            events.append((end, -1))\n        # If start == end, the interval [start, start) is empty, so it contributes nothing\n    \n    if not events:\n        return 0\n    \n    # Sort by time; for same time, -1 (end) comes before +1 (start)\n    # We can sort by (time, delta) where delta is -1 or 1. Since -1 < 1, this works.\n    events.sort(key=lambda x: (x[0], x[1]))\n    \n    current = 0\n    max_count = 0\n    for time, delta in events:\n        current += delta\n        if current > max_count:\n            max_count = current\n    \n    return max_count\n```",
+          "prompt_tokens": 123,
+          "prompt": "<|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "seed": 2608,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 715,
+          "finish": "stop",
+          "candidate": "def peak_bookings(bookings):\n    \"\"\"\n    Return the largest number of bookings active at any one integer time.\n    Each booking is a pair (start, end) with integer endpoints and start <= end.\n    It is active from start inclusive to end exclusive.\n    Return 0 if no booking is active.\n    Duplicate bookings count separately.\n    Do not change the input list.\n    Endpoints can be far apart, so runtime must not scale with their distance.\n    \"\"\"\n    if not bookings:\n        return 0\n    \n    # Collect all events: (time, delta) where delta is +1 for start, -1 for end\n    # Since we need the maximum number of overlapping intervals,\n    # we use the sweep line approach with events sorted by time.\n    # For same time, starts should come before ends to properly count\n    # intervals that touch (end of one at t, start of another at t) as not overlapping.\n    # Actually, since the interval is [start, end), if one ends at t and another starts at t,\n    # they don't overlap at time t (the first is not active at t, the second is).\n    # So we want to process ends before starts at the same time? No wait:\n    # At time t, an interval [a, b) is active if a <= t < b.\n    # If interval1 = [1, 3) and interval2 = [3, 5), at time 3: interval1 is NOT active (3 < 3 is false), interval2 IS active (3 <= 3 < 5 is true).\n    # So at time 3, the count transitions: interval1's end event at 3 removes it, interval2's start event at 3 adds it.\n    # To get the correct peak, when processing events at the same time, we should process -1 (end) before +1 (start) so that the count reflects the state at that exact time.\n    # Actually, let's think more carefully. The peak is the maximum number of intervals covering any point t.\n    # We can sort all events by time, and for the same time, process ends (-1) before starts (+1).\n    # Then sweep through, maintaining current count, and track max.\n    \n    events = []\n    for start, end in bookings:\n        if start < end:  # Only if there's actually a positive duration; if start == end, it's never active\n            events.append((start, 1))\n            events.append((end, -1))\n        # If start == end, the interval [start, start) is empty, so it contributes nothing\n    \n    if not events:\n        return 0\n    \n    # Sort by time; for same time, -1 (end) comes before +1 (start)\n    # We can sort by (time, delta) where delta is -1 or 1. Since -1 < 1, this works.\n    events.sort(key=lambda x: (x[0], x[1]))\n    \n    current = 0\n    max_count = 0\n    for time, delta in events:\n        current += delta\n        if current > max_count:\n            max_count = current\n    \n    return max_count\n",
+          "evaluation": {
+            "status": "tested",
+            "passed": true,
+            "checks": [
+              {
+                "case": "no bookings",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "three active",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "touching",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "empty inside",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "unsorted duplicates",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "wide time span",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 1",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 2",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 3",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 4",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 5",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 6",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 7",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 8",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 9",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 10",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 11",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 12",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 13",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 14",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 15",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 16",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 17",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 18",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 19",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 20",
+                "expected": 6,
+                "observed": 6,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 21",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 22",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 23",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 24",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 25",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 26",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 27",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 28",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 29",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 30",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 31",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 32",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 33",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 34",
+                "expected": 7,
+                "observed": 7,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 35",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 36",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 37",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 38",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 39",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 40",
+                "expected": 1,
+                "observed": 1,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 41",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 42",
+                "expected": 0,
+                "observed": 0,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 43",
+                "expected": 4,
+                "observed": 4,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 44",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 45",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 46",
+                "expected": 3,
+                "observed": 3,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 47",
+                "expected": 2,
+                "observed": 2,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              },
+              {
+                "case": "enumerated 48",
+                "expected": 5,
+                "observed": 5,
+                "output_type": "int",
+                "input_preserved": true,
+                "passed": true
+              }
+            ]
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        }
+      ],
+      "correct": 6,
+      "pass_at_1": 0.75,
+      "pass_at_2": 0.9642857142857143
+    },
+    "repair": {
+      "baseline": {
+        "status": "tested",
+        "passed": false,
+        "checks": [
+          {
+            "case": "touching",
+            "expected": false,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": false
+          },
+          {
+            "case": "empty inside",
+            "expected": false,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": false
+          },
+          {
+            "case": "cleanup overlaps",
+            "expected": true,
+            "observed": false,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": false
+          },
+          {
+            "case": "cancelled",
+            "expected": false,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": false
+          },
+          {
+            "case": "interior overlap",
+            "expected": true,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": true
+          },
+          {
+            "case": "one shared",
+            "expected": true,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": true
+          },
+          {
+            "case": "separate",
+            "expected": false,
+            "observed": false,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": true
+          },
+          {
+            "case": "negative endpoints",
+            "expected": true,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": true
+          }
+        ]
+      },
+      "issue_only": {
+        "raw": "```python\ndef conflicts(a, b):\n    start_a, stop_a = bounds(a)\n    start_b, stop_b = bounds(b)\n    return max(start_a, start_b) < min(stop_a, stop_b)\n```",
+        "prompt_tokens": 182,
+        "prompt": "<|im_start|>user\nReplace conflicts(a, b) in calendar.py. The function must return a bool.\nAdjacent bookings without cleanup are reported as a conflict. A conflict\nmeans the two bookings share time when both consume capacity. A booking's\ndisplayed times can differ from the time that consumes capacity.\nEach booking is (start, end, cleanup, cancelled), with ordered integer times\nand nonnegative cleanup. The existing bounds helper is already imported.\nUse it to read the bookings. Return exactly one replacement Python function,\nwithout imports. Keep the same signature.\n\ncalendar.py:\nfrom .policy import bounds\n\ndef conflicts(a, b):\n    start_a, stop_a = bounds(a)\n    start_b, stop_b = bounds(b)\n    return max(start_a, start_b) <= min(stop_a, stop_b)<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "seed": 2600,
+        "temperature": 0,
+        "top_p": 1,
+        "max_tokens": 1024,
+        "generated_tokens_including_stop": 52,
+        "finish": "stop",
+        "candidate": "def conflicts(a, b):\n    start_a, stop_a = bounds(a)\n    start_b, stop_b = bounds(b)\n    return max(start_a, start_b) < min(stop_a, stop_b)\n",
+        "evaluation": {
+          "status": "tested",
+          "passed": false,
+          "checks": [
+            {
+              "case": "touching",
+              "expected": false,
+              "observed": false,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "empty inside",
+              "expected": false,
+              "observed": false,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "cleanup overlaps",
+              "expected": true,
+              "observed": false,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": false
+            },
+            {
+              "case": "cancelled",
+              "expected": false,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": false
+            },
+            {
+              "case": "interior overlap",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "one shared",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "separate",
+              "expected": false,
+              "observed": false,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "negative endpoints",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            }
+          ]
+        },
+        "top_k": 0,
+        "repetition_penalty": 1.0
+      },
+      "with_policy": {
+        "raw": "```python\ndef conflicts(a, b):\n    start_a, stop_a = bounds(a, occupied=True)\n    start_b, stop_b = bounds(b, occupied=True)\n    return max(start_a, start_b) < min(stop_a, stop_b)\n```",
+        "prompt_tokens": 256,
+        "prompt": "<|im_start|>user\nReplace conflicts(a, b) in calendar.py. The function must return a bool.\nAdjacent bookings without cleanup are reported as a conflict. A conflict\nmeans the two bookings share time when both consume capacity. A booking's\ndisplayed times can differ from the time that consumes capacity.\nEach booking is (start, end, cleanup, cancelled), with ordered integer times\nand nonnegative cleanup. The existing bounds helper is already imported.\nUse it to read the bookings. Return exactly one replacement Python function,\nwithout imports. Keep the same signature.\n\ncalendar.py:\nfrom .policy import bounds\n\ndef conflicts(a, b):\n    start_a, stop_a = bounds(a)\n    start_b, stop_b = bounds(b)\n    return max(start_a, start_b) <= min(stop_a, stop_b)\n\npolicy.py:\ndef bounds(booking, *, occupied=False):\n    \"\"\"Return displayed times, or the interval that consumes capacity.\"\"\"\n    start, end, cleanup, cancelled = booking\n    if not occupied:\n        return start, end\n    if cancelled or start == end:\n        return start, start\n    return start, end + cleanup<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "seed": 2600,
+        "temperature": 0,
+        "top_p": 1,
+        "max_tokens": 1024,
+        "generated_tokens_including_stop": 58,
+        "finish": "stop",
+        "candidate": "def conflicts(a, b):\n    start_a, stop_a = bounds(a, occupied=True)\n    start_b, stop_b = bounds(b, occupied=True)\n    return max(start_a, start_b) < min(stop_a, stop_b)\n",
+        "evaluation": {
+          "status": "tested",
+          "passed": true,
+          "checks": [
+            {
+              "case": "touching",
+              "expected": false,
+              "observed": false,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "empty inside",
+              "expected": false,
+              "observed": false,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "cleanup overlaps",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "cancelled",
+              "expected": false,
+              "observed": false,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "interior overlap",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "one shared",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "separate",
+              "expected": false,
+              "observed": false,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            },
+            {
+              "case": "negative endpoints",
+              "expected": true,
+              "observed": true,
+              "output_type": "bool",
+              "input_preserved": true,
+              "passed": true
+            }
+          ]
+        },
+        "top_k": 0,
+        "repetition_penalty": 1.0
+      }
+    }
+  }
+}

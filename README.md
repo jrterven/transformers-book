@@ -451,7 +451,8 @@ python -m examples.ch25_visual_generation.run_examples --output output/ch25.json
 [Chapter 26: Models for Code](examples/ch26_code_models/) formats an
 infilling prompt and runs checked-in candidate functions against smoke and
 boundary tests. The [chapter guide](examples/ch26_code_models/README.md)
-explains the case records and the per-task pass@k calculation.
+also reproduces the measured infilling, code generation and repository repair
+demos with local checkpoints and explains the per-task pass@k calculation.
 
 The [11 exercises](examples/ch26_code_models/EXERCISES.md) and
 [complete solutions](solutions/ch26_code_models/README.md) distinguish

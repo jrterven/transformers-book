@@ -1,0 +1,300 @@
+{
+  "model": "liquid24",
+  "checkpoint": {
+    "repo": "LiquidAI/LFM2.5-24B-A2B-MLX-4bit",
+    "revision": "667408d494bde191c2cb9dd4f4549827816b9275",
+    "weights": {
+      "model-00001-of-00003.safetensors": "17e953456c62314a498f1ef5ee8a5f1b51ac83f6b6bb684f160dde4f92cd11c0",
+      "model-00002-of-00003.safetensors": "c3ae09dba31b3786c325425435021cf5d5bf06c1a79acb31a741e15a47e5bb14",
+      "model-00003-of-00003.safetensors": "9814144af5045ea8c96e2f1352148fdbe9f8a0085b76df6d6760efbe916e9840"
+    }
+  },
+  "config_sha256": {
+    "chat_template.jinja": "aadd425edb1d42fe9288e5de3624c21c1c03099129b9cfea5978f1bc67222c0a",
+    "config.json": "4901707c3cef43e3cf68a0dedc3e39687de43413cab30578a32c63c643984244",
+    "generation_config.json": "d1ecad152cd278e57220364423f5a5b19350f1e6e230ff82281a5c23a3173f16",
+    "model.safetensors.index.json": "7887b03265aef7824c8e5b9a51667e486f889749240d8c59a95f3cd899e86e4a",
+    "tokenizer.json": "695be7802a0e4b8a81048f0ff5ebb7fc811a0ba5a6be63dbb24deb5a81096f41",
+    "tokenizer_config.json": "11f1de897317b489dd09199284528382eeb17f566398b16e2039bb2266d26b09"
+  },
+  "runtime": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "transformers": "5.23.0",
+    "tokenizers": "0.23.3"
+  },
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "results": {
+    "generation": {
+      "case_count": 54,
+      "samples": [
+        {
+          "raw": "We need to write a function peak_bookings(bookings) that returns the largest number of bookings active at any one integer time. The bookings are pairs (start, end), both integers, start <= end. The booking is active from start inclusive to end exclusive. So we need to consider integer times t such that start <= t < end. If we treat continuous time, each interval [start, end). The endpoints can be far apart, but we must have runtime that doesn't depend on the distance between endpoints. That's a hint: we need an O(N) or O(N log N) algorithm, using sweep line (event-based). Typically, for counting active intervals at integer times, we can use difference array on the points: For each interval [start, end), we add +1 at start and -1 at end (since exclusive end). Then we compute prefix sum to get active count at each integer point (where changes occur). But we need to consider that times can be far apart (e.g., 0 to 10^9). But we cannot iterate over all integer points. However, we only need the maximum count among all integer times where there is a change. The maximum count will occur at some start point (or any point where a booking begins). Since intervals are half-open, the active count is constant between event points (i.e., from a start until the next event). So we can just compute the active count at each event point (the start of each interval). That would be the count after adding the interval. But careful: Because the interval is [start, end), and the count changes at start (increase) and at end (decrease). Since it's exclusive at end, the count for t = end-1 is still counted, but t=end it's not. But since times are integer, if we only check at integer times that are start points (or any integer points), the maximum count could also occur at integer points between events, but they have the same count as at the preceding event. Let's examine:\n\nSuppose we have intervals: [0,2), [1,3). The active counts: t=0 -> 1 (0 to 1?), Actually at t=0: active for [0,2) includes 0? The interval is inclusive start, exclusive end: So [0,2) includes t=0,1. At t=0, bookings covering: [0,2) yes; [1,3) not yet (starts at 1). So count=1. At t=1: both active => count=2. At t=2: [0,2) ends at 2 exclusive, so not active at t=2. [1,3) active (since includes 2,3? Actually [1,3) includes t=1,2. So at t=2, both active? Yes because [0,2) is not active at t=2, but [1,3) is active. So count=1. So maximum 2 at t=1.\n\nNow if we process events: at start of each interval, add +1; at end, -1. The prefix sum yields counts after each event. Let's simulate event points sorted: start at 0: count becomes 1. Then at 1: start of second interval -> count becomes 2. At 2: end of first interval -> count becomes 1. At 3: end of second -> count becomes 0.\n\nNow the maximum count among these times (the times after processing events?) The count after processing each event is the number of active intervals for the integer times from that event time up to next event time -1? Let's think: After processing the event at time t, we consider the time interval [t, next_event_time) as having the same active count as after applying the event at t. Typically, with half-open intervals [start, end), the event at start should increase the count for start and onward (including start). The event at end should decrease the count for end onward (since at end, the interval is no longer active). If we apply the event at start (increase) and then consider the time point start as a time where the count is increased, that's correct: after processing the start event at time 0, we have count 1 for t=0 (and up to just before the next event at 1). Similarly, at time 1, after processing start of second interval, count becomes 2 for t=1 (and up to just before next event). At time 2, after processing end of first interval, count becomes 1 for t=2 (but note that at t=2, the interval [0,2) is not active; it's not included; the count is just the second interval; this matches the count after the end event). So to get the maximum count at",
+          "prompt_tokens": 122,
+          "prompt": "<|startoftext|><|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>",
+          "seed": 2601,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 1024,
+          "finish": "length",
+          "candidate": null,
+          "evaluation": {
+            "status": "limit",
+            "passed": false,
+            "checks": []
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "We need to write a Python function `peak_bookings(bookings)` that takes a list of bookings. Each booking is a pair (start, end) with integer endpoints and start <= end. The booking is active from start inclusive to end exclusive (i.e., typical half-open interval). We need to return the largest number of bookings active at any one integer time. If no booking is active (i.e., all intervals are empty? Or maybe no bookings given?), return 0. Duplicate bookings count separately. So multiple bookings with same intervals count individually. Input list should not be changed.\n\nEndpoints can be far apart, so runtime must not scale with distance. That suggests we need to avoid iterating over each integer time point. Since endpoints can be far apart, we need to use a sweep line approach: event-based counting. Since we only need to find the maximum number of active intervals at any integer time, we can treat each interval as adding +1 at start, and -1 at end (since it's exclusive at end). Actually, for half-open intervals [start, end), the number of active intervals changes at integer times: at time t (integer), for t >= start and t < end, the interval is active. Equivalent to: define events: at start, increment; at end, decrement. Then we sort events by time, and sweep, maintaining a current count. Since we only care about integer times, but events may be at any integer start/end (they are integers per problem). So we can process events sorted by time. However, there might be multiple events at same time (e.g., many bookings start at same time, or end at same time). Need to apply all events at that time before computing the count for that time? Actually, because intervals are active from start inclusive to end exclusive, the count at time t (integer) includes intervals where start <= t < end. For integer times, the count at time t is the number of intervals such that start <= t < end. If we treat event at start as +1 for times >= start, and event at end as -1 for times >= end, then at a given integer time t, we need to apply all events at that time before evaluating the count for that time? Let's think.\n\nStandard sweep line for intervals: For inclusive start and exclusive end, we can do: At start time s, add +1; at end time e, add -1. Then if we iterate over sorted unique times, we can compute count for each interval between successive event times. However, we only need the maximum at integer times. Since times are integers, we can just evaluate the count at each integer time that is either start or end? Actually, the count can change only at event times (start or end). Between two consecutive event times (say from s to e-1 if s < e), the count remains constant. So the maximum will be achieved at some integer time that is either a start time or just after a start (or any integer in the interval). Since we only have integer times, the max will be equal to the count at any integer time within the interval [event time, next event time - 1] (if that interval contains any integer times). But if we process events in order, we can compute the current count after applying all events at time t, and that count applies for times t (inclusive) up to just before the next event time (or infinity if no more events). However, if the next event time is > t+1 (i.e., there is a gap of integer times), then the count at time t+1, ..., next_event -1 is same as after processing events at t. So the maximum count will be the same as the count after processing events at each event time, or possibly the count at times after the last event? Let's think carefully.\n\nWe want the maximum number of active bookings at any integer time t. Suppose we have events: at time s: +1, at time e: -1. For integer times, the active set at time t includes intervals where s <= t < e. If we process events sorted by time, we need to decide how to treat the -1 at end time e: since intervals are exclusive at e, at time t = e, the interval is no longer active. So the count should be decremented at time e before we consider t = e. So the typical approach: for sweep line with half-open intervals, you can treat start as +1 at time s (affecting times >= s), and end as -1 at time e (affecting times >= e). Then when you iterate over sorted unique times, you apply events at that time, then the current count is valid for that time and onward until next event. But careful: If we apply events at time t, we need to decide whether the count after applying events at time t is the count for time",
+          "prompt_tokens": 122,
+          "prompt": "<|startoftext|><|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>",
+          "seed": 2602,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 1024,
+          "finish": "length",
+          "candidate": null,
+          "evaluation": {
+            "status": "limit",
+            "passed": false,
+            "checks": []
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "We need to write a Python function peak_bookings(bookings) that returns the largest number of bookings active at any one integer time. Each booking is a pair (start, end) with integer endpoints, start <= end. The booking is active from start inclusive to end exclusive (i.e., typical half-open interval). Duplicate bookings count separately. That is, if two bookings have the same (start, end) they both count as separate active periods. We need to compute the maximum number of overlapping intervals (booking active periods) at any integer time. Since intervals can be huge (start and end far apart), we need an algorithm that doesn't scale with the distance. Typically we can use sweep line / event counting: sort events (start, +1) and (end, -1). For half-open intervals [start, end), the end event occurs at time = end (the time when interval ends, exclusive). Since we consider integer times, but if we treat times as real numbers, it's fine: the count at time t (including start) is the number of intervals where start <= t < end. The maximum can be found by sorting events: at each distinct time, we can compute cumulative sum after processing start events before end events (or vice versa). Usually for half-open intervals, you process start events before end events at the same time (or treat end as exclusive). But careful: If there are intervals that start and end at same point? Since start <= end. If start == end, interval is empty (no duration) - but is that allowed? Probably yes, start <= end. Since active from start inclusive to end exclusive, if start == end, there is no time, but it's okay. It doesn't contribute to any integer time (since exclusive). In counting for integer times, we might need to handle that. But algorithm: For each booking (start, end), we add events: (start, +1), (end, -1). However, if we treat end as exclusive, we must process end events before start events at the same time if start == end? Actually typical sweep line for half-open intervals: When sorting events, we need to handle that at a given time point t, we need to apply +1 for starts at t before -1 for ends at t? Let's think: For interval [start, end) (inclusive start, exclusive end). If another interval ends at time t (i.e., its end = t), that interval is not active at time t (since exclusive). Meanwhile intervals that start at t become active at t. So at time t, the count should be increased by start events at t, but not include end events at t. So if we treat end as exclusive, we should process end events before start events at same time. In typical \"maximum overlapping intervals\" problem, you often sort events: for same coordinate, process end events before start events to avoid counting an interval that ends and starts at same point as overlapping (which would be wrong for half-open). But if intervals are inclusive on both ends? However we want strictly exclusive at end. So we must do that.\n\nBut careful: The problem says \"active from start inclusive to end exclusive\". So yes, end is exclusive. So we need to compute maximum number of bookings active at any one integer time. For integer times, we only consider integer points t such that there is some integer time. Since endpoints can be far apart, we cannot iterate over each integer. We need to use events approach.\n\nThe runtime must not scale with the distance between endpoints; sorting O(n log n) is okay.\n\nImplementation details: Input: bookings is a list of pairs (start, end). Probably a list of tuples. We'll not modify the input.\n\nWe'll create events list: for each booking (s, e): events.append((s, 1)), events.append((e, -1)). Then sort events. But sorting must be done such that if times equal, we process -1 before +1 (i.e., end before start). Because end is exclusive.\n\nWe need to handle that for same time, there may be multiple events: starts and ends. Sorting key: (time, type) where type: -1 (end) before +1 (start). Because -1 < +1? Actually if we represent start as +1 and end as -1, then sorting ascending by time, and for same time, we want -1 (i.e., end) to be processed first (decrement then increment). But what about the ordering effect on the count? At time t (integer), the count for that time t (including intervals that start at t and end at t?) Since end is exclusive, intervals ending at t are not active at t. So we must subtract before adding new starts. So event ordering: for each time t: first apply -1 (end), then +1 (start). Since -1 <",
+          "prompt_tokens": 122,
+          "prompt": "<|startoftext|><|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>",
+          "seed": 2603,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 1024,
+          "finish": "length",
+          "candidate": null,
+          "evaluation": {
+            "status": "limit",
+            "passed": false,
+            "checks": []
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "We need to solve this problem: Given a list of bookings, each is a pair (start, end) integer endpoints, start <= end. Booking is active from start inclusive to end exclusive. Need to find the largest number of bookings active at any one integer time (i.e., at each integer point t). Return the maximum count; if no booking is active at any time, return 0.\n\nWe have to handle duplicate bookings (i.e., separate entries that may be the same (start,end)). Also, we cannot modify the input list. We must not scale runtime with distance between endpoints, meaning we can't iterate over each integer time from min to max (if distance huge). Instead, we need to use sweep line with events: for each booking (s,e) we add +1 at s, -1 at e (since end exclusive). Then compute the maximum of prefix sum as we go across sorted unique times. Since endpoints can be far apart, but number of bookings N is presumably moderate.\n\nWe must return exactly one Python function with signature def peak_bookings(bookings):. Must use built-ins only, no imports. So we cannot import anything like collections or bisect? Probably built-ins: list, tuple, sum, max, etc. We can use sorted with key.\n\nWe need to implement a function that takes a list of bookings (list of (int,int) pairs). The function must compute the maximum number of active bookings at any integer time.\n\nApproach: We'll process events: list of (time, delta). For each (start, end): add (start, 1) and (end, -1). Since end is exclusive, the end time does not count as active; the -1 at end ensures that for times >= start and < end, the count includes the booking.\n\nThus after sorting events by time (and maybe handle same time: if same time, we need to apply additions before removals? Since start inclusive, end exclusive. For example, if one booking ends at t and another starts at t, the net effect at t: at time t, the first booking ends at t (exclusive), so it should not be counted at t; the second starts at t inclusive, should be counted at t. So at time t, the count after processing events at t should reflect: we apply the -1 for end (if any) before +1 for start? Actually typical sweep line for intervals [start, end). The changes: at start, +1; at end, -1. If we process events at same time t: we need to ensure that the net count after processing all events at t reflects the count for integer times >= t (starting at t). At integer times, the interval is active for t in [start, end-1]. If we treat the time axis as discrete integer points, we can think of using a \"change point\" model where at each integer t we compute count of intervals covering t. Equivalent to: For each interval (s, e), we add +1 to all t in s <= t < e. This is like adding +1 to a range. But we don't want to iterate over the range. We use difference array technique: For each integer time we would do arr[s] +=1, arr[e] -=1, then prefix sum gives count at t (for integer t). But because we only need max, we can compute events sorted.\n\nWhen multiple events have same time: We need to decide ordering: Since the interval [s, e) is active at s, but not at e. So at time = s, we want the increment to be effective for s. At time = e, we want the decrement to be effective for e. That suggests that when we process events at time t, we should apply all +1 (starts) before -1 (ends) to ensure that count at time t includes starts but excludes ends. Let's test: Suppose we have one interval (s=5, e=7). So active for t=5,6. We add event (5,+1) and (7,-1). Sorted events: at 5: +1. At 7: -1. At t=5: prefix sum = +1 => count=1. At t=6: not an event, but we compute max based on prefix sums of events sorted? If we only look at event times, we might incorrectly think max occurs at event times only. But we can treat that between events, count is constant. Indeed the count is constant between event times. Since intervals are integer, the count for integer times t is the prefix sum after processing all events at t (or before?). Let's define: Let events sorted by time. We'll compute a running sum \"current\". We'll iterate through sorted unique times. At each time point t, we apply all deltas at that t to current (like current += sum of deltas at t",
+          "prompt_tokens": 122,
+          "prompt": "<|startoftext|><|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>",
+          "seed": 2604,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 1024,
+          "finish": "length",
+          "candidate": null,
+          "evaluation": {
+            "status": "limit",
+            "passed": false,
+            "checks": []
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "We need to understand the problem: Given a list of bookings, each is a pair (start, end) with integer endpoints, start <= end. Active from start inclusive to end exclusive. We need to compute the maximum number of bookings active at any one integer time point (i.e., an integer time). We need to return the largest number of bookings active at any integer time. If none active, return 0.\n\nConstraints:\n\n- Duplicate bookings count separately: So if same intervals appear multiple times, they each count.\n- Input list should not be modified.\n- Endpoints can be far apart, so runtime must not scale with distance between endpoints. Essentially we need to process events: start events (+1) at integer times, and end events (-1) at integer times (since end is exclusive; we treat the end as a point just after end-1). The typical approach: For each interval [start, end), we can increment a delta at start and decrement at end. Since end is exclusive, a booking is active at times t where start <= t < end. That is exactly the interval [start, end-1] inclusive for integer times. However, using sweep line: At time start, we add 1; at time end, we subtract 1. Then the running count after processing events at each integer time will give the number of active bookings. But we need the maximum count across integer times. Since endpoints can be far apart, we can't iterate over the whole range; we need to process only the event points.\n\nWe can collect all distinct times where events happen: start times and end times (the exclusive end). For each interval (s, e), we can do something like:\n\nevents = {} or list of tuples (time, delta). But we need to handle multiple events at same time: If many bookings start at same time, we need to sum them; similarly for ends.\n\nImplementation: Use a dict mapping time to delta (int). For each (s, e) in bookings: events[s] += 1 (since start inclusive). events[e] -= 1 (since end exclusive, but for sweep we need to apply end at e, which will reduce the count for times >= e. Since active at integer times < e, after processing events at time e we will not count for time e. But if we process events in order, we need to compute the max count after applying events at each time. Let's think: Suppose we have intervals: (1,3) => active at times 1 and 2 (since exclusive at 3). Using sweep: At time 1: +1. At time 3: -1. Then count after processing events at each time: Let's define current = 0. We'll iterate over sorted times. At time 1: current += events[1] => current = 1. Then the maximum after processing time 1 is 1. At time 2: there is no event; we need to consider the count remains 1 for time 2. But since we only have events at 1 and 3, we might miss the maximum at time 2 if no event occurs there. However, if there is no change in count between 1 and 3, the count stays same at times 1 and 2. So maximum after time 1 is same as after time 3? Actually after processing events at time 3, current becomes 0 (if we subtract). But we need to consider integer times: The count is current after events at each integer time t (i.e., after applying changes at t). But careful: If we treat time steps as discrete points, we need to decide whether the count at time t includes changes at that same time t. For intervals [start, end) we can think of them as covering integer times t such that start <= t < end. In sweep, the count after processing events at time t (including start at t) gives the number of intervals that cover t (since for any interval that starts at t, it covers t; for any that ends at t (i.e., end == t), it does not cover t because it's exclusive). At t = end, the interval no longer covers t. In sweep, if we do current += delta[t] where delta[t] = +1 at start, -1 at end, then after applying at t we get the number of intervals covering t for t >= start and t < end (since at t = end, we subtract, making it not cover t). But need to ensure that the count for times between events (i.e., after processing events at time t) is consistent for all integer times between t and next event time -1.\n\nSuppose we have only start times 1 and end times 3. Sorted events: (1,+1), (3,-1). At t=1: current = 0 + 1 = 1.",
+          "prompt_tokens": 122,
+          "prompt": "<|startoftext|><|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>",
+          "seed": 2605,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 1024,
+          "finish": "length",
+          "candidate": null,
+          "evaluation": {
+            "status": "limit",
+            "passed": false,
+            "checks": []
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "We need to solve a problem: given list of bookings, each booking is a pair (start, end) with integer endpoints, start <= end. Booking active from start inclusive to end exclusive. We need to find the maximum number of bookings active at any integer time point. If no booking is active, return 0.\n\nConstraints: Duplicate bookings count separately (i.e., treat each entry as independent). Endpoints can be far apart, so runtime must not depend on the distance between start and end. We need to handle large ranges efficiently.\n\nWe need to return the largest number of active bookings at any integer time. There's no explicit bound on number of bookings. We need to implement using built-ins only (no imports). Probably use sweep line technique: difference array style, using start events (+1) and end events (-1). Since intervals are [start, end), we treat start event at time start: +1, and at time end: -1 (or perhaps at end exclusive: after the end, the count decreases). Since intervals are half-open, the count at integer times t is sum of events for start <= t < end. At integer times, we can compute active count at each integer time point efficiently using events sorted by time, and scanning while accumulating changes. However, if the range between min start and max end is huge (like 10^9), we cannot iterate through each integer point. But we only need the maximum count over any integer time. We can use sweep line: sort events, then process in order, but need to consider that between events the count stays constant. For integer times, the maximum will occur at some event point (or any integer within a segment). If there are no events at some integer time, but the count is constant, the maximum will be same as after processing an event. So we can just process events sorted by time, updating current count and track max. However, need to be careful about ordering of start and end events at same time. Since intervals are [start, end), start is inclusive, end is exclusive. So at time = start, the booking becomes active. At time = end, it becomes inactive. So for events at same time: start (+1) should be processed before considering the count for that time? Actually, if we have a start and an end both at time t: For a start at t, the interval includes time t (since inclusive). For an end at t, the interval excludes time t (since exclusive). So at time t, the net effect on count should be: +1 for start, -1 for end. If both exist at same time, net change is zero? Let's think: Suppose we have a booking (t,t+some) (active from t inclusive to end exclusive). If we have another booking that ends at t (i.e., its interval [s, t) where t is exclusive), then at time t, that interval is no longer active (since it ends before t). So its -1 should be applied before counting for time t? The semantics: At integer time t, which intervals are active? Those with start <= t < end. For each booking, its active times are all integers t such that start <= t < end. If start = end, it's an empty interval (maybe allowed?), but start <= end; if start == end, then there are no integers satisfying start <= t < end, so it's never active, and it's irrelevant. For duplicate bookings counting separately, it's just separate.\n\nNow, suppose we have a start event at t and an end event at t for some intervals. For intervals that end at t, they were active for t' < t, but not for t. For intervals that start at t, they are active for t. If we process events at time t in some order, we need to ensure that the count after processing all events at time t reflects the number of active bookings for that integer time t (or at least the max). Let's think: At time t, after applying start events (+1) and before applying end events (-1), we can get a count that includes the newly started ones but excludes those that ended at t? Actually, if we process all events at time t as a batch: net delta = number of starts - number of ends. If we add starts first, then after adding starts, the count includes the new ones but not the ones ending at t (since they're not yet subtracted). But we want the count for time t to exclude intervals that end at t (since they are not active at t). That means at time t, the count should be (previous count after processing prior events up to t-1) + number of starts at t - number of ends at t? Let's compute: Suppose before time t (i.e., at time t-1), the count was C_prev (including intervals that started before t and haven't ended",
+          "prompt_tokens": 122,
+          "prompt": "<|startoftext|><|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>",
+          "seed": 2606,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 1024,
+          "finish": "length",
+          "candidate": null,
+          "evaluation": {
+            "status": "limit",
+            "passed": false,
+            "checks": []
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "We need to write a Python function peak_bookings(bookings) that returns the largest number of bookings active at any one integer time. Each booking is a pair (start, end) with integer endpoints and start <= end. It is active from start inclusive to end exclusive. We need to return 0 if no booking is active. Duplicates count separately. Do not change the input list. Endpoints can be far apart, so runtime must not scale with their distance (i.e., we can't iterate over all integer times between min and max if the range is huge). Use built-ins only (so no external imports). Return exactly one Python function, without imports.\n\nWe need to compute the maximum number of overlapping intervals (with half-open [start, end) semantics) where intervals are inclusive start, exclusive end. Duplicates count separately: i.e., if we have the same (start, end) multiple times, each is a separate booking, so they all contribute to the count.\n\nWe must not change the input list. So we need to process it without modifying it. We need an algorithm that runs in O(n log n) time (or similar), using built-in functions like sort, maybe using sweep line: For each booking, add +1 at start, -1 at end. Then sort all events (time, delta). Then sweep to compute the running sum, and track the maximum. Since we don't iterate over the range, just over sorted events (2n events). That's O(n log n) due to sorting.\n\nEdge cases: start <= end. If start == end, the interval is empty? Since it's active from start inclusive to end exclusive: if start == end, then there are no integer times in [start, end) (since start inclusive, end exclusive). So it contributes nothing. But duplicates still count. That's fine.\n\nWe need to return the maximum count. Since we count each booking separately, duplicates are just separate intervals. So we can treat each booking as an interval.\n\nImplementation: def peak_bookings(bookings): ... The input is a list of bookings, each booking is presumably a tuple or list of (start, end). The problem says \"Each booking is a pair (start, end) with integer endpoints\". So we can assume it's a list of 2-element sequences.\n\nApproach: Build a list of events: For each (s, e) in bookings:\n    events.append((s, 1))   # start: +1\n    events.append((e, -1))  # end: -1\n\nThen sort events by time. But careful: Since the intervals are half-open [start, end), the count at time t is number of intervals where start <= t < end. At integer times, that's essentially the same as typical sweep line. For integer times, if we process events at integer times, the ordering of events with same time: For start and end at same time, we need to decide order: If an interval ends at time t (i.e., e == t) and another starts at t, since the first interval is exclusive at e, so at time t, the ending interval is not active, but the new one starting at t is active. Since [start, end) means active for start <= t < end. At t == end (which is exclusive), it's not active. At t == start, it's active. So if we have an end event at t and a start event at t, the net effect at time t should be: the ending interval is no longer active (so -1), and the starting interval becomes active (+1). Since we process events in a sweep, we need to ensure that for the same time, the -1 from end should be applied before the +1 from start? Actually let's think: At time t = e (which is also start = t). The interval is [e, ...) for a booking that starts at e. Since it's exclusive at e, that interval is not active at t = e. So for time t = e, the count should not include that booking. However, if we have another booking that starts at e, it is active at t = e. So the net count at exactly time t = e should be: the ending booking is not active, the starting booking is active. So the total change from before t (i.e., at t- epsilon) to after t (i.e., at t+ epsilon) includes -1 then +1? If we process events in a sweep where we evaluate the cumulative sum after applying all events at time t, we need to decide whether we apply both events at same time. If we apply -1 then +1, the sum remains the same as before if no overlapping; but we want the max to consider the count at integer times after applying the events at that time. However, since intervals are half-open, at exactly integer time t that is",
+          "prompt_tokens": 122,
+          "prompt": "<|startoftext|><|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>",
+          "seed": 2607,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 1024,
+          "finish": "length",
+          "candidate": null,
+          "evaluation": {
+            "status": "limit",
+            "passed": false,
+            "checks": []
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        },
+        {
+          "raw": "We need to read the problem carefully. The task:\n\n\"Write a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each booking is a pair (start, end) with integer endpoints and start <= end. It is active from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.\"\n\nSo need to write a function that computes the maximum number of overlapping intervals (booking intervals) at any integer point, where intervals are [start, end), i.e., inclusive start, exclusive end. The intervals can be far apart in terms of coordinates, so we cannot iterate over the entire range of times. We need an algorithm that runs in O(N) or O(N log N) where N is number of bookings, and does not depend on the range of start/end values.\n\nClassic approach: Use sweep line. For each interval, we add +1 at start, and -1 after end (i.e., at end). Since intervals are [start, end), we want to treat end as exclusive: the count should be increased at start, and decreased at end (or just after end). For integer times, we need to consider each integer time point, but we can compute the maximum of the count at any start or end? Actually, we need to find the maximum number of active bookings at any integer time. Since intervals are half-open, the count changes only at start and end points. However, the maximum could be at any integer time between start and end, but since the count is constant within open intervals (start, end) (except at boundaries), the maximum will be achieved at some integer time that is either a start or start of an interval + something? Since we have integer start and end, the active set changes only at integer boundaries: at time t, interval is active if start <= t < end. So the set of active intervals is constant for t in [start, end). So the maximum will be attained at some start time (or maybe at some time just after start) and also at some end time? Let's consider: If we have intervals [0,2), [1,3). Over integer times: times 0,1 (since 2 is exclusive). At time 0: only first active? Actually, [0,2) includes 0 and 1. [1,3) includes 1 and 2. So at time 0: only first. At time 1: both active. At time 2: second is active (2 < 3) but first not active. So the maximum (2) occurs at time 1, which is a start (1) of the second interval. So indeed maximum occurs at a start point (or some point). But consider intervals that end at integer point and start later at integer point: e.g., [0,1), [1,2). At integer times: time 0: first active, time 1: first not active (since 1 is not <1), second active (since 1 <= t < 2). So max =1 at times 0 and 1. The start of the second interval is time=1. So max is at integer time that is either a start or end+? But end exclusive means that at t=end, intervals that end at that point are not active. So the maximum cannot be at an integer t that is an end point because that point is excluded. However, there may be intervals that start after an end point: for t between end of one interval and start of next, there might be no active intervals. So the maximum must be at some start point. But we have to be careful: Could the maximum be at some integer t that is not a start point? Suppose intervals are [0,5), [2,4). At integer times: times 0,1,2,3,4 (since 5 exclusive). The count is: t=0:1; t=1:1; t=2:2 (both intervals active, because both start <= t < end: 0 <=2<5, 2 <=2<4 => both true); t=3:2; t=4:1 (the second interval ends at 4 exclusive). So maximum is 2 at t=2 or t=3 (start points). So it's at a start. However, if intervals can start at same time, e.g., [0,3), [1,3), [2,3) etc, maximum at any time after start of second? The maximum is at any time after the last start? Actually, it's always at a start or between start and next",
+          "prompt_tokens": 122,
+          "prompt": "<|startoftext|><|im_start|>user\nWrite a Python function with the signature def peak_bookings(bookings):\nReturn the largest number of bookings active at any one integer time. Each\nbooking is a pair (start, end) with integer endpoints and start <= end. It is\nactive from start inclusive to end exclusive. Return 0 if no booking is active.\nDuplicate bookings count separately. Do not change the input list.\nEndpoints can be far apart, so runtime must not scale with their distance.\nUse built-ins only. Return exactly one Python function, without imports.<|im_end|>\n<|im_start|>assistant\n<think>",
+          "seed": 2608,
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "max_tokens": 1024,
+          "generated_tokens_including_stop": 1024,
+          "finish": "length",
+          "candidate": null,
+          "evaluation": {
+            "status": "limit",
+            "passed": false,
+            "checks": []
+          },
+          "top_k": 0,
+          "repetition_penalty": 1.0
+        }
+      ],
+      "correct": 0,
+      "pass_at_1": 0.0,
+      "pass_at_2": 0.0
+    },
+    "repair": {
+      "baseline": {
+        "status": "tested",
+        "passed": false,
+        "checks": [
+          {
+            "case": "touching",
+            "expected": false,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": false
+          },
+          {
+            "case": "empty inside",
+            "expected": false,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": false
+          },
+          {
+            "case": "cleanup overlaps",
+            "expected": true,
+            "observed": false,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": false
+          },
+          {
+            "case": "cancelled",
+            "expected": false,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": false
+          },
+          {
+            "case": "interior overlap",
+            "expected": true,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": true
+          },
+          {
+            "case": "one shared",
+            "expected": true,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": true
+          },
+          {
+            "case": "separate",
+            "expected": false,
+            "observed": false,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": true
+          },
+          {
+            "case": "negative endpoints",
+            "expected": true,
+            "observed": true,
+            "output_type": "bool",
+            "input_preserved": true,
+            "passed": true
+          }
+        ]
+      },
+      "issue_only": {
+        "raw": "We need to understand the problem. The user says: \"Replace conflicts(a, b) in calendar.py. The function must return a bool. Adjacent bookings without cleanup are reported as a conflict. A conflict means the two bookings share time when both consume capacity. A booking's displayed times can differ from the time that consumes capacity. Each booking is (start, end, cleanup, cancelled), with ordered integer times and nonnegative cleanup. The existing bounds helper is already imported. Use it to read the bookings. Return exactly one replacement Python function, without imports. Keep the same signature.\"\n\nWe need to produce a function `conflicts(a, b)` that returns a bool. The function should detect conflicts between two bookings. The bookings are tuples: (start, end, cleanup, cancelled). The \"displayed times\" are start and end, but the actual time that consumes capacity is start + cleanup? Or something like that. The problem mentions \"cleanup\" and \"cancelled\". The description: \"Adjacent bookings without cleanup are reported as a conflict. A conflict means the two bookings share time when both consume capacity. A booking's displayed times can differ from the time that consumes capacity.\"\n\nWe need to interpret the semantics: Each booking has start, end, cleanup, cancelled. The \"cleanup\" is maybe the amount of time after the end that is cleaned up? Or maybe the cleanup is the duration of the booking? Actually typical booking: start, end, cleanup (maybe the time after the end that is reserved for cleanup?), cancelled flag. The problem says \"Adjacent bookings without cleanup are reported as a conflict.\" So if two bookings are adjacent (i.e., one ends exactly when the other starts) but there is no cleanup time between them, then it's a conflict. If there is cleanup (i.e., the first booking's cleanup extends beyond the next booking's start?), then they don't conflict? Let's parse.\n\nWe have a calendar with bookings. Each booking is (start, end, cleanup, cancelled). The \"displayed times\" are start and end. But the actual time that consumes capacity is maybe start + cleanup? Or maybe the booking consumes capacity from start to end+cleanup? Or something like that.\n\nWe need to read the existing code: The function currently is:\n\n```\nfrom .policy import bounds\n\ndef conflicts(a, b):\n    start_a, stop_a = bounds(a)\n    start_b, stop_b = bounds(b)\n    return max(start_a, start_b) <= min(stop_a, stop_b)\n```\n\nSo currently it's using bounds to get start and stop times. The bounds helper probably returns (start, stop) for a booking. But the description says \"Each booking is (start, end, cleanup, cancelled), with ordered integer times and nonnegative cleanup.\" So maybe the booking tuple is (start, end, cleanup, cancelled). The \"displayed times\" are start and end. The \"time that consumes capacity\" is maybe start + cleanup? Or maybe it's (start, end+cleanup)? Let's think.\n\nThe phrase \"Adjacent bookings without cleanup are reported as a conflict.\" Means that if two bookings are adjacent (i.e., one ends exactly when the other starts) and there is no cleanup time between them, then it's a conflict. But if there is cleanup (i.e., the first booking's cleanup extends beyond the start of the next booking), then they are not a conflict? Or maybe the opposite: If there is cleanup, they are not overlapping, so no conflict. But the phrase \"without cleanup\" suggests that if there is no cleanup, they are considered a conflict. So conflict detection must consider the actual consumption window: maybe each booking consumes from start to end+cleanup? Or maybe from start to end? Let's think.\n\nWe need to interpret the semantics: The booking's displayed times can differ from the time that consumes capacity. So the displayed times are start and end. But the actual consumption might be from start to end+cleanup? Or maybe from start+cleanup? Let's think about typical scenario: Suppose you have a meeting that occupies a room from 9am to 10am, and after the meeting, you need 15 minutes cleanup before the next meeting can start. So the booking might be (start=9, end=10, cleanup=15, cancelled=False). The actual time that consumes capacity (i.e., the room is occupied) is from start to end+cleanup? Or maybe the cleanup is the time after the end that is reserved for cleaning, so the next booking cannot start until after cleanup. So the effective occupied interval is [start, end+cleanup). If cleanup is zero, then the interval is just [start, end). If cleanup > 0, then the interval extends beyond the displayed end.\n\nThus, two bookings conflict if their occupied",
+        "prompt_tokens": 177,
+        "prompt": "<|startoftext|><|im_start|>user\nReplace conflicts(a, b) in calendar.py. The function must return a bool.\nAdjacent bookings without cleanup are reported as a conflict. A conflict\nmeans the two bookings share time when both consume capacity. A booking's\ndisplayed times can differ from the time that consumes capacity.\nEach booking is (start, end, cleanup, cancelled), with ordered integer times\nand nonnegative cleanup. The existing bounds helper is already imported.\nUse it to read the bookings. Return exactly one replacement Python function,\nwithout imports. Keep the same signature.\n\ncalendar.py:\nfrom .policy import bounds\n\ndef conflicts(a, b):\n    start_a, stop_a = bounds(a)\n    start_b, stop_b = bounds(b)\n    return max(start_a, start_b) <= min(stop_a, stop_b)\n<|im_end|>\n<|im_start|>assistant\n<think>",
+        "seed": 2600,
+        "temperature": 0,
+        "top_p": 1,
+        "max_tokens": 1024,
+        "generated_tokens_including_stop": 1024,
+        "finish": "length",
+        "candidate": null,
+        "evaluation": {
+          "status": "limit",
+          "passed": false,
+          "checks": []
+        },
+        "top_k": 0,
+        "repetition_penalty": 1.0
+      },
+      "with_policy": {
+        "raw": "We need to understand the problem. The user says: \"Replace conflicts(a, b) in calendar.py. The function must return a bool. Adjacent bookings without cleanup are reported as a conflict. A conflict means the two bookings share time when both consume capacity. A booking's displayed times can differ from the time that consumes capacity. Each booking is (start, end, cleanup, cancelled), with ordered integer times and nonnegative cleanup. The existing bounds helper is already imported. Use it to read the bookings. Return exactly one replacement Python function, without imports. Keep the same signature.\n\ncalendar.py:\nfrom .policy import bounds\n\ndef conflicts(a, b):\n    start_a, stop_a = bounds(a)\n    start_b, stop_b = bounds(b)\n    return max(start_a, start_b) <= min(stop_a, stop_b)\n\npolicy.py:\ndef bounds(booking, *, occupied=False):\n    \"\"\"Return displayed times, or the interval that consumes capacity.\"\"\"\n    start, end, cleanup, cancelled = booking\n    if not occupied:\n        return start, end\n    if cancelled or start == end:\n        return start, start\n    return start, end + cleanup\n\nWe need to replace the conflicts function in calendar.py. The function must return a bool. The original function returns a bool? Let's see: original code: return max(start_a, start_b) <= min(stop_a, stop_b). That's a boolean (True if intervals overlap or touch?). Actually it's checking if intervals intersect (including adjacency). The problem says: \"Adjacent bookings without cleanup are reported as a conflict. A conflict means the two bookings share time when both consume capacity.\"\n\nWe need to understand the semantics: Each booking is (start, end, cleanup, cancelled). The displayed times are (start, end) if not occupied (i.e., normal). If occupied (maybe a cleanup?), then the displayed times are something else: The policy says: if cancelled or start == end: return start, start (i.e., zero-length interval). Otherwise, return start, end + cleanup. So the \"consumed capacity\" interval is either the displayed interval (if not occupied) or a zero-length interval (if cancelled or start == end) or (start, end+cleanup) if occupied.\n\nThus, the conflict detection must consider the intervals that consume capacity: For each booking, we need to compute the interval that consumes capacity using the bounds function (with appropriate occupied flag?). The problem says: \"A booking's displayed times can differ from the time that consumes capacity.\" So we need to use the bounds helper to read the bookings. The function signature: conflicts(a, b) where a and b are bookings (tuples). The function must return a bool.\n\nWe need to replace the function in calendar.py. The original code uses bounds(a) and bounds(b) without the occupied flag, so it's using the default occupied=False, which returns displayed times (start, end). But the policy says that for occupied bookings (maybe cleanup?), the displayed times differ. The problem says: \"Adjacent bookings without cleanup are reported as a conflict.\" So we need to detect conflicts when the intervals that consume capacity overlap. The consumption intervals are:\n\n- If booking is not cancelled and not zero-length (start != end) and not occupied? Actually the policy: if not occupied: return start, end. That's the displayed times. But the \"consumed capacity\" interval is the displayed times? Or maybe the \"occupied\" flag indicates whether the booking is under cleanup (i.e., the cleanup parameter indicates that the booking is being cleaned up, so the capacity is consumed from start to end+cleanup). The policy says: \"if cancelled or start == end: return start, start\". That's a zero-length interval. So for a booking that is cancelled or zero-length, the consumed capacity is zero (or a point). For normal bookings, it's start to end. For occupied (maybe cleanup?), it's start to end+cleanup.\n\nBut the problem says: \"Each booking is (start, end, cleanup, cancelled), with ordered integer times and nonnegative cleanup.\" The \"cleanup\" is the amount of time after the end that the capacity is consumed? The policy: if occupied (maybe cleanup?), but the function signature for bounds includes an optional occupied flag. The docstring: \"Return displayed times, or the interval that consumes capacity.\" So the function returns either displayed times (if not occupied) or the interval that consumes capacity (if occupied). The occupied flag is passed as True when we want the capacity interval? The problem says: \"Use it to read the bookings.\" So we need to call bounds with appropriate arguments.\n\nWe need to implement conflicts(a, b) that returns True if there is a conflict (i.e., the two bookings share time when both consume capacity). The original code returns max(start_a, start_b",
+        "prompt_tokens": 248,
+        "prompt": "<|startoftext|><|im_start|>user\nReplace conflicts(a, b) in calendar.py. The function must return a bool.\nAdjacent bookings without cleanup are reported as a conflict. A conflict\nmeans the two bookings share time when both consume capacity. A booking's\ndisplayed times can differ from the time that consumes capacity.\nEach booking is (start, end, cleanup, cancelled), with ordered integer times\nand nonnegative cleanup. The existing bounds helper is already imported.\nUse it to read the bookings. Return exactly one replacement Python function,\nwithout imports. Keep the same signature.\n\ncalendar.py:\nfrom .policy import bounds\n\ndef conflicts(a, b):\n    start_a, stop_a = bounds(a)\n    start_b, stop_b = bounds(b)\n    return max(start_a, start_b) <= min(stop_a, stop_b)\n\npolicy.py:\ndef bounds(booking, *, occupied=False):\n    \"\"\"Return displayed times, or the interval that consumes capacity.\"\"\"\n    start, end, cleanup, cancelled = booking\n    if not occupied:\n        return start, end\n    if cancelled or start == end:\n        return start, start\n    return start, end + cleanup\n<|im_end|>\n<|im_start|>assistant\n<think>",
+        "seed": 2600,
+        "temperature": 0,
+        "top_p": 1,
+        "max_tokens": 1024,
+        "generated_tokens_including_stop": 1024,
+        "finish": "length",
+        "candidate": null,
+        "evaluation": {
+          "status": "limit",
+          "passed": false,
+          "checks": []
+        },
+        "top_k": 0,
+        "repetition_penalty": 1.0
+      }
+    }
+  }
+}
