@@ -513,6 +513,9 @@ python -m examples.ch29_protein.run_examples --output output/ch29.json
 builds return-to-go targets, fits two count policies, and runs them in a
 small grid. The [chapter guide](examples/ch30_decisions/README.md)
 explains the trajectory format and how the shifted trap affects a rollout.
+It also reproduces the Vintix II decision-history comparison in Reacher
+and the SmolVLA control-horizon comparison in LIBERO. The recorded
+rollouts and simulator frames can redraw all three measured figures.
 
 The [11 exercises](examples/ch30_decisions/EXERCISES.md) and
 [complete solutions](solutions/ch30_decisions/README.md) connect causal action
