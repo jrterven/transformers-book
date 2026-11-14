@@ -12,6 +12,43 @@ The book starts with the problems that led to attention and builds the original 
 
 Applications are a central part of the book. The discussion follows how Transformers have been adapted to language, images, speech, video, multimodal learning, time series, scientific data, and robotics. The emphasis is on understanding how a task is represented, what the model learns, and how its results should be evaluated.
 
+## Chapter index
+
+| Chapter | Examples | Exercises | Solutions |
+| ---: | --- | --- | --- |
+| 1 | [Tokens, Embeddings, and Neural Language Models](examples/ch01_language/) | [Exercises](examples/ch01_language/EXERCISES.md) | [Solutions](solutions/ch01_language/) |
+| 2 | [Recurrence and Encoder–Decoder Models](examples/ch02_recurrence/) | [Exercises](examples/ch02_recurrence/EXERCISES.md) | [Solutions](solutions/ch02_recurrence/) |
+| 3 | [Learning to Align](examples/ch03_alignment/) | [Exercises](examples/ch03_alignment/EXERCISES.md) | [Solutions](solutions/ch03_alignment/) |
+| 4 | [Self-Attention from Vectors to Matrices](examples/ch04_attention/) | [Exercises](examples/ch04_attention/EXERCISES.md) | [Solutions](solutions/ch04_attention/) |
+| 5 | [Multiple Heads, Position, and the Complete Architecture](examples/ch05_transformer/) | [Exercises](examples/ch05_transformer/EXERCISES.md) | [Solutions](solutions/ch05_transformer/) |
+| 6 | [Training and Generating with a Small Transformer](examples/ch06_training/) | [Exercises](examples/ch06_training/EXERCISES.md) | [Solutions](solutions/ch06_training/) |
+| 7 | [GPT, BERT, and T5](examples/ch07_pretraining/) | [Exercises](examples/ch07_pretraining/EXERCISES.md) | [Solutions](solutions/ch07_pretraining/) |
+| 8 | [From the Original Block to Modern Decoders](examples/ch08_modern/) | [Exercises](examples/ch08_modern/EXERCISES.md) | [Solutions](solutions/ch08_modern/) |
+| 9 | [Scaling Data, Compute, and Expert Capacity](examples/ch09_scaling/) | [Exercises](examples/ch09_scaling/EXERCISES.md) | [Solutions](solutions/ch09_scaling/) |
+| 10 | [Incremental Decoding and KV Representations](examples/ch10_kv/) | [Exercises](examples/ch10_kv/EXERCISES.md) | [Solutions](solutions/ch10_kv/) |
+| 11 | [Long Context, Sparse Access, and Sequence Compression](examples/ch11_long_context/) | [Exercises](examples/ch11_long_context/EXERCISES.md) | [Solutions](solutions/ch11_long_context/) |
+| 12 | [Efficient Execution](examples/ch12_efficient/) | [Exercises](examples/ch12_efficient/EXERCISES.md) | [Solutions](solutions/ch12_efficient/) |
+| 13 | [Structured State Spaces and Long Convolutions](examples/ch13_state_spaces/) | [Exercises](examples/ch13_state_spaces/EXERCISES.md) | [Solutions](solutions/ch13_state_spaces/) |
+| 14 | [Selective State Spaces](examples/ch14_selective_ssm/) | [Exercises](examples/ch14_selective_ssm/EXERCISES.md) | [Solutions](solutions/ch14_selective_ssm/) |
+| 15 | [Delta Rules and Hybrid Stacks](examples/ch15_hybrids/) | [Exercises](examples/ch15_hybrids/EXERCISES.md) | [Solutions](solutions/ch15_hybrids/) |
+| 16 | [From Pretrained Weights to Task Behavior](examples/ch16_adaptation/) | [Exercises](examples/ch16_adaptation/EXERCISES.md) | [Solutions](solutions/ch16_adaptation/) |
+| 17 | [Designing Reproducible Evaluations](examples/ch17_evaluation/) | [Exercises](examples/ch17_evaluation/EXERCISES.md) | [Solutions](solutions/ch17_evaluation/) |
+| 18 | [Interpreting and Aligning Model Behavior](examples/ch18_behavior/) | [Exercises](examples/ch18_behavior/EXERCISES.md) | [Solutions](solutions/ch18_behavior/) |
+| 19 | [Language Understanding](examples/ch19_understanding/) | [Exercises](examples/ch19_understanding/EXERCISES.md) | [Solutions](solutions/ch19_understanding/) |
+| 20 | [Translation and Summarization](examples/ch20_generation/) | [Exercises](examples/ch20_generation/EXERCISES.md) | [Solutions](solutions/ch20_generation/) |
+| 21 | [Search, Retrieval, and Grounded Assistants](examples/ch21_retrieval/) | [Exercises](examples/ch21_retrieval/EXERCISES.md) | [Solutions](solutions/ch21_retrieval/) |
+| 22 | [Image and Video Understanding](examples/ch22_vision/) | [Exercises](examples/ch22_vision/EXERCISES.md) | [Solutions](solutions/ch22_vision/) |
+| 23 | [Object Detection and Segmentation](examples/ch23_detection/) | [Exercises](examples/ch23_detection/EXERCISES.md) | [Solutions](solutions/ch23_detection/) |
+| 24 | [Vision–Language and Multimodal Models](examples/ch24_multimodal/) | [Exercises](examples/ch24_multimodal/EXERCISES.md) | [Solutions](solutions/ch24_multimodal/) |
+| 25 | [Speech and Audio](examples/ch25_speech_audio/) | [Exercises](examples/ch25_speech_audio/EXERCISES.md) | [Solutions](solutions/ch25_speech_audio/) |
+| 26 | [Image and Video Generation](examples/ch26_visual_generation/) | [Exercises](examples/ch26_visual_generation/EXERCISES.md) | [Solutions](solutions/ch26_visual_generation/) |
+| 27 | [Models for Code](examples/ch27_code_models/) | [Exercises](examples/ch27_code_models/EXERCISES.md) | [Solutions](solutions/ch27_code_models/) |
+| 28 | [Time-Series Forecasting](examples/ch28_time_series/) | [Exercises](examples/ch28_time_series/EXERCISES.md) | [Solutions](solutions/ch28_time_series/) |
+| 29 | [Learning from Tables](examples/ch29_tabular/) | [Exercises](examples/ch29_tabular/EXERCISES.md) | [Solutions](solutions/ch29_tabular/) |
+| 30 | [Scientific Sequences and Biological Structure](examples/ch30_protein/) | [Exercises](examples/ch30_protein/EXERCISES.md) | [Solutions](solutions/ch30_protein/) |
+| 31 | [Decisions and Embodied Action](examples/ch31_decisions/) | [Exercises](examples/ch31_decisions/EXERCISES.md) | [Solutions](solutions/ch31_decisions/) |
+| 32 | [What Changed, and What Remains?](examples/ch32_perspective/) | [Exercises](examples/ch32_perspective/EXERCISES.md) | [Solutions](solutions/ch32_perspective/) |
+
 ## Topics
 
 - Tokens, embeddings, attention, and the original encoder-decoder architecture.

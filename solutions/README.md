@@ -1,5 +1,8 @@
 # Exercise solutions
 
+Use the [chapter index](../README.md#chapter-index) to find the runnable examples
+and exercise statements alongside each solution set.
+
 ## Chapter 1. Tokens, Embeddings, and Neural Language Models
 
 | Exercises | Topics | Files |
