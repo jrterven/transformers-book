@@ -122,3 +122,19 @@ sizes. The chapter's separate benchmark times equal work.
 The recorded CPU environment uses one thread, Python 3.12.14, PyTorch 2.15.0,
 NumPy 2.5.4, Matplotlib 3.11.2, and Pillow 13.0.0. The saved state agrees with the
 checkpoint used for Chapter 5's trained-component figures.
+
+## Test beyond the training lengths
+
+Use the validation-selected reversal checkpoint to compare held-out lengths
+three through six with 48 new cases at lengths seven through nine. The fixed
+rule is still reversal with EOS. Use one cap of 11 tokens for every group and
+record reference-conditioned token accuracy, exact greedy answers and
+termination. The [recorded run](LENGTH_RUN.json) includes the first failing
+seven-color example and all group scores.
+
+```sh
+python -m examples.ch06_training.length_study \
+  --checkpoint output/ch06/best.pt --output output/ch06/LENGTH_RUN.json
+python -m examples.ch06_training.length_figure \
+  --record output/ch06/LENGTH_RUN.json --output output/ch06/ch06_length_study.pdf
+```

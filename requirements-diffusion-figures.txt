@@ -1,4 +1,4 @@
-# Optional dependencies for the public-checkpoint DDPM figures in Chapter 25.
+# Optional dependencies for the public-checkpoint DDPM figures in Chapter 26.
 torch>=2.2
 diffusers==0.35.1
 huggingface_hub==0.35.3

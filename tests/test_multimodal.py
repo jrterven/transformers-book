@@ -1,17 +1,17 @@
-"""Check Chapter 23's similarity axes, retrieval sets, and visual bridge."""
+"""Check Chapter 24's similarity axes, retrieval sets, and visual bridge."""
 
 import math
 import unittest
 
 import numpy as np
 
-from examples.ch23_multimodal.model import (
+from examples.ch24_multimodal.model import (
     bidirectional_recall_at_k,
     contrastive_logits,
     image_feature_bridge,
     symmetric_contrastive_loss,
 )
-from examples.ch23_multimodal.run_examples import (
+from examples.ch24_multimodal.run_examples import (
     bridge_example,
     contrastive_example,
     retrieval_example,

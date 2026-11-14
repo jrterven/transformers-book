@@ -1,8 +1,7 @@
-# Optional CPU reproduction of the retrieval and grounded-generation experiments.
--r requirements.txt
+# Optional pretrained translation, summarization, and figure reproduction.
+-r requirements-appendix-figures.txt
 torch==2.15.0
-transformers==5.13.0
-huggingface-hub==1.33.0
-tokenizers==0.22.2
-safetensors==0.8.0
+sentencepiece==0.2.1
+sacremoses==0.1.1
+sacrebleu==2.5.1
 matplotlib==3.11.2

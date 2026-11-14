@@ -26,11 +26,12 @@ CHAPTERS = {
     },
     "ch03": {
         "sources": ("examples/ch03_alignment/model.py",
-                    "examples/ch03_alignment/run_examples.py"),
+                    "examples/ch03_alignment/run_examples.py",
+                    "examples/ch03_alignment/context_intervention.py"),
         "destination": "snippets/ch03_alignment",
         "expected": {"additive_scores", "masked_context", "encoder_annotations",
                      "decode_step", "teacher_forward", "greedy_decode",
-                     "numerical_example"},
+                     "numerical_example", "decode_with_context"},
     },
     "ch04": {
         "sources": ("examples/ch04_attention/attention.py",
@@ -124,83 +125,89 @@ CHAPTERS = {
                      "paired_bootstrap"},
     },
     "ch18": {
-        "sources": ("examples/ch18_understanding/model.py",),
-        "destination": "snippets/ch18_understanding",
+        "sources": ("examples/ch18_behavior/model.py",
+                    "examples/ch18_behavior/run_pretrained.py"),
+        "destination": "snippets/ch18_behavior",
+        "expected": {"patch_effect", "replace_rows", "route_policy"},
+    },
+    "ch19": {
+        "sources": ("examples/ch19_understanding/model.py",),
+        "destination": "snippets/ch19_understanding",
         "expected": {"sentence_logits", "first_piece_labels", "bio_spans",
                      "span_metrics"},
     },
-    "ch19": {
-        "sources": ("examples/ch19_generation/model.py",
-                    "examples/ch19_generation/training.py"),
-        "destination": "snippets/ch19_generation",
+    "ch20": {
+        "sources": ("examples/ch20_generation/model.py",
+                    "examples/ch20_generation/training.py"),
+        "destination": "snippets/ch20_generation",
         "expected": {"collate_pairs", "beam_search", "clipped_precision",
                      "rouge_l", "encoder_decoder_step"},
     },
-    "ch20": {
-        "sources": ("examples/ch20_retrieval/model.py",),
-        "destination": "snippets/ch20_retrieval",
+    "ch21": {
+        "sources": ("examples/ch21_retrieval/model.py",),
+        "destination": "snippets/ch21_retrieval",
         "expected": {"bm25_scores", "dense_scores", "rank_passages", "pack_context",
                      "evidence_occurrence"},
     },
-    "ch21": {
-        "sources": ("examples/ch21_vision/model.py",),
-        "destination": "snippets/ch21_vision",
+    "ch22": {
+        "sources": ("examples/ch22_vision/model.py",),
+        "destination": "snippets/ch22_vision",
         "expected": {"patchify", "patch_embeddings", "linear_probe",
                      "space_time_pairs"},
     },
-    "ch22": {
-        "sources": ("examples/ch22_detection/model.py",),
-        "destination": "snippets/ch22_detection",
+    "ch23": {
+        "sources": ("examples/ch23_detection/model.py",),
+        "destination": "snippets/ch23_detection",
         "expected": {"iou", "match_queries", "precision_recall", "all_points_ap"},
     },
-    "ch23": {
-        "sources": ("examples/ch23_multimodal/model.py",),
-        "destination": "snippets/ch23_multimodal",
+    "ch24": {
+        "sources": ("examples/ch24_multimodal/model.py",),
+        "destination": "snippets/ch24_multimodal",
         "expected": {"contrastive_logits", "contrastive_loss", "bidirectional_recall",
                      "image_feature_bridge"},
     },
-    "ch24": {
-        "sources": ("examples/ch24_speech_audio/model.py",),
-        "destination": "snippets/ch24_speech_audio",
+    "ch25": {
+        "sources": ("examples/ch25_speech_audio/model.py",),
+        "destination": "snippets/ch25_speech_audio",
         "expected": {"frame_power_spectrogram", "tone_label", "word_error_rate"},
     },
-    "ch25": {
-        "sources": ("examples/ch25_visual_generation/model.py",),
-        "destination": "snippets/ch25_visual_generation",
+    "ch26": {
+        "sources": ("examples/ch26_visual_generation/model.py",),
+        "destination": "snippets/ch26_visual_generation",
         "expected": {"add_noise", "guided_noise", "ddim_step"},
     },
-    "ch26": {
-        "sources": ("examples/ch26_code_models/model.py",),
-        "destination": "snippets/ch26_code_models",
+    "ch27": {
+        "sources": ("examples/ch27_code_models/model.py",),
+        "destination": "snippets/ch27_code_models",
         "expected": {"interval_candidates", "score_candidate", "pass_at_k",
                      "serialize_fim"},
     },
-    "ch27": {
-        "sources": ("examples/ch27_time_series/model.py", "examples/ch27_time_series/run_pretrained.py"),
-        "destination": "snippets/ch27_time_series",
+    "ch28": {
+        "sources": ("examples/ch28_time_series/model.py", "examples/ch28_time_series/run_pretrained.py"),
+        "destination": "snippets/ch28_time_series",
         "expected": {"rolling_windows", "seasonal_naive", "seasonal_drift",
                      "forecast_metrics", "demand_windows"},
     },
-    "ch28": {
-        "sources": ("examples/ch28_tabular/model.py", "examples/ch28_tabular/tabular_data.py"),
-        "destination": "snippets/ch28_tabular",
+    "ch29": {
+        "sources": ("examples/ch29_tabular/model.py", "examples/ch29_tabular/tabular_data.py"),
+        "destination": "snippets/ch29_tabular",
         "expected": {"fit_row_encoder", "encode_rows", "context_probability", "brier_score",
                      "recipe_groups"},
     },
-    "ch29": {
-        "sources": ("examples/ch29_protein/model.py",),
-        "destination": "snippets/ch29_protein",
+    "ch30": {
+        "sources": ("examples/ch30_protein/model.py",),
+        "destination": "snippets/ch30_protein",
         "expected": {"residue_composition", "dipeptide_frequencies",
                      "mean_pool_residues", "contact_map", "superpose_coordinates"},
     },
-    "ch30": {
-        "sources": ("examples/ch30_decisions/model.py",),
-        "destination": "snippets/ch30_decisions",
+    "ch31": {
+        "sources": ("examples/ch31_decisions/model.py",),
+        "destination": "snippets/ch31_decisions",
         "expected": {"returns_to_go", "fit_count_policies", "rollout"},
     },
-    "ch31": {
-        "sources": ("examples/ch31_perspective/model.py",),
-        "destination": "snippets/ch31_perspective",
+    "ch32": {
+        "sources": ("examples/ch32_perspective/model.py",),
+        "destination": "snippets/ch32_perspective",
         "expected": {"compare_memory", "causal_pair_counts"},
     },
 }

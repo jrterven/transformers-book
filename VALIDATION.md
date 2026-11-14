@@ -1159,18 +1159,18 @@ repository tests, 95 excerpts, and independent checks covering 20 group splits,
 80 binary metric cases, 100 reliability/Brier cases and 48 bootstrap cases.
 These are retained historical checks, not new runs from this review.
 
-## Chapter 18. Language Understanding
+## Chapter 19. Language Understanding
 
 Detailed textbook review verified on November 7, 2026, with Python 3.12.14,
 NumPy 2.5.4 and Matplotlib 3.11.2 on CPU.
 
 ```sh
 python -m unittest discover -s tests -p test_understanding.py -v
-python -m examples.ch18_understanding.run_examples --output output/ch18.json
+python -m examples.ch19_understanding.run_examples --output output/ch19.json
 python scripts/export_snippets.py --check
 ```
 
-All nine Chapter 18 tests passed. All 149 repository excerpts were current,
+All nine Chapter 19 tests passed. All 149 repository excerpts were current,
 including this chapter's four. Canonical code and excerpts were unchanged.
 The three selected rows pooled to (1, 1) and gave logits (0, 1.25).
 The subword example supervises six of ten positions, one per word. The
@@ -1197,17 +1197,17 @@ repository tests and 99 excerpts, with independent calculations covering
 108 pooled heads, 100 first-piece alignments and 120 BIO streams. These are
 retained historical checks, not new runs from this review.
 
-## Chapter 19. Translation and Summarization
+## Chapter 20. Translation and Summarization
 
 ~~~sh
-python -m examples.ch19_generation.run_examples --output output/ch19.json
-python -m examples.ch19_generation.run_examples --train-step
+python -m examples.ch20_generation.run_examples --output output/ch20.json
+python -m examples.ch20_generation.run_examples --train-step
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17, NumPy 2.4.6, and PyTorch 2.14.1,
-all 247 tests passed, including 11 for Chapter 19. All 104 excerpts
+all 247 tests passed, including 11 for Chapter 20. All 104 excerpts
 matched their sources. Default JSON matched the NumPy-only run.
 
 Greedy decoding returned A then EOS with probability 0.33. Beam
@@ -1221,16 +1221,16 @@ scored five labels. Mean loss on the same batch changed from
 checks covered 60 ragged batches, 80 probability trees, and 245
 token pairs for the overlap calculations.
 
-## Chapter 20. Search, Retrieval, and Grounded Assistants
+## Chapter 21. Search, Retrieval, and Grounded Assistants
 
 ~~~sh
-python -m examples.ch20_retrieval.run_examples --output output/ch20.json
+python -m examples.ch21_retrieval.run_examples --output output/ch21.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 256 tests
-passed, including nine for Chapter 20. All 109 excerpts matched
+passed, including nine for Chapter 21. All 109 excerpts matched
 their sources. Saved JSON, stdout, and the NumPy-only run agreed.
 
 BM25 ranked P2 first and P1 second. The hand-chosen dense scores
@@ -1242,16 +1242,16 @@ had no annotated evidence or answer in the fixture.
 Independent calculations checked 48 lexical configurations, 18 dense
 score and rank cases, and 20 packing, evidence, and reranking cases.
 
-## Chapter 21. Image and Video Understanding
+## Chapter 22. Image and Video Understanding
 
 ~~~sh
-python -m examples.ch21_vision.run_examples --output output/ch21.json
+python -m examples.ch22_vision.run_examples --output output/ch22.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 265 tests
-passed, including nine for Chapter 21. All 113 excerpts matched
+passed, including nine for Chapter 22. All 113 excerpts matched
 their sources. Saved JSON, stdout, and the NumPy-only run agreed.
 
 The 8-by-8 RGB image gave four rows of 48 patch features and a
@@ -1266,16 +1266,16 @@ or 36 temporal and 48 spatial pairs in the patch-only divided count.
 Independent calculations checked 54 patch and projection cases,
 27 probe fits, and 16 video pair enumerations.
 
-## Chapter 22. Object Detection and Segmentation
+## Chapter 23. Object Detection and Segmentation
 
 ~~~sh
-python -m examples.ch22_detection.run_examples --output output/ch22.json
+python -m examples.ch23_detection.run_examples --output output/ch23.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 275 tests
-passed, including ten for Chapter 22. All 117 excerpts matched
+passed, including ten for Chapter 23. All 117 excerpts matched
 their sources. Saved JSON, stdout, and the NumPy-only run agreed.
 
 The box and mask IoUs were 1/3 and 1/2. The cost example matched
@@ -1286,16 +1286,16 @@ single-threshold all-points AP was 5/6.
 Independent calculations checked 120 box pairs, 120 mask pairs, 150
 assignments, and 288 ranked detection evaluations.
 
-## Chapter 23. Vision–Language and Multimodal Models
+## Chapter 24. Vision–Language and Multimodal Models
 
 ~~~sh
-python -m examples.ch23_multimodal.run_examples --output output/ch23.json
+python -m examples.ch24_multimodal.run_examples --output output/ch24.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 284 tests
-passed, including nine for Chapter 23. All 121 excerpts matched
+passed, including nine for Chapter 24. All 121 excerpts matched
 their sources. Saved JSON, stdout, and the NumPy-only run agreed.
 
 The two-pair logits were [[2, 1.2], [0, 1.6]]. The directional
@@ -1310,16 +1310,16 @@ projected row (0.5, 3, -2.5).
 Independent calculations checked 27 scaled similarity configurations,
 20 contrastive batches, 64 retrieval settings, and 48 visual bridges.
 
-## Chapter 24. Speech and Audio
+## Chapter 25. Speech and Audio
 
 ~~~sh
-python -m examples.ch24_speech_audio.run_examples --output output/ch24.json
+python -m examples.ch25_speech_audio.run_examples --output output/ch25.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 294 tests
-passed, including ten for Chapter 24. All 124 excerpts matched
+passed, including ten for Chapter 25. All 124 excerpts matched
 their sources. Saved JSON, stdout, and the NumPy-only run agreed.
 
 The four-sample example gave raw powers 2.25, 1.125, and 0 at
@@ -1335,16 +1335,16 @@ insertion and an undefined clip-level rate.
 Independent calculations checked 252 framing and transform
 configurations and 961 transcript pairs.
 
-## Chapter 25. Image and Video Generation
+## Chapter 26. Image and Video Generation
 
 ~~~sh
-python -m examples.ch25_visual_generation.run_examples --output output/ch25.json
+python -m examples.ch26_visual_generation.run_examples --output output/ch26.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 302 tests
-passed, including eight for Chapter 25. All 127 excerpts matched
+passed, including eight for Chapter 26. All 127 excerpts matched
 their sources. Saved JSON, stdout, and the NumPy-only run agreed.
 
 The noisy diagonal grid moved from cumulative signal coefficient
@@ -1356,16 +1356,16 @@ fixture returned (1, 0.6) at scale two.
 Independent calculations checked 60 forward mixtures, 60 guidance
 settings, and 30 deterministic updates against separate formulas.
 
-## Chapter 26. Models for Code
+## Chapter 27. Models for Code
 
 ~~~sh
-python -m examples.ch26_code_models.run_examples --output output/ch26.json
+python -m examples.ch27_code_models.run_examples --output output/ch27.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17, all 309 tests passed,
-including seven for Chapter 26. All 131 excerpts matched their
+including seven for Chapter 27. All 131 excerpts matched their
 sources. Saved JSON, stdout, and the second Python run agreed.
 
 All four checked-in candidates passed both smoke tests. On the
@@ -1377,16 +1377,16 @@ before the middle marker in the serialized prompt.
 Independent calculations checked 728 pass@k settings by subset
 enumeration and all four candidates over 2,025 interval pairs.
 
-## Chapter 27. Time-Series Forecasting
+## Chapter 28. Time-Series Forecasting
 
 ~~~sh
-python -m examples.ch27_time_series.run_examples --output output/ch27.json
+python -m examples.ch28_time_series.run_examples --output output/ch28.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 319 tests
-passed, including ten for Chapter 27. All 135 excerpts matched
+passed, including ten for Chapter 28. All 135 excerpts matched
 their sources. Saved JSON, stdout, and the NumPy-only run agreed.
 
 The fixture fit a drift of four on values before index 24. It
@@ -1399,16 +1399,16 @@ coverage (1, 1, 0.5), and mean width (2, 2, 2). Independent
 calculations checked 96 window configurations, 60 seasonal
 forecasts, and 80 interval cases.
 
-## Chapter 28. Learning from Tables
+## Chapter 29. Learning from Tables
 
 ~~~sh
-python -m examples.ch28_tabular.run_examples --output output/ch28.json
+python -m examples.ch29_tabular.run_examples --output output/ch29.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 327 tests
-passed, including eight for Chapter 28. All 139 excerpts matched
+passed, including eight for Chapter 29. All 139 excerpts matched
 their sources. Saved JSON, stdout, and the NumPy-only run agreed.
 
 The four training rows gave median 4 and levels shop and web.
@@ -1420,16 +1420,16 @@ positive-class probability 5/6. The binary Brier example gave 0.07.
 Independent checks covered 80 fitted schemas, 80 context cases,
 and 50 probability scores.
 
-## Chapter 29. Scientific Sequences and Biological Structure
+## Chapter 30. Scientific Sequences and Biological Structure
 
 ~~~sh
-python -m examples.ch29_protein.run_examples --output output/ch29.json
+python -m examples.ch30_protein.run_examples --output output/ch30.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17 and NumPy 2.4.6, all 337 tests
-passed, including ten for Chapter 29. All 143 excerpts matched
+passed, including ten for Chapter 30. All 143 excerpts matched
 their sources. Saved JSON, stdout, and the NumPy-only run agreed.
 
 ACAC and AACC had the same composition and different ordered-pair
@@ -1441,16 +1441,16 @@ indices. The second distance equals the inclusive threshold.
 Independent checks covered 120 sequence and pair counts, 32 masked
 means, and 360 distance and sequence-separation settings.
 
-## Chapter 30. Decisions and Embodied Action
+## Chapter 31. Decisions and Embodied Action
 
 ~~~sh
-python -m examples.ch30_decisions.run_examples --output output/ch30.json
+python -m examples.ch31_decisions.run_examples --output output/ch31.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17, all 347 tests passed,
-including ten for Chapter 30. All 146 excerpts matched their
+including ten for Chapter 31. All 146 excerpts matched their
 sources. Saved JSON, stdout, and the second Python run agreed.
 
 Rewards (1, -2, 3) gave returns-to-go (2, 1, 3). On the original
@@ -1462,16 +1462,16 @@ target stopped before the first action.
 Independent checks covered 300 return sequences, 300 count-policy
 fits, and 25,000 rollouts against a separate grid implementation.
 
-## Chapter 31. What Changed, and What Remains?
+## Chapter 32. What Changed, and What Remains?
 
 ~~~sh
-python -m examples.ch31_perspective.run_examples --output output/ch31.json
+python -m examples.ch32_perspective.run_examples --output output/ch32.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17, all 357 tests passed,
-including ten for Chapter 31. All 148 excerpts matched their
+including ten for Chapter 32. All 148 excerpts matched their
 sources. Saved JSON, stdout, and the second Python run agreed.
 
 At lengths 8 and 16, the full causal counts were 36 and 136.
@@ -1519,7 +1519,7 @@ including the shifted decoder input. Figure source and manuscript remain in
 the private repository. Both solution PDFs are reproducible from the executed
 notebook using `solutions/ch07_pretraining/build_pdfs.py`.
 
-## Chapter 19 detailed textbook review (2026-11-07)
+## Chapter 20 detailed textbook review (2026-11-07)
 
 The exercise set now contains twelve problems, ordered from hand calculations
 through code to optional source audits and experiment design. Every problem
@@ -1530,7 +1530,7 @@ precision 0.575; neither is reported as complete BLEU. An LCS table makes
 repetition and ordered matching visible. The source audit obtains ROUGE-L
 F1 0.9 while identifying an unsupported causal connector.
 
-All eleven Chapter 19 tests passed, including the real PyTorch training step;
+All eleven Chapter 20 tests passed, including the real PyTorch training step;
 all five canonical snippets were current and matched the private manuscript.
 The tested batch has five supervised labels and logits of shape [2, 3, 11].
 One CPU update changes its mean loss from 2.4554718716 to 2.3691595296.
@@ -1540,9 +1540,9 @@ translation, summarization, or adaptation benchmark is claimed.
 Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2, PyTorch 2.15.0.
 The notebook uses NumPy and Matplotlib; the separately tested optional update
 uses PyTorch. Both PDFs can be regenerated with
-`solutions/ch19_generation/build_pdfs.py`. Canonical helper code is unchanged.
+`solutions/ch20_generation/build_pdfs.py`. Canonical helper code is unchanged.
 
-## Chapter 20 detailed textbook review (2026-11-07)
+## Chapter 21 detailed textbook review (2026-11-07)
 
 Twelve exercises now progress from hand calculations to code and optional
 evaluation design. Every exercise has a complete explanation in the written
@@ -1563,9 +1563,9 @@ and support, complete versus missing annotations, and source applicability.
 The optional audit cells are labeled fixtures and proposed evaluation designs.
 They do not claim a retriever or generator benchmark. Runtime: Python 3.12.14,
 NumPy 2.5.4, Matplotlib 3.11.2. Both PDF editions are generated from the notebook
-by `solutions/ch20_retrieval/build_pdfs.py`.
+by `solutions/ch21_retrieval/build_pdfs.py`.
 
-## Chapter 21 detailed textbook review (2026-11-07)
+## Chapter 22 detailed textbook review (2026-11-07)
 
 All twelve exercises have complete explanations in the written PDF,
 executed notebook and notebook PDF. Nineteen code cells run in sequence
@@ -1586,9 +1586,9 @@ original/reversed pairs when splitting, and distinguish checkpoint changes
 from resolution changes. Their numeric cells are explicit fixtures, not
 trained-model benchmarks. Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib
 3.11.2. Both PDFs are generated from the same notebook by
-`solutions/ch21_vision/build_pdfs.py`.
+`solutions/ch22_vision/build_pdfs.py`.
 
-## Chapter 22 detailed textbook review (2026-11-07)
+## Chapter 23 detailed textbook review (2026-11-07)
 
 All eleven exercises have complete explanations in the written PDF,
 executed notebook and notebook PDF. Sixteen code cells execute without
@@ -1610,9 +1610,9 @@ denominators and reports extra predictions separately. Synthetic audit
 fixtures make no trained-model performance claim.
 
 Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2. Both PDFs are
-built from the executed notebook by `solutions/ch22_detection/build_pdfs.py`.
+built from the executed notebook by `solutions/ch23_detection/build_pdfs.py`.
 
-## Chapter 23 detailed textbook review (2026-11-07)
+## Chapter 24 detailed textbook review (2026-11-07)
 
 Nine canonical tests passed; all four exported snippets are current and
 match the private manuscript. Canonical helpers are unchanged. All eleven
@@ -1635,9 +1635,9 @@ related photos across splits. A final labeled fixture separately counts
 appropriate responses and unsupported visual claims.
 
 Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2. Both PDFs are
-built from the executed notebook by `solutions/ch23_multimodal/build_pdfs.py`.
+built from the executed notebook by `solutions/ch24_multimodal/build_pdfs.py`.
 
-## Chapter 24 detailed textbook review (2026-11-07)
+## Chapter 25 detailed textbook review (2026-11-07)
 
 Ten canonical tests passed; all three exported snippets are current and
 match the private manuscript. Canonical helpers are unchanged. All eleven
@@ -1660,9 +1660,9 @@ the three-word fixture reports coverage 2/3 and 1/3 instead of dropping
 undefined latencies. All evaluation outputs are explicitly synthetic.
 
 Runtime: Python 3.12.14, NumPy 2.5.4, Matplotlib 3.11.2. Both PDFs are
-built from the executed notebook by `solutions/ch24_speech_audio/build_pdfs.py`.
+built from the executed notebook by `solutions/ch25_speech_audio/build_pdfs.py`.
 
-## Chapter 25 detailed textbook review (2026-11-07)
+## Chapter 26 detailed textbook review (2026-11-07)
 
 Eight canonical tests pass and all three exported snippets are current and
 identical to the manuscript copies. The canonical numerical helpers are
@@ -1683,10 +1683,10 @@ Timing counts and motion-scoring records are explicitly illustrative protocols,
 not measured model performance. All saved code outputs match the explanations.
 
 Both PDFs are exported from the same executed notebook by
-`solutions/ch25_visual_generation/build_pdfs.py`. Runtime: Python 3.12.14,
+`solutions/ch26_visual_generation/build_pdfs.py`. Runtime: Python 3.12.14,
 NumPy 2.5.4 and Matplotlib 3.11.2.
 
-## Chapter 26 detailed textbook review (2026-11-07)
+## Chapter 27 detailed textbook review (2026-11-07)
 
 Seven canonical tests pass and all four exported snippets are current and
 identical to the manuscript copies. The canonical helpers are unchanged.
@@ -1708,10 +1708,10 @@ performance is inferred from these known fixtures and evaluation designs.
 
 The notebook's mathematical notation is corrected and validated before export.
 Both PDFs are exported from the same executed notebook by
-`solutions/ch26_code_models/build_pdfs.py`.
+`solutions/ch27_code_models/build_pdfs.py`.
 Runtime: Python 3.12.14 and Matplotlib 3.11.2.
 
-## Chapter 27 detailed textbook review (2026-11-07)
+## Chapter 28 detailed textbook review (2026-11-07)
 
 Ten canonical tests pass; all four exported snippets are current and identical
 to the manuscript copies. The canonical forecasting helpers are unchanged.
@@ -1731,10 +1731,10 @@ origins, freezes earlier calibration offsets and scores synthetic before/after
 coverage at unchanged widths. These fixtures are not model performance claims.
 
 Both PDFs are exported from the same executed notebook by
-`solutions/ch27_time_series/build_pdfs.py`.
+`solutions/ch28_time_series/build_pdfs.py`.
 Runtime: Python 3.12.14, NumPy 2.5.4 and Matplotlib 3.11.2.
 
-## Chapter 28 detailed textbook review (2026-11-07)
+## Chapter 29 detailed textbook review (2026-11-07)
 
 Eight canonical tests pass; all four exported snippets are current and identical
 to the manuscript copies. The canonical helpers are unchanged.
@@ -1756,10 +1756,10 @@ bin [0.7,0.8) has four orders, three customers, mean prediction .74 and rate .5;
 it is not used to fit a recalibration map.
 
 Both PDFs are exported from the same executed notebook by
-`solutions/ch28_tabular/build_pdfs.py`.
+`solutions/ch29_tabular/build_pdfs.py`.
 Runtime: Python 3.12.14, NumPy 2.5.4 and Matplotlib 3.11.2.
 
-## Chapter 29 detailed textbook review (2026-11-07)
+## Chapter 30 detailed textbook review (2026-11-07)
 
 Ten canonical tests pass and four exported snippets are current and identical
 to the manuscript copies. Canonical helpers are unchanged.
@@ -1780,10 +1780,10 @@ matrix has asymmetric cross-domain PAE 18/12 versus within-domain 2; it is not
 a geometric distance matrix, a measured error, or a model result.
 
 Both PDFs are exported from the same executed notebook by
-`solutions/ch29_protein/build_pdfs.py`.
+`solutions/ch30_protein/build_pdfs.py`.
 Runtime: Python 3.12.14, NumPy 2.5.4 and Matplotlib 3.11.2.
 
-## Chapter 30 detailed textbook review (2026-11-07)
+## Chapter 31 detailed textbook review (2026-11-07)
 
 Ten canonical tests pass and three exported snippets are current and identical
 to the manuscript copies. Canonical helpers remain unchanged.
@@ -1803,9 +1803,9 @@ With 0.1-second actions, execution horizons 8/2 give ideal refresh intervals
 0.8/0.2 seconds. Adding 0.15 seconds of blocking inference yields serial cycle
 times 0.95/0.35 seconds; these are scheduling arithmetic, not benchmark latency.
 The written and notebook PDFs are generated from the same executed source by
-`solutions/ch30_decisions/build_pdfs.py`.
+`solutions/ch31_decisions/build_pdfs.py`.
 
-## Chapter 31 detailed textbook review (2026-11-07)
+## Chapter 32 detailed textbook review (2026-11-07)
 
 Ten canonical tests pass and two exported snippets are current and identical
 to the manuscript copies. Canonical helpers remain unchanged.
@@ -1828,7 +1828,7 @@ Mutating forecasts unavailable by issue or receipt time leaves the as-of feature
 unchanged in the specified fixture.
 
 The written and notebook PDFs are generated from the same executed source by
-`solutions/ch31_perspective/build_pdfs.py`.
+`solutions/ch32_perspective/build_pdfs.py`.
 
 ## Expanded appendices A-F (2026-11-07)
 
@@ -1859,3 +1859,22 @@ conversion and the failure of equivalence after nonlinear clipping.
 
 These are deterministic teaching calculations and controlled numerical tests,
 not GPU benchmarks or evidence of trained-model quality.
+
+## Interpretability and alignment, Chapters 3, 6 and 18
+
+- The Chapter 3 exchange reuses the trained recurrent checkpoint at update
+  750. Self-patches reproduce the native logits. Replacing the changed
+  recipient's context takes the green-minus-yellow gap from -2.5872 to
+  +6.4832, with the full-vocabulary winner changing from yellow to green.
+- The Chapter 6 extension checks the validation-selected checkpoint at update
+  2000 on 112 sources. Exact generation is 64/64 at training lengths and
+  1/48 at longer lengths. All generations terminate under the same cap.
+- The pinned Qwen CPU run measures 340 cross-patches across three pairs, plus
+  self-patches and causal position controls. Block 1's edited verb changes
+  the principal pair's read-recipient gap by about 3.707 nats. Two paired
+  rewordings shift the base gap toward updating while still preferring read.
+- The 18 routing cases illustrate the cost of deferral. Both first-token
+  policies get 9/18 correct. Deferring below 0.80 changes that to 11/18,
+  while correct updates fall from 3/6 to 0/6.
+- With the optional CPU dependencies available, the companion test suite has
+  415 passing tests and the export check covers 161 snippets.

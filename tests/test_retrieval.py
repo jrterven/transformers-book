@@ -1,11 +1,11 @@
-"""Check Chapter 20's scores, stable ranks, packing, and evidence IDs."""
+"""Check Chapter 21's scores, stable ranks, packing, and evidence IDs."""
 
 import math
 import unittest
 
 import numpy as np
 
-from examples.ch20_retrieval.model import (
+from examples.ch21_retrieval.model import (
     bm25_scores,
     dense_scores,
     evidence_recall,
@@ -15,7 +15,7 @@ from examples.ch20_retrieval.model import (
     rerank_candidates,
     tokenize,
 )
-from examples.ch20_retrieval.run_examples import CORPUS, no_price_example, retrieval_example
+from examples.ch21_retrieval.run_examples import CORPUS, no_price_example, retrieval_example
 
 
 class RankingTests(unittest.TestCase):

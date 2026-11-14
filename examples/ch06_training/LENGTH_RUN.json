@@ -1,0 +1,92 @@
+{
+  "selected_update": 2000,
+  "checkpoint_sha256": "b9926a02c5e0b96ecac782b1c41baf52aa70f27318b7f760910636ce704ff710",
+  "torch": "2.15.0",
+  "seed_for_longer_sequences": 606,
+  "generation_cap": 11,
+  "groups": {
+    "3": {
+      "nll": 0.004950897768139839,
+      "perplexity": 1.0049631737131168,
+      "token_accuracy": 1.0,
+      "exact_match": 1.0,
+      "termination_rate": 1.0,
+      "tokens": 64,
+      "sequences": 16
+    },
+    "4": {
+      "nll": 0.0002823736052960157,
+      "perplexity": 1.0002824134764752,
+      "token_accuracy": 1.0,
+      "exact_match": 1.0,
+      "termination_rate": 1.0,
+      "tokens": 80,
+      "sequences": 16
+    },
+    "5": {
+      "nll": 0.00010083716673155625,
+      "perplexity": 1.0001008422509696,
+      "token_accuracy": 1.0,
+      "exact_match": 1.0,
+      "termination_rate": 1.0,
+      "tokens": 96,
+      "sequences": 16
+    },
+    "6": {
+      "nll": 0.00036230783111282757,
+      "perplexity": 1.0003623734725222,
+      "token_accuracy": 1.0,
+      "exact_match": 1.0,
+      "termination_rate": 1.0,
+      "tokens": 112,
+      "sequences": 16
+    },
+    "7": {
+      "nll": 1.6105852127075195,
+      "perplexity": 5.005739793370741,
+      "token_accuracy": 0.7421875,
+      "exact_match": 0.0625,
+      "termination_rate": 1.0,
+      "tokens": 128,
+      "sequences": 16
+    },
+    "8": {
+      "nll": 5.32308832804362,
+      "perplexity": 205.01606215478634,
+      "token_accuracy": 0.3402777777777778,
+      "exact_match": 0.0,
+      "termination_rate": 1.0,
+      "tokens": 144,
+      "sequences": 16
+    },
+    "9": {
+      "nll": 6.729640960693359,
+      "perplexity": 836.8467511317637,
+      "token_accuracy": 0.225,
+      "exact_match": 0.0,
+      "termination_rate": 1.0,
+      "tokens": 160,
+      "sequences": 16
+    }
+  },
+  "example": {
+    "index_in_group": 1,
+    "source": "black red yellow green red black blue",
+    "reference": "blue black red green yellow red black <eos>",
+    "generated": "black red green yellow red yellow black <eos>",
+    "first_difference": 1,
+    "expected": "blue",
+    "chosen": "black",
+    "reference_token_probabilities": [
+      3.662034433634263e-05,
+      0.002573014111385292,
+      0.9947521735830515,
+      0.9996633991488844,
+      0.9998754694837856,
+      0.9940923507126144,
+      0.9969234987009938,
+      0.9999870255859518
+    ],
+    "mean_nll": 2.024040699005127
+  }
+}

@@ -241,76 +241,83 @@ All twelve exercises are fully solved in each edition:
 See the [exercise statements](../examples/ch17_evaluation/EXERCISES.md)
 and [run/export guide](ch17_evaluation/README.md).
 
-## Chapter 18. Language Understanding
+## Chapter 18. Interpreting and Aligning Model Behavior
+
+The [eight exercises](../examples/ch18_behavior/EXERCISES.md) have
+[written solutions](ch18_behavior/written-solutions.pdf), an
+[executed notebook](ch18_behavior/python-solutions.ipynb), and a
+[notebook PDF](ch18_behavior/python-solutions.pdf).
+
+## Chapter 19. Language Understanding
 
 All twelve exercises are fully solved in each edition:
 
 | Edition | Contents | File |
 | --- | --- | --- |
-| Written | Calculations, interpretations, two plots and evaluation designs | [PDF](ch18_understanding/written-solutions.pdf) |
-| Notebook | The same explanations with 19 executed code cells | [Jupyter notebook](ch18_understanding/python-solutions.ipynb) |
-| Notebook export | Every code cell and saved result | [PDF](ch18_understanding/python-solutions.pdf) |
+| Written | Calculations, interpretations, two plots and evaluation designs | [PDF](ch19_understanding/written-solutions.pdf) |
+| Notebook | The same explanations with 19 executed code cells | [Jupyter notebook](ch19_understanding/python-solutions.ipynb) |
+| Notebook export | Every code cell and saved result | [PDF](ch19_understanding/python-solutions.pdf) |
 
-See the [exercise statements](../examples/ch18_understanding/EXERCISES.md)
-and [run/export guide](ch18_understanding/README.md).
+See the [exercise statements](../examples/ch19_understanding/EXERCISES.md)
+and [run/export guide](ch19_understanding/README.md).
 
-## Chapter 19. Translation and Summarization
+## Chapter 20. Translation and Summarization
 
 All twelve exercises have complete solutions in every edition, including
 the new corpus-aggregation calculation and the source-support audit.
 
 | Edition | Contents |
 | --- | --- |
-| [Written solutions](ch19_generation/written-solutions.pdf) | Explanations, calculations, tables, and two plots for Exercises 1-12 |
-| [Executed notebook](ch19_generation/python-solutions.ipynb) | The same solutions with 18 executed cells and saved outputs |
-| [Notebook PDF](ch19_generation/python-solutions.pdf) | All explanations, code, figures, and results |
+| [Written solutions](ch20_generation/written-solutions.pdf) | Explanations, calculations, tables, and two plots for Exercises 1-12 |
+| [Executed notebook](ch20_generation/python-solutions.ipynb) | The same solutions with 18 executed cells and saved outputs |
+| [Notebook PDF](ch20_generation/python-solutions.pdf) | All explanations, code, figures, and results |
 
-See the [exercise statements](../examples/ch19_generation/EXERCISES.md)
-and [run/export guide](ch19_generation/README.md).
+See the [exercise statements](../examples/ch20_generation/EXERCISES.md)
+and [run/export guide](ch20_generation/README.md).
 
-## Chapter 20. Search, Retrieval, and Grounded Assistants
+## Chapter 21. Search, Retrieval, and Grounded Assistants
 
 All twelve exercises have complete worked solutions, including the RAG
 mixture calculation and the source-version audit.
 
 | Edition | Contents |
 | --- | --- |
-| [Written solutions](ch20_retrieval/written-solutions.pdf) | Explanations, calculations, tables and two plots for Exercises 1-12 |
-| [Executed notebook](ch20_retrieval/python-solutions.ipynb) | The same solutions with 17 executed code cells and saved results |
-| [Notebook PDF](ch20_retrieval/python-solutions.pdf) | All explanations, code, figures and outputs |
+| [Written solutions](ch21_retrieval/written-solutions.pdf) | Explanations, calculations, tables and two plots for Exercises 1-12 |
+| [Executed notebook](ch21_retrieval/python-solutions.ipynb) | The same solutions with 17 executed code cells and saved results |
+| [Notebook PDF](ch21_retrieval/python-solutions.pdf) | All explanations, code, figures and outputs |
 
-See the [exercise statements](../examples/ch20_retrieval/EXERCISES.md)
-and [run/export guide](ch20_retrieval/README.md).
+See the [exercise statements](../examples/ch21_retrieval/EXERCISES.md)
+and [run/export guide](ch21_retrieval/README.md).
 
-## Chapter 21. Image and Video Understanding
+## Chapter 22. Image and Video Understanding
 
 All twelve exercises have complete worked solutions, including patch
 ordering, position information and controlled visual evaluation.
 
 | Edition | Contents |
 | --- | --- |
-| [Written solutions](ch21_vision/written-solutions.pdf) | Explanations, calculations, tables and two plots for Exercises 1-12 |
-| [Executed notebook](ch21_vision/python-solutions.ipynb) | The same solutions with 19 executed cells and saved outputs |
-| [Notebook PDF](ch21_vision/python-solutions.pdf) | All explanations, code, figures and results |
+| [Written solutions](ch22_vision/written-solutions.pdf) | Explanations, calculations, tables and two plots for Exercises 1-12 |
+| [Executed notebook](ch22_vision/python-solutions.ipynb) | The same solutions with 19 executed cells and saved outputs |
+| [Notebook PDF](ch22_vision/python-solutions.pdf) | All explanations, code, figures and results |
 
-See the [exercise statements](../examples/ch21_vision/EXERCISES.md)
-and [run/export guide](ch21_vision/README.md).
+See the [exercise statements](../examples/ch22_vision/EXERCISES.md)
+and [run/export guide](ch22_vision/README.md).
 
-## Chapter 22. Object Detection and Segmentation
+## Chapter 23. Object Detection and Segmentation
 
 All eleven exercises have complete worked solutions, including both
 minimum-cost assignments, precision envelopes and coordinate inversion.
 
 | Edition | Contents |
 | --- | --- |
-| [Written solutions](ch22_detection/written-solutions.pdf) | Explanations, calculations, tables and three plots for Exercises 1-11 |
-| [Executed notebook](ch22_detection/python-solutions.ipynb) | The same solutions with 16 executed cells and saved outputs |
-| [Notebook PDF](ch22_detection/python-solutions.pdf) | All explanations, code, figures and results |
+| [Written solutions](ch23_detection/written-solutions.pdf) | Explanations, calculations, tables and three plots for Exercises 1-11 |
+| [Executed notebook](ch23_detection/python-solutions.ipynb) | The same solutions with 16 executed cells and saved outputs |
+| [Notebook PDF](ch23_detection/python-solutions.pdf) | All explanations, code, figures and results |
 
-See the [exercise statements](../examples/ch22_detection/EXERCISES.md)
-and [run/export guide](ch22_detection/README.md).
+See the [exercise statements](../examples/ch23_detection/EXERCISES.md)
+and [run/export guide](ch23_detection/README.md).
 
-## Chapter 23. Vision-Language and Multimodal Models
+## Chapter 24. Vision-Language and Multimodal Models
 
 All eleven exercises have complete explanations in all three editions.
 They cover candidate-dependent probabilities, symmetric contrastive loss,
@@ -318,108 +325,108 @@ multiple-positive retrieval, visual projection and paired evaluation.
 
 | Edition | Contents |
 | --- | --- |
-| [Written solutions](ch23_multimodal/written-solutions.pdf) | All eleven worked solutions, tables and three plots |
-| [Executed notebook](ch23_multimodal/python-solutions.ipynb) | The same explanations with 14 executed cells and saved outputs |
-| [Notebook PDF](ch23_multimodal/python-solutions.pdf) | All prose, code, figures and results |
+| [Written solutions](ch24_multimodal/written-solutions.pdf) | All eleven worked solutions, tables and three plots |
+| [Executed notebook](ch24_multimodal/python-solutions.ipynb) | The same explanations with 14 executed cells and saved outputs |
+| [Notebook PDF](ch24_multimodal/python-solutions.pdf) | All prose, code, figures and results |
 
-See the [exercise statements](../examples/ch23_multimodal/EXERCISES.md)
-and [run/export guide](ch23_multimodal/README.md).
+See the [exercise statements](../examples/ch24_multimodal/EXERCISES.md)
+and [run/export guide](ch24_multimodal/README.md).
 
-## Chapter 24. Speech and Audio
+## Chapter 25. Speech and Audio
 
-All [eleven exercises](../examples/ch24_speech_audio/EXERCISES.md) have complete,
-ordered solutions in the [written PDF](ch24_speech_audio/written-solutions.pdf),
-[executed notebook](ch24_speech_audio/python-solutions.ipynb), and
-[notebook PDF](ch24_speech_audio/python-solutions.pdf).
+All [eleven exercises](../examples/ch25_speech_audio/EXERCISES.md) have complete,
+ordered solutions in the [written PDF](ch25_speech_audio/written-solutions.pdf),
+[executed notebook](ch25_speech_audio/python-solutions.ipynb), and
+[notebook PDF](ch25_speech_audio/python-solutions.pdf).
 
 Sixteen executed cells check frame counts, frequency axes, transcript alignments,
 pooled WER, no-speech insertions, speaker splits and caption latency. Three plots
 show overlapping windows, tone spectra and first-correct versus stable text.
-See the [chapter solution guide](ch24_speech_audio/README.md) for setup and export.
+See the [chapter solution guide](ch25_speech_audio/README.md) for setup and export.
 
-## Chapter 25. Image and Video Generation
+## Chapter 26. Image and Video Generation
 
-All [eleven exercises](../examples/ch25_visual_generation/EXERCISES.md) have
-complete, ordered solutions in the [written PDF](ch25_visual_generation/written-solutions.pdf),
-[executed notebook](ch25_visual_generation/python-solutions.ipynb), and
-[notebook PDF](ch25_visual_generation/python-solutions.pdf).
+All [eleven exercises](../examples/ch26_visual_generation/EXERCISES.md) have
+complete, ordered solutions in the [written PDF](ch26_visual_generation/written-solutions.pdf),
+[executed notebook](ch26_visual_generation/python-solutions.ipynb), and
+[notebook PDF](ch26_visual_generation/python-solutions.pdf).
 
 Fifteen executed cells check noise mixtures, DDIM outputs and errors,
 guidance increments, video pair counts and repeated compositions.
 Three plots make the numerical behavior visible.
-See the [solution guide](ch25_visual_generation/README.md) for setup and export.
+See the [solution guide](ch26_visual_generation/README.md) for setup and export.
 
-## Chapter 26. Models for Code
+## Chapter 27. Models for Code
 
-All [eleven exercises](../examples/ch26_code_models/EXERCISES.md) have complete,
-ordered solutions in the [written PDF](ch26_code_models/written-solutions.pdf),
-[executed notebook](ch26_code_models/python-solutions.ipynb), and
-[notebook PDF](ch26_code_models/python-solutions.pdf).
+All [eleven exercises](../examples/ch27_code_models/EXERCISES.md) have complete,
+ordered solutions in the [written PDF](ch27_code_models/written-solutions.pdf),
+[executed notebook](ch27_code_models/python-solutions.ipynb), and
+[notebook PDF](ch27_code_models/python-solutions.pdf).
 
 Seventeen executed cells check interval boundaries, infilling format,
 per-case and complete-candidate scores, subset coverage, task aggregation,
 selection, repository helper contracts, regressions and split rules.
-Three plots show the key distinctions. See the [solution guide](ch26_code_models/README.md).
+Three plots show the key distinctions. See the [solution guide](ch27_code_models/README.md).
 
-## Chapter 27. Time-Series Forecasting
+## Chapter 28. Time-Series Forecasting
 
-All [eleven exercises](../examples/ch27_time_series/EXERCISES.md) have complete,
-ordered solutions in the [written PDF](ch27_time_series/written-solutions.pdf),
-[executed notebook](ch27_time_series/python-solutions.ipynb), and
-[notebook PDF](ch27_time_series/python-solutions.pdf).
+All [eleven exercises](../examples/ch28_time_series/EXERCISES.md) have complete,
+ordered solutions in the [written PDF](ch28_time_series/written-solutions.pdf),
+[executed notebook](ch28_time_series/python-solutions.ipynb), and
+[notebook PDF](ch28_time_series/python-solutions.pdf).
 
 Eighteen executed cells check availability, split boundaries, patches, quantile
 loss, windows, seasonal cycles, fixed drift, interval widths, leakage, weekly
 refits and regime changes. Three plots explain the key distinctions.
-See the [solution guide](ch27_time_series/README.md).
+See the [solution guide](ch28_time_series/README.md).
 
-## Chapter 28. Learning from Tables
+## Chapter 29. Learning from Tables
 
-All [eleven exercises](../examples/ch28_tabular/EXERCISES.md) have complete,
-ordered solutions in the [written PDF](ch28_tabular/written-solutions.pdf),
-[executed notebook](ch28_tabular/python-solutions.ipynb), and
-[notebook PDF](ch28_tabular/python-solutions.pdf).
+All [eleven exercises](../examples/ch29_tabular/EXERCISES.md) have complete,
+ordered solutions in the [written PDF](ch29_tabular/written-solutions.pdf),
+[executed notebook](ch29_tabular/python-solutions.ipynb), and
+[notebook PDF](ch29_tabular/python-solutions.pdf).
 
 Twenty executed cells check availability, fixed encodings, context probabilities,
 confidence, empirical calibration, split units, nested data budgets and mature
 outcomes. Three plots explain expected loss, normalized influence and calibration
-versus risk separation. See the [solution guide](ch28_tabular/README.md).
+versus risk separation. See the [solution guide](ch29_tabular/README.md).
 
-## Chapter 29. Scientific Sequences and Biological Structure
+## Chapter 30. Scientific Sequences and Biological Structure
 
-All [eleven exercises](../examples/ch29_protein/EXERCISES.md) have complete,
-ordered solutions in the [written PDF](ch29_protein/written-solutions.pdf),
-[executed notebook](ch29_protein/python-solutions.ipynb), and
-[notebook PDF](ch29_protein/python-solutions.pdf).
+All [eleven exercises](../examples/ch30_protein/EXERCISES.md) have complete,
+ordered solutions in the [written PDF](ch30_protein/written-solutions.pdf),
+[executed notebook](ch30_protein/python-solutions.ipynb), and
+[notebook PDF](ch30_protein/python-solutions.pdf).
 
 Eighteen executed cells check alignment counts, composition, dipeptide collisions,
 masked pooling, translations and rotations, threshold boundaries, macro-F1,
 family assignment, length eligibility and directional PAE. Three plots explain
-the core distinctions. See the [solution guide](ch29_protein/README.md).
+the core distinctions. See the [solution guide](ch30_protein/README.md).
 
-## Chapter 30. Decisions and Embodied Action
+## Chapter 31. Decisions and Embodied Action
 
-All [eleven exercises](../examples/ch30_decisions/EXERCISES.md) have full,
-ordered solutions in the [written PDF](ch30_decisions/written-solutions.pdf),
-[executed notebook](ch30_decisions/python-solutions.ipynb), and
-[notebook PDF](ch30_decisions/python-solutions.pdf).
+All [eleven exercises](../examples/ch31_decisions/EXERCISES.md) have full,
+ordered solutions in the [written PDF](ch31_decisions/written-solutions.pdf),
+[executed notebook](ch31_decisions/python-solutions.ipynb), and
+[notebook PDF](ch31_decisions/python-solutions.pdf).
 
 Twenty-one executed cells check reward indexing, discounted and undiscounted
 returns, causal windows, action bins, absent targets, shifted rewards, tied
 demonstrations, episode groups and refresh schedules. Three plots support the
-explanations. See the [solution guide](ch30_decisions/README.md).
+explanations. See the [solution guide](ch31_decisions/README.md).
 
-## Chapter 31. What Changed, and What Remains?
+## Chapter 32. What Changed, and What Remains?
 
-All [twelve exercises](../examples/ch31_perspective/EXERCISES.md) have full,
-ordered solutions in the [written PDF](ch31_perspective/written-solutions.pdf),
-[executed notebook](ch31_perspective/python-solutions.ipynb), and
-[notebook PDF](ch31_perspective/python-solutions.pdf).
+All [twelve exercises](../examples/ch32_perspective/EXERCISES.md) have full,
+ordered solutions in the [written PDF](ch32_perspective/written-solutions.pdf),
+[executed notebook](ch32_perspective/python-solutions.ipynb), and
+[notebook PDF](ch32_perspective/python-solutions.pdf).
 
 Nineteen executed cells check causal pairs, KV bytes, exact-summary capacity,
 hybrid budgets, window boundaries, zero/missing values, storage units,
 controlled histories, composed retrieval and forecast availability.
-Three plots support the explanations. See the [solution guide](ch31_perspective/README.md).
+Three plots support the explanations. See the [solution guide](ch32_perspective/README.md).
 
 ## Optional practice for the appendices
 
@@ -437,7 +444,7 @@ chapter helpers. For observations of pretrained models, see
 | D. Complexity and memory accounting | [8 exercises](appendix_d_memory/EXERCISES.md) | [PDF](appendix_d_memory/written-solutions.pdf) | [Notebook](appendix_d_memory/python-solutions.ipynb) / [PDF](appendix_d_memory/python-solutions.pdf) |
 | E. Convolution and parallel scans | [8 exercises](appendix_e_scans/EXERCISES.md) | [PDF](appendix_e_scans/written-solutions.pdf) | [Notebook](appendix_e_scans/python-solutions.ipynb) / [PDF](appendix_e_scans/python-solutions.pdf) |
 
-The diffusion foundations now appear in Chapter 25. The
+The diffusion foundations now appear in Chapter 26. The
 [former Appendix F practice set](appendix_f_diffusion/EXERCISES.md),
 [written answers](appendix_f_diffusion/written-solutions.pdf), and
 [executed notebook](appendix_f_diffusion/python-solutions.ipynb) remain

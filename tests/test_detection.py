@@ -1,17 +1,17 @@
-"""Check Chapter 22's IoU conventions, set matches, and AP."""
+"""Check Chapter 23's IoU conventions, set matches, and AP."""
 
 import unittest
 
 import numpy as np
 
-from examples.ch22_detection.model import (
+from examples.ch23_detection.model import (
     all_points_ap,
     box_iou,
     mask_iou,
     match_queries,
     precision_recall,
 )
-from examples.ch22_detection.run_examples import ap_example, assignment_example, overlap_example
+from examples.ch23_detection.run_examples import ap_example, assignment_example, overlap_example
 
 
 class OverlapTests(unittest.TestCase):

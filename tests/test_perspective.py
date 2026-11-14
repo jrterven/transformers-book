@@ -1,9 +1,9 @@
-"""Check Chapter 31's exact-answer stores and causal connectivity counts."""
+"""Check Chapter 32's exact-answer stores and causal connectivity counts."""
 
 import unittest
 
-from examples.ch31_perspective.model import causal_pair_counts, compare_memory, make_history
-from examples.ch31_perspective.run_examples import accuracy_sweep, memory_examples
+from examples.ch32_perspective.model import causal_pair_counts, compare_memory, make_history
+from examples.ch32_perspective.run_examples import accuracy_sweep, memory_examples
 
 
 class MemoryTests(unittest.TestCase):

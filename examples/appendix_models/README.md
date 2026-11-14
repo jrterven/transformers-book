@@ -16,7 +16,7 @@ train the networks or measure generation quality or execution speed.
   shape formula. This excludes backing-storage capacity, weights, temporary
   arrays, and allocator reservations.
 - **E:** the first convolution of ResNet-18 using ImageNet-1K V1 weights. Its input
-  is the synthetic cat from the Chapter 25 DDPM trajectory.
+  is the synthetic cat from the Chapter 26 DDPM trajectory.
   No full-image classification is performed. Responses are captured before
   batch normalization and ReLU.
 
@@ -57,4 +57,4 @@ The PNG input is a fixed 8-bit rendering of the DDPM seed-20261110 output,
 using `round(255 * clip(x / 2 + 0.5, 0, 1))`. The image is center-cropped to
 224 by 224, rescaled to 0--1, and normalized with the model's specified means
 and standard deviations. Source-image provenance is also recorded in the
-[diffusion run manifest](../ch25_visual_generation/DIFFUSION_FIGURES_RUN.json).
+[diffusion run manifest](../ch26_visual_generation/DIFFUSION_FIGURES_RUN.json).

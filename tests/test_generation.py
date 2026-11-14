@@ -1,11 +1,11 @@
-"""Check Chapter 19's shifts, search, metrics, and optional CPU step."""
+"""Check Chapter 20's shifts, search, metrics, and optional CPU step."""
 
 import math
 import unittest
 
 import numpy as np
 
-from examples.ch19_generation.model import (
+from examples.ch20_generation.model import (
     EOS,
     beam_search,
     clipped_ngram_precision,
@@ -13,7 +13,7 @@ from examples.ch19_generation.model import (
     lcs_length,
     rouge_l,
 )
-from examples.ch19_generation.run_examples import (
+from examples.ch20_generation.run_examples import (
     A,
     B,
     PAIRS,
@@ -28,7 +28,7 @@ except ImportError:
     torch = None
 
 if torch is not None:
-    from examples.ch19_generation.training import encoder_decoder_step
+    from examples.ch20_generation.training import encoder_decoder_step
 
 
 class BatchTests(unittest.TestCase):
@@ -124,7 +124,7 @@ class MetricTests(unittest.TestCase):
         })
 
 
-@unittest.skipIf(torch is None, "The optional Chapter 19 update requires PyTorch")
+@unittest.skipIf(torch is None, "The optional Chapter 20 update requires PyTorch")
 class TrainingTests(unittest.TestCase):
     def test_encoder_decoder_step_counts_only_nonpadding_labels(self):
         previous_threads = torch.get_num_threads()

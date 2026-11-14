@@ -1,9 +1,9 @@
-"""Check Chapter 26's callables, behavioral checks, and pass@k."""
+"""Check Chapter 27's callables, behavioral checks, and pass@k."""
 
 from itertools import combinations, product
 import unittest
 
-from examples.ch26_code_models.model import (
+from examples.ch27_code_models.model import (
     Case,
     pass_at_k,
     positive_length,
@@ -11,7 +11,7 @@ from examples.ch26_code_models.model import (
     serialize_fim,
     strict_overlap,
 )
-from examples.ch26_code_models.run_examples import CANDIDATES, SMOKE, benchmark_example
+from examples.ch27_code_models.run_examples import CANDIDATES, SMOKE, benchmark_example
 
 
 class BehaviorTests(unittest.TestCase):

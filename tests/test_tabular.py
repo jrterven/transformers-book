@@ -1,24 +1,24 @@
-"""Check Chapter 28's train-only encoder and probability calculations."""
+"""Check Chapter 29's train-only encoder and probability calculations."""
 
 import math
 import unittest
 
 import numpy as np
 
-from examples.ch28_tabular.model import (
+from examples.ch29_tabular.model import (
     brier_score,
     context_probability,
     encode_rows,
     fit_row_encoder,
     histogram_summary,
 )
-from examples.ch28_tabular.run_examples import (
+from examples.ch29_tabular.run_examples import (
     TRAIN_CATEGORIES,
     TRAIN_NUMERIC,
     probability_example,
     row_example,
 )
-from examples.ch28_tabular.tabular_data import load_tables, recipe_groups
+from examples.ch29_tabular.tabular_data import load_tables, recipe_groups
 
 
 class EncodingTests(unittest.TestCase):

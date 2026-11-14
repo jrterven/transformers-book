@@ -1,18 +1,18 @@
-"""Check Chapter 21 patch order, fixed probes, and video pair counts."""
+"""Check Chapter 22 patch order, fixed probes, and video pair counts."""
 
 import math
 import unittest
 
 import numpy as np
 
-from examples.ch21_vision.model import (
+from examples.ch22_vision.model import (
     patch_embeddings,
     patchify,
     probe_metrics,
     space_time_pairs,
     train_linear_probe,
 )
-from examples.ch21_vision.run_examples import (
+from examples.ch22_vision.run_examples import (
     TEST_PROFILES,
     TRAIN_PROFILES,
     patch_example,

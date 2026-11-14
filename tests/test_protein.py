@@ -1,10 +1,10 @@
-"""Check Chapter 29's composition, masks, and contact conventions."""
+"""Check Chapter 30's composition, masks, and contact conventions."""
 
 import unittest
 
 import numpy as np
 
-from examples.ch29_protein.model import (
+from examples.ch30_protein.model import (
     AMINO_ACIDS,
     ca_lddt,
     contact_map,
@@ -14,7 +14,7 @@ from examples.ch29_protein.model import (
     residue_composition,
     superpose_coordinates,
 )
-from examples.ch29_protein.run_examples import contact_example, pooling_example, sequence_example
+from examples.ch30_protein.run_examples import contact_example, pooling_example, sequence_example
 
 
 class SequenceTests(unittest.TestCase):

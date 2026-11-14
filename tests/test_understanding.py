@@ -1,17 +1,17 @@
-"""Check Chapter 18 pooling, first-piece supervision, and BIO spans."""
+"""Check Chapter 19 pooling, first-piece supervision, and BIO spans."""
 
 import unittest
 
 import numpy as np
 
-from examples.ch18_understanding.model import (
+from examples.ch19_understanding.model import (
     bio_spans,
     first_piece_labels,
     first_piece_predictions,
     sentence_logits,
     span_metrics,
 )
-from examples.ch18_understanding.run_examples import entity_example, pooling_example
+from examples.ch19_understanding.run_examples import entity_example, pooling_example
 
 
 class PoolingTests(unittest.TestCase):

@@ -1,11 +1,11 @@
-"""Check Chapter 25's forward mix, guidance, and deterministic updates."""
+"""Check Chapter 26's forward mix, guidance, and deterministic updates."""
 
 import unittest
 
 import numpy as np
 
-from examples.ch25_visual_generation.model import add_noise, ddim_step, guided_noise
-from examples.ch25_visual_generation.run_examples import denoising_example, guidance_example
+from examples.ch26_visual_generation.model import add_noise, ddim_step, guided_noise
+from examples.ch26_visual_generation.run_examples import denoising_example, guidance_example
 
 
 class DiffusionTests(unittest.TestCase):

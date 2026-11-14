@@ -1,20 +1,20 @@
-"""Check Chapter 27 windows, seasonal fits, and horizon metrics."""
+"""Check Chapter 28 windows, seasonal fits, and horizon metrics."""
 
 from datetime import datetime, timedelta, timezone
 import unittest
 
 import numpy as np
 
-from examples.ch27_time_series.demand_data import AREAS, SNAPSHOT, load_snapshot
-from examples.ch27_time_series.model import (
+from examples.ch28_time_series.demand_data import AREAS, SNAPSHOT, load_snapshot
+from examples.ch28_time_series.model import (
     fit_seasonal_drift,
     forecast_metrics,
     rolling_windows,
     seasonal_drift,
     seasonal_naive,
 )
-from examples.ch27_time_series.run_examples import interval_example, rolling_example, series_example
-from examples.ch27_time_series.run_pretrained import build_replay, score_quantiles
+from examples.ch28_time_series.run_examples import interval_example, rolling_example, series_example
+from examples.ch28_time_series.run_pretrained import build_replay, score_quantiles
 
 
 class WindowTests(unittest.TestCase):

@@ -20,6 +20,7 @@ Applications are a central part of the book. The discussion follows how Transfor
 - Training compute, data allocation, and sparse mixtures of experts.
 - Training, inference, KV caches, sparse attention, and compressed representations.
 - State space models, Mamba, and architectures that combine attention with recurrent state.
+- Activation patching, model alignment, and evaluation under changing inputs.
 - Applications, Python implementations, and reproducible experiments.
 
 ## Exercise solutions
@@ -65,7 +66,8 @@ notebook and two PDFs generated from it.
 The [measured attention figures](examples/ch03_alignment/TRAINED_FIGURES.md)
 expose the trained model's raw scores, source weights, and vector contributions,
 then isolate the effects of source padding and decoder input timing with
-controlled interventions.
+controlled interventions. The same guide reproduces a context exchange between
+two decoder runs and shows how it changes their vocabulary logits.
 
 ```sh
 python -m pip install -r requirements-ch03.txt
@@ -326,218 +328,226 @@ python -m pip install -r requirements.txt
 python -m examples.ch17_evaluation.run_examples --output output/ch17.json
 ```
 
-[Chapter 18: Language Understanding](examples/ch18_understanding/) pools
+[Chapter 18: Interpreting and Aligning Model Behavior](examples/ch18_behavior/)
+follows the same fictional address desk from Qwen's block activations to
+the actions it proposes. Reproduce the activation patches, inspect the
+effect of wording changes, and count the trade-off between clarification
+and missed updates. The [recorded run](examples/ch18_behavior/PRETRAINED_RUN.json)
+can redraw the figures without the checkpoint. The [eight exercises](examples/ch18_behavior/EXERCISES.md)
+have [worked solutions and an executed notebook](solutions/ch18_behavior/).
+
+[Chapter 19: Language Understanding](examples/ch19_understanding/) pools
 token features for a sentence classifier, aligns labels to first subwords,
 and checks exact entity spans. The
-[measured examples](examples/ch18_understanding/PRETRAINED_FIGURES.md)
+[measured examples](examples/ch19_understanding/PRETRAINED_FIGURES.md)
 include trained probes on BERT, a released sentence-pair model, and a paired
 casing test with DistilBERT for named entity recognition.
-The [twelve exercises](examples/ch18_understanding/EXERCISES.md) have complete
-[worked solutions](solutions/ch18_understanding/README.md) in an executed
+The [twelve exercises](examples/ch19_understanding/EXERCISES.md) have complete
+[worked solutions](solutions/ch19_understanding/README.md) in an executed
 notebook and both PDF editions, including micro aggregation and class-prevalence effects.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch18_understanding.run_examples --output output/ch18.json
+python -m examples.ch19_understanding.run_examples --output output/ch19.json
 ```
 
-[Chapter 19: Translation and Summarization](examples/ch19_generation/)
+[Chapter 20: Translation and Summarization](examples/ch20_generation/)
 builds shifted text pairs, compares greedy and beam decoding, and computes
 clipped precision and subsequence overlap. The chapter also follows an actual
 OPUS-MT translation token by token and tests how BART summaries respond to
 the available source text and output limits.
-[Pretrained demonstrations and figures](examples/ch19_generation/PRETRAINED_FIGURES.md).
+[Pretrained demonstrations and figures](examples/ch20_generation/PRETRAINED_FIGURES.md).
 
 The
-[chapter guide](examples/ch19_generation/README.md) explains the completion
-flag and the optional encoder-decoder training step. The [12 exercises](examples/ch19_generation/EXERCISES.md)
-and [complete worked solutions](solutions/ch19_generation/README.md) add an
+[chapter guide](examples/ch20_generation/README.md) explains the completion
+flag and the optional encoder-decoder training step. The [12 exercises](examples/ch20_generation/EXERCISES.md)
+and [complete worked solutions](solutions/ch20_generation/README.md) add an
 LCS table, a corpus-aggregation comparison, and a source-support audit.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch19_generation.run_examples --output output/ch19.json
+python -m examples.ch20_generation.run_examples --output output/ch20.json
 python -m pip install -r requirements-ch06.txt
-python -m examples.ch19_generation.run_examples --train-step
+python -m examples.ch20_generation.run_examples --train-step
 ```
 
-[Chapter 20: Search, Retrieval, and Grounded Assistants](examples/ch20_retrieval/)
+[Chapter 21: Search, Retrieval, and Grounded Assistants](examples/ch21_retrieval/)
 ranks a local passage collection with BM25 and dense scores, reranks a
 candidate set, and checks what survives the context budget. A measured run
 follows Qwen3 retrieval and reranking into Qwen3.5 answers and citations.
-[Measured RAG demonstrations and figures](examples/ch20_retrieval/PRETRAINED_FIGURES.md).
+[Measured RAG demonstrations and figures](examples/ch21_retrieval/PRETRAINED_FIGURES.md).
 
 The
-[chapter guide](examples/ch20_retrieval/README.md) explains the distinction
-between literal evidence, annotated recall, and answer support. The [12 exercises](examples/ch20_retrieval/EXERCISES.md)
-and [complete solutions](solutions/ch20_retrieval/README.md) add worked
+[chapter guide](examples/ch21_retrieval/README.md) explains the distinction
+between literal evidence, annotated recall, and answer support. The [12 exercises](examples/ch21_retrieval/EXERCISES.md)
+and [complete solutions](solutions/ch21_retrieval/README.md) add worked
 probability mixtures and visual checks of evidence lost during packing.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch20_retrieval.run_examples --output output/ch20.json
+python -m examples.ch21_retrieval.run_examples --output output/ch21.json
 ```
 
-[Chapter 21: Image and Video Understanding](examples/ch21_vision/) extracts
+[Chapter 22: Image and Video Understanding](examples/ch22_vision/) extracts
 image patches, fits linear probes on frozen features, and compares joint
 and divided video attention counts. The
-[measured visual demonstrations](examples/ch21_vision/PRETRAINED_FIGURES.md)
+[measured visual demonstrations](examples/ch22_vision/PRETRAINED_FIGURES.md)
 trace DINOv3 patch vectors and test V-JEPA 2 on reversed video clips. The
-[chapter guide](examples/ch21_vision/README.md) follows the patch order
-and the held-out synthetic images. The [12 exercises](examples/ch21_vision/EXERCISES.md)
-and [complete solutions](solutions/ch21_vision/README.md) trace pixels into
+[chapter guide](examples/ch22_vision/README.md) follows the patch order
+and the held-out synthetic images. The [12 exercises](examples/ch22_vision/EXERCISES.md)
+and [complete solutions](solutions/ch22_vision/README.md) trace pixels into
 tokens, explain position information, and design video evaluation protocols.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch21_vision.run_examples --output output/ch21.json
+python -m examples.ch22_vision.run_examples --output output/ch22.json
 ```
 
-[Chapter 22: Object Detection and Segmentation](examples/ch22_detection/)
+[Chapter 23: Object Detection and Segmentation](examples/ch23_detection/)
 computes box and mask overlap, matches object slots to annotations, and
-scores ranked detections. The [chapter guide](examples/ch22_detection/README.md)
+scores ranked detections. The [chapter guide](examples/ch23_detection/README.md)
 explains the coordinate convention, the single-threshold AP example, and
 the measured RF-DETR and SAM 2.1 runs on a COCO photograph. The
-[11 exercises](examples/ch22_detection/EXERCISES.md) and
-[complete solutions](solutions/ch22_detection/README.md) add mask diagrams,
+[11 exercises](examples/ch23_detection/EXERCISES.md) and
+[complete solutions](solutions/ch23_detection/README.md) add mask diagrams,
 precision envelopes and coordinate checks.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch22_detection.run_examples --output output/ch22.json
+python -m examples.ch23_detection.run_examples --output output/ch23.json
 ```
 
-[Chapter 23: Vision–Language and Multimodal Models](examples/ch23_multimodal/)
+[Chapter 24: Vision–Language and Multimodal Models](examples/ch24_multimodal/)
 computes a contrastive similarity matrix, scores retrieval with multiple
 relevant items, and projects cross-attention outputs to a language width.
-The [chapter guide](examples/ch23_multimodal/README.md) explains the two
+The [chapter guide](examples/ch24_multimodal/README.md) explains the two
 retrieval directions and the visual bridge. It also reproduces the image-text
-rankings and visual questions with SigLIP 2 and Qwen. The [11 exercises](examples/ch23_multimodal/EXERCISES.md)
-and [complete solutions](solutions/ch23_multimodal/README.md) add probability
+rankings and visual questions with SigLIP 2 and Qwen. The [11 exercises](examples/ch24_multimodal/EXERCISES.md)
+and [complete solutions](solutions/ch24_multimodal/README.md) add probability
 heatmaps, recall curves and a paired spatial test.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch23_multimodal.run_examples --output output/ch23.json
+python -m examples.ch24_multimodal.run_examples --output output/ch24.json
 ```
 
-[Chapter 24: Speech and Audio](examples/ch24_speech_audio/) builds an
+[Chapter 25: Speech and Audio](examples/ch25_speech_audio/) builds an
 overlapping-frame spectrogram, labels clean and noisy synthetic tones,
-and scores word edits. The [chapter guide](examples/ch24_speech_audio/README.md)
+and scores word edits. The [chapter guide](examples/ch25_speech_audio/README.md)
 explains the frame axes and the convention for transcripts without reference words.
-The [11 exercises](examples/ch24_speech_audio/EXERCISES.md) and
-[complete solutions](solutions/ch24_speech_audio/README.md) add window,
+The [11 exercises](examples/ch25_speech_audio/EXERCISES.md) and
+[complete solutions](solutions/ch25_speech_audio/README.md) add window,
 spectrum and caption-timing plots with executed checks.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch24_speech_audio.run_examples --output output/ch24.json
+python -m examples.ch25_speech_audio.run_examples --output output/ch25.json
 ```
 
-[Chapter 25: Image and Video Generation](examples/ch25_visual_generation/)
+[Chapter 26: Image and Video Generation](examples/ch26_visual_generation/)
 mixes a clean grid with noise, follows a deterministic diffusion sampler,
 and compares conditional and unconditional predictions. The
-[chapter guide](examples/ch25_visual_generation/README.md) explains the
+[chapter guide](examples/ch26_visual_generation/README.md) explains the
 four-value fixture and the two sampler outputs.
-The [11 exercises](examples/ch25_visual_generation/EXERCISES.md) and
-[complete solutions](solutions/ch25_visual_generation/README.md) add
+The [11 exercises](examples/ch26_visual_generation/EXERCISES.md) and
+[complete solutions](solutions/ch26_visual_generation/README.md) add
 error propagation, guidance geometry and separate quality/diversity checks.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch25_visual_generation.run_examples --output output/ch25.json
+python -m examples.ch26_visual_generation.run_examples --output output/ch26.json
 ```
 
-[Chapter 26: Models for Code](examples/ch26_code_models/) formats an
+[Chapter 27: Models for Code](examples/ch27_code_models/) formats an
 infilling prompt and runs checked-in candidate functions against smoke and
-boundary tests. The [chapter guide](examples/ch26_code_models/README.md)
+boundary tests. The [chapter guide](examples/ch27_code_models/README.md)
 also reproduces the measured infilling, code generation and repository repair
 demos with local checkpoints and explains the per-task pass@k calculation.
 
-The [11 exercises](examples/ch26_code_models/EXERCISES.md) and
-[complete solutions](solutions/ch26_code_models/README.md) distinguish
+The [11 exercises](examples/ch27_code_models/EXERCISES.md) and
+[complete solutions](solutions/ch27_code_models/README.md) distinguish
 per-case accuracy, complete-candidate success and task-level pass@k.
 
 ```sh
-python -m examples.ch26_code_models.run_examples --output output/ch26.json
+python -m examples.ch27_code_models.run_examples --output output/ch27.json
 ```
 
-[Chapter 27: Time-Series Forecasting](examples/ch27_time_series/) builds
+[Chapter 28: Time-Series Forecasting](examples/ch28_time_series/) builds
 windows in time order, compares seasonal forecasts with and without
 fitted drift, and measures interval coverage by horizon. The
-[chapter guide](examples/ch27_time_series/README.md) also reproduces
+[chapter guide](examples/ch28_time_series/README.md) also reproduces
 TimesFM 3 and Timestral forecasts of hourly electricity demand in New York
 and Texas, with aligned seasonal baselines and a local-calendar comparison.
 
-The [11 exercises](examples/ch27_time_series/EXERCISES.md) and
-[complete solutions](solutions/ch27_time_series/README.md) distinguish
+The [11 exercises](examples/ch28_time_series/EXERCISES.md) and
+[complete solutions](solutions/ch28_time_series/README.md) distinguish
 information availability, seasonal drift, point error and interval calibration.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch27_time_series.run_examples --output output/ch27.json
+python -m examples.ch28_time_series.run_examples --output output/ch28.json
 ```
 
-[Chapter 28: Learning from Tables](examples/ch28_tabular/) fits an
+[Chapter 29: Learning from Tables](examples/ch29_tabular/) fits an
 encoding on training rows and works through binary probability scoring
-and regression intervals. The [chapter guide](examples/ch28_tabular/README.md)
+and regression intervals. The [chapter guide](examples/ch29_tabular/README.md)
 includes frozen TabICLv2 and Mitra-v2 demos on UCI Raisin classification
 and recipe-disjoint concrete-strength regression. It includes the
 exact splits, saved predictions, and commands to redraw the figures.
 
-The [11 exercises](examples/ch28_tabular/EXERCISES.md) and
-[complete solutions](solutions/ch28_tabular/README.md) explain missing and
+The [11 exercises](examples/ch29_tabular/EXERCISES.md) and
+[complete solutions](solutions/ch29_tabular/README.md) explain missing and
 unseen values, context weighting, calibration and deployment-matched evaluation.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch28_tabular.run_examples --output output/ch28.json
+python -m examples.ch29_tabular.run_examples --output output/ch29.json
 ```
 
-[Chapter 29: Scientific Sequences and Biological Structure](examples/ch29_protein/)
+[Chapter 30: Scientific Sequences and Biological Structure](examples/ch30_protein/)
 counts residues and ordered pairs, extracts contextual vectors with
 ESMC-300M, and compares ESMFold2-Fast structures with experimental
-references. The [chapter guide](examples/ch29_protein/README.md) includes
+references. The [chapter guide](examples/ch30_protein/README.md) includes
 the protein records, evaluation rules, and figure commands.
 
-The [11 exercises](examples/ch29_protein/EXERCISES.md) and
-[complete solutions](solutions/ch29_protein/README.md) distinguish sequence
+The [11 exercises](examples/ch30_protein/EXERCISES.md) and
+[complete solutions](solutions/ch30_protein/README.md) distinguish sequence
 statistics, contextual pooling, contact geometry and structural confidence.
 
 ```sh
 python -m pip install -r requirements.txt
-python -m examples.ch29_protein.run_examples --output output/ch29.json
+python -m examples.ch30_protein.run_examples --output output/ch30.json
 ```
 
-[Chapter 30: Decisions and Embodied Action](examples/ch30_decisions/)
+[Chapter 31: Decisions and Embodied Action](examples/ch31_decisions/)
 builds return-to-go targets, fits two count policies, and runs them in a
-small grid. The [chapter guide](examples/ch30_decisions/README.md)
+small grid. The [chapter guide](examples/ch31_decisions/README.md)
 explains the trajectory format and how the shifted trap affects a rollout.
 It also reproduces the Vintix II decision-history comparison in Reacher
 and the SmolVLA control-horizon comparison in LIBERO. The recorded
 rollouts and simulator frames can redraw all three measured figures.
 
-The [11 exercises](examples/ch30_decisions/EXERCISES.md) and
-[complete solutions](solutions/ch30_decisions/README.md) connect causal action
+The [11 exercises](examples/ch31_decisions/EXERCISES.md) and
+[complete solutions](solutions/ch31_decisions/README.md) connect causal action
 prediction, return requests, changed environments and control timing.
 
 ```sh
-python -m examples.ch30_decisions.run_examples --output output/ch30.json
+python -m examples.ch31_decisions.run_examples --output output/ch31.json
 ```
 
-[Chapter 31: What Changed, and What Remains?](examples/ch31_perspective/)
+[Chapter 32: What Changed, and What Remains?](examples/ch32_perspective/)
 counts causal attention pairs and compares four ways to retain a
-stream of delivery events. The [chapter guide](examples/ch31_perspective/README.md)
+stream of delivery events. The [chapter guide](examples/ch32_perspective/README.md)
 explains the two questions and the units used to record stored information.
 It also shows how to reproduce the Qwen3.5-0.8B-Base measurements of
 history tensors and paired choices when the prompt evidence changes.
 
-The [12 exercises](examples/ch31_perspective/EXERCISES.md) and
-[complete solutions](solutions/ch31_perspective/README.md) connect memory
+The [12 exercises](examples/ch32_perspective/EXERCISES.md) and
+[complete solutions](solutions/ch32_perspective/README.md) connect memory
 accounting, information loss and controlled tests of retrieval and tracking.
 
 ```sh
-python -m examples.ch31_perspective.run_examples --output output/ch31.json
+python -m examples.ch32_perspective.run_examples --output output/ch32.json
 ```
 
 ## Examples for the appendices
@@ -550,7 +560,7 @@ separate from the manuscript. Each has eight questions, complete written answers
 and an executed notebook. All six notebooks run offline on CPU using the canonical
 chapter helpers. For observations of pretrained models, see
 [attention, loss gradients, and learned filters](examples/appendix_models/).
-The book develops diffusion in Chapter 25 alongside the image and video examples.
+The book develops diffusion in Chapter 26 alongside the image and video examples.
 
 | Practice topic | Exercises | Written answers | Executable answers |
 | --- | --- | --- | --- |
@@ -559,7 +569,7 @@ The book develops diffusion in Chapter 25 alongside the image and video examples
 | C. Stable numerical computation | [8 exercises](solutions/appendix_c_numerics/EXERCISES.md) | [PDF](solutions/appendix_c_numerics/written-solutions.pdf) | [Notebook](solutions/appendix_c_numerics/python-solutions.ipynb) / [PDF](solutions/appendix_c_numerics/python-solutions.pdf) |
 | D. Complexity and memory accounting | [8 exercises](solutions/appendix_d_memory/EXERCISES.md) | [PDF](solutions/appendix_d_memory/written-solutions.pdf) | [Notebook](solutions/appendix_d_memory/python-solutions.ipynb) / [PDF](solutions/appendix_d_memory/python-solutions.pdf) |
 | E. Convolution and parallel scans | [8 exercises](solutions/appendix_e_scans/EXERCISES.md) | [PDF](solutions/appendix_e_scans/written-solutions.pdf) | [Notebook](solutions/appendix_e_scans/python-solutions.ipynb) / [PDF](solutions/appendix_e_scans/python-solutions.pdf) |
-| Diffusion foundations (Chapter 25) | [8 exercises](solutions/appendix_f_diffusion/EXERCISES.md) | [PDF](solutions/appendix_f_diffusion/written-solutions.pdf) | [Notebook](solutions/appendix_f_diffusion/python-solutions.ipynb) / [PDF](solutions/appendix_f_diffusion/python-solutions.pdf) |
+| Diffusion foundations (Chapter 26) | [8 exercises](solutions/appendix_f_diffusion/EXERCISES.md) | [PDF](solutions/appendix_f_diffusion/written-solutions.pdf) | [Notebook](solutions/appendix_f_diffusion/python-solutions.ipynb) / [PDF](solutions/appendix_f_diffusion/python-solutions.pdf) |
 
 
 | Appendix | Companion examples |
@@ -567,7 +577,7 @@ The book develops diffusion in Chapter 25 alongside the image and video examples
 | A. Notation and tensor shapes | [Self-attention and masks](examples/ch04_attention/) |
 | B. Calculus and optimization | [Training the small Transformer](examples/ch06_training/) |
 | C. Stable numerics | [Stable softmax](examples/ch04_attention/) and [normalization](examples/ch08_modern/) |
-| D. Complexity and memory | [KV accounting](examples/ch10_kv/) and [causal pair counts](examples/ch31_perspective/) |
+| D. Complexity and memory | [KV accounting](examples/ch10_kv/) and [causal pair counts](examples/ch32_perspective/) |
 | E. Convolution and scans | [Structured state spaces](examples/ch13_state_spaces/) and [selective updates](examples/ch14_selective_ssm/) |
 
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.

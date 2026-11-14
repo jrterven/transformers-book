@@ -1,16 +1,16 @@
-"""Check Chapter 24 framing, generated tones, and word-error alignment."""
+"""Check Chapter 25 framing, generated tones, and word-error alignment."""
 
 import math
 import unittest
 
 import numpy as np
 
-from examples.ch24_speech_audio.model import (
+from examples.ch25_speech_audio.model import (
     frame_power_spectrogram,
     tone_label,
     word_error_rate,
 )
-from examples.ch24_speech_audio.run_examples import short_frame_example, tone_example, wer_example
+from examples.ch25_speech_audio.run_examples import short_frame_example, tone_example, wer_example
 
 
 class SpectrogramTests(unittest.TestCase):

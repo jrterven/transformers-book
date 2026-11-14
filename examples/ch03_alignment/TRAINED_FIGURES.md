@@ -123,3 +123,21 @@ python scripts/export_snippets.py --check
 Together with the aggregate held-out results, these observations explain
 what the model computes. Attention weights alone remain an incomplete
 explanation of which source words caused a prediction.
+
+## Exchange the context after the read
+
+The [recorded context experiment](CONTEXT_RUN.json) follows the two branches
+in the timing figure to step 3. Both consume the token white at that step.
+Save both 64-entry contexts. First use each context in its own decoder
+to check the native logits. Then exchange the contexts while holding each
+recipient's hidden and cell states and current token fixed. With the normal
+context, the changed branch's green probability increases from 0.043 to 0.952.
+The figure reports the logit gap for green versus yellow and separately checks
+the winner over all nine tokens.
+
+```sh
+python -m examples.ch03_alignment.context_intervention \
+  --checkpoint output/ch03/best.pt --output output/ch03/CONTEXT_RUN.json
+python -m examples.ch03_alignment.context_figure \
+  --record output/ch03/CONTEXT_RUN.json --output output/ch03/ch03_context_patch.pdf
+```

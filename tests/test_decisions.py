@@ -1,11 +1,11 @@
-"""Check Chapter 30's return targets, action counts, and grid rollouts."""
+"""Check Chapter 31's return targets, action counts, and grid rollouts."""
 
 import unittest
 
 import numpy as np
 
-from examples.ch30_decisions.model import START, fit_count_policies, returns_to_go, rollout
-from examples.ch30_decisions.run_examples import TRAJECTORIES, grid_example
+from examples.ch31_decisions.model import START, fit_count_policies, returns_to_go, rollout
+from examples.ch31_decisions.run_examples import TRAJECTORIES, grid_example
 
 
 class ReturnTests(unittest.TestCase):

@@ -4,10 +4,10 @@ import unittest
 
 import numpy as np
 
-from examples.ch25_visual_generation.open_model_figures import (
+from examples.ch26_visual_generation.open_model_figures import (
     checkpoint_level, displayed_rgb, forward_chain,
 )
-from examples.ch25_visual_generation.score_figure import gaussian_density_and_score
+from examples.ch26_visual_generation.score_figure import gaussian_density_and_score
 
 
 class OpenDiffusionFigureTests(unittest.TestCase):
