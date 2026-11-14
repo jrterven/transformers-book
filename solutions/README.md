@@ -243,7 +243,7 @@ and [run/export guide](ch17_evaluation/README.md).
 
 ## Chapter 18. Interpreting and Aligning Model Behavior
 
-The [eight exercises](../examples/ch18_behavior/EXERCISES.md) have
+The [16 exercises](../examples/ch18_behavior/EXERCISES.md) have
 [written solutions](ch18_behavior/written-solutions.pdf), an
 [executed notebook](ch18_behavior/python-solutions.ipynb), and a
 [notebook PDF](ch18_behavior/python-solutions.pdf).

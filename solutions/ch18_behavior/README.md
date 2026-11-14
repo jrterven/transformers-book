@@ -1,7 +1,9 @@
 # Chapter 18: complete worked solutions
 
-The [eight exercises](../../examples/ch18_behavior/EXERCISES.md) follow a
-model's score from an intervention to an action choice.
+The [16 exercises](../../examples/ch18_behavior/EXERCISES.md) follow a
+model's score from an intervention to an action choice. They include hand
+calculations for attention writes, integrated gradients, sparse codes,
+preference losses, and feedback optimization.
 
 - [Written PDF](written-solutions.pdf)
 - [Executed notebook](python-solutions.ipynb)

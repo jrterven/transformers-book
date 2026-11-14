@@ -1876,5 +1876,13 @@ not GPU benchmarks or evidence of trained-model quality.
 - The 18 routing cases illustrate the cost of deferral. Both first-token
   policies get 9/18 correct. Deferring below 0.80 changes that to 11/18,
   while correct updates fall from 3/6 to 0/6.
+- The expanded Chapter 18 run checks the native logit lens against direct
+  next-token logits. The best ridge readouts are correct on 18/18 held-out
+  prompts, compared with 15/18 for the native two-action readout. A 24-point
+  midpoint integrated gradient sums to 4.8645 nats for a two-token edit with
+  a directly measured change of 4.9349 nats.
+- At reward strength 2, the exact reweighting of the frozen model's
+  three-action routing probabilities raises expected immediate action from
+  89.5% to 98.4% and lowers expected accuracy from 52.9% to 50.3%.
 - With the optional CPU dependencies available, the companion test suite has
-  415 passing tests and the export check covers 161 snippets.
+  423 passing tests and the export check covers 163 snippets.

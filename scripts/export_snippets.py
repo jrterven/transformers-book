@@ -126,9 +126,12 @@ CHAPTERS = {
     },
     "ch18": {
         "sources": ("examples/ch18_behavior/model.py",
-                    "examples/ch18_behavior/run_pretrained.py"),
+                    "examples/ch18_behavior/run_pretrained.py",
+                    "examples/ch18_behavior/interpretability.py",
+                    "examples/ch18_behavior/feedback.py"),
         "destination": "snippets/ch18_behavior",
-        "expected": {"patch_effect", "replace_rows", "route_policy"},
+        "expected": {"patch_effect", "replace_rows", "route_policy",
+                     "integrated_gradients", "preference_and_tilt"},
     },
     "ch19": {
         "sources": ("examples/ch19_understanding/model.py",),

@@ -74,6 +74,21 @@ def last_logits(model, ids):
     return model(input_ids=ids, use_cache=False, logits_to_keep=1).logits[:, -1, :]
 
 
+def load_checkpoint(checkpoint):
+    from transformers import AutoTokenizer, Qwen3_5ForConditionalGeneration
+
+    directory = checkpoint_directory(checkpoint)
+    options = {"local_files_only": True, "trust_remote_code": False}
+    tokenizer = AutoTokenizer.from_pretrained(directory, **options)
+    model, loading = Qwen3_5ForConditionalGeneration.from_pretrained(
+        directory, **options, output_loading_info=True, dtype=torch.float32,
+        attn_implementation="eager",
+    )
+    if any(loading.values()):
+        raise ValueError(f"the pinned checkpoint did not load exactly: {loading}")
+    return model.eval(), tokenizer
+
+
 def measure_pair(model, tokenizer, candidates, requests, block_indices):
     ids = token_batch(tokenizer, requests, candidates)
     changed = (ids[0] != ids[1]).nonzero().flatten().tolist()
@@ -176,23 +191,13 @@ def evaluate_routes(model, tokenizer, candidates):
 
 
 def main():
-    from transformers import AutoTokenizer, Qwen3_5ForConditionalGeneration
-
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkpoint", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    directory = checkpoint_directory(args.checkpoint)
     torch.set_num_threads(4)
     torch.use_deterministic_algorithms(True)
-    tokenizer = AutoTokenizer.from_pretrained(directory, local_files_only=True, trust_remote_code=False)
-    model, loading = Qwen3_5ForConditionalGeneration.from_pretrained(
-        directory, local_files_only=True, trust_remote_code=False, output_loading_info=True,
-        dtype=torch.float32, attn_implementation="eager",
-    )
-    if any(loading.values()):
-        raise ValueError(f"the pinned checkpoint did not load exactly: {loading}")
-    model.eval()
+    model, tokenizer = load_checkpoint(args.checkpoint)
     candidates = continuation_ids(tokenizer)
     layers = len(model.model.language_model.layers)
     with torch.inference_mode():

@@ -329,12 +329,15 @@ python -m examples.ch17_evaluation.run_examples --output output/ch17.json
 ```
 
 [Chapter 18: Interpreting and Aligning Model Behavior](examples/ch18_behavior/)
-follows the same fictional address desk from Qwen's block activations to
-the actions it proposes. Reproduce the activation patches, inspect the
-effect of wording changes, and count the trade-off between clarification
-and missed updates. The [recorded run](examples/ch18_behavior/PRETRAINED_RUN.json)
-can redraw the figures without the checkpoint. The [eight exercises](examples/ch18_behavior/EXERCISES.md)
-have [worked solutions and an executed notebook](solutions/ch18_behavior/).
+follows a fictional address desk from Qwen's attention and intermediate
+representations to the actions it proposes. Compare head ablations,
+gradient attribution, probes, a logit lens, activation patching, sparse
+dictionaries, and steering. Then use the same model scores to examine
+reward optimization, clarification, and decision costs. The
+[chapter guide](examples/ch18_behavior/README.md) explains how to redraw the
+figures from saved records and rerun the CPU measurements. The
+[16 exercises](examples/ch18_behavior/EXERCISES.md) have
+[worked solutions and an executed notebook](solutions/ch18_behavior/).
 
 [Chapter 19: Language Understanding](examples/ch19_understanding/) pools
 token features for a sentence classifier, aligns labels to first subwords,

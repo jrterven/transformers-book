@@ -259,8 +259,8 @@ def main():
         raise ValueError("Notebook contains an execution error")
     headings = [int(match.group(1)) for cell in notebook["cells"]
                 if (match := re.match(r"## (\d+)\.", "".join(cell["source"])))]
-    if headings != list(range(1, 9)):
-        raise ValueError("Expected solutions 1 through 8 in order")
+    if headings != list(range(1, 17)):
+        raise ValueError("Expected solutions 1 through 16 in order")
     # A definition/setup cell can legitimately have no output. Each exercise
     # still needs at least one recorded result, as well as executed cells.
     results = set()
@@ -271,8 +271,8 @@ def main():
             exercise = int(match[1])
         if exercise and cell["cell_type"] == "code" and cell.get("outputs"):
             results.add(exercise)
-    if results != set(range(1, 9)):
-        raise ValueError("Exercises 1 through 8 need recorded results")
+    if results != set(range(1, 17)):
+        raise ValueError("Exercises 1 through 16 need recorded results")
     args.build_dir = args.build_dir.resolve()
     args.build_dir.mkdir(parents=True, exist_ok=True)
     completed = []
