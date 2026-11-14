@@ -548,17 +548,18 @@ The book appendices are worked introductions without end-of-appendix exercises.
 The earlier practice sets are retained here as optional companion material,
 separate from the manuscript. Each has eight questions, complete written answers,
 and an executed notebook. All six notebooks run offline on CPU using the canonical
-chapter helpers. For new observations of pretrained models, see
+chapter helpers. For observations of pretrained models, see
 [attention, loss gradients, and learned filters](examples/appendix_models/).
+The book develops diffusion in Chapter 25 alongside the image and video examples.
 
-| Appendix | Exercises | Written answers | Executable answers |
+| Practice topic | Exercises | Written answers | Executable answers |
 | --- | --- | --- | --- |
 | A. Notation and tensor shapes | [8 exercises](solutions/appendix_a_shapes/EXERCISES.md) | [PDF](solutions/appendix_a_shapes/written-solutions.pdf) | [Notebook](solutions/appendix_a_shapes/python-solutions.ipynb) / [PDF](solutions/appendix_a_shapes/python-solutions.pdf) |
 | B. Calculus and optimization | [8 exercises](solutions/appendix_b_calculus/EXERCISES.md) | [PDF](solutions/appendix_b_calculus/written-solutions.pdf) | [Notebook](solutions/appendix_b_calculus/python-solutions.ipynb) / [PDF](solutions/appendix_b_calculus/python-solutions.pdf) |
 | C. Stable numerical computation | [8 exercises](solutions/appendix_c_numerics/EXERCISES.md) | [PDF](solutions/appendix_c_numerics/written-solutions.pdf) | [Notebook](solutions/appendix_c_numerics/python-solutions.ipynb) / [PDF](solutions/appendix_c_numerics/python-solutions.pdf) |
 | D. Complexity and memory accounting | [8 exercises](solutions/appendix_d_memory/EXERCISES.md) | [PDF](solutions/appendix_d_memory/written-solutions.pdf) | [Notebook](solutions/appendix_d_memory/python-solutions.ipynb) / [PDF](solutions/appendix_d_memory/python-solutions.pdf) |
 | E. Convolution and parallel scans | [8 exercises](solutions/appendix_e_scans/EXERCISES.md) | [PDF](solutions/appendix_e_scans/written-solutions.pdf) | [Notebook](solutions/appendix_e_scans/python-solutions.ipynb) / [PDF](solutions/appendix_e_scans/python-solutions.pdf) |
-| F. Diffusion foundations | [8 exercises](solutions/appendix_f_diffusion/EXERCISES.md) | [PDF](solutions/appendix_f_diffusion/written-solutions.pdf) | [Notebook](solutions/appendix_f_diffusion/python-solutions.ipynb) / [PDF](solutions/appendix_f_diffusion/python-solutions.pdf) |
+| Diffusion foundations (Chapter 25) | [8 exercises](solutions/appendix_f_diffusion/EXERCISES.md) | [PDF](solutions/appendix_f_diffusion/written-solutions.pdf) | [Notebook](solutions/appendix_f_diffusion/python-solutions.ipynb) / [PDF](solutions/appendix_f_diffusion/python-solutions.pdf) |
 
 
 | Appendix | Companion examples |
@@ -568,7 +569,6 @@ chapter helpers. For new observations of pretrained models, see
 | C. Stable numerics | [Stable softmax](examples/ch04_attention/) and [normalization](examples/ch08_modern/) |
 | D. Complexity and memory | [KV accounting](examples/ch10_kv/) and [causal pair counts](examples/ch31_perspective/) |
 | E. Convolution and scans | [Structured state spaces](examples/ch13_state_spaces/) and [selective updates](examples/ch14_selective_ssm/) |
-| F. Diffusion foundations | [Noise, guidance, and DDIM](examples/ch25_visual_generation/) |
 
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
