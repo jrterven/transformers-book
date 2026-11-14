@@ -529,6 +529,8 @@ python -m examples.ch30_decisions.run_examples --output output/ch30.json
 counts causal attention pairs and compares four ways to retain a
 stream of delivery events. The [chapter guide](examples/ch31_perspective/README.md)
 explains the two questions and the units used to record stored information.
+It also shows how to reproduce the Qwen3.5-0.8B-Base measurements of
+history tensors and paired choices when the prompt evidence changes.
 
 The [12 exercises](examples/ch31_perspective/EXERCISES.md) and
 [complete solutions](solutions/ch31_perspective/README.md) connect memory
