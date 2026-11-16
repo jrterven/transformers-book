@@ -1,0 +1,954 @@
+{
+  "model": {
+    "tag": "gpt-oss:20b",
+    "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "gptoss",
+      "families": [
+        "gptoss"
+      ],
+      "parameter_size": "20.9B",
+      "quantization_level": "MXFP4",
+      "context_length": 131072,
+      "embedding_length": 2880,
+      "runner": "ggml"
+    },
+    "server": "0.40.16",
+    "thinking": "low",
+    "options": {
+      "temperature": 0,
+      "seed": 32,
+      "num_ctx": 8192,
+      "num_predict": 1024
+    }
+  },
+  "runs": [
+    {
+      "case": "camera_updated",
+      "request": "Can our group of 12 attend Camera Lab, and what would it cost in total?",
+      "cancelled_fixture": false,
+      "max_tool_calls": 6,
+      "model_turns": 5,
+      "executed_calls": 4,
+      "terminal": "final",
+      "seconds": 9.015,
+      "final": {
+        "status": "fits",
+        "room_id": "R-MAPLE",
+        "total_cents": 10700,
+        "evidence": [
+          "E-CAM",
+          "N-17",
+          "R-MAPLE"
+        ],
+        "message": "Your group of 12 can attend Camera Lab in room R-MAPLE for a total of $107.00."
+      },
+      "trace": [
+        {
+          "turn": 1,
+          "prompt_tokens": 526,
+          "generated_tokens": 33,
+          "model_seconds": 6.536,
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Camera Lab"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-CAM",
+              "title": "Camera Lab",
+              "room_id": "R-OAK",
+              "rate_cents": 800,
+              "fee_cents": 200,
+              "revision_id": "N-17"
+            }
+          }
+        },
+        {
+          "turn": 2,
+          "prompt_tokens": 628,
+          "generated_tokens": 31,
+          "model_seconds": 0.411,
+          "event": "tool_result",
+          "tool": "read_notice",
+          "arguments": {
+            "notice_id": "N-17"
+          },
+          "observation": {
+            "id": "N-17",
+            "event_id": "E-CAM",
+            "status": "active",
+            "room_id": "R-MAPLE",
+            "rate_cents": 875
+          }
+        },
+        {
+          "turn": 3,
+          "prompt_tokens": 711,
+          "generated_tokens": 38,
+          "model_seconds": 0.475,
+          "event": "tool_result",
+          "tool": "room_status",
+          "arguments": {
+            "room_id": "R-MAPLE"
+          },
+          "observation": {
+            "id": "R-MAPLE",
+            "capacity": 16,
+            "open": true
+          }
+        },
+        {
+          "turn": 4,
+          "prompt_tokens": 780,
+          "generated_tokens": 63,
+          "model_seconds": 0.821,
+          "event": "tool_result",
+          "tool": "quote_total",
+          "arguments": {
+            "fee_cents": 200,
+            "party_size": 12,
+            "rate_cents": 875
+          },
+          "observation": {
+            "total_cents": 10700
+          }
+        },
+        {
+          "turn": 5,
+          "prompt_tokens": 863,
+          "generated_tokens": 68,
+          "model_seconds": 0.766,
+          "event": "final",
+          "assistant_content": "{\"status\":\"fits\",\"room_id\":\"R-MAPLE\",\"total_cents\":10700,\"evidence\":[\"E-CAM\",\"N-17\",\"R-MAPLE\"],\"message\":\"Your group of 12 can attend Camera Lab in room R-MAPLE for a total of $107.00.\"}"
+        }
+      ],
+      "public_messages": [
+        {
+          "role": "system",
+          "content": "You are a campus workshop information desk. All records are fictional.\nAnswer whether the group can attend and the total if it can. Use the available tools as evidence.\n1. Find the session using the title or short title in the request. If the search result is ambiguous, ask which title they mean. If missing, report insufficient evidence.\n2. If the catalog lists revision_id, read that notice. Its status and any supplied room or rate override the catalog. If cancelled, stop.\n3. Read the current room record before saying a group can attend. If closed, report unavailable. If capacity is smaller than the group, stop without calculating a price.\n4. For a group that fits, use quote_total with the current rate and the catalog fee.\nCall at most one tool per turn. Never invent records, quote outputs, or IDs. Only cite IDs returned in tools you actually used.\nWhen you have enough evidence, return one plain JSON object with:\nstatus = fits, too_large, cancelled, ask, unavailable, or insufficient\nroom_id = current room ID, or null for cancelled, ask, insufficient\ntotal_cents = exact group price for fits, or null otherwise\nevidence = array of applicable catalog, revision, and room IDs\nmessage = short readable answer. Include both candidate titles if asking which session.\nThe quote response is arithmetic. Use catalog, notice, and room IDs in evidence."
+        },
+        {
+          "role": "user",
+          "content": "Can our group of 12 attend Camera Lab, and what would it cost in total?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_5j4sxn9i",
+              "function": {
+                "index": 0,
+                "name": "find_session",
+                "arguments": {
+                  "query": "Camera Lab"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "find_session",
+          "content": "{\"status\": \"found\", \"session\": {\"id\": \"E-CAM\", \"title\": \"Camera Lab\", \"room_id\": \"R-OAK\", \"rate_cents\": 800, \"fee_cents\": 200, \"revision_id\": \"N-17\"}}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_cowyt7yg",
+              "function": {
+                "index": 0,
+                "name": "read_notice",
+                "arguments": {
+                  "notice_id": "N-17"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "read_notice",
+          "content": "{\"id\": \"N-17\", \"event_id\": \"E-CAM\", \"status\": \"active\", \"room_id\": \"R-MAPLE\", \"rate_cents\": 875}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_9q2970sf",
+              "function": {
+                "index": 0,
+                "name": "room_status",
+                "arguments": {
+                  "room_id": "R-MAPLE"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "room_status",
+          "content": "{\"id\": \"R-MAPLE\", \"capacity\": 16, \"open\": true}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_swoaguj3",
+              "function": {
+                "index": 0,
+                "name": "quote_total",
+                "arguments": {
+                  "fee_cents": 200,
+                  "party_size": 12,
+                  "rate_cents": 875
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "quote_total",
+          "content": "{\"total_cents\": 10700}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\"status\":\"fits\",\"room_id\":\"R-MAPLE\",\"total_cents\":10700,\"evidence\":[\"E-CAM\",\"N-17\",\"R-MAPLE\"],\"message\":\"Your group of 12 can attend Camera Lab in room R-MAPLE for a total of $107.00.\"}"
+        }
+      ],
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true,
+      "clarification_evidence_instruction": false
+    },
+    {
+      "case": "camera_cancelled",
+      "request": "Can our group of 12 attend Camera Lab, and what would it cost in total?",
+      "cancelled_fixture": true,
+      "max_tool_calls": 6,
+      "model_turns": 3,
+      "executed_calls": 2,
+      "terminal": "final",
+      "seconds": 1.384,
+      "final": {
+        "status": "cancelled",
+        "room_id": null,
+        "total_cents": null,
+        "evidence": [
+          "E-CAM",
+          "N-17"
+        ],
+        "message": "The Camera Lab session has been cancelled, so your group cannot attend."
+      },
+      "trace": [
+        {
+          "turn": 1,
+          "prompt_tokens": 526,
+          "generated_tokens": 33,
+          "model_seconds": 0.348,
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Camera Lab"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-CAM",
+              "title": "Camera Lab",
+              "room_id": "R-OAK",
+              "rate_cents": 800,
+              "fee_cents": 200,
+              "revision_id": "N-17"
+            }
+          }
+        },
+        {
+          "turn": 2,
+          "prompt_tokens": 628,
+          "generated_tokens": 31,
+          "model_seconds": 0.423,
+          "event": "tool_result",
+          "tool": "read_notice",
+          "arguments": {
+            "notice_id": "N-17"
+          },
+          "observation": {
+            "id": "N-17",
+            "event_id": "E-CAM",
+            "status": "cancelled",
+            "detail": "The main camera rig is being serviced. The workshop will not run."
+          }
+        },
+        {
+          "turn": 3,
+          "prompt_tokens": 713,
+          "generated_tokens": 50,
+          "model_seconds": 0.611,
+          "event": "final",
+          "assistant_content": "{\"status\":\"cancelled\",\"room_id\":null,\"total_cents\":null,\"evidence\":[\"E-CAM\",\"N-17\"],\"message\":\"The Camera Lab session has been cancelled, so your group cannot attend.\"}"
+        }
+      ],
+      "public_messages": [
+        {
+          "role": "system",
+          "content": "You are a campus workshop information desk. All records are fictional.\nAnswer whether the group can attend and the total if it can. Use the available tools as evidence.\n1. Find the session using the title or short title in the request. If the search result is ambiguous, ask which title they mean. If missing, report insufficient evidence.\n2. If the catalog lists revision_id, read that notice. Its status and any supplied room or rate override the catalog. If cancelled, stop.\n3. Read the current room record before saying a group can attend. If closed, report unavailable. If capacity is smaller than the group, stop without calculating a price.\n4. For a group that fits, use quote_total with the current rate and the catalog fee.\nCall at most one tool per turn. Never invent records, quote outputs, or IDs. Only cite IDs returned in tools you actually used.\nWhen you have enough evidence, return one plain JSON object with:\nstatus = fits, too_large, cancelled, ask, unavailable, or insufficient\nroom_id = current room ID, or null for cancelled, ask, insufficient\ntotal_cents = exact group price for fits, or null otherwise\nevidence = array of applicable catalog, revision, and room IDs\nmessage = short readable answer. Include both candidate titles if asking which session.\nThe quote response is arithmetic. Use catalog, notice, and room IDs in evidence."
+        },
+        {
+          "role": "user",
+          "content": "Can our group of 12 attend Camera Lab, and what would it cost in total?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_nour9gun",
+              "function": {
+                "index": 0,
+                "name": "find_session",
+                "arguments": {
+                  "query": "Camera Lab"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "find_session",
+          "content": "{\"status\": \"found\", \"session\": {\"id\": \"E-CAM\", \"title\": \"Camera Lab\", \"room_id\": \"R-OAK\", \"rate_cents\": 800, \"fee_cents\": 200, \"revision_id\": \"N-17\"}}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_ssubvizy",
+              "function": {
+                "index": 0,
+                "name": "read_notice",
+                "arguments": {
+                  "notice_id": "N-17"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "read_notice",
+          "content": "{\"id\": \"N-17\", \"event_id\": \"E-CAM\", \"status\": \"cancelled\", \"detail\": \"The main camera rig is being serviced. The workshop will not run.\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\"status\":\"cancelled\",\"room_id\":null,\"total_cents\":null,\"evidence\":[\"E-CAM\",\"N-17\"],\"message\":\"The Camera Lab session has been cancelled, so your group cannot attend.\"}"
+        }
+      ],
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true,
+      "clarification_evidence_instruction": false
+    },
+    {
+      "case": "paper_too_large",
+      "request": "Can 12 of us attend Paper Making? If so, what is the total?",
+      "cancelled_fixture": false,
+      "max_tool_calls": 6,
+      "model_turns": 3,
+      "executed_calls": 2,
+      "terminal": "final",
+      "seconds": 1.897,
+      "final": {
+        "status": "too_large",
+        "room_id": "R-ELM",
+        "total_cents": null,
+        "evidence": [
+          "E-PAP",
+          "R-ELM"
+        ],
+        "message": "The Paper Making session can only accommodate 8 people, so a group of 12 cannot attend."
+      },
+      "trace": [
+        {
+          "turn": 1,
+          "prompt_tokens": 525,
+          "generated_tokens": 33,
+          "model_seconds": 0.49,
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Paper Making"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-PAP",
+              "title": "Paper Making",
+              "room_id": "R-ELM",
+              "rate_cents": 600,
+              "fee_cents": 450,
+              "revision_id": null
+            }
+          }
+        },
+        {
+          "turn": 2,
+          "prompt_tokens": 625,
+          "generated_tokens": 35,
+          "model_seconds": 0.492,
+          "event": "tool_result",
+          "tool": "room_status",
+          "arguments": {
+            "room_id": "R-ELM"
+          },
+          "observation": {
+            "id": "R-ELM",
+            "capacity": 8,
+            "open": true
+          }
+        },
+        {
+          "turn": 3,
+          "prompt_tokens": 691,
+          "generated_tokens": 77,
+          "model_seconds": 0.911,
+          "event": "final",
+          "assistant_content": "{\"status\":\"too_large\",\"room_id\":\"R-ELM\",\"total_cents\":null,\"evidence\":[\"E-PAP\",\"R-ELM\"],\"message\":\"The Paper Making session can only accommodate 8 people, so a group of 12 cannot attend.\"}"
+        }
+      ],
+      "public_messages": [
+        {
+          "role": "system",
+          "content": "You are a campus workshop information desk. All records are fictional.\nAnswer whether the group can attend and the total if it can. Use the available tools as evidence.\n1. Find the session using the title or short title in the request. If the search result is ambiguous, ask which title they mean. If missing, report insufficient evidence.\n2. If the catalog lists revision_id, read that notice. Its status and any supplied room or rate override the catalog. If cancelled, stop.\n3. Read the current room record before saying a group can attend. If closed, report unavailable. If capacity is smaller than the group, stop without calculating a price.\n4. For a group that fits, use quote_total with the current rate and the catalog fee.\nCall at most one tool per turn. Never invent records, quote outputs, or IDs. Only cite IDs returned in tools you actually used.\nWhen you have enough evidence, return one plain JSON object with:\nstatus = fits, too_large, cancelled, ask, unavailable, or insufficient\nroom_id = current room ID, or null for cancelled, ask, insufficient\ntotal_cents = exact group price for fits, or null otherwise\nevidence = array of applicable catalog, revision, and room IDs\nmessage = short readable answer. Include both candidate titles if asking which session.\nThe quote response is arithmetic. Use catalog, notice, and room IDs in evidence."
+        },
+        {
+          "role": "user",
+          "content": "Can 12 of us attend Paper Making? If so, what is the total?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_65n3k2km",
+              "function": {
+                "index": 0,
+                "name": "find_session",
+                "arguments": {
+                  "query": "Paper Making"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "find_session",
+          "content": "{\"status\": \"found\", \"session\": {\"id\": \"E-PAP\", \"title\": \"Paper Making\", \"room_id\": \"R-ELM\", \"rate_cents\": 600, \"fee_cents\": 450, \"revision_id\": null}}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_n3rxm964",
+              "function": {
+                "index": 0,
+                "name": "room_status",
+                "arguments": {
+                  "room_id": "R-ELM"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "room_status",
+          "content": "{\"id\": \"R-ELM\", \"capacity\": 8, \"open\": true}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\"status\":\"too_large\",\"room_id\":\"R-ELM\",\"total_cents\":null,\"evidence\":[\"E-PAP\",\"R-ELM\"],\"message\":\"The Paper Making session can only accommodate 8 people, so a group of 12 cannot attend.\"}"
+        }
+      ],
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true,
+      "clarification_evidence_instruction": false
+    },
+    {
+      "case": "ink_fits",
+      "request": "We are five people for the Ink Workshop. Can we fit, and what will we pay altogether?",
+      "cancelled_fixture": false,
+      "max_tool_calls": 6,
+      "model_turns": 4,
+      "executed_calls": 3,
+      "terminal": "final",
+      "seconds": 2.643,
+      "final": {
+        "status": "fits",
+        "room_id": "R-MAPLE",
+        "total_cents": 4050,
+        "evidence": [
+          "E-INK",
+          "R-MAPLE"
+        ],
+        "message": "Yes, the Ink Workshop can accommodate your group of five. The total cost will be $40.50."
+      },
+      "trace": [
+        {
+          "turn": 1,
+          "prompt_tokens": 528,
+          "generated_tokens": 37,
+          "model_seconds": 0.489,
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Ink Workshop"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-INK",
+              "title": "Ink Workshop",
+              "room_id": "R-MAPLE",
+              "rate_cents": 750,
+              "fee_cents": 300,
+              "revision_id": null
+            }
+          }
+        },
+        {
+          "turn": 2,
+          "prompt_tokens": 632,
+          "generated_tokens": 35,
+          "model_seconds": 0.642,
+          "event": "tool_result",
+          "tool": "room_status",
+          "arguments": {
+            "room_id": "R-MAPLE"
+          },
+          "observation": {
+            "id": "R-MAPLE",
+            "capacity": 16,
+            "open": true
+          }
+        },
+        {
+          "turn": 3,
+          "prompt_tokens": 698,
+          "generated_tokens": 50,
+          "model_seconds": 0.745,
+          "event": "tool_result",
+          "tool": "quote_total",
+          "arguments": {
+            "fee_cents": 300,
+            "party_size": 5,
+            "rate_cents": 750
+          },
+          "observation": {
+            "total_cents": 4050
+          }
+        },
+        {
+          "turn": 4,
+          "prompt_tokens": 768,
+          "generated_tokens": 62,
+          "model_seconds": 0.763,
+          "event": "final",
+          "assistant_content": "{\"status\":\"fits\",\"room_id\":\"R-MAPLE\",\"total_cents\":4050,\"evidence\":[\"E-INK\",\"R-MAPLE\"],\"message\":\"Yes, the Ink Workshop can accommodate your group of five. The total cost will be $40.50.\"}"
+        }
+      ],
+      "public_messages": [
+        {
+          "role": "system",
+          "content": "You are a campus workshop information desk. All records are fictional.\nAnswer whether the group can attend and the total if it can. Use the available tools as evidence.\n1. Find the session using the title or short title in the request. If the search result is ambiguous, ask which title they mean. If missing, report insufficient evidence.\n2. If the catalog lists revision_id, read that notice. Its status and any supplied room or rate override the catalog. If cancelled, stop.\n3. Read the current room record before saying a group can attend. If closed, report unavailable. If capacity is smaller than the group, stop without calculating a price.\n4. For a group that fits, use quote_total with the current rate and the catalog fee.\nCall at most one tool per turn. Never invent records, quote outputs, or IDs. Only cite IDs returned in tools you actually used.\nWhen you have enough evidence, return one plain JSON object with:\nstatus = fits, too_large, cancelled, ask, unavailable, or insufficient\nroom_id = current room ID, or null for cancelled, ask, insufficient\ntotal_cents = exact group price for fits, or null otherwise\nevidence = array of applicable catalog, revision, and room IDs\nmessage = short readable answer. Include both candidate titles if asking which session.\nThe quote response is arithmetic. Use catalog, notice, and room IDs in evidence."
+        },
+        {
+          "role": "user",
+          "content": "We are five people for the Ink Workshop. Can we fit, and what will we pay altogether?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_j1si1gi1",
+              "function": {
+                "index": 0,
+                "name": "find_session",
+                "arguments": {
+                  "query": "Ink Workshop"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "find_session",
+          "content": "{\"status\": \"found\", \"session\": {\"id\": \"E-INK\", \"title\": \"Ink Workshop\", \"room_id\": \"R-MAPLE\", \"rate_cents\": 750, \"fee_cents\": 300, \"revision_id\": null}}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_i11qsb3l",
+              "function": {
+                "index": 0,
+                "name": "room_status",
+                "arguments": {
+                  "room_id": "R-MAPLE"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "room_status",
+          "content": "{\"id\": \"R-MAPLE\", \"capacity\": 16, \"open\": true}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_9uu5qkxw",
+              "function": {
+                "index": 0,
+                "name": "quote_total",
+                "arguments": {
+                  "fee_cents": 300,
+                  "party_size": 5,
+                  "rate_cents": 750
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "quote_total",
+          "content": "{\"total_cents\": 4050}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\"status\":\"fits\",\"room_id\":\"R-MAPLE\",\"total_cents\":4050,\"evidence\":[\"E-INK\",\"R-MAPLE\"],\"message\":\"Yes, the Ink Workshop can accommodate your group of five. The total cost will be $40.50.\"}"
+        }
+      ],
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true,
+      "clarification_evidence_instruction": false
+    },
+    {
+      "case": "sketch_ambiguous",
+      "request": "Can six of us attend Sketch Club and what is the group charge?",
+      "cancelled_fixture": false,
+      "max_tool_calls": 6,
+      "model_turns": 2,
+      "executed_calls": 1,
+      "terminal": "final",
+      "seconds": 1.13,
+      "final": {
+        "status": "ask",
+        "room_id": null,
+        "total_cents": null,
+        "evidence": [],
+        "message": "Which Sketch Club session do you mean? Morning Sketch Club (E\u2011SK1) or Evening Sketch Club (E\u2011SK2)."
+      },
+      "trace": [
+        {
+          "turn": 1,
+          "prompt_tokens": 522,
+          "generated_tokens": 33,
+          "model_seconds": 0.425,
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Sketch Club"
+          },
+          "observation": {
+            "status": "ambiguous",
+            "matches": [
+              {
+                "id": "E-SK1",
+                "title": "Morning Sketch Club"
+              },
+              {
+                "id": "E-SK2",
+                "title": "Evening Sketch Club"
+              }
+            ]
+          }
+        },
+        {
+          "turn": 2,
+          "prompt_tokens": 612,
+          "generated_tokens": 54,
+          "model_seconds": 0.703,
+          "event": "final",
+          "assistant_content": "{\"status\":\"ask\",\"room_id\":null,\"total_cents\":null,\"evidence\":[],\"message\":\"Which Sketch Club session do you mean? Morning Sketch Club (E\u2011SK1) or Evening Sketch Club (E\u2011SK2).\"}"
+        }
+      ],
+      "public_messages": [
+        {
+          "role": "system",
+          "content": "You are a campus workshop information desk. All records are fictional.\nAnswer whether the group can attend and the total if it can. Use the available tools as evidence.\n1. Find the session using the title or short title in the request. If the search result is ambiguous, ask which title they mean. If missing, report insufficient evidence.\n2. If the catalog lists revision_id, read that notice. Its status and any supplied room or rate override the catalog. If cancelled, stop.\n3. Read the current room record before saying a group can attend. If closed, report unavailable. If capacity is smaller than the group, stop without calculating a price.\n4. For a group that fits, use quote_total with the current rate and the catalog fee.\nCall at most one tool per turn. Never invent records, quote outputs, or IDs. Only cite IDs returned in tools you actually used.\nWhen you have enough evidence, return one plain JSON object with:\nstatus = fits, too_large, cancelled, ask, unavailable, or insufficient\nroom_id = current room ID, or null for cancelled, ask, insufficient\ntotal_cents = exact group price for fits, or null otherwise\nevidence = array of applicable catalog, revision, and room IDs\nmessage = short readable answer. Include both candidate titles if asking which session.\nThe quote response is arithmetic. Use catalog, notice, and room IDs in evidence."
+        },
+        {
+          "role": "user",
+          "content": "Can six of us attend Sketch Club and what is the group charge?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_sei9wzgg",
+              "function": {
+                "index": 0,
+                "name": "find_session",
+                "arguments": {
+                  "query": "Sketch Club"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "find_session",
+          "content": "{\"status\": \"ambiguous\", \"matches\": [{\"id\": \"E-SK1\", \"title\": \"Morning Sketch Club\"}, {\"id\": \"E-SK2\", \"title\": \"Evening Sketch Club\"}]}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\"status\":\"ask\",\"room_id\":null,\"total_cents\":null,\"evidence\":[],\"message\":\"Which Sketch Club session do you mean? Morning Sketch Club (E\u2011SK1) or Evening Sketch Club (E\u2011SK2).\"}"
+        }
+      ],
+      "checks": {
+        "fields": true,
+        "evidence": false,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": false,
+      "clarification_evidence_instruction": false
+    },
+    {
+      "case": "dye_relocated",
+      "request": "Check whether nine people can attend Dye Studio and give us the total if they can.",
+      "cancelled_fixture": false,
+      "max_tool_calls": 6,
+      "model_turns": 4,
+      "executed_calls": 3,
+      "terminal": "final",
+      "seconds": 2.65,
+      "final": {
+        "status": "too_large",
+        "room_id": "R-ELM",
+        "total_cents": null,
+        "evidence": [
+          "E-DYE",
+          "N-24",
+          "R-ELM"
+        ],
+        "message": "The Dye Studio session can only accommodate 8 people, so a group of 9 cannot attend."
+      },
+      "trace": [
+        {
+          "turn": 1,
+          "prompt_tokens": 525,
+          "generated_tokens": 35,
+          "model_seconds": 0.488,
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Dye Studio"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-DYE",
+              "title": "Dye Studio",
+              "room_id": "R-OAK",
+              "rate_cents": 1100,
+              "fee_cents": 0,
+              "revision_id": "N-24"
+            }
+          }
+        },
+        {
+          "turn": 2,
+          "prompt_tokens": 631,
+          "generated_tokens": 30,
+          "model_seconds": 0.471,
+          "event": "tool_result",
+          "tool": "read_notice",
+          "arguments": {
+            "notice_id": "N-24"
+          },
+          "observation": {
+            "id": "N-24",
+            "event_id": "E-DYE",
+            "status": "active",
+            "room_id": "R-ELM",
+            "rate_cents": 1000
+          }
+        },
+        {
+          "turn": 3,
+          "prompt_tokens": 714,
+          "generated_tokens": 37,
+          "model_seconds": 0.603,
+          "event": "tool_result",
+          "tool": "room_status",
+          "arguments": {
+            "room_id": "R-ELM"
+          },
+          "observation": {
+            "id": "R-ELM",
+            "capacity": 8,
+            "open": true
+          }
+        },
+        {
+          "turn": 4,
+          "prompt_tokens": 782,
+          "generated_tokens": 81,
+          "model_seconds": 1.084,
+          "event": "final",
+          "assistant_content": "{\"status\":\"too_large\",\"room_id\":\"R-ELM\",\"total_cents\":null,\"evidence\":[\"E-DYE\",\"N-24\",\"R-ELM\"],\"message\":\"The Dye Studio session can only accommodate 8 people, so a group of 9 cannot attend.\"}"
+        }
+      ],
+      "public_messages": [
+        {
+          "role": "system",
+          "content": "You are a campus workshop information desk. All records are fictional.\nAnswer whether the group can attend and the total if it can. Use the available tools as evidence.\n1. Find the session using the title or short title in the request. If the search result is ambiguous, ask which title they mean. If missing, report insufficient evidence.\n2. If the catalog lists revision_id, read that notice. Its status and any supplied room or rate override the catalog. If cancelled, stop.\n3. Read the current room record before saying a group can attend. If closed, report unavailable. If capacity is smaller than the group, stop without calculating a price.\n4. For a group that fits, use quote_total with the current rate and the catalog fee.\nCall at most one tool per turn. Never invent records, quote outputs, or IDs. Only cite IDs returned in tools you actually used.\nWhen you have enough evidence, return one plain JSON object with:\nstatus = fits, too_large, cancelled, ask, unavailable, or insufficient\nroom_id = current room ID, or null for cancelled, ask, insufficient\ntotal_cents = exact group price for fits, or null otherwise\nevidence = array of applicable catalog, revision, and room IDs\nmessage = short readable answer. Include both candidate titles if asking which session.\nThe quote response is arithmetic. Use catalog, notice, and room IDs in evidence."
+        },
+        {
+          "role": "user",
+          "content": "Check whether nine people can attend Dye Studio and give us the total if they can."
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_ptvs5z80",
+              "function": {
+                "index": 0,
+                "name": "find_session",
+                "arguments": {
+                  "query": "Dye Studio"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "find_session",
+          "content": "{\"status\": \"found\", \"session\": {\"id\": \"E-DYE\", \"title\": \"Dye Studio\", \"room_id\": \"R-OAK\", \"rate_cents\": 1100, \"fee_cents\": 0, \"revision_id\": \"N-24\"}}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_pgm0iuxo",
+              "function": {
+                "index": 0,
+                "name": "read_notice",
+                "arguments": {
+                  "notice_id": "N-24"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "read_notice",
+          "content": "{\"id\": \"N-24\", \"event_id\": \"E-DYE\", \"status\": \"active\", \"room_id\": \"R-ELM\", \"rate_cents\": 1000}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_rhk5uydf",
+              "function": {
+                "index": 0,
+                "name": "room_status",
+                "arguments": {
+                  "room_id": "R-ELM"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "room_status",
+          "content": "{\"id\": \"R-ELM\", \"capacity\": 8, \"open\": true}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\"status\":\"too_large\",\"room_id\":\"R-ELM\",\"total_cents\":null,\"evidence\":[\"E-DYE\",\"N-24\",\"R-ELM\"],\"message\":\"The Dye Studio session can only accommodate 8 people, so a group of 9 cannot attend.\"}"
+        }
+      ],
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true,
+      "clarification_evidence_instruction": false
+    }
+  ]
+}

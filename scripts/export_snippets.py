@@ -209,8 +209,15 @@ CHAPTERS = {
         "expected": {"returns_to_go", "fit_count_policies", "rollout"},
     },
     "ch32": {
-        "sources": ("examples/ch32_perspective/model.py",),
-        "destination": "snippets/ch32_perspective",
+        "sources": ("examples/ch32_agents/campus.py", "examples/ch32_agents/run_agent.py",
+                    "examples/ch32_agents/fixed_workflow.py"),
+        "destination": "snippets/ch32_agents",
+        "expected": {"quote", "model_request", "result_message", "dispatch_update",
+                     "workflow_revision"},
+    },
+    "ch33": {
+        "sources": ("examples/ch33_perspective/model.py",),
+        "destination": "snippets/ch33_perspective",
         "expected": {"compare_memory", "causal_pair_counts"},
     },
 }

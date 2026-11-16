@@ -1,0 +1,128 @@
+{
+  "model": {
+    "tag": "gpt-oss:20b",
+    "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "gptoss",
+      "families": [
+        "gptoss"
+      ],
+      "parameter_size": "20.9B",
+      "quantization_level": "MXFP4",
+      "context_length": 131072,
+      "embedding_length": 2880,
+      "runner": "ggml"
+    },
+    "server": "0.40.16",
+    "thinking": "low",
+    "options": {
+      "temperature": 0,
+      "seed": 32,
+      "num_ctx": 8192,
+      "num_predict": 1024
+    }
+  },
+  "runs": [
+    {
+      "case": "sketch_ambiguous",
+      "request": "Can six of us attend Sketch Club and what is the group charge?",
+      "cancelled_fixture": false,
+      "max_tool_calls": 6,
+      "model_turns": 2,
+      "executed_calls": 1,
+      "clarification_evidence_instruction": true,
+      "terminal": "final",
+      "seconds": 2.472,
+      "final": {
+        "status": "ask",
+        "room_id": null,
+        "total_cents": null,
+        "evidence": [
+          "E-SK1",
+          "E-SK2"
+        ],
+        "message": "Which Sketch Club session would you like to attend? (Morning Sketch Club or Evening Sketch Club)"
+      },
+      "trace": [
+        {
+          "turn": 1,
+          "prompt_tokens": 545,
+          "generated_tokens": 37,
+          "model_seconds": 1.811,
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Sketch Club"
+          },
+          "observation": {
+            "status": "ambiguous",
+            "matches": [
+              {
+                "id": "E-SK1",
+                "title": "Morning Sketch Club"
+              },
+              {
+                "id": "E-SK2",
+                "title": "Evening Sketch Club"
+              }
+            ]
+          }
+        },
+        {
+          "turn": 2,
+          "prompt_tokens": 639,
+          "generated_tokens": 56,
+          "model_seconds": 0.66,
+          "event": "final",
+          "assistant_content": "{\"status\":\"ask\",\"room_id\":null,\"total_cents\":null,\"evidence\":[\"E-SK1\",\"E-SK2\"],\"message\":\"Which Sketch Club session would you like to attend? (Morning Sketch Club or Evening Sketch Club)\"}"
+        }
+      ],
+      "public_messages": [
+        {
+          "role": "system",
+          "content": "You are a campus workshop information desk. All records are fictional.\nAnswer whether the group can attend and the total if it can. Use the available tools as evidence.\n1. Find the session using the title or short title in the request. If the search result is ambiguous, ask which title they mean. If missing, report insufficient evidence.\n2. If the catalog lists revision_id, read that notice. Its status and any supplied room or rate override the catalog. If cancelled, stop.\n3. Read the current room record before saying a group can attend. If closed, report unavailable. If capacity is smaller than the group, stop without calculating a price.\n4. For a group that fits, use quote_total with the current rate and the catalog fee.\nCall at most one tool per turn. Never invent records, quote outputs, or IDs. Only cite IDs returned in tools you actually used.\nWhen you have enough evidence, return one plain JSON object with:\nstatus = fits, too_large, cancelled, ask, unavailable, or insufficient\nroom_id = current room ID, or null for cancelled, ask, insufficient\ntotal_cents = exact group price for fits, or null otherwise\nevidence = array of applicable catalog, revision, and room IDs\nmessage = short readable answer. Include both candidate titles if asking which session.\nThe quote response is arithmetic. Use catalog, notice, and room IDs in evidence.\nFor status ask, put both candidate IDs returned by find_session in evidence, even while the session choice is unresolved."
+        },
+        {
+          "role": "user",
+          "content": "Can six of us attend Sketch Club and what is the group charge?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_erb48alx",
+              "function": {
+                "index": 0,
+                "name": "find_session",
+                "arguments": {
+                  "query": "Sketch Club"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "find_session",
+          "content": "{\"status\": \"ambiguous\", \"matches\": [{\"id\": \"E-SK1\", \"title\": \"Morning Sketch Club\"}, {\"id\": \"E-SK2\", \"title\": \"Evening Sketch Club\"}]}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\"status\":\"ask\",\"room_id\":null,\"total_cents\":null,\"evidence\":[\"E-SK1\",\"E-SK2\"],\"message\":\"Which Sketch Club session would you like to attend? (Morning Sketch Club or Evening Sketch Club)\"}"
+        }
+      ],
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true
+    }
+  ]
+}

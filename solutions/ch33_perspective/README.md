@@ -1,6 +1,6 @@
-# Chapter 32: complete worked solutions
+# Chapter 33: complete worked solutions
 
-All [12 exercises](../../examples/ch32_perspective/EXERCISES.md) appear in:
+All [12 exercises](../../examples/ch33_perspective/EXERCISES.md) appear in:
 
 - [Written solutions](written-solutions.pdf): explanations, calculations, tables and three figures.
 - [Executed notebook](python-solutions.ipynb): all solutions with 19 executed code cells.
@@ -21,7 +21,7 @@ python -m pip install -r requirements.txt matplotlib jupyterlab
 jupyter lab
 ```
 
-Open `solutions/ch32_perspective/python-solutions.ipynb` and run all cells in order.
+Open `solutions/ch33_perspective/python-solutions.ipynb` and run all cells in order.
 The saved run used Python 3.12.14, NumPy 2.5.4 and Matplotlib 3.11.2.
 No model, external dataset or accelerator is required.
 
@@ -29,7 +29,7 @@ Install Tectonic or XeLaTeX and export both PDFs from the executed notebook:
 
 ```sh
 python -m pip install mistune
-python solutions/ch32_perspective/build_pdfs.py
+python solutions/ch33_perspective/build_pdfs.py
 ```
 
 Use `--engine` for an explicit executable path. The exporter requires twelve
@@ -39,8 +39,8 @@ ordered solution headings, sequential execution and a result for every exercise.
 
 ```sh
 python -m unittest discover -s tests -p test_perspective.py -v
-python scripts/export_snippets.py --chapter ch32 --check
-python -m examples.ch32_perspective.run_examples --output output/ch32.json
+python scripts/export_snippets.py --chapter ch33 --check
+python -m examples.ch33_perspective.run_examples --output output/ch33.json
 ```
 
 Ten tests pass and two canonical snippets match the manuscript.

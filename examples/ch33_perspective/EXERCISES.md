@@ -1,11 +1,11 @@
-# Chapter 32 exercises
+# Chapter 33 exercises
 
 What Changed, and What Remains?
 
 Exercises 1-4 work through counts and representations; 5-8 inspect Python stores;
 9-12 design controlled evaluations. All have
-[complete solutions](../../solutions/ch32_perspective/README.md).
-Import helpers from `examples.ch32_perspective.model`.
+[complete solutions](../../solutions/ch33_perspective/README.md).
+Import helpers from `examples.ch33_perspective.model`.
 
 For Exercise 2, selected examples from the history table are BERT (2018,
 masked recovery), MQA (2019, shared KV heads), Longformer (2020, local/global
@@ -15,7 +15,7 @@ Other correctly explained examples are valid.
 Listing 31.3 runs the pair counts and delivery experiments:
 
 ```sh
-python -m examples.ch32_perspective.run_examples --output output/ch32.json
+python -m examples.ch33_perspective.run_examples --output output/ch33.json
 ```
 
 1. **Count permitted pairs.** For a length-ten prefix, count all full causal query--key pairs. Then count pairs for a window of four, including the current position. Explain what changes for the earliest three queries.

@@ -1462,16 +1462,30 @@ target stopped before the first action.
 Independent checks covered 300 return sequences, 300 count-policy
 fits, and 25,000 rollouts against a separate grid implementation.
 
-## Chapter 32. What Changed, and What Remains?
+## Chapter 32. AI Agents with Language Models
+
+The local gpt-oss-20b traces record six initial cases, two diagnostic runs
+and two continuations from a common saved checkpoint. In the restart example
+the unguarded continuation produces the correct amount with an unsupported
+capacity claim. The guarded continuation checks the current room before
+quoting. The time advance between the two processes is simulated.
+
+Seven tests cover the quote schema, replay the saved responses and grades,
+check whether the quote uses current room evidence, and exercise the waiting,
+terminal and expired checkpoint states. The structured workflow reproduces
+its six-case report byte for byte. The two chapter integrations were checked
+with all 430 tests and 168 exported snippets.
+
+## Chapter 33. What Changed, and What Remains?
 
 ~~~sh
-python -m examples.ch32_perspective.run_examples --output output/ch32.json
+python -m examples.ch33_perspective.run_examples --output output/ch33.json
 python -m unittest discover -s tests -v
 python scripts/export_snippets.py --check
 ~~~
 
 On macOS ARM64 with Python 3.11.17, all 357 tests passed,
-including ten for Chapter 32. All 148 excerpts matched their
+including ten for Chapter 33. All 148 excerpts matched their
 sources. Saved JSON, stdout, and the second Python run agreed.
 
 At lengths 8 and 16, the full causal counts were 36 and 136.
@@ -1805,7 +1819,7 @@ times 0.95/0.35 seconds; these are scheduling arithmetic, not benchmark latency.
 The written and notebook PDFs are generated from the same executed source by
 `solutions/ch31_decisions/build_pdfs.py`.
 
-## Chapter 32 detailed textbook review (2026-11-07)
+## Chapter 33 detailed textbook review (2026-11-07)
 
 Ten canonical tests pass and two exported snippets are current and identical
 to the manuscript copies. Canonical helpers remain unchanged.
@@ -1828,7 +1842,7 @@ Mutating forecasts unavailable by issue or receipt time leaves the as-of feature
 unchanged in the specified fixture.
 
 The written and notebook PDFs are generated from the same executed source by
-`solutions/ch32_perspective/build_pdfs.py`.
+`solutions/ch33_perspective/build_pdfs.py`.
 
 ## Expanded appendices A-F (2026-11-07)
 

@@ -1,0 +1,18 @@
+# Chapter 32 | Exercises
+
+The [chapter guide](README.md) describes the four tools and the saved runs.
+The [worked solutions](../../solutions/ch32_agents/) follow the same numbering.
+
+1. **Trace a changed room.** Use the active Camera Lab record and write the history and remaining tool budget after each call. Start with six. Then change only the notice to *cancelled*. Identify the first different observation and the first different proposed action in the recorded pair.
+2. **Check arguments and evidence.** Evaluate three proposals for `quote_total`. One uses a party size of the string `"12"`, one adds an extra field, and one uses 800 cents as the rate. Identify which calls fail validation and which output requires a source check.
+3. **Calculate an exact price.** A party of seven pays 675 cents per person and one 250-cent fee. Compute the returned cents, then write the dollar amount. Explain why applying the fee once per person changes the contract.
+4. **Budget a conversation.** Set the first prompt length to 960 tokens, append 180 tokens per turn, and take five calls. Write the five prompt lengths, add them, and verify the chapter's closed form. If the input cap is 1,600 tokens, identify the first call needing compression.
+5. **Design a workflow baseline.** Draw a deterministic desk for structured title and group-size inputs. Include ambiguous lookup, cancellation, closed room, insufficient capacity and a final quote. Explain how you would give it the same unstructured requests as the LLM system.
+6. **Make one instruction more precise.** Inspect the Sketch Club messages and compare the original run with the revised-prompt run. State which fields a downstream program could use before and after the change. Design a second clarification case using different candidate IDs.
+7. **Report a truncated run.** Find the proposed tool and the number of executed calls in the two-call budget test. Describe the smallest extra observation needed before quoting responsibly. Give a user-facing response the runner could supply at the stop.
+8. **Check reliability across runs.** With per-run success 0.7 and three independent attempts, compute the probability at least one succeeds and the probability all three succeed. Describe a shared dependency that would invalidate the independent calculation.
+9. **Plan a handoff.** A room directory returns two plausible accessibility records. Decide which evidence and open question a specialist needs to take over. Draw the messages in a tool-style delegation and in a handoff. Show which component owns the next decision.
+10. **Verify effects after a timeout.** Consider a simulated reservation write that times out after submission. List the observable states before reissuing a call, including the record ID and receipt. Design an acceptance test that checks the final simulated database for duplicate reservations.
+11. **Recover a waiting task.** Compare the saved Camera Lab checkpoint with the two continuations. Mark the first lookup that loses its relevance after the notice changes. Identify which facts you need to carry into the new context and which checks you need to repeat.
+12. **Separate elapsed time from the measured horizon.** Use the chapter's hypothetical success curve, $p(h)=1/(1+(h/60)^2)$, to find the human reference time for 90-percent success. In a separate run, desk work takes 20 minutes, waiting takes 90 and verification takes 15. Calculate actual elapsed time and identify which of the two quantities the benchmark reports.
+13. **Design a measurement.** Build a held-out set of request pairs that varies either wording or notice status. Choose an outcome rubric, a trace rubric and a cost statistic. State how a wide sample of ordinary requests would complement the pairs.

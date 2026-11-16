@@ -47,7 +47,8 @@ Applications are a central part of the book. The discussion follows how Transfor
 | 29 | [Learning from Tables](examples/ch29_tabular/) | [Exercises](examples/ch29_tabular/EXERCISES.md) | [Solutions](solutions/ch29_tabular/) |
 | 30 | [Scientific Sequences and Biological Structure](examples/ch30_protein/) | [Exercises](examples/ch30_protein/EXERCISES.md) | [Solutions](solutions/ch30_protein/) |
 | 31 | [Decisions and Embodied Action](examples/ch31_decisions/) | [Exercises](examples/ch31_decisions/EXERCISES.md) | [Solutions](solutions/ch31_decisions/) |
-| 32 | [What Changed, and What Remains?](examples/ch32_perspective/) | [Exercises](examples/ch32_perspective/EXERCISES.md) | [Solutions](solutions/ch32_perspective/) |
+| 32 | [AI Agents with Language Models](examples/ch32_agents/) | [Exercises](examples/ch32_agents/EXERCISES.md) | [Solutions](solutions/ch32_agents/) |
+| 33 | [What Changed, and What Remains?](examples/ch33_perspective/) | [Exercises](examples/ch33_perspective/EXERCISES.md) | [Solutions](solutions/ch33_perspective/) |
 
 ## Topics
 
@@ -575,19 +576,33 @@ prediction, return requests, changed environments and control timing.
 python -m examples.ch31_decisions.run_examples --output output/ch31.json
 ```
 
-[Chapter 32: What Changed, and What Remains?](examples/ch32_perspective/)
+[Chapter 32: AI Agents with Language Models](examples/ch32_agents/)
+compares a conditional workflow with a local gpt-oss-20b agent that chooses
+tools from their observations. The [chapter guide](examples/ch32_agents/README.md)
+shows how to replay the recorded traces and reproduce a restart across a
+simulated three-hour wait with a saved checkpoint.
+
+The [13 exercises](examples/ch32_agents/EXERCISES.md) and
+[worked solutions](solutions/ch32_agents/README.md) connect tool selection,
+evidence validation, budgets, recovery, and task-completion horizons.
+
+```sh
+python -m examples.ch32_agents.fixed_workflow --output output/ch32.json
+```
+
+[Chapter 33: What Changed, and What Remains?](examples/ch33_perspective/)
 counts causal attention pairs and compares four ways to retain a
-stream of delivery events. The [chapter guide](examples/ch32_perspective/README.md)
+stream of delivery events. The [chapter guide](examples/ch33_perspective/README.md)
 explains the two questions and the units used to record stored information.
 It also shows how to reproduce the Qwen3.5-0.8B-Base measurements of
 history tensors and paired choices when the prompt evidence changes.
 
-The [12 exercises](examples/ch32_perspective/EXERCISES.md) and
-[complete solutions](solutions/ch32_perspective/README.md) connect memory
+The [12 exercises](examples/ch33_perspective/EXERCISES.md) and
+[complete solutions](solutions/ch33_perspective/README.md) connect memory
 accounting, information loss and controlled tests of retrieval and tracking.
 
 ```sh
-python -m examples.ch32_perspective.run_examples --output output/ch32.json
+python -m examples.ch33_perspective.run_examples --output output/ch33.json
 ```
 
 ## Examples for the appendices
@@ -617,7 +632,7 @@ The book develops diffusion in Chapter 26 alongside the image and video examples
 | A. Notation and tensor shapes | [Self-attention and masks](examples/ch04_attention/) |
 | B. Calculus and optimization | [Training the small Transformer](examples/ch06_training/) |
 | C. Stable numerics | [Stable softmax](examples/ch04_attention/) and [normalization](examples/ch08_modern/) |
-| D. Complexity and memory | [KV accounting](examples/ch10_kv/) and [causal pair counts](examples/ch32_perspective/) |
+| D. Complexity and memory | [KV accounting](examples/ch10_kv/) and [causal pair counts](examples/ch33_perspective/) |
 | E. Convolution and scans | [Structured state spaces](examples/ch13_state_spaces/) and [selective updates](examples/ch14_selective_ssm/) |
 
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.

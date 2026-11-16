@@ -1,4 +1,4 @@
-"""Draw the Chapter 32 model figures from the recorded Qwen run."""
+"""Draw the Chapter 33 model figures from the recorded Qwen run."""
 
 import argparse
 import json
@@ -63,7 +63,7 @@ def plot_history(cache, output):
                xlim=(0, tokens[-1] + 22), xticks=[0, 128, 256, 384, 512],
                ylim=(0, 36), yticks=[0, 8, 16, 24, 32])
         ax.grid(axis="y", linewidth=0.75)
-    save(fig, output, "ch32_hybrid_history.pdf")
+    save(fig, output, "ch33_hybrid_history.pdf")
 
 
 def plot_choices(report, output):
@@ -106,7 +106,7 @@ def plot_choices(report, output):
             counts.add_patch(plt.Rectangle((x + 0.045, y - 0.31), 0.91, 0.62, color=color))
             counts.text(x + 0.5, y, f"{correct}/{size}", ha="center", va="center",
                         fontweight="bold" if correct else "normal", color=INK if correct else MUTED)
-    save(fig, output, "ch32_paired_choices.pdf")
+    save(fig, output, "ch33_paired_choices.pdf")
 
 
 def main():

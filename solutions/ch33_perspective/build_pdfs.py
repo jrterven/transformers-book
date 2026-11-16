@@ -1,4 +1,4 @@
-"""Typeset the executed Chapter 32 notebook as two matching solution PDFs.
+"""Typeset the executed Chapter 33 notebook as two matching solution PDFs.
 
 Requires mistune and either Tectonic or XeLaTeX on PATH. An explicit engine
 path can be supplied with --engine. The written PDF contains every solution;
@@ -155,13 +155,13 @@ def preamble(title):
 \clubpenalty=10000
 \makeatletter
 \def\ps@plain{%
-\def\@oddhead{\small\sffamily\color{gray}TRANSFORMERS\quad |\quad CHAPTER 32\hfil TITLE}%
+\def\@oddhead{\small\sffamily\color{gray}TRANSFORMERS\quad |\quad CHAPTER 33\hfil TITLE}%
 \let\@evenhead\@oddhead
 \def\@oddfoot{\small\sffamily\color{gray}What Changed, and What Remains?\hfil\thepage}%
 \let\@evenfoot\@oddfoot}
 \makeatother
 \pagestyle{plain}
-\hypersetup{pdftitle={Chapter 32: TITLE},pdfauthor={Juan Terven and Diana Córdova},pdflang={en-US}}
+\hypersetup{pdftitle={Chapter 33: TITLE},pdfauthor={Juan Terven and Diana Córdova},pdflang={en-US}}
 \begin{document}
 \color{ink}
 """.replace("TITLE", title)
@@ -190,7 +190,7 @@ def document(notebook, include_code, build_dir):
         if cell["cell_type"] == "markdown":
             if not include_code and "notebook-only" in cell.get("metadata", {}).get("tags", []):
                 continue
-            source = source.replace("# Chapter 32 | Worked solutions", "# Chapter 32 | " + title)
+            source = source.replace("# Chapter 33 | Worked solutions", "# Chapter 33 | " + title)
             pieces.append(markdown(source))
         elif cell["cell_type"] == "code":
             if not include_code:
@@ -246,7 +246,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--engine", default=shutil.which("tectonic") or shutil.which("xelatex"))
     parser.add_argument("--build-dir", type=Path,
-                        default=ROOT.parents[1] / "output/ch32-solutions-build")
+                        default=ROOT.parents[1] / "output/ch33-solutions-build")
     args = parser.parse_args()
     if not args.engine:
         parser.error("Install Tectonic or XeLaTeX, or pass its path with --engine")

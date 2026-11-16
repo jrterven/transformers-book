@@ -1,4 +1,4 @@
-"""Run Chapter 32's memory comparison and causal pair counts."""
+"""Run Chapter 33's memory comparison and causal pair counts."""
 
 import argparse
 import json

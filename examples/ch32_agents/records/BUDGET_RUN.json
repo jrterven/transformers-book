@@ -1,0 +1,171 @@
+{
+  "model": {
+    "tag": "gpt-oss:20b",
+    "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "gptoss",
+      "families": [
+        "gptoss"
+      ],
+      "parameter_size": "20.9B",
+      "quantization_level": "MXFP4",
+      "context_length": 131072,
+      "embedding_length": 2880,
+      "runner": "ggml"
+    },
+    "server": "0.40.16",
+    "thinking": "low",
+    "options": {
+      "temperature": 0,
+      "seed": 32,
+      "num_ctx": 8192,
+      "num_predict": 1024
+    }
+  },
+  "runs": [
+    {
+      "case": "camera_updated",
+      "request": "Can our group of 12 attend Camera Lab, and what would it cost in total?",
+      "cancelled_fixture": false,
+      "max_tool_calls": 2,
+      "model_turns": 3,
+      "executed_calls": 2,
+      "clarification_evidence_instruction": false,
+      "terminal": "tool_limit",
+      "seconds": 2.699,
+      "final": null,
+      "trace": [
+        {
+          "turn": 1,
+          "prompt_tokens": 526,
+          "generated_tokens": 33,
+          "model_seconds": 1.834,
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Camera Lab"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-CAM",
+              "title": "Camera Lab",
+              "room_id": "R-OAK",
+              "rate_cents": 800,
+              "fee_cents": 200,
+              "revision_id": "N-17"
+            }
+          }
+        },
+        {
+          "turn": 2,
+          "prompt_tokens": 628,
+          "generated_tokens": 31,
+          "model_seconds": 0.403,
+          "event": "tool_result",
+          "tool": "read_notice",
+          "arguments": {
+            "notice_id": "N-17"
+          },
+          "observation": {
+            "id": "N-17",
+            "event_id": "E-CAM",
+            "status": "active",
+            "room_id": "R-MAPLE",
+            "rate_cents": 875
+          }
+        },
+        {
+          "turn": 3,
+          "prompt_tokens": 711,
+          "generated_tokens": 38,
+          "model_seconds": 0.458,
+          "event": "tool_limit",
+          "tool": "room_status",
+          "arguments": {
+            "room_id": "R-MAPLE"
+          }
+        }
+      ],
+      "public_messages": [
+        {
+          "role": "system",
+          "content": "You are a campus workshop information desk. All records are fictional.\nAnswer whether the group can attend and the total if it can. Use the available tools as evidence.\n1. Find the session using the title or short title in the request. If the search result is ambiguous, ask which title they mean. If missing, report insufficient evidence.\n2. If the catalog lists revision_id, read that notice. Its status and any supplied room or rate override the catalog. If cancelled, stop.\n3. Read the current room record before saying a group can attend. If closed, report unavailable. If capacity is smaller than the group, stop without calculating a price.\n4. For a group that fits, use quote_total with the current rate and the catalog fee.\nCall at most one tool per turn. Never invent records, quote outputs, or IDs. Only cite IDs returned in tools you actually used.\nWhen you have enough evidence, return one plain JSON object with:\nstatus = fits, too_large, cancelled, ask, unavailable, or insufficient\nroom_id = current room ID, or null for cancelled, ask, insufficient\ntotal_cents = exact group price for fits, or null otherwise\nevidence = array of applicable catalog, revision, and room IDs\nmessage = short readable answer. Include both candidate titles if asking which session.\nThe quote response is arithmetic. Use catalog, notice, and room IDs in evidence."
+        },
+        {
+          "role": "user",
+          "content": "Can our group of 12 attend Camera Lab, and what would it cost in total?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_hvasl02k",
+              "function": {
+                "index": 0,
+                "name": "find_session",
+                "arguments": {
+                  "query": "Camera Lab"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "find_session",
+          "content": "{\"status\": \"found\", \"session\": {\"id\": \"E-CAM\", \"title\": \"Camera Lab\", \"room_id\": \"R-OAK\", \"rate_cents\": 800, \"fee_cents\": 200, \"revision_id\": \"N-17\"}}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_bhi08gje",
+              "function": {
+                "index": 0,
+                "name": "read_notice",
+                "arguments": {
+                  "notice_id": "N-17"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_name": "read_notice",
+          "content": "{\"id\": \"N-17\", \"event_id\": \"E-CAM\", \"status\": \"active\", \"room_id\": \"R-MAPLE\", \"rate_cents\": 875}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_tjxwmcnk",
+              "function": {
+                "index": 0,
+                "name": "room_status",
+                "arguments": {
+                  "room_id": "R-MAPLE"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "fields": false,
+        "evidence": false,
+        "ordered_calls": false,
+        "quote": false,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": false
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+{
+  "input": "supplied title and group size",
+  "runs": [
+    {
+      "case": "camera_updated",
+      "trace": [
+        {
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Camera Lab"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-CAM",
+              "title": "Camera Lab",
+              "room_id": "R-OAK",
+              "rate_cents": 800,
+              "fee_cents": 200,
+              "revision_id": "N-17"
+            }
+          }
+        },
+        {
+          "event": "tool_result",
+          "tool": "read_notice",
+          "arguments": {
+            "notice_id": "N-17"
+          },
+          "observation": {
+            "id": "N-17",
+            "event_id": "E-CAM",
+            "status": "active",
+            "room_id": "R-MAPLE",
+            "rate_cents": 875
+          }
+        },
+        {
+          "event": "tool_result",
+          "tool": "room_status",
+          "arguments": {
+            "room_id": "R-MAPLE"
+          },
+          "observation": {
+            "id": "R-MAPLE",
+            "capacity": 16,
+            "open": true
+          }
+        },
+        {
+          "event": "tool_result",
+          "tool": "quote_total",
+          "arguments": {
+            "party_size": 12,
+            "rate_cents": 875,
+            "fee_cents": 200
+          },
+          "observation": {
+            "total_cents": 10700
+          }
+        }
+      ],
+      "explained_inputs": {
+        "title": "Camera Lab",
+        "party_size": 12
+      },
+      "final": {
+        "status": "fits",
+        "room_id": "R-MAPLE",
+        "total_cents": 10700,
+        "evidence": [
+          "E-CAM",
+          "N-17",
+          "R-MAPLE"
+        ],
+        "message": "The group fits."
+      },
+      "executed_calls": 4,
+      "model_turns": 0,
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true
+    },
+    {
+      "case": "camera_cancelled",
+      "trace": [
+        {
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Camera Lab"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-CAM",
+              "title": "Camera Lab",
+              "room_id": "R-OAK",
+              "rate_cents": 800,
+              "fee_cents": 200,
+              "revision_id": "N-17"
+            }
+          }
+        },
+        {
+          "event": "tool_result",
+          "tool": "read_notice",
+          "arguments": {
+            "notice_id": "N-17"
+          },
+          "observation": {
+            "id": "N-17",
+            "event_id": "E-CAM",
+            "status": "cancelled",
+            "detail": "The main camera rig is being serviced. The workshop will not run."
+          }
+        }
+      ],
+      "explained_inputs": {
+        "title": "Camera Lab",
+        "party_size": 12
+      },
+      "final": {
+        "status": "cancelled",
+        "room_id": null,
+        "total_cents": null,
+        "evidence": [
+          "E-CAM",
+          "N-17"
+        ],
+        "message": "The workshop is cancelled."
+      },
+      "executed_calls": 2,
+      "model_turns": 0,
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true
+    },
+    {
+      "case": "paper_too_large",
+      "trace": [
+        {
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Paper Making"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-PAP",
+              "title": "Paper Making",
+              "room_id": "R-ELM",
+              "rate_cents": 600,
+              "fee_cents": 450,
+              "revision_id": null
+            }
+          }
+        },
+        {
+          "event": "tool_result",
+          "tool": "room_status",
+          "arguments": {
+            "room_id": "R-ELM"
+          },
+          "observation": {
+            "id": "R-ELM",
+            "capacity": 8,
+            "open": true
+          }
+        }
+      ],
+      "explained_inputs": {
+        "title": "Paper Making",
+        "party_size": 12
+      },
+      "final": {
+        "status": "too_large",
+        "room_id": "R-ELM",
+        "total_cents": null,
+        "evidence": [
+          "E-PAP",
+          "R-ELM"
+        ],
+        "message": "The group exceeds the room capacity."
+      },
+      "executed_calls": 2,
+      "model_turns": 0,
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true
+    },
+    {
+      "case": "ink_fits",
+      "trace": [
+        {
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Ink Workshop"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-INK",
+              "title": "Ink Workshop",
+              "room_id": "R-MAPLE",
+              "rate_cents": 750,
+              "fee_cents": 300,
+              "revision_id": null
+            }
+          }
+        },
+        {
+          "event": "tool_result",
+          "tool": "room_status",
+          "arguments": {
+            "room_id": "R-MAPLE"
+          },
+          "observation": {
+            "id": "R-MAPLE",
+            "capacity": 16,
+            "open": true
+          }
+        },
+        {
+          "event": "tool_result",
+          "tool": "quote_total",
+          "arguments": {
+            "party_size": 5,
+            "rate_cents": 750,
+            "fee_cents": 300
+          },
+          "observation": {
+            "total_cents": 4050
+          }
+        }
+      ],
+      "explained_inputs": {
+        "title": "Ink Workshop",
+        "party_size": 5
+      },
+      "final": {
+        "status": "fits",
+        "room_id": "R-MAPLE",
+        "total_cents": 4050,
+        "evidence": [
+          "E-INK",
+          "R-MAPLE"
+        ],
+        "message": "The group fits."
+      },
+      "executed_calls": 3,
+      "model_turns": 0,
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true
+    },
+    {
+      "case": "sketch_ambiguous",
+      "trace": [
+        {
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Sketch Club"
+          },
+          "observation": {
+            "status": "ambiguous",
+            "matches": [
+              {
+                "id": "E-SK1",
+                "title": "Morning Sketch Club"
+              },
+              {
+                "id": "E-SK2",
+                "title": "Evening Sketch Club"
+              }
+            ]
+          }
+        }
+      ],
+      "explained_inputs": {
+        "title": "Sketch Club",
+        "party_size": 6
+      },
+      "final": {
+        "status": "ask",
+        "room_id": null,
+        "total_cents": null,
+        "evidence": [
+          "E-SK1",
+          "E-SK2"
+        ],
+        "message": "Morning Sketch Club or Evening Sketch Club?"
+      },
+      "executed_calls": 1,
+      "model_turns": 0,
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true
+    },
+    {
+      "case": "dye_relocated",
+      "trace": [
+        {
+          "event": "tool_result",
+          "tool": "find_session",
+          "arguments": {
+            "query": "Dye Studio"
+          },
+          "observation": {
+            "status": "found",
+            "session": {
+              "id": "E-DYE",
+              "title": "Dye Studio",
+              "room_id": "R-OAK",
+              "rate_cents": 1100,
+              "fee_cents": 0,
+              "revision_id": "N-24"
+            }
+          }
+        },
+        {
+          "event": "tool_result",
+          "tool": "read_notice",
+          "arguments": {
+            "notice_id": "N-24"
+          },
+          "observation": {
+            "id": "N-24",
+            "event_id": "E-DYE",
+            "status": "active",
+            "room_id": "R-ELM",
+            "rate_cents": 1000
+          }
+        },
+        {
+          "event": "tool_result",
+          "tool": "room_status",
+          "arguments": {
+            "room_id": "R-ELM"
+          },
+          "observation": {
+            "id": "R-ELM",
+            "capacity": 8,
+            "open": true
+          }
+        }
+      ],
+      "explained_inputs": {
+        "title": "Dye Studio",
+        "party_size": 9
+      },
+      "final": {
+        "status": "too_large",
+        "room_id": "R-ELM",
+        "total_cents": null,
+        "evidence": [
+          "E-DYE",
+          "N-24",
+          "R-ELM"
+        ],
+        "message": "The group exceeds the room capacity."
+      },
+      "executed_calls": 3,
+      "model_turns": 0,
+      "checks": {
+        "fields": true,
+        "evidence": true,
+        "ordered_calls": true,
+        "quote": true,
+        "no_tool_errors": true,
+        "clarification": true
+      },
+      "success": true
+    }
+  ]
+}

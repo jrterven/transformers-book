@@ -1,9 +1,9 @@
-# Chapter 32. What Changed, and What Remains?
+# Chapter 33. What Changed, and What Remains?
 
 Run the fixed experiments from the repository root with Python.
 
 ```sh
-python -m examples.ch32_perspective.run_examples --output output/ch32.json
+python -m examples.ch33_perspective.run_examples --output output/ch33.json
 python -m unittest discover -s tests -p test_perspective.py -v
 ```
 
@@ -50,7 +50,7 @@ the two chosen questions but cannot reconstruct all intermediate routes.
 The sweep uses two specified histories per length, not a learned model.
 
 See the [12 exercises](EXERCISES.md) and
-[complete solutions](../../solutions/ch32_perspective/README.md).
+[complete solutions](../../solutions/ch33_perspective/README.md).
 
 ## Measure history and test evidence in a pretrained hybrid
 
@@ -85,7 +85,7 @@ Matplotlib 3.11.2.
 
 ```sh
 python -m pip install matplotlib==3.11.2
-python -m examples.ch32_perspective.make_figures --output-dir output/ch32-figures
+python -m examples.ch33_perspective.make_figures --output-dir output/ch33-figures
 ```
 
 To repeat inference, use the CPU build of PyTorch for your platform and
@@ -98,5 +98,5 @@ snapshot can be supplied with `--checkpoint`.
 ```sh
 python -m pip install torch==2.15.0 transformers==5.21.0 huggingface-hub==2.4.0 \
   numpy==2.5.4 safetensors==0.8.0
-python -m examples.ch32_perspective.run_pretrained --output output/ch32-qwen.json
+python -m examples.ch33_perspective.run_pretrained --output output/ch33-qwen.json
 ```

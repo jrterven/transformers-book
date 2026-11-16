@@ -419,17 +419,23 @@ returns, causal windows, action bins, absent targets, shifted rewards, tied
 demonstrations, episode groups and refresh schedules. Three plots support the
 explanations. See the [solution guide](ch31_decisions/README.md).
 
-## Chapter 32. What Changed, and What Remains?
+## Chapter 32. AI Agents with Language Models
 
-All [twelve exercises](../examples/ch32_perspective/EXERCISES.md) have full,
-ordered solutions in the [written PDF](ch32_perspective/written-solutions.pdf),
-[executed notebook](ch32_perspective/python-solutions.ipynb), and
-[notebook PDF](ch32_perspective/python-solutions.pdf).
+The [worked solutions](ch32_agents/) follow all [thirteen exercises](../examples/ch32_agents/EXERCISES.md).
+They walk through the recorded tool calls, a budget stop, and a restart
+that needs a fresh room record before accepting the final quote.
+
+## Chapter 33. What Changed, and What Remains?
+
+All [twelve exercises](../examples/ch33_perspective/EXERCISES.md) have full,
+ordered solutions in the [written PDF](ch33_perspective/written-solutions.pdf),
+[executed notebook](ch33_perspective/python-solutions.ipynb), and
+[notebook PDF](ch33_perspective/python-solutions.pdf).
 
 Nineteen executed cells check causal pairs, KV bytes, exact-summary capacity,
 hybrid budgets, window boundaries, zero/missing values, storage units,
 controlled histories, composed retrieval and forecast availability.
-Three plots support the explanations. See the [solution guide](ch32_perspective/README.md).
+Three plots support the explanations. See the [solution guide](ch33_perspective/README.md).
 
 ## Optional practice for the appendices
 
