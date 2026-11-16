@@ -24,7 +24,7 @@ for everyone with 0.2 for the first group and 0.8 for the second.
 
 7. **Trace the influence of a context row.** Use `math.log` to make scores $(0,0,\ln 4)$. Pass them with labels $(1,1,0)$ to `context_probability`. Raise the last score by $\ln 2$ and compare the returned probability and weights. Explain why a larger score can lower the positive-class estimate.
 
-8. **Score two confidence levels.** Use `brier_score` on labels $(0,1,1,0)$ with predictions $(0.2,0.7,0.8,0.1)$ and again with $(0.45,0.55,0.6,0.4)$. Compare both with accuracy at 0.5. Describe the additional evidence needed to discuss calibration. As a separate constructed example, reproduce the 20-case comparison in Figure 28.5; explain how both predictors can match observed frequencies yet have different Brier scores.
+8. **Score two confidence levels.** Use `brier_score` on labels $(0,1,1,0)$ with predictions $(0.2,0.7,0.8,0.1)$ and again with $(0.45,0.55,0.6,0.4)$. Compare both with accuracy at 0.5. Describe the additional evidence needed to discuss calibration. As a separate constructed example, reproduce the 20-case comparison in Figure 29.5; explain how both predictors can match observed frequencies yet have different Brier scores.
 
 9. **Split for the intended customer.** A table has one to five orders for each of 500 customers. Design a split to test predictions for new customers. Then design one to test predictions on later orders from existing customers. State the grouping and time rules for each.
 

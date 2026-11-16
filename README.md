@@ -90,10 +90,9 @@ The eight TikZ diagrams are available as standalone vector PDFs.
 ## Exercise solutions
 
 The [exercise solutions](solutions/) follow the numbering in the book.
-Chapters 1–31 and 33 include a written PDF, an executed Jupyter notebook, and
-a PDF of the notebook with its code and outputs. Chapter 32 has its
-[13 worked solutions in Markdown](solutions/ch32_agents/README.md), with
-links to the tool traces used in the exercises.
+Each chapter has a written PDF, an executed Jupyter notebook, and a PDF of
+the notebook with its code and outputs. The [Chapter 32 solutions](solutions/ch32_agents/)
+include checks against the recorded agent runs and the saved restart checkpoint.
 
 Start with the [12 Chapter 1 exercises](examples/ch01_language/EXERCISES.md),
 ordered from foundational questions to two challenges. The written solutions,

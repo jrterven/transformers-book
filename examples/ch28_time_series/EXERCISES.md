@@ -19,7 +19,7 @@ Import the functions from `examples.ch28_time_series.model`.
 
 6. **Forecast beyond a season.** Use history $(2,5,3,6)$, period two, and horizon five. Run `seasonal_naive`. Use `fit_seasonal_drift(history, period)` and pass its result and the same history to `seasonal_drift`. Identify the first prediction that receives two drift increments.
 
-7. **Change what the baseline learned.** Run Listing 27.3 and inspect the horizon MAEs. Import `series_example` from the runnable module in Listing 27.3. For every origin in `rolling.test_origins`, forecast with history up to that origin, period four, horizon three, and drift zero. Compare with the corresponding seasonal-naive forecast.
+7. **Change what the baseline learned.** Run Listing 28.4 and inspect the horizon MAEs. Import `series_example` from the runnable module in Listing 28.4. For every origin in `rolling.test_origins`, forecast with history up to that origin, period four, horizon three, and drift zero. Compare with the corresponding seasonal-naive forecast.
 
 8. **Compare interval widths.** Convert the point predictions from the two-origin fixture to a NumPy array. Subtract and add half-widths 0, 1, and 2 to form three pairs of interval arrays. Predict which scores will change. Then call `forecast_metrics` with the actual values, point predictions, and both endpoints for each. Compare horizon-wise coverage and width while tracking what happens to MAE. Explain why choosing a width from these same scored outcomes would not establish prospective 80% coverage.
 

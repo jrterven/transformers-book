@@ -17,7 +17,7 @@ Fixtures referenced by the exercises:
   rows A/columns B 18, rows B/columns A 12 angstroms. Rows identify the error
   position; columns identify the alignment anchor. These are teaching values.
 
-1. **Read aligned columns.** In Figure 29.1, count the observed letter pairs at the two highlighted positions. Describe one reason the association might appear even if the residues are far apart in space.
+1. **Read aligned columns.** In Figure 30.1, count the observed letter pairs at the two highlighted positions. Describe one reason the association might appear even if the residues are far apart in space.
 
 2. **Preserve some order.** Compare `CAAC` and `CCAA`. Write their composition entries for A and C. Then list the ordered adjacent pairs and compute their normalized counts.
 
@@ -27,7 +27,7 @@ Fixtures referenced by the exercises:
 
 5. **Verify the pair representation.** Use `residue_composition` and `dipeptide_frequencies` on the sequences in Exercise 2. Check the sum of each feature vector or matrix. Repeat with a sequence containing just A and explain the difference between the two sums. Then compare `AACAC` and `ACAAC`. Can dipeptide frequencies always recover sequence order?
 
-6. **Change only padding.** Call `mean_pool_residues` on the five rows from Figure 29.2, with a mask of `True` for A and C and `False` for all other rows. Change the padding row to $(7,9)$ and run the function with the same mask. Compare the results.
+6. **Change only padding.** Call `mean_pool_residues` on the five rows from Figure 30.2, with a mask of `True` for A and C and `False` for all other rows. Change the padding row to $(7,9)$ and run the function with the same mask. Compare the results.
 
 7. **Translate the coordinates.** Convert the four-point coordinates to a NumPy array. Call `contact_map` with threshold 5 and minimum index separation 2. Add $(10,-3,2)$ to every point and recompute with the same settings. Explain why a shared translation can or cannot change any entry. Also rotate every point by $(x,y,z)\mapsto(-y,x,z)$ and check the map. Explain what changes if the threshold is moved just below 5.
 

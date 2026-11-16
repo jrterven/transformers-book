@@ -17,9 +17,9 @@ claim measured results for a pretrained generator.
 
 5. **Check the endpoints.** Call `add_noise` with two different $2\times2$ arrays at $\bar\alpha=0$ and $\bar\alpha=1$. Check the values and the output shape at both endpoints. Then try `ddim_step` with current level zero and next level 0.64. Explain why this endpoint is valid for mixing but invalid for that sampler formula.
 
-6. **Read both DDIM outputs.** Use the noisy grid at $\bar\alpha_t=0.36$ from Figure 25.1 and the supplied exact noise. Call `ddim_step` with next level 0.64. Inspect both outputs. Pass the next sample and the same noise to a second call with current level 0.64 and next level 1.
+6. **Read both DDIM outputs.** Use the noisy grid at $\bar\alpha_t=0.36$ from Figure 26.5 and the supplied exact noise. Call `ddim_step` with next level 0.64. Inspect both outputs. Pass the next sample and the same noise to a second call with current level 0.64 and next level 1.
 
-7. **Change one prediction.** Keep the same initial noisy grid as in Exercise 6. Make a copy of the noise, add 0.1 to its lower-left entry once, and pass the altered prediction to both sampler calls. Compare all four entries with the exact-prediction run. Explain the behavior using Equation (25.3).
+7. **Change one prediction.** Keep the same initial noisy grid as in Exercise 6. Make a copy of the noise, add 0.1 to its lower-left entry once, and pass the altered prediction to both sampler calls. Compare all four entries with the exact-prediction run. Explain the behavior using Equation (26.4).
 
 8. **Sweep guidance.** Use `guided_noise` on the two vectors in Exercise 3 at five equally spaced scales including zero and two. Compare the difference between successive guided vectors. Connect it to the conditional minus unconditional prediction.
 

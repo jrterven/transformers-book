@@ -15,7 +15,7 @@ live captions. All eleven have [complete solutions](../../solutions/ch25_speech_
 
 4. **Align the words.** Use reference *turn at the blue door* and hypothesis *turn at the red door now*. Mark a minimum-edit alignment and compute its WER. Explain how the denominator changes if you reverse the two sentences.
 
-5. **Check the spectrogram shape.** Call `frame_power_spectrogram` with 16 zero samples, sample rate 8{,}000, frame length eight, and hop four. Unpack the frame start times, bin frequencies, and power. Verify the axes and the shape from Section 24.2. Check every power value.
+5. **Check the spectrogram shape.** Call `frame_power_spectrogram` with 16 zero samples, sample rate 8{,}000, frame length eight, and hop four. Unpack the frame start times, bin frequencies, and power. Verify the axes and the shape from Section 25.2. Check every power value.
 
 6. **Find a tone.** Generate 32 samples of $\sin(2\pi\cdot 1{,}000 n/8{,}000)$ for $n=0,\ldots,31$. Use sample rate 8{,}000, frame length 16, and hop eight. Locate the maximum-power bin in each frame. Repeat with a 2{,}000 Hz tone and relate the bin numbers to the frequencies.
 

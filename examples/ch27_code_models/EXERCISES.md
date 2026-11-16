@@ -16,7 +16,7 @@ exports `CANDIDATES` in the chapter figure's order.
 
 4. **Count successful pairs.** Imagine five candidates with exactly two passing a task. Count size-two subsets, then count the subsets that contain at least one pass. Compute the corresponding $\mathrm{pass@}2$.
 
-5. **Inspect the evaluation record.** Run Listing 26.5. In `benchmark.candidates`, find `touching_counts` and `needs_two`. Read their `edges.per_case` records and identify a different failed case for each. Explain each result from the corresponding comparison in the function. Across all candidates, compute the fraction of passing individual checks in the complete six-case suite and the fraction of candidates passing every check. Explain why these fractions differ.
+5. **Inspect the evaluation record.** Run Listing 27.6. In `benchmark.candidates`, find `touching_counts` and `needs_two`. Read their `edges.per_case` records and identify a different failed case for each. Explain each result from the corresponding comparison in the function. Across all candidates, compute the fraction of passing individual checks in the complete six-case suite and the fraction of candidates passing every check. Explain why these fractions differ.
 
 6. **Add one boundary case.** Create a new `Case(name, a, b, expected)` with two negative-start intervals and exactly one shared integer. State its expected result before passing a one-element case list to `score_candidate` for each of the four candidates. Check which outcomes agree with the contract.
 

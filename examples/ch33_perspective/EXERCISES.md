@@ -12,7 +12,7 @@ masked recovery), MQA (2019, shared KV heads), Longformer (2020, local/global
 attention), and FlashAttention (2022, tiled attention execution).
 Other correctly explained examples are valid.
 
-Listing 31.3 runs the pair counts and delivery experiments:
+Listing 33.3 runs the pair counts and delivery experiments:
 
 ```sh
 python -m examples.ch33_perspective.run_examples --output output/ch33.json
@@ -32,7 +32,7 @@ python -m examples.ch33_perspective.run_examples --output output/ch33.json
 
 7. **Test a history with no route assignments.** Use `make_history(620, [])`. Compare all four rules at window size one. State what the output marks as unknown, and distinguish a missing event from an event that was discarded. Repeat with code 0 and explain why a valid zero must not be treated as `None`.
 
-8. **Compare the storage records.** Run Listing 31.3. Select the one-update and eight-update records from `accuracy_sweep`. Compare `retained_units` and `unit` for each method. Explain why an event and a summary field should not be counted as identical bytes. State why unbounded Python integers and variable-length strings prevent a field count alone from proving bounded memory.
+8. **Compare the storage records.** Run Listing 33.3. Select the one-update and eight-update records from `accuracy_sweep`. Compare `retained_units` and `unit` for each method. Explain why an event and a summary field should not be counted as identical bytes. State why unbounded Python integers and variable-length strings prevent a field count alone from proving bounded memory.
 
 9. **Separate delay from interference.** On paper, design two groups of histories that test first-code recall. In one group, vary the number of unrelated messages. In the other, hold length fixed and vary the number of plausible competing codes. State which measurements would help explain a performance change.
 

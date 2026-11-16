@@ -421,9 +421,14 @@ explanations. See the [solution guide](ch31_decisions/README.md).
 
 ## Chapter 32. AI Agents with Language Models
 
-The [worked solutions](ch32_agents/) follow all [thirteen exercises](../examples/ch32_agents/EXERCISES.md).
-They walk through the recorded tool calls, a budget stop, and a restart
-that needs a fresh room record before accepting the final quote.
+All [thirteen exercises](../examples/ch32_agents/EXERCISES.md) have worked
+solutions in the [written PDF](ch32_agents/written-solutions.pdf),
+[executed notebook](ch32_agents/python-solutions.ipynb), and
+[notebook PDF](ch32_agents/python-solutions.pdf).
+
+Twelve executed cells check tool-call traces, price arithmetic, budget
+stops, clarification, and the two continuations of a saved task.
+See the [chapter solution guide](ch32_agents/README.md) to rerun the notebook.
 
 ## Chapter 33. What Changed, and What Remains?
 
