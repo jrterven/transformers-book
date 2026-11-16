@@ -10,51 +10,71 @@ Companion repository for *Transformers*, a historical and practical guide to Tra
 
 The book starts with the problems that led to attention and builds the original Transformer step by step. From there, it follows the development of language model families, modern Transformer blocks, efficient attention, state space models, and hybrid architectures. Each change is explained through the problem it addresses, a small worked example, and the tradeoffs it introduces.
 
-Applications are a central part of the book. The discussion follows how Transformers have been adapted to language, images, speech, video, multimodal learning, time series, scientific data, and robotics. The emphasis is on understanding how a task is represented, what the model learns, and how its results should be evaluated.
+Applications are a central part of the book. The discussion follows how Transformers have been adapted to language, images, speech, video, multimodal learning, time series, scientific data, robotics, and agents that use tools. The emphasis is on understanding how a task is represented, what the model learns, and how its results should be evaluated.
+
+[Quick start](#quick-start) · [Chapter index](#chapter-index) · [Figures for teaching](#figures-for-teaching) · [Exercise solutions](#exercise-solutions) · [Appendix examples](#examples-for-the-appendices)
+
+## Quick start
+
+Run the Chapter 1 example from the repository root. It uses NumPy on a CPU
+to turn token IDs into embedding rows, combine an ordered two-token context,
+and turn vocabulary scores into probabilities. The matrices are small enough
+to check the forward pass by hand.
+
+```sh
+python -m pip install -r requirements.txt
+python -m examples.ch01_language.run_examples
+```
+
+The chapter guides list any additional dependencies for training, pretrained
+models, or other optional demonstrations. Many of those experiments include
+saved results you can inspect before running the model.
 
 ## Figures for teaching
 
-Browse the book's figures in their original formats, organized by chapter and
-indexed by figure number. Each file can be downloaded for use in course
-materials. [Book figures](figures/) · [Credits and reuse](figures/CREDITS.md).
+The collection contains 351 figures and illustrations from all 33 chapters,
+Appendices A–E, and the book's opening pages. Download the original PNG,
+JPG, and PDF files by chapter or look them up by their printed figure number.
+The eight TikZ diagrams are available as standalone vector PDFs.
+[Browse and download](figures/) · [Figure index](figures/INDEX.md) · [Credits and reuse](figures/CREDITS.md).
 
 ## Chapter index
 
-| Chapter | Examples | Exercises | Solutions |
-| ---: | --- | --- | --- |
-| 1 | [Tokens, Embeddings, and Neural Language Models](examples/ch01_language/) | [Exercises](examples/ch01_language/EXERCISES.md) | [Solutions](solutions/ch01_language/) |
-| 2 | [Recurrence and Encoder–Decoder Models](examples/ch02_recurrence/) | [Exercises](examples/ch02_recurrence/EXERCISES.md) | [Solutions](solutions/ch02_recurrence/) |
-| 3 | [Learning to Align](examples/ch03_alignment/) | [Exercises](examples/ch03_alignment/EXERCISES.md) | [Solutions](solutions/ch03_alignment/) |
-| 4 | [Self-Attention from Vectors to Matrices](examples/ch04_attention/) | [Exercises](examples/ch04_attention/EXERCISES.md) | [Solutions](solutions/ch04_attention/) |
-| 5 | [Multiple Heads, Position, and the Complete Architecture](examples/ch05_transformer/) | [Exercises](examples/ch05_transformer/EXERCISES.md) | [Solutions](solutions/ch05_transformer/) |
-| 6 | [Training and Generating with a Small Transformer](examples/ch06_training/) | [Exercises](examples/ch06_training/EXERCISES.md) | [Solutions](solutions/ch06_training/) |
-| 7 | [GPT, BERT, and T5](examples/ch07_pretraining/) | [Exercises](examples/ch07_pretraining/EXERCISES.md) | [Solutions](solutions/ch07_pretraining/) |
-| 8 | [From the Original Block to Modern Decoders](examples/ch08_modern/) | [Exercises](examples/ch08_modern/EXERCISES.md) | [Solutions](solutions/ch08_modern/) |
-| 9 | [Scaling Data, Compute, and Expert Capacity](examples/ch09_scaling/) | [Exercises](examples/ch09_scaling/EXERCISES.md) | [Solutions](solutions/ch09_scaling/) |
-| 10 | [Incremental Decoding and KV Representations](examples/ch10_kv/) | [Exercises](examples/ch10_kv/EXERCISES.md) | [Solutions](solutions/ch10_kv/) |
-| 11 | [Long Context, Sparse Access, and Sequence Compression](examples/ch11_long_context/) | [Exercises](examples/ch11_long_context/EXERCISES.md) | [Solutions](solutions/ch11_long_context/) |
-| 12 | [Efficient Execution](examples/ch12_efficient/) | [Exercises](examples/ch12_efficient/EXERCISES.md) | [Solutions](solutions/ch12_efficient/) |
-| 13 | [Structured State Spaces and Long Convolutions](examples/ch13_state_spaces/) | [Exercises](examples/ch13_state_spaces/EXERCISES.md) | [Solutions](solutions/ch13_state_spaces/) |
-| 14 | [Selective State Spaces](examples/ch14_selective_ssm/) | [Exercises](examples/ch14_selective_ssm/EXERCISES.md) | [Solutions](solutions/ch14_selective_ssm/) |
-| 15 | [Delta Rules and Hybrid Stacks](examples/ch15_hybrids/) | [Exercises](examples/ch15_hybrids/EXERCISES.md) | [Solutions](solutions/ch15_hybrids/) |
-| 16 | [From Pretrained Weights to Task Behavior](examples/ch16_adaptation/) | [Exercises](examples/ch16_adaptation/EXERCISES.md) | [Solutions](solutions/ch16_adaptation/) |
-| 17 | [Designing Reproducible Evaluations](examples/ch17_evaluation/) | [Exercises](examples/ch17_evaluation/EXERCISES.md) | [Solutions](solutions/ch17_evaluation/) |
-| 18 | [Interpreting and Aligning Model Behavior](examples/ch18_behavior/) | [Exercises](examples/ch18_behavior/EXERCISES.md) | [Solutions](solutions/ch18_behavior/) |
-| 19 | [Language Understanding](examples/ch19_understanding/) | [Exercises](examples/ch19_understanding/EXERCISES.md) | [Solutions](solutions/ch19_understanding/) |
-| 20 | [Translation and Summarization](examples/ch20_generation/) | [Exercises](examples/ch20_generation/EXERCISES.md) | [Solutions](solutions/ch20_generation/) |
-| 21 | [Search, Retrieval, and Grounded Assistants](examples/ch21_retrieval/) | [Exercises](examples/ch21_retrieval/EXERCISES.md) | [Solutions](solutions/ch21_retrieval/) |
-| 22 | [Image and Video Understanding](examples/ch22_vision/) | [Exercises](examples/ch22_vision/EXERCISES.md) | [Solutions](solutions/ch22_vision/) |
-| 23 | [Object Detection and Segmentation](examples/ch23_detection/) | [Exercises](examples/ch23_detection/EXERCISES.md) | [Solutions](solutions/ch23_detection/) |
-| 24 | [Vision–Language and Multimodal Models](examples/ch24_multimodal/) | [Exercises](examples/ch24_multimodal/EXERCISES.md) | [Solutions](solutions/ch24_multimodal/) |
-| 25 | [Speech and Audio](examples/ch25_speech_audio/) | [Exercises](examples/ch25_speech_audio/EXERCISES.md) | [Solutions](solutions/ch25_speech_audio/) |
-| 26 | [Image and Video Generation](examples/ch26_visual_generation/) | [Exercises](examples/ch26_visual_generation/EXERCISES.md) | [Solutions](solutions/ch26_visual_generation/) |
-| 27 | [Models for Code](examples/ch27_code_models/) | [Exercises](examples/ch27_code_models/EXERCISES.md) | [Solutions](solutions/ch27_code_models/) |
-| 28 | [Time-Series Forecasting](examples/ch28_time_series/) | [Exercises](examples/ch28_time_series/EXERCISES.md) | [Solutions](solutions/ch28_time_series/) |
-| 29 | [Learning from Tables](examples/ch29_tabular/) | [Exercises](examples/ch29_tabular/EXERCISES.md) | [Solutions](solutions/ch29_tabular/) |
-| 30 | [Scientific Sequences and Biological Structure](examples/ch30_protein/) | [Exercises](examples/ch30_protein/EXERCISES.md) | [Solutions](solutions/ch30_protein/) |
-| 31 | [Decisions and Embodied Action](examples/ch31_decisions/) | [Exercises](examples/ch31_decisions/EXERCISES.md) | [Solutions](solutions/ch31_decisions/) |
-| 32 | [AI Agents with Language Models](examples/ch32_agents/) | [Exercises](examples/ch32_agents/EXERCISES.md) | [Solutions](solutions/ch32_agents/) |
-| 33 | [What Changed, and What Remains?](examples/ch33_perspective/) | [Exercises](examples/ch33_perspective/EXERCISES.md) | [Solutions](solutions/ch33_perspective/) |
+| Chapter | Examples | Exercises | Solutions | Figures |
+| ---: | --- | --- | --- | --- |
+| 1 | [Tokens, Embeddings, and Neural Language Models](examples/ch01_language/) | [Exercises](examples/ch01_language/EXERCISES.md) | [Solutions](solutions/ch01_language/) | [Figures](figures/ch01/) |
+| 2 | [Recurrence and Encoder–Decoder Models](examples/ch02_recurrence/) | [Exercises](examples/ch02_recurrence/EXERCISES.md) | [Solutions](solutions/ch02_recurrence/) | [Figures](figures/ch02/) |
+| 3 | [Learning to Align](examples/ch03_alignment/) | [Exercises](examples/ch03_alignment/EXERCISES.md) | [Solutions](solutions/ch03_alignment/) | [Figures](figures/ch03/) |
+| 4 | [Self-Attention from Vectors to Matrices](examples/ch04_attention/) | [Exercises](examples/ch04_attention/EXERCISES.md) | [Solutions](solutions/ch04_attention/) | [Figures](figures/ch04/) |
+| 5 | [Multiple Heads, Position, and the Complete Architecture](examples/ch05_transformer/) | [Exercises](examples/ch05_transformer/EXERCISES.md) | [Solutions](solutions/ch05_transformer/) | [Figures](figures/ch05/) |
+| 6 | [Training and Generating with a Small Transformer](examples/ch06_training/) | [Exercises](examples/ch06_training/EXERCISES.md) | [Solutions](solutions/ch06_training/) | [Figures](figures/ch06/) |
+| 7 | [GPT, BERT, and T5](examples/ch07_pretraining/) | [Exercises](examples/ch07_pretraining/EXERCISES.md) | [Solutions](solutions/ch07_pretraining/) | [Figures](figures/ch07/) |
+| 8 | [From the Original Block to Modern Decoders](examples/ch08_modern/) | [Exercises](examples/ch08_modern/EXERCISES.md) | [Solutions](solutions/ch08_modern/) | [Figures](figures/ch08/) |
+| 9 | [Scaling Data, Compute, and Expert Capacity](examples/ch09_scaling/) | [Exercises](examples/ch09_scaling/EXERCISES.md) | [Solutions](solutions/ch09_scaling/) | [Figures](figures/ch09/) |
+| 10 | [Incremental Decoding and KV Representations](examples/ch10_kv/) | [Exercises](examples/ch10_kv/EXERCISES.md) | [Solutions](solutions/ch10_kv/) | [Figures](figures/ch10/) |
+| 11 | [Long Context, Sparse Access, and Sequence Compression](examples/ch11_long_context/) | [Exercises](examples/ch11_long_context/EXERCISES.md) | [Solutions](solutions/ch11_long_context/) | [Figures](figures/ch11/) |
+| 12 | [Efficient Execution](examples/ch12_efficient/) | [Exercises](examples/ch12_efficient/EXERCISES.md) | [Solutions](solutions/ch12_efficient/) | [Figures](figures/ch12/) |
+| 13 | [Structured State Spaces and Long Convolutions](examples/ch13_state_spaces/) | [Exercises](examples/ch13_state_spaces/EXERCISES.md) | [Solutions](solutions/ch13_state_spaces/) | [Figures](figures/ch13/) |
+| 14 | [Selective State Spaces](examples/ch14_selective_ssm/) | [Exercises](examples/ch14_selective_ssm/EXERCISES.md) | [Solutions](solutions/ch14_selective_ssm/) | [Figures](figures/ch14/) |
+| 15 | [Delta Rules and Hybrid Stacks](examples/ch15_hybrids/) | [Exercises](examples/ch15_hybrids/EXERCISES.md) | [Solutions](solutions/ch15_hybrids/) | [Figures](figures/ch15/) |
+| 16 | [From Pretrained Weights to Task Behavior](examples/ch16_adaptation/) | [Exercises](examples/ch16_adaptation/EXERCISES.md) | [Solutions](solutions/ch16_adaptation/) | [Figures](figures/ch16/) |
+| 17 | [Designing Reproducible Evaluations](examples/ch17_evaluation/) | [Exercises](examples/ch17_evaluation/EXERCISES.md) | [Solutions](solutions/ch17_evaluation/) | [Figures](figures/ch17/) |
+| 18 | [Interpreting and Aligning Model Behavior](examples/ch18_behavior/) | [Exercises](examples/ch18_behavior/EXERCISES.md) | [Solutions](solutions/ch18_behavior/) | [Figures](figures/ch18/) |
+| 19 | [Language Understanding](examples/ch19_understanding/) | [Exercises](examples/ch19_understanding/EXERCISES.md) | [Solutions](solutions/ch19_understanding/) | [Figures](figures/ch19/) |
+| 20 | [Translation and Summarization](examples/ch20_generation/) | [Exercises](examples/ch20_generation/EXERCISES.md) | [Solutions](solutions/ch20_generation/) | [Figures](figures/ch20/) |
+| 21 | [Search, Retrieval, and Grounded Assistants](examples/ch21_retrieval/) | [Exercises](examples/ch21_retrieval/EXERCISES.md) | [Solutions](solutions/ch21_retrieval/) | [Figures](figures/ch21/) |
+| 22 | [Image and Video Understanding](examples/ch22_vision/) | [Exercises](examples/ch22_vision/EXERCISES.md) | [Solutions](solutions/ch22_vision/) | [Figures](figures/ch22/) |
+| 23 | [Object Detection and Segmentation](examples/ch23_detection/) | [Exercises](examples/ch23_detection/EXERCISES.md) | [Solutions](solutions/ch23_detection/) | [Figures](figures/ch23/) |
+| 24 | [Vision–Language and Multimodal Models](examples/ch24_multimodal/) | [Exercises](examples/ch24_multimodal/EXERCISES.md) | [Solutions](solutions/ch24_multimodal/) | [Figures](figures/ch24/) |
+| 25 | [Speech and Audio](examples/ch25_speech_audio/) | [Exercises](examples/ch25_speech_audio/EXERCISES.md) | [Solutions](solutions/ch25_speech_audio/) | [Figures](figures/ch25/) |
+| 26 | [Image and Video Generation](examples/ch26_visual_generation/) | [Exercises](examples/ch26_visual_generation/EXERCISES.md) | [Solutions](solutions/ch26_visual_generation/) | [Figures](figures/ch26/) |
+| 27 | [Models for Code](examples/ch27_code_models/) | [Exercises](examples/ch27_code_models/EXERCISES.md) | [Solutions](solutions/ch27_code_models/) | [Figures](figures/ch27/) |
+| 28 | [Time-Series Forecasting](examples/ch28_time_series/) | [Exercises](examples/ch28_time_series/EXERCISES.md) | [Solutions](solutions/ch28_time_series/) | [Figures](figures/ch28/) |
+| 29 | [Learning from Tables](examples/ch29_tabular/) | [Exercises](examples/ch29_tabular/EXERCISES.md) | [Solutions](solutions/ch29_tabular/) | [Figures](figures/ch29/) |
+| 30 | [Scientific Sequences and Biological Structure](examples/ch30_protein/) | [Exercises](examples/ch30_protein/EXERCISES.md) | [Solutions](solutions/ch30_protein/) | [Figures](figures/ch30/) |
+| 31 | [Decisions and Embodied Action](examples/ch31_decisions/) | [Exercises](examples/ch31_decisions/EXERCISES.md) | [Solutions](solutions/ch31_decisions/) | [Figures](figures/ch31/) |
+| 32 | [AI Agents with Language Models](examples/ch32_agents/) | [Exercises](examples/ch32_agents/EXERCISES.md) | [Solutions](solutions/ch32_agents/) | [Figures](figures/ch32/) |
+| 33 | [What Changed, and What Remains?](examples/ch33_perspective/) | [Exercises](examples/ch33_perspective/EXERCISES.md) | [Solutions](solutions/ch33_perspective/) | [Figures](figures/ch33/) |
 
 ## Topics
 
@@ -65,13 +85,15 @@ materials. [Book figures](figures/) · [Credits and reuse](figures/CREDITS.md).
 - Training, inference, KV caches, sparse attention, and compressed representations.
 - State space models, Mamba, and architectures that combine attention with recurrent state.
 - Activation patching, model alignment, and evaluation under changing inputs.
-- Applications, Python implementations, and reproducible experiments.
+- Tool use, checkpoints, and evaluation of long-horizon agent tasks.
 
 ## Exercise solutions
 
-Work through the [exercise solutions](solutions/) by chapter. The written
-PDFs show the calculations step by step. The Python exercises are available
-as executed Jupyter notebooks and as PDFs with the code and output.
+The [exercise solutions](solutions/) follow the numbering in the book.
+Chapters 1–31 and 33 include a written PDF, an executed Jupyter notebook, and
+a PDF of the notebook with its code and outputs. Chapter 32 has its
+[13 worked solutions in Markdown](solutions/ch32_agents/README.md), with
+links to the tool traces used in the exercises.
 
 Start with the [12 Chapter 1 exercises](examples/ch01_language/EXERCISES.md),
 ordered from foundational questions to two challenges. The written solutions,
@@ -81,14 +103,11 @@ executed notebook, and notebook PDF all use the same numbering.
 
 The examples make the book's calculations visible through small implementations, explicit tensor shapes, worked numerical results, and reproducible checks.
 
-Start with [Chapter 1: Tokens and Language Models](examples/ch01_language/). Its NumPy examples turn token IDs into embedding rows, combine an ordered two-token context, and turn vocabulary scores into probabilities. The matrices are chosen by hand so the forward pass can be checked with a calculator; this example does not train a language model.
-
-```sh
-python -m pip install -r requirements.txt
-python -m examples.ch01_language.run_examples
-```
-
-Chapter 1 also includes [reproducible observations of a pretrained language model](examples/ch01_language/PRETRAINED_FIGURES.md): actual token pieces and IDs, fixed lookup rows versus context-dependent hidden vectors, and full-vocabulary next-token probabilities. These optional figures use a pinned DistilGPT2 checkpoint.
+[Chapter 1](examples/ch01_language/) pairs the small NumPy example with
+observations from a pinned DistilGPT2 checkpoint. The recorded outputs show
+actual token pieces and IDs, fixed lookup rows, context-dependent hidden
+vectors, and next-token probabilities over the full vocabulary.
+[Pretrained model observations](examples/ch01_language/PRETRAINED_FIGURES.md).
 
 [Chapter 2: Recurrence and Encoder-Decoder Models](examples/ch02_recurrence/) follows a scalar recurrent update and an LSTM memory cell, then implements an LSTM encoder-decoder without attention. Its optional training experiment reverses short color sequences and compares teacher-forced token predictions with complete greedy generations. The [chapter guide](examples/ch02_recurrence/README.md) explains state transfer, source lengths, BOS/EOS alignment, padding, and the local reference results. [Measured model figures](examples/ch02_recurrence/TRAINED_FIGURES.md) expose its actual states, learned gates, and reference-conditioned versus freely generated predictions. The [14 progressive exercises](examples/ch02_recurrence/EXERCISES.md) have matching [worked solutions and executed notebooks](solutions/ch02_recurrence/README.md).
 
@@ -378,9 +397,13 @@ representations to the actions it proposes. Compare head ablations,
 gradient attribution, probes, a logit lens, activation patching, sparse
 dictionaries, and steering. Then use the same model scores to examine
 reward optimization, clarification, and decision costs. The
-[chapter guide](examples/ch18_behavior/README.md) explains how to redraw the
-figures from saved records and rerun the CPU measurements. The
-[16 exercises](examples/ch18_behavior/EXERCISES.md) have
+[chapter guide](examples/ch18_behavior/README.md) shows how to redraw the
+figures from two recorded Qwen3.5-0.8B-Base runs and how to repeat the CPU
+measurements.
+[Activation patching and routing](examples/ch18_behavior/PRETRAINED_RUN.json) ·
+[Interpretability methods](examples/ch18_behavior/METHODS_RUN.json).
+
+The [16 exercises](examples/ch18_behavior/EXERCISES.md) have
 [worked solutions and an executed notebook](solutions/ch18_behavior/).
 
 [Chapter 19: Language Understanding](examples/ch19_understanding/) pools
@@ -482,6 +505,11 @@ python -m examples.ch24_multimodal.run_examples --output output/ch24.json
 overlapping-frame spectrogram, labels clean and noisy synthetic tones,
 and scores word edits. The [chapter guide](examples/ch25_speech_audio/README.md)
 explains the frame axes and the convention for transcripts without reference words.
+In the measured demos, Parakeet and Qwen transcribe the same Spanish recording
+under several noise conditions, and Melati scores sound labels.
+[Listen to the audio](examples/ch25_speech_audio/README.md#listen-to-the-model-inputs) ·
+[Model results](examples/ch25_speech_audio/model_results.json).
+
 The [11 exercises](examples/ch25_speech_audio/EXERCISES.md) and
 [complete solutions](solutions/ch25_speech_audio/README.md) add window,
 spectrum and caption-timing plots with executed checks.
@@ -496,6 +524,15 @@ mixes a clean grid with noise, follows a deterministic diffusion sampler,
 and compares conditional and unconditional predictions. The
 [chapter guide](examples/ch26_visual_generation/README.md) explains the
 four-value fixture and the two sampler outputs.
+The [DDPM figures](examples/ch26_visual_generation/DIFFUSION_FIGURES.md)
+show forward noising and reverse denoising with a real checkpoint. The newer
+runs change a color in a FLUX.2 image prompt and compare Wan2.2 video generation
+with a text prompt alone and with a reference frame.
+[FLUX.2 still](examples/ch26_visual_generation/media/train-red-2501.png) ·
+[Wan2.2 from text](examples/ch26_visual_generation/media/wan-text.mp4) ·
+[Wan2.2 with a reference frame](examples/ch26_visual_generation/media/wan-image.mp4) ·
+[LingBot-Video clip](examples/ch26_visual_generation/media/lingbot-text.mp4).
+
 The [11 exercises](examples/ch26_visual_generation/EXERCISES.md) and
 [complete solutions](solutions/ch26_visual_generation/README.md) add
 error propagation, guidance geometry and separate quality/diversity checks.
@@ -583,10 +620,14 @@ python -m examples.ch31_decisions.run_examples --output output/ch31.json
 ```
 
 [Chapter 32: AI Agents with Language Models](examples/ch32_agents/)
-compares a conditional workflow with a local gpt-oss-20b agent that chooses
-tools from their observations. The [chapter guide](examples/ch32_agents/README.md)
-shows how to replay the recorded traces and reproduce a restart across a
-simulated three-hour wait with a saved checkpoint.
+compares a fixed workflow with a local gpt-oss-20b agent that chooses its
+next tool after seeing the previous result. In the long-horizon demo, the
+runner saves a checkpoint and resumes after a simulated three-hour wait,
+when a new notice can invalidate an earlier room lookup. The
+[chapter guide](examples/ch32_agents/README.md) explains how to run the
+Python baseline and reproduce the model runs with Ollama.
+[Recorded tool calls](examples/ch32_agents/records/MEASURED_RUN.json) ·
+[Checkpoint and both continuations](examples/ch32_agents/records/HORIZON_RUN.json).
 
 The [13 exercises](examples/ch32_agents/EXERCISES.md) and
 [worked solutions](solutions/ch32_agents/README.md) connect tool selection,
@@ -613,15 +654,14 @@ python -m examples.ch33_perspective.run_examples --output output/ch33.json
 
 ## Examples for the appendices
 
-The reference appendices use calculations from the chapter examples.
-
-The book appendices are worked introductions without end-of-appendix exercises.
-The earlier practice sets are retained here as optional companion material,
-separate from the manuscript. Each has eight questions, complete written answers,
-and an executed notebook. All six notebooks run offline on CPU using the canonical
-chapter helpers. For observations of pretrained models, see
-[attention, loss gradients, and learned filters](examples/appendix_models/).
-The book develops diffusion in Chapter 26 alongside the image and video examples.
+Appendices A–E introduce the math and computing ideas used in the chapters.
+The optional practice sets below give eight questions each, with written
+answers and an executed notebook. All six notebooks run offline on a CPU
+using the chapter examples. The supplemental diffusion set accompanies
+[Chapter 26](examples/ch26_visual_generation/), where the book develops
+diffusion alongside image and video generation.
+[Appendix figures](figures/README.md#appendices) ·
+[Pretrained attention, loss gradients, and learned filters](examples/appendix_models/).
 
 | Practice topic | Exercises | Written answers | Executable answers |
 | --- | --- | --- | --- |
@@ -632,7 +672,6 @@ The book develops diffusion in Chapter 26 alongside the image and video examples
 | E. Convolution and parallel scans | [8 exercises](solutions/appendix_e_scans/EXERCISES.md) | [PDF](solutions/appendix_e_scans/written-solutions.pdf) | [Notebook](solutions/appendix_e_scans/python-solutions.ipynb) / [PDF](solutions/appendix_e_scans/python-solutions.pdf) |
 | Diffusion foundations (Chapter 26) | [8 exercises](solutions/appendix_f_diffusion/EXERCISES.md) | [PDF](solutions/appendix_f_diffusion/written-solutions.pdf) | [Notebook](solutions/appendix_f_diffusion/python-solutions.ipynb) / [PDF](solutions/appendix_f_diffusion/python-solutions.pdf) |
 
-
 | Appendix | Companion examples |
 | --- | --- |
 | A. Notation and tensor shapes | [Self-attention and masks](examples/ch04_attention/) |
@@ -640,6 +679,8 @@ The book develops diffusion in Chapter 26 alongside the image and video examples
 | C. Stable numerics | [Stable softmax](examples/ch04_attention/) and [normalization](examples/ch08_modern/) |
 | D. Complexity and memory | [KV accounting](examples/ch10_kv/) and [causal pair counts](examples/ch33_perspective/) |
 | E. Convolution and scans | [Structured state spaces](examples/ch13_state_spaces/) and [selective updates](examples/ch14_selective_ssm/) |
+
+## Validation and code listings
 
 Tests cover numerical references, masking, permutation behavior, independent heads and layers, normalization, gradients, and complete-model prefix and padding checks. See [local validation results](VALIDATION.md) for the versions and checks used.
 
