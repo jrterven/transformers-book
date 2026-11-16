@@ -12,6 +12,12 @@ The book starts with the problems that led to attention and builds the original 
 
 Applications are a central part of the book. The discussion follows how Transformers have been adapted to language, images, speech, video, multimodal learning, time series, scientific data, and robotics. The emphasis is on understanding how a task is represented, what the model learns, and how its results should be evaluated.
 
+## Figures for teaching
+
+Browse the book's figures in their original formats, organized by chapter and
+indexed by figure number. Each file can be downloaded for use in course
+materials. [Book figures](figures/) · [Credits and reuse](figures/CREDITS.md).
+
 ## Chapter index
 
 | Chapter | Examples | Exercises | Solutions |
