@@ -1,4 +1,4 @@
-"""Reproduce Appendix F's image figures using public DDPM weights.
+"""Reproduce Chapter 26's image figures using public DDPM weights.
 
 No training data, private images, or remote Python code are loaded. The model
 revisions below are fixed, and only safetensors weights are accepted.
@@ -62,7 +62,8 @@ def save_figures(output, forward, reverse, estimates, generated, seeds):
         ax.imshow(displayed_rgb(forward[level]), interpolation="nearest")
         ax.set_title(f"t = {level}", fontsize=16, color="#3976AF", pad=9)
         ax.axis("off")
-    fig.savefig(output / "app_f_forward_real.png", dpi=180, bbox_inches="tight")
+    forward_path = output / "ch26_forward_real.png"
+    fig.savefig(forward_path, dpi=180, bbox_inches="tight")
     plt.close(fig)
 
     levels = sorted(reverse, reverse=True)
@@ -77,7 +78,8 @@ def save_figures(output, forward, reverse, estimates, generated, seeds):
         axes[0, col].set_title(f"t = {level}", fontsize=16, color="#3976AF", pad=9)
     axes[0, 0].set_ylabel("Current sample", fontsize=15, labelpad=9)
     axes[1, 0].set_ylabel("Clean estimate", fontsize=15, labelpad=9)
-    fig.savefig(output / "app_f_reverse_real.png", dpi=180, bbox_inches="tight")
+    reverse_path = output / "ch26_reverse_real.png"
+    fig.savefig(reverse_path, dpi=180, bbox_inches="tight")
     plt.close(fig)
 
     fig, axes = plt.subplots(1, len(generated), figsize=(9, 3.4), layout="constrained")
@@ -85,8 +87,10 @@ def save_figures(output, forward, reverse, estimates, generated, seeds):
         ax.imshow(displayed_rgb(image), interpolation="nearest")
         ax.set_title(f"Seed {seed}", fontsize=14, color="#46856E", pad=9)
         ax.axis("off")
-    fig.savefig(output / "app_f_generated_examples.png", dpi=180, bbox_inches="tight")
+    generated_path = output / "ch26_generated_examples.png"
+    fig.savefig(generated_path, dpi=180, bbox_inches="tight")
     plt.close(fig)
+    return forward_path, reverse_path, generated_path
 
 
 def main():
@@ -153,7 +157,7 @@ def main():
         raw.update({f"{group}_{level}": array for level, array in values.items()})
     raw.update({f"generated_{seed}": image for seed, image in zip(args.seeds, generated)})
     np.savez_compressed(args.output / "diffusion_arrays.npz", **raw)
-    save_figures(args.output, forward, reverse, estimates, generated, args.seeds)
+    figure_paths = save_figures(args.output, forward, reverse, estimates, generated, args.seeds)
     packages = ["torch", "diffusers", "huggingface_hub", "safetensors", "numpy", "Pillow", "matplotlib"]
     manifest = {
         "model": args.model, "revision": revision, "model_card_license": "apache-2.0",
@@ -170,7 +174,7 @@ def main():
         "scheduler_config": dict(scheduler.config),
         "packages": {name: importlib.metadata.version(name) for name in packages},
         "elapsed_seconds": time.monotonic() - started,
-        "figures_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(args.output.glob("app_f_*.png"))},
+        "figures_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(figure_paths)},
     }
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(json.dumps({"output": str(args.output), "elapsed_seconds": manifest["elapsed_seconds"],

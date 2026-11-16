@@ -1,4 +1,4 @@
-"""Draw the analytic one-dimensional score example used in Appendix F."""
+"""Draw the analytic one-dimensional score example used in Chapter 26."""
 
 import argparse
 import hashlib
@@ -51,7 +51,7 @@ def main():
         ax.set_xlim(-1, 5)
         ax.spines[["top", "right"]].set_visible(False)
         ax.grid(alpha=.15)
-    path = args.output / "app_f_score_intro.png"
+    path = args.output / "ch26_score_intro.png"
     fig.savefig(path, dpi=200)
     plt.close(fig)
     (args.output / "score-manifest.json").write_text(json.dumps({

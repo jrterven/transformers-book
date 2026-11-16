@@ -184,9 +184,9 @@
   },
   "elapsed_seconds": 19.44125304199406,
   "figures_sha256": {
-    "app_f_forward_real.png": "0c925b15a51ab98bd908071c2359dd0ab1d240fc8c3bd52f54b335e89242aee0",
-    "app_f_generated_examples.png": "18d1fc8c2c23aae2b0aed3666f701be5a961ba00b3960b6612ed148789fa5b97",
-    "app_f_reverse_real.png": "104aceb80bef3a5f78ef8960a6f992002be9831be03e2ac14b063ef071b778cf",
-    "app_f_score_intro.png": "ef530a70cb41836c0a217a10d7f042b7d9b7e15f0039d3128e2f4b0f4c7170ef"
+    "ch26_forward_real.png": "0c925b15a51ab98bd908071c2359dd0ab1d240fc8c3bd52f54b335e89242aee0",
+    "ch26_generated_examples.png": "18d1fc8c2c23aae2b0aed3666f701be5a961ba00b3960b6612ed148789fa5b97",
+    "ch26_reverse_real.png": "104aceb80bef3a5f78ef8960a6f992002be9831be03e2ac14b063ef071b778cf",
+    "ch26_score_intro.png": "ef530a70cb41836c0a217a10d7f042b7d9b7e15f0039d3128e2f4b0f4c7170ef"
   }
 }

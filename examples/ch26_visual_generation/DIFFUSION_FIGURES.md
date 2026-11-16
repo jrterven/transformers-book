@@ -37,12 +37,14 @@ both the early, mild corruption and the nearly Gaussian endpoint.
 Both kinds of panel use the same fixed display mapping, `clip(x/2+0.5,0,1)`.
 It affects visualization, rather than rescaling every panel independently.
 
-The run writes three PNG figures, raw arrays in `diffusion_arrays.npz`, and
-`manifest.json` containing model and source hashes, software versions,
-sampler settings, seeds, and figure hashes. Small-scale output examples are
-illustrations of the process, not a quality benchmark.
+The run writes `ch26_forward_real.png`, `ch26_reverse_real.png`, and
+`ch26_generated_examples.png`. It also writes the raw arrays in
+`diffusion_arrays.npz` and a `manifest.json` with model and source hashes,
+software versions, sampler settings, seeds, and figure hashes. The checked-in
+run report uses the book's filenames and retains the hashes from the measured run.
+Small-scale output examples are illustrations of the process, not a quality benchmark.
 
-The second command generates a separate, analytic Gaussian score diagram.
+The second command generates the analytic Gaussian score diagram `ch26_score_intro.png`.
 It needs no model download and illustrates an exact density and derivative.
 
 Model cards:
